@@ -22,6 +22,11 @@
 @property NSMutableArray * gardenArr2d ;
 //@property UIImage *pic;
 
+// This would hold the users plants and everything. This can be saved as a json
+// file on the users device and it will be easy to populate the garden from the file.
+// We might need to move this to another class/file when we are refactoring
+@property NSMutableArray *gardenPlants;
+
 //need to added vars for push notifications
 //for watering / weeding
 - (void)setWidth:(NSInteger) w;

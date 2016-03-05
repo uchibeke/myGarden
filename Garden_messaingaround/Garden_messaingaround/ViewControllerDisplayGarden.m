@@ -45,8 +45,6 @@
     layout.minimumInteritemSpacing = 0.0f;
     layout.minimumLineSpacing = 1.0f;
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    
-    
     layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     
 //    I'm doing the allocation of the plant here. We might need to refactor this later
@@ -70,6 +68,31 @@
     return cell;
 }
 
+//http://stackoverflow.com/questions/18857167/uicollectionview-cell-selection
+
+//called when items are selected from the collection view
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(10, cell.bounds.size.height/2, cell.bounds.size.width, 40)];
+    title.textColor = [UIColor purpleColor];
+    title.text = [GloablObjects paintBrushInstance].paintBrush.name;
+    UIImageView *imgview = [[UIImageView alloc]init];
+    
+    [cell.contentView addSubview:imgview];
+    
+    
+    [ [self.plant usersPlants] addObject:[GloablObjects paintBrushInstance].paintBrush];
+    NSInteger addedIndex = [self.plant usersPlants].count-1;
+    NSLog([NSString stringWithFormat:@"Added Object: %@",[[[self.plant usersPlants] objectAtIndex:addedIndex]name] ]);
+    
+    
+    imgview.image = [ UIImage imageNamed: [GloablObjects paintBrushInstance].paintBrush.name];    
+    [cell.contentView addSubview:title];
+    
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return( 1 );
@@ -82,7 +105,6 @@
 //    return( [[self.plant plantsDataArray] indexOfObject:[[self.plant plantsDataArray] lastObject]] + 1 );
     return [[self.plant plantsDataArray] count];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
@@ -99,23 +121,31 @@
     // we can name the file something like redPepper.
     // The code below will convert the name to lower case and handle the rest.
     // File must also be png
+    
     NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [self.plant getAPlantName:indexPath.row], @"png"] lowercaseString] ;
     
+    cell.imageView.image = [UIImage imageNamed:imgName];
     
+    CGSize itemSize = CGSizeMake(32, 32);
+    UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+    CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+    [cell.imageView.image drawInRect:imageRect];
+    cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     
-    UIImageView *imgView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-    
-    
-    [imgView setImage:[UIImage imageNamed:imgName]];
-    [cell.contentView addSubview:imgView];
-
-    imgView.frame = CGRectMake(10,0,40,40);
-    [imgView setAutoresizingMask:UIViewAutoresizingNone];
-    
-    // Empty string is just for formatting
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", @"         ", [self.plant getAPlantName:indexPath.row]] ;
-    [cell.textLabel alignmentRectForFrame:imgView.frame];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", @"", [self.plant getAPlantName:indexPath.row]] ;
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    PlantObject* brush = [PlantObject alloc];
+    brush.name = [self.plant getAPlantName:indexPath.row];
+    
+    [GloablObjects paintBrushInstance].paintBrush = brush;
+    
+    NSLog([GloablObjects paintBrushInstance].paintBrush.name);
 }
 
 // Size of the cell

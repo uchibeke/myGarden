@@ -24,6 +24,8 @@
 @property NSInteger w;
 @property NSInteger h;
 
+@property Boolean modifying;
+
 @end
 
 @implementation ViewControllerNewGarden
@@ -34,8 +36,6 @@
     
     //sets title bar
     [self setTitle:@"Create New Garden"];
-    self.h = 1;
-    self.w = 1;
     if ([GloablObjects instance].myGarden != nil) {
         heightDisp.text = [NSString stringWithFormat:@"%d", (int)[GloablObjects instance].myGarden.height];
         widthDisp.text = [NSString stringWithFormat:@"%d", (int)[GloablObjects instance].myGarden.width];
@@ -43,9 +43,16 @@
         width.value = [GloablObjects instance].myGarden.width;
         height.value = [GloablObjects instance].myGarden.height;
         [createBtn setTitle: @"Modify Garden" forState:UIControlStateNormal];
-        
-        
+        self.modifying = true;
+    } else {
+        [createBtn setTitle: @"Create Garden" forState:UIControlStateNormal];
+        self.modifying = false;
+        width.value = 1;
+        height.value = 1;
     }
+    
+    self.h = height.value;
+    self.w = width.value;
 }
 
 
@@ -67,15 +74,43 @@
     //currently uses a default of 10 x 10
     
     NSLog(@"updating garden...");
-    NSLog([NSString stringWithFormat:@"%d", self.h]);
+    
+    
+    //required for updating entries in the garden
+    //logic: removes old entry by object comparison
+    
+    //dos soby looping through all entries in garden array
+    //and makeing note of the entry with the name we want to replace
+    GardenObject* oldGarden = [GloablObjects instance].myGarden;
     
     [GloablObjects instance].myGarden = [[GardenObject alloc] init];
     [[GloablObjects instance].myGarden allocateTable:self.h withWidth:self.w];
     [[GloablObjects instance].myGarden setName:name.text];
     
-    NSLog(@"global garden updated!");
+    Boolean remove = false;
+    int removeIndex = 0;
+    if (self.modifying) {
+    int index = 0;
+    GardenObject *item;
+    for (item in [GloablObjects gardenArrayInstance].gardenArray) {
+        if (item == oldGarden) {
+            NSLog(@"found!");
+            removeIndex = index;
+            remove = true;
+        }
+        index++;
+    }
+    } else {
+        [[GloablObjects gardenArrayInstance].gardenArray addObject:[GloablObjects instance].myGarden ];
+    }
     
-    NSLog([NSString stringWithFormat:@"%d", [GloablObjects instance].myGarden.height]);
+    if (remove) {
+        [[GloablObjects gardenArrayInstance].gardenArray replaceObjectAtIndex:removeIndex withObject:[GloablObjects instance].myGarden];
+    }
+    
+    NSLog(@"global garden updated!");
+    NSLog([NSString stringWithFormat:@"%@", [GloablObjects gardenArrayInstance].gardenArray]);
+    NSLog([NSString stringWithFormat:@"%d", [GloablObjects gardenArrayInstance].gardenArray.count]);
     
     //loads new view
     [self performSegueWithIdentifier:@"showDisplayGarden" sender:self];

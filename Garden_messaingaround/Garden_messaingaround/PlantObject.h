@@ -17,10 +17,10 @@
 // There is a call to this method in the welcome view
 @property (strong, nonatomic) NSString * name;
 
-
-// This would hold the users plants and everything. This can be saved as a json
-// file on the users device and it will be easy to populate the garden from the file.
-// We might need to move this to another class/file when we are refactoring
+//
+//// This would hold the users plants and everything. This can be saved as a json
+//// file on the users device and it will be easy to populate the garden from the file.
+//// We might need to move this to another class/file when we are refactoring
 @property (strong, nonatomic) NSMutableArray *usersPlants;
 
 
@@ -42,11 +42,26 @@
 
 -(NSMutableDictionary *) getAPlant: (NSInteger) plantIndex ;
 -(NSString *) getAPlantName: (NSInteger) plantIndex ;
--(NSString *) getAPlantDescription: (NSInteger) plantIndex;
--(NSString *) getAPlantCompanion: (NSInteger) plantIndex;
--(NSString *) getAPlantfoe: (NSInteger) plantIndex ;
--(NSString *) getAPlantType: (NSInteger) plantIndex;
-
+-(NSString *) getAPlantFamily: (NSInteger) plantIndex;
+-(NSString *) getAPlantHeight: (NSInteger) plantIndex;
+-(NSString *) getAPlantSpacing: (NSInteger) plantIndex;
+-(NSString *) getAPlantGrowingSeason: (NSInteger) plantIndex ;
+-(NSString *) getAPlantWeeksFromSeedHarvest: (NSInteger) plantIndex ;
+-(NSString *) getAPlantTimerCountDown: (NSInteger) plantIndex ;
+-(NSString *) getAPlantYearsStoreSeeds: (NSInteger) plantIndex ;
+-(NSString *) getAPlantWeeksToMaturity: (NSInteger) plantIndex ;
+-(NSString *) getAPlantIndoorSeedStarting: (NSInteger) plantIndex ;
+-(NSString *) getAPlantEarliestOutdoorPlanting: (NSInteger) plantIndex ;
+-(NSString *) getAPlantLastPlanting: (NSInteger) plantIndex ;
+-(NSString *) getAPlantDescription: (NSInteger) plantIndex ;
+-(NSString *) getAPlantLocation: (NSInteger) plantIndex ;
+-(NSString *) getAPlantTransplanting: (NSInteger) plantIndex ;
+-(NSString *) getAPlantWatering: (NSInteger) plantIndex ;
+-(NSString *) getAPlantMaintenance: (NSInteger) plantIndex ;
+-(NSString *) getAPlantHarvesting: (NSInteger) plantIndex ;
+-(NSString *) getAPlantPreparingAndUsing: (NSInteger) plantIndex ;
+-(NSString *) getAPlantProblems: (NSInteger) plantIndex ;
+-(NSString *) getAPlantPreparationUse: (NSInteger) plantIndex ;
 
 -(NSMutableDictionary *) getAPlantToPlace:(NSInteger) plantIndexFromTable;
 - (void) placeAPlant: (NSInteger ) indexFromTable toPositionOnGrid:(NSInteger)posOfPlant;
