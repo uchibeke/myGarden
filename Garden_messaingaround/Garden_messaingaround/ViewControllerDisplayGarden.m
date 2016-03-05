@@ -13,10 +13,13 @@
 
 @interface ViewControllerDisplayGarden () {
     IBOutlet UICollectionView *collectionView;
+    IBOutlet UITableView *tableView;
+
 //    IBOutlet UITableView * tableView;
 }
 
 @property GardenObject * garden;
+@property NSInteger brushIndex;
 
 @end
 
@@ -36,6 +39,8 @@
     //self.garden = [GloablObjects instance].myGarden;
     
     UICollectionViewFlowLayout *layout = (id) collectionView.collectionViewLayout;
+    
+    NSLog(@"hey");
     
     float screenWidth = layout.collectionViewContentSize.width;
     float widthOfCell = (screenWidth)/([[GloablObjects instance].myGarden getWidth])-1;
@@ -63,8 +68,22 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifier = @"Cell";
-    
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+
+    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(10, cell.bounds.size.height/2, cell.bounds.size.width, 40)];
+    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height)];
+    title.textColor = [UIColor purpleColor];
+    GardenObject* g = [GloablObjects instance].myGarden.gardenArr2d[indexPath.row];
+    title.text = g.name;
+    
+    NSString * imgName = [[NSString stringWithFormat:@"%@.%@", g.name, @"png"] lowercaseString] ;
+    
+    imgview.image = [ UIImage imageNamed: imgName];
+    [cell.contentView addSubview:title];
+    [cell.contentView addSubview:imgview];
+
+    
     return cell;
 }
 
@@ -74,21 +93,23 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(10, cell.bounds.size.height/2, cell.bounds.size.width, 40)];
     title.textColor = [UIColor purpleColor];
     title.text = [GloablObjects paintBrushInstance].paintBrush.name;
-    UIImageView *imgview = [[UIImageView alloc]init];
+    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height)];
     
-    [cell.contentView addSubview:imgview];
+    NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [GloablObjects paintBrushInstance].paintBrush.name, @"png"] lowercaseString] ;
+    
+    [[GloablObjects instance].myGarden.gardenArr2d replaceObjectAtIndex:indexPath.row withObject:[GloablObjects paintBrushInstance].paintBrush];
+    //NSInteger addedIndex = [self.plant usersPlants].count-1;
+    //NSLog([NSString stringWithFormat:@"Added Object: %@",[[[self.plant usersPlants] objectAtIndex:addedIndex]name] ]);
     
     
-    [ [self.plant usersPlants] addObject:[GloablObjects paintBrushInstance].paintBrush];
-    NSInteger addedIndex = [self.plant usersPlants].count-1;
-    NSLog([NSString stringWithFormat:@"Added Object: %@",[[[self.plant usersPlants] objectAtIndex:addedIndex]name] ]);
-    
-    
-    imgview.image = [ UIImage imageNamed: [GloablObjects paintBrushInstance].paintBrush.name];    
+    imgview.image = [ UIImage imageNamed: imgName];
     [cell.contentView addSubview:title];
+    [cell.contentView addSubview:imgview];
     
 }
 
@@ -142,7 +163,7 @@
     
     PlantObject* brush = [PlantObject alloc];
     brush.name = [self.plant getAPlantName:indexPath.row];
-    
+    self.brushIndex = indexPath.row;
     [GloablObjects paintBrushInstance].paintBrush = brush;
     
     NSLog([GloablObjects paintBrushInstance].paintBrush.name);
@@ -154,6 +175,14 @@
     return 50;
 }
 
+
+-(IBAction) removeTool: (id) sender {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.brushIndex inSection:0];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    PlantObject *myPlant = [PlantObject new];
+    myPlant.name = @"";
+    [GloablObjects paintBrushInstance].paintBrush = myPlant;
+}
 
 
 - (void)didReceiveMemoryWarning {

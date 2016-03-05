@@ -40,19 +40,12 @@
     
     //creates a dummy plants in order to set up/test 2d array
     PlantObject *myPlant = [PlantObject new];
-    myPlant.name = @"carrot";
-    
-    PlantObject *myPlant2 = [PlantObject new];
-    myPlant.name = @"carrot2";
+    myPlant.name = @"";
     
     //adding objects to garden
     self.gardenArr2d = [NSMutableArray new];
     for (int i = 0; i < h*w; i++) {
-        if (i > 5) {
-            [self.gardenArr2d addObject:myPlant];
-        } else {
-            [self.gardenArr2d addObject:myPlant2];
-        }
+        [self.gardenArr2d addObject:myPlant];
     }
     
     //print a dummy plant

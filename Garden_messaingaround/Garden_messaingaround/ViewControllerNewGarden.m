@@ -83,9 +83,61 @@
     //and makeing note of the entry with the name we want to replace
     GardenObject* oldGarden = [GloablObjects instance].myGarden;
     
-    [GloablObjects instance].myGarden = [[GardenObject alloc] init];
-    [[GloablObjects instance].myGarden allocateTable:self.h withWidth:self.w];
-    [[GloablObjects instance].myGarden setName:name.text];
+    if (!self.modifying) {
+        [GloablObjects instance].myGarden = [[GardenObject alloc] init];
+        [[GloablObjects instance].myGarden allocateTable:self.h withWidth:self.w];
+        [[GloablObjects instance].myGarden setName:name.text];
+    } else {
+        //wdith adjustment
+        int oldWidth = [GloablObjects instance].myGarden.getWidth;
+        if ((oldWidth - self.w) >= 0) {
+            int loops = oldWidth-self.w;
+        
+            for (int j=0; j < loops; j++) {
+                //for delete a collumn
+                for (int i=0; i<[GloablObjects instance].myGarden.gardenArr2d.count; i+=oldWidth-1){
+                    [[GloablObjects instance].myGarden.gardenArr2d removeObjectAtIndex:i];
+                }
+                oldWidth--;
+            }
+            [GloablObjects instance].myGarden.width = oldWidth;
+        } else {
+            int loops = self.w-oldWidth;
+            
+            for (int j=0; j < loops; j++) {
+                //for delete a collumn
+                for (int i=0; i<[GloablObjects instance].myGarden.gardenArr2d.count; i+=oldWidth+1){
+                    PlantObject *myPlant = [PlantObject new];
+                    myPlant.name = @"";
+                    [[GloablObjects instance].myGarden.gardenArr2d insertObject:myPlant atIndex:i];
+                }
+                oldWidth++;
+            }
+            [GloablObjects instance].myGarden.width = oldWidth;
+        }
+        
+        
+        //hieght adjustment
+        int oldHeight = [GloablObjects instance].myGarden.getHeight;
+        if ((oldHeight - self.h) >= 0) {
+            int toDelFromEnd = (oldHeight - self.h)*[GloablObjects instance].myGarden.getWidth;
+            for (int j=0;j<toDelFromEnd; j++) {
+                int temp = [GloablObjects instance].myGarden.gardenArr2d.count-1;
+                [[GloablObjects instance].myGarden.gardenArr2d removeObjectAtIndex:temp];
+            }
+            [GloablObjects instance].myGarden.height = oldHeight;
+        } else {
+            int toAddToEnd = (self.h - oldHeight)*self.w;
+            for (int j=0;j<toAddToEnd; j++) {
+                int temp = [GloablObjects instance].myGarden.gardenArr2d.count;
+                PlantObject *myPlant = [PlantObject new];
+                myPlant.name = @"";
+                [[GloablObjects instance].myGarden.gardenArr2d insertObject:myPlant atIndex:temp];
+            }
+            [GloablObjects instance].myGarden.height = oldHeight;
+        }
+
+    }
     
     Boolean remove = false;
     int removeIndex = 0;
