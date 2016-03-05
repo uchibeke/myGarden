@@ -71,9 +71,20 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
-    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(10, cell.bounds.size.height/2, cell.bounds.size.width, 40)];
-    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height)];
+    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.65, cell.bounds.size.width, 40)];
+    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.20, cell.bounds.size.height*.05, cell.bounds.size.width*.6, cell.bounds.size.height*.6)];
     title.textColor = [UIColor purpleColor];
+    [title setTextAlignment:NSTextAlignmentCenter];
+    title.adjustsFontSizeToFitWidth = YES;
+    title.minimumFontSize = 0;
+    
+    UILabel *numPerSq = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.85, cell.bounds.size.width, 40)];
+    numPerSq.textColor = [UIColor purpleColor];
+    [numPerSq setTextAlignment:NSTextAlignmentCenter];
+    numPerSq.adjustsFontSizeToFitWidth = YES;
+    numPerSq.minimumFontSize = 0;
+    numPerSq.text = @"";
+    
     GardenObject* g = [GloablObjects instance].myGarden.gardenArr2d[indexPath.row];
     title.text = g.name;
     
@@ -82,7 +93,7 @@
     imgview.image = [ UIImage imageNamed: imgName];
     [cell.contentView addSubview:title];
     [cell.contentView addSubview:imgview];
-
+    [cell.contentView addSubview:numPerSq];
     
     return cell;
 }
@@ -95,10 +106,21 @@
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(10, cell.bounds.size.height/2, cell.bounds.size.width, 40)];
+    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.65, cell.bounds.size.width, 40)];
     title.textColor = [UIColor purpleColor];
+    [title setTextAlignment:NSTextAlignmentCenter];
+    title.adjustsFontSizeToFitWidth = YES;
+    title.minimumFontSize = 0;
     title.text = [GloablObjects paintBrushInstance].paintBrush.name;
-    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height)];
+    
+    UILabel *numPerSq = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.85, cell.bounds.size.width, 40)];
+    numPerSq.textColor = [UIColor purpleColor];
+    [numPerSq setTextAlignment:NSTextAlignmentCenter];
+    numPerSq.adjustsFontSizeToFitWidth = YES;
+    numPerSq.minimumFontSize = 0;
+    numPerSq.text = @"";
+    
+    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.20, cell.bounds.size.height*.05, cell.bounds.size.width*.6, cell.bounds.size.height*.6)];
     
     NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [GloablObjects paintBrushInstance].paintBrush.name, @"png"] lowercaseString] ;
     
@@ -109,6 +131,7 @@
     
     imgview.image = [ UIImage imageNamed: imgName];
     [cell.contentView addSubview:title];
+    [cell.contentView addSubview:numPerSq];
     [cell.contentView addSubview:imgview];
     
 }

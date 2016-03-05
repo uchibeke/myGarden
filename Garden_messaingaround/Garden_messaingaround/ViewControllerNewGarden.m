@@ -67,20 +67,19 @@
 }
 
 
-//actually creates the garden object
--(IBAction) createGarden: (id) sender {
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        NSLog(@"Cancel Tapped.");
+    }
+    else if (buttonIndex == 1) {
+        [self updateGardenDimensions];
+    }
+}
+
+
+-(void) updateGardenDimensions {
+    NSLog(@"deleting...");
     
-    //creates and allocates new garden object
-    //currently uses a default of 10 x 10
-    
-    NSLog(@"updating garden...");
-    
-    
-    //required for updating entries in the garden
-    //logic: removes old entry by object comparison
-    
-    //dos soby looping through all entries in garden array
-    //and makeing note of the entry with the name we want to replace
     GardenObject* oldGarden = [GloablObjects instance].myGarden;
     
     if (!self.modifying) {
@@ -92,7 +91,7 @@
         int oldWidth = [GloablObjects instance].myGarden.getWidth;
         if ((oldWidth - self.w) >= 0) {
             int loops = oldWidth-self.w;
-        
+            
             for (int j=0; j < loops; j++) {
                 //for delete a collumn
                 for (int i=0; i<[GloablObjects instance].myGarden.gardenArr2d.count; i+=oldWidth-1){
@@ -100,7 +99,8 @@
                 }
                 oldWidth--;
             }
-            [GloablObjects instance].myGarden.width = oldWidth;
+            //[GloablObjects instance].myGarden.width = oldWidth;
+            [GloablObjects instance].myGarden.width = [widthDisp.text intValue];
         } else {
             int loops = self.w-oldWidth;
             
@@ -113,7 +113,7 @@
                 }
                 oldWidth++;
             }
-            [GloablObjects instance].myGarden.width = oldWidth;
+            [GloablObjects instance].myGarden.width = [widthDisp.text intValue];
         }
         
         
@@ -124,8 +124,9 @@
             for (int j=0;j<toDelFromEnd; j++) {
                 int temp = [GloablObjects instance].myGarden.gardenArr2d.count-1;
                 [[GloablObjects instance].myGarden.gardenArr2d removeObjectAtIndex:temp];
+                oldHeight--;
             }
-            [GloablObjects instance].myGarden.height = oldHeight;
+            [GloablObjects instance].myGarden.height = [heightDisp.text intValue];
         } else {
             int toAddToEnd = (self.h - oldHeight)*self.w;
             for (int j=0;j<toAddToEnd; j++) {
@@ -133,25 +134,30 @@
                 PlantObject *myPlant = [PlantObject new];
                 myPlant.name = @"";
                 [[GloablObjects instance].myGarden.gardenArr2d insertObject:myPlant atIndex:temp];
+                oldHeight++;
             }
-            [GloablObjects instance].myGarden.height = oldHeight;
+            [GloablObjects instance].myGarden.height = [heightDisp.text intValue];
         }
-
     }
     
+    //required for updating entries in the garden
+    //logic: removes old entry by object comparison
+    
+    //dos soby looping through all entries in garden array
+    //and makeing note of the entry with the name we want to replace
     Boolean remove = false;
     int removeIndex = 0;
     if (self.modifying) {
-    int index = 0;
-    GardenObject *item;
-    for (item in [GloablObjects gardenArrayInstance].gardenArray) {
-        if (item == oldGarden) {
-            NSLog(@"found!");
-            removeIndex = index;
-            remove = true;
+        int index = 0;
+        GardenObject *item;
+        for (item in [GloablObjects gardenArrayInstance].gardenArray) {
+            if (item == oldGarden) {
+                NSLog(@"found!");
+                removeIndex = index;
+                remove = true;
+            }
+            index++;
         }
-        index++;
-    }
     } else {
         [[GloablObjects gardenArrayInstance].gardenArray addObject:[GloablObjects instance].myGarden ];
     }
@@ -166,6 +172,27 @@
     
     //loads new view
     [self performSegueWithIdentifier:@"showDisplayGarden" sender:self];
+}
+
+
+//actually creates the garden object
+-(IBAction) createGarden: (id) sender {
+    
+    //creates and allocates new garden object
+    //currently uses a default of 10 x 10
+    
+    NSLog(@"updating garden...");
+    
+    if ((self.modifying && ([GloablObjects instance].myGarden.getWidth - self.w) > 0) || (self.modifying &&([GloablObjects instance].myGarden.getHeight - self.h) > 0)) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"WARNING!"
+                                                        message:@"you are about to shrink your garden! this will delete plants that are outisde of the new dimensions. are you sure you to continue?"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"Continue",nil];
+        [alert show];
+    } else {
+        [self updateGardenDimensions];
+      }
 }
 
 - (void)didReceiveMemoryWarning {

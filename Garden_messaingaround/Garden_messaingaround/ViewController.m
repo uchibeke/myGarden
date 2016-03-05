@@ -80,6 +80,9 @@
     
     cell.textLabel.text = myObject.name;
     
+    NSString * imgName = @"watermelon.png";
+    cell.imageView.image = [UIImage imageNamed:imgName];
+    
     return cell;
 }
 
