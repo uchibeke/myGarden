@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09B2A1581C94B54B0081D136 /* ViewControllerPlantViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */; };
+		09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */; };
 		85AE250F1C83D56C001828C0 /* GardenObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE250C1C83D56C001828C0 /* GardenObject.m */; };
 		85AE25101C83D56C001828C0 /* PlantObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE250E1C83D56C001828C0 /* PlantObject.m */; };
 		85AE25191C83DB2F001828C0 /* GloablObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE25181C83DB2F001828C0 /* GloablObjects.m */; };
@@ -75,6 +77,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09B2A1561C94B54B0081D136 /* ViewControllerPlantViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerPlantViews.h; sourceTree = "<group>"; };
+		09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerPlantViews.m; sourceTree = "<group>"; };
+		09B2A1591C94C1C50081D136 /* ViewControllerNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerNotes.h; sourceTree = "<group>"; };
+		09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerNotes.m; sourceTree = "<group>"; };
 		85AE250B1C83D56C001828C0 /* GardenObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GardenObject.h; sourceTree = "<group>"; };
 		85AE250C1C83D56C001828C0 /* GardenObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GardenObject.m; sourceTree = "<group>"; };
 		85AE250D1C83D56C001828C0 /* PlantObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlantObject.h; sourceTree = "<group>"; };
@@ -239,6 +245,10 @@
 				ADC714C21C82666100260F56 /* ViewControllerDisplayGarden.m */,
 				ADC714BC1C825AB800260F56 /* ViewControllerNewGarden.h */,
 				ADC714BD1C825AB800260F56 /* ViewControllerNewGarden.m */,
+				09B2A1561C94B54B0081D136 /* ViewControllerPlantViews.h */,
+				09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */,
+				09B2A1591C94C1C50081D136 /* ViewControllerNotes.h */,
+				09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */,
 				ADC7148E1C82448400260F56 /* ViewController.h */,
 				ADC7148F1C82448400260F56 /* ViewController.m */,
 				85AE250B1C83D56C001828C0 /* GardenObject.h */,
@@ -427,7 +437,9 @@
 			files = (
 				ADC714BE1C825AB800260F56 /* ViewControllerNewGarden.m in Sources */,
 				85AE25101C83D56C001828C0 /* PlantObject.m in Sources */,
+				09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */,
 				ADC714C31C82666100260F56 /* ViewControllerDisplayGarden.m in Sources */,
+				09B2A1581C94B54B0081D136 /* ViewControllerPlantViews.m in Sources */,
 				ADC714901C82448400260F56 /* ViewController.m in Sources */,
 				ADC7148D1C82448400260F56 /* AppDelegate.m in Sources */,
 				85AE25191C83DB2F001828C0 /* GloablObjects.m in Sources */,

@@ -18,7 +18,6 @@
     IBOutlet UILabel* widthDisp;
     IBOutlet UILabel* heightDisp;
     IBOutlet UIButton * createBtn;
-    
 }
 
 @property NSInteger w;
@@ -32,8 +31,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
     //sets title bar
     [self setTitle:@"Create New Garden"];
     if ([GloablObjects instance].myGarden != nil) {
@@ -87,6 +84,7 @@
         [[GloablObjects instance].myGarden allocateTable:self.h withWidth:self.w];
         [[GloablObjects instance].myGarden setName:name.text];
     } else {
+        [[GloablObjects instance].myGarden setName:name.text];
         //wdith adjustment
         int oldWidth = [GloablObjects instance].myGarden.getWidth;
         if ((oldWidth - self.w) >= 0) {
@@ -171,13 +169,20 @@
     NSLog([NSString stringWithFormat:@"%d", [GloablObjects gardenArrayInstance].gardenArray.count]);
     
     //loads new view
-    [self performSegueWithIdentifier:@"showDisplayGarden" sender:self];
+    [self performSegueWithIdentifier:@"showTabs" sender:self];
+    
+}
+
+
+//actually creates the garden object
+-(IBAction) goBack: (id) sender {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 
 //actually creates the garden object
 -(IBAction) createGarden: (id) sender {
-    
+    NSLog(@"call");
     //creates and allocates new garden object
     //currently uses a default of 10 x 10
     
@@ -193,7 +198,9 @@
     } else {
         [self updateGardenDimensions];
       }
+    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -13,8 +13,12 @@
 @property (nonatomic, readwrite) GardenObject* myGarden;
 @property (nonatomic, readwrite) NSMutableArray* gardenArray;
 @property (nonatomic, readwrite) PlantObject* paintBrush;
+@property (nonatomic, readwrite) NSMutableArray* notesArray;
+
+
 -(id)init;
 +(GloablObjects*)instance;
 +(GloablObjects*)gardenArrayInstance;
 +(GloablObjects*)paintBrushInstance;
++(GloablObjects*)notesInstance;
 @end

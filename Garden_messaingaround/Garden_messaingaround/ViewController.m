@@ -27,6 +27,7 @@
     dispatch_once(&once, ^ {
         [GloablObjects gardenArrayInstance].gardenArray = [[NSMutableArray alloc] init];
         [GloablObjects paintBrushInstance].paintBrush = [[PlantObject alloc] init];
+        [GloablObjects notesInstance].notesArray = [[NSMutableArray alloc] init];
         NSLog(@"test");
     });
     
@@ -46,7 +47,7 @@
 -(IBAction) createNewGarden: (id) sender {
     [GloablObjects instance].myGarden = nil;
     //must link views togther first, and set identifer
-    [self performSegueWithIdentifier:@"showNewGarden" sender:self];
+    [self performSegueWithIdentifier:@"modalCreate" sender:self];
 }
 
 
@@ -91,7 +92,7 @@
     [GloablObjects instance].myGarden = [GloablObjects gardenArrayInstance].gardenArray[indexPath.row];
     
     //loads new view
-    [self performSegueWithIdentifier:@"showDisplayGarden" sender:self];
+    [self performSegueWithIdentifier:@"showTabs" sender:self];
 }
 
 

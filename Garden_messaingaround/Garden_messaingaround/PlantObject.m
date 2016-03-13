@@ -21,11 +21,13 @@
     self = [super init];
     if (self) {
         
-        // Grab plan data from a json file. We might need to handle errors but I doubt
-        // if we need that since the json data is formatted by us and the user would
-        // not be downloading any data from the internet
+//        NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//        NSString* fileName = @"plantDataReal.json";
+//        NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
+//        NSLog(fileAtPath);
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"plantDataReal" ofType:@"json"];
         NSString *myJSON = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
+        NSLog([myJSON description]);
         NSError *error =  nil;
         self.plantsDataArray = [NSJSONSerialization JSONObjectWithData:[myJSON dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
         self.usersPlants = [NSMutableArray array];

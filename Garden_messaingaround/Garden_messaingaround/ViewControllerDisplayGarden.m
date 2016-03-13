@@ -40,8 +40,6 @@
     
     UICollectionViewFlowLayout *layout = (id) collectionView.collectionViewLayout;
     
-    NSLog(@"hey");
-    
     float screenWidth = layout.collectionViewContentSize.width;
     float widthOfCell = (screenWidth)/([[GloablObjects instance].myGarden getWidth])-1;
     
@@ -52,7 +50,6 @@
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     
-//    I'm doing the allocation of the plant here. We might need to refactor this later
     self.plant = [[PlantObject alloc]init];
     
 }
