@@ -61,7 +61,7 @@
             <objects>
                 <tabBarController id="F9I-oc-rNQ" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="qki-iB-kYO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -207,8 +207,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lI-9w-ivp">
-                                <rect key="frame" x="949" y="643" width="34" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lI-9w-ivp">
+                                <rect key="frame" x="949" y="685" width="34" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Save">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -246,6 +246,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="comment" destination="HQ4-Ss-y9V" id="Zsq-47-hd6"/>
+                        <outlet property="commentBtn" destination="5lI-9w-ivp" id="he7-f2-FfJ"/>
                         <outlet property="description" destination="MBk-od-ybc" id="eYU-PG-JP8"/>
                         <outlet property="family" destination="aTJ-BI-P6P" id="UrU-gL-LMO"/>
                         <outlet property="height" destination="Bx9-5M-xTz" id="1Th-7n-Wid"/>
