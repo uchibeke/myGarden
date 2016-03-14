@@ -111,7 +111,9 @@
     if ([[GloablObjects notesInstance].notesArray count] > 0) {
         notesField.text = [[GloablObjects notesInstance].notesArray objectAtIndex:0];
     }
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-texture-background.jpg"]];
+    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-texture-background.jpg"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
+    
 
 }
 

@@ -51,7 +51,9 @@
     layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     
     self.plant = [[PlantObject alloc]init];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-texture-background.jpg"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
+    
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-texture-background.jpg"]];
 //    [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown.png"]]];
 
     
@@ -130,6 +132,8 @@
     [cell.contentView addSubview:title];
     [cell.contentView addSubview:numPerSq];
     [cell.contentView addSubview:imgview];
+//    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
+    
     
 }
 

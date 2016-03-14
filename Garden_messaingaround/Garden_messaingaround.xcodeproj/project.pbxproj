@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		09B2A1581C94B54B0081D136 /* ViewControllerPlantViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */; };
 		09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */; };
+		1118911D1C96A7D6008EEF14 /* dirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1118911C1C96A7D6008EEF14 /* dirt.png */; };
 		85AE250F1C83D56C001828C0 /* GardenObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE250C1C83D56C001828C0 /* GardenObject.m */; };
 		85AE25101C83D56C001828C0 /* PlantObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE250E1C83D56C001828C0 /* PlantObject.m */; };
 		85AE25191C83DB2F001828C0 /* GloablObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE25181C83DB2F001828C0 /* GloablObjects.m */; };
@@ -122,6 +123,7 @@
 		09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerPlantViews.m; sourceTree = "<group>"; };
 		09B2A1591C94C1C50081D136 /* ViewControllerNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerNotes.h; sourceTree = "<group>"; };
 		09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerNotes.m; sourceTree = "<group>"; };
+		1118911C1C96A7D6008EEF14 /* dirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dirt.png; sourceTree = "<group>"; };
 		85AE250B1C83D56C001828C0 /* GardenObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GardenObject.h; sourceTree = "<group>"; };
 		85AE250C1C83D56C001828C0 /* GardenObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GardenObject.m; sourceTree = "<group>"; };
 		85AE250D1C83D56C001828C0 /* PlantObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlantObject.h; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				95C8B4221C96388A00057F9A /* cucumber_44x44.png */,
 				9D6549721C88BAF400841A24 /* cucumber.png */,
 				95F51ECB1C96472300800259 /* dirt_texture_by_pivvauh.jpg */,
+				1118911C1C96A7D6008EEF14 /* dirt.png */,
 				95F51ECC1C96472300800259 /* dirt2.jpg */,
 				95C8B4131C962A1C00057F9A /* dirt3.png */,
 				95C8B4151C9630F400057F9A /* dirt3brown.png */,
@@ -570,6 +573,7 @@
 				95F51ED11C96472300800259 /* dirt3darkBrown.png in Resources */,
 				95C8B44C1C96388A00057F9A /* potato_44x44.png in Resources */,
 				95F51EC71C96438300800259 /* reminderBlack.png in Resources */,
+				1118911D1C96A7D6008EEF14 /* dirt.png in Resources */,
 				9D65498F1C88BAF400841A24 /* Beans.png in Resources */,
 				9D6549A21C88BAF400841A24 /* oregano.png in Resources */,
 				9D6549A51C88BAF400841A24 /* pepper.png in Resources */,

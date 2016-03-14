@@ -174,7 +174,11 @@
     clickedIndex = 0;
     //sets title bar
     [self setTitle:@"Tips"];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3darkBrown"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
+    
+
+    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3.png"]];
+    //self.view.contentMode = UIViewContentModeScaleAspectFit;
 
     
 }
