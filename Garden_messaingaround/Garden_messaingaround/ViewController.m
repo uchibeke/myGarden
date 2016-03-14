@@ -30,14 +30,8 @@
         [GloablObjects notesInstance].notesArray = [[NSMutableArray alloc] init];
         NSLog(@"test");
     });
-    
-//    //init garden
-//    self.arrayOfGardens = [ NSMutableArray new ];
-//    
-//    //add elements to array which holds garden objects defined in the header file
-//    [self.arrayOfGardens addObject:@"dummy garden 1"];
-//    [self.arrayOfGardens addObject:@"dummy garden 2"];
-//    [self.arrayOfGardens addObject:@"dummy garden 3"];    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown.png"]];
+
     
 }
 
@@ -81,7 +75,7 @@
     
     cell.textLabel.text = myObject.name;
     
-    NSString * imgName = @"watermelon.png";
+    NSString * imgName = @"gardenIconBlack.png";
     cell.imageView.image = [UIImage imageNamed:imgName];
     
     return cell;

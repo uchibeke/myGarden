@@ -51,6 +51,9 @@
     layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     
     self.plant = [[PlantObject alloc]init];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-texture-background.jpg"]];
+//    [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown.png"]]];
+
     
 }
 
@@ -122,9 +125,6 @@
     NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [GloablObjects paintBrushInstance].paintBrush.name, @"png"] lowercaseString] ;
     
     [[GloablObjects instance].myGarden.gardenArr2d replaceObjectAtIndex:indexPath.row withObject:[GloablObjects paintBrushInstance].paintBrush];
-    //NSInteger addedIndex = [self.plant usersPlants].count-1;
-    //NSLog([NSString stringWithFormat:@"Added Object: %@",[[[self.plant usersPlants] objectAtIndex:addedIndex]name] ]);
-    
     
     imgview.image = [ UIImage imageNamed: imgName];
     [cell.contentView addSubview:title];
@@ -147,21 +147,14 @@
     return [[self.plant plantsDataArray] count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     if (cell == nil) {
         cell = [ [ UITableViewCell alloc ]
                 initWithStyle: UITableViewCellStyleDefault
                 reuseIdentifier: @"Cell" ];
     }
-    // TODO
-    // There is a bug when scrolling the tableview. The images do not refresh. My guess is that we need to clear the index when the item is scroll off the screen
-    // Currently getting the image from the folder conataining all the images
-    // The catch with this method is that the file name must match the plant name.
-    // Something we could do with the file name is that if a plant has two words as a name,
-    // we can name the file something like redPepper.
-    // The code below will convert the name to lower case and handle the rest.
-    // File must also be png
     
     NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [self.plant getAPlantName:indexPath.row], @"png"] lowercaseString] ;
     
@@ -186,7 +179,6 @@
     self.brushIndex = indexPath.row;
     [GloablObjects paintBrushInstance].paintBrush = brush;
     
-    NSLog([GloablObjects paintBrushInstance].paintBrush.name);
 }
 
 // Size of the cell

@@ -29,8 +29,10 @@
 }
 
 -(IBAction) newNote: (id) sender {
-    NSString *note = @"new note";
+    NSString *note = @"New Note";
     [[GloablObjects notesInstance].notesArray addObject:note];
+    notesField.text =[NSString stringWithFormat:@"%@ ...", note];
+    [notesField showsHorizontalScrollIndicator];
     [tableView reloadData];
 }
 
@@ -71,7 +73,19 @@
         upperLimit = [[[GloablObjects notesInstance].notesArray objectAtIndex:indexPath.row] length];
     }
     
+    NSString * imgName = [NSString stringWithFormat:@"note.png"];
     
+    cell.imageView.image = [UIImage imageNamed:imgName];
+    
+    
+    
+    CGSize itemSize = CGSizeMake(30, 30);
+    UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+    CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+    [cell.imageView.image drawInRect:imageRect];
+    cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
     cell.textLabel.text = [[[GloablObjects notesInstance].notesArray objectAtIndex:indexPath.row] substringWithRange:NSMakeRange(0, upperLimit)] ;
     return cell;
 }
@@ -97,6 +111,8 @@
     if ([[GloablObjects notesInstance].notesArray count] > 0) {
         notesField.text = [[GloablObjects notesInstance].notesArray objectAtIndex:0];
     }
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-texture-background.jpg"]];
+
 }
 
 - (void)didReceiveMemoryWarning {

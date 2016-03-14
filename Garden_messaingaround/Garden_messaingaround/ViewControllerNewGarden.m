@@ -50,6 +50,8 @@
     
     self.h = height.value;
     self.w = width.value;
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-texture-background.jpg"]];
+//    brown-texture-background
 }
 
 
@@ -170,7 +172,6 @@
     
     //loads new view
     [self performSegueWithIdentifier:@"showTabs" sender:self];
-    
 }
 
 
@@ -197,7 +198,8 @@
         [alert show];
     } else {
         [self updateGardenDimensions];
-      }
+    }
+
     
 }
 
