@@ -3,11 +3,12 @@
     {
       "idiom" : "ipad",
       "scale" : "1x",
-      "filename" : "plantInfoBlack.png"
+      "filename" : "plantInfoBlack_21x30.png"
     },
     {
       "idiom" : "ipad",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "plantInfoBlack.png"
     }
   ],
   "info" : {

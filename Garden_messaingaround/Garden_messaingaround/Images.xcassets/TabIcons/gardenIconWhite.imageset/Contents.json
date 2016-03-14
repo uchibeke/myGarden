@@ -3,11 +3,12 @@
     {
       "idiom" : "ipad",
       "scale" : "1x",
-      "filename" : "gardenIconWhite.png"
+      "filename" : "gardenIconWhite_18x30.png"
     },
     {
       "idiom" : "ipad",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "gardenIconWhite.png"
     }
   ],
   "info" : {

@@ -3,11 +3,12 @@
     {
       "idiom" : "ipad",
       "scale" : "1x",
-      "filename" : "note.png"
+      "filename" : "notes_25x30.png"
     },
     {
       "idiom" : "ipad",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "note.png"
     }
   ],
   "info" : {
