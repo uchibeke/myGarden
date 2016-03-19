@@ -56,6 +56,16 @@
 }
 
 
+// Hide the keyboard when losing focus on the UITextField
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([name isFirstResponder] && [touch view] != name) {
+        [name resignFirstResponder];
+    }
+    [super touchesBegan:touches withEvent:event];
+}
+
 -(IBAction) widthModfier: (UIStepper*) sender {
     self.w = (NSInteger)sender.value;
     widthDisp.text = [NSString stringWithFormat:@"%d", (int)sender.value];
