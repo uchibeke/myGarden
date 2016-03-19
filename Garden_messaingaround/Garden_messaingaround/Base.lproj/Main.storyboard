@@ -528,7 +528,7 @@
                         <viewControllerLayoutGuide type="bottom" id="qX2-w5-IQu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ENK-Ya-1we">
-                        <rect key="frame" x="0.0" y="64" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0E2-T5-rii">
@@ -541,21 +541,8 @@
                                     <outlet property="delegate" destination="fTl-Me-OKh" id="9vQ-HX-2S7"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6v3-lF-fdY">
-                                <rect key="frame" x="272" y="28" width="137" height="36"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <state key="normal" title="New Note">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="newNote:" destination="fTl-Me-OKh" eventType="touchUpInside" id="nlj-NX-tIv"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QgV-Tw-RgK">
-                                <rect key="frame" x="272" y="78" width="725" height="566"/>
+                                <rect key="frame" x="272" y="36" width="725" height="633"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.... </string>
@@ -574,17 +561,18 @@
                                 <segue destination="XjK-ef-4Pn" kind="showDetail" id="pGf-yg-XXj"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="wwN-DZ-hd5">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="wwN-DZ-hd5">
                             <connections>
-                                <action selector="saveNote:" destination="fTl-Me-OKh" id="OAH-eC-HQh"/>
+                                <action selector="newNote:" destination="fTl-Me-OKh" id="i6D-dX-iw8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="notesField" destination="QgV-Tw-RgK" id="Qx6-T4-NEs"/>
-                        <outlet property="saveBtn" destination="wwN-DZ-hd5" id="gdz-Yi-o0h"/>
                         <outlet property="tableView" destination="0E2-T5-rii" id="aov-T1-lGF"/>
                     </connections>
                 </viewController>
