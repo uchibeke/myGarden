@@ -139,6 +139,17 @@
     
 }
 
+
+// Hide the keyboard when losing focus on the UITextField for comments
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([comment isFirstResponder] && [touch view] != comment) {
+        [comment resignFirstResponder];
+    }
+    [super touchesBegan:touches withEvent:event];
+}
+
 // Size of the cell
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
