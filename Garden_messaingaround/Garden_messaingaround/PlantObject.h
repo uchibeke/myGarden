@@ -17,24 +17,10 @@
 // There is a call to this method in the welcome view
 @property (strong, nonatomic) NSString * name;
 
-//
-//// This would hold the users plants and everything. This can be saved as a json
-//// file on the users device and it will be easy to populate the garden from the file.
-//// We might need to move this to another class/file when we are refactoring
+
 @property (strong, nonatomic) NSMutableArray *usersPlants;
 
 
-// How do we calculate how many of a plant can fit in one square.
-// When we determine this, we could probably just add it as a field
-// for each plant in the json file and call it from there.
-// something like
-//{
-//    "name": "Onion",
-//    "type": "Vegetable",
-//    "companions": ["Tomato", "@Brassica", "Carrot"],
-//    "foes": ["Legume", "Parsley"],
-//    "squareFoot" : 4
-//},
 @property (strong, nonatomic) NSNumber * howManyPerSquare;
 
 

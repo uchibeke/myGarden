@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0965401A1C9E09B300B28B43 /* ViewControllerReminders.m in Sources */ = {isa = PBXBuildFile; fileRef = 096540191C9E09B300B28B43 /* ViewControllerReminders.m */; };
 		09B2A1581C94B54B0081D136 /* ViewControllerPlantViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */; };
 		09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */; };
 		1118911D1C96A7D6008EEF14 /* dirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1118911C1C96A7D6008EEF14 /* dirt.png */; };
@@ -119,6 +120,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		096540181C9E09B300B28B43 /* ViewControllerReminders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewControllerReminders.h; path = ../ViewControllerReminders.h; sourceTree = "<group>"; };
+		096540191C9E09B300B28B43 /* ViewControllerReminders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewControllerReminders.m; path = ../ViewControllerReminders.m; sourceTree = "<group>"; };
 		09B2A1561C94B54B0081D136 /* ViewControllerPlantViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerPlantViews.h; sourceTree = "<group>"; };
 		09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerPlantViews.m; sourceTree = "<group>"; };
 		09B2A1591C94C1C50081D136 /* ViewControllerNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerNotes.h; sourceTree = "<group>"; };
@@ -375,6 +378,8 @@
 				09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */,
 				09B2A1591C94C1C50081D136 /* ViewControllerNotes.h */,
 				09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */,
+				096540181C9E09B300B28B43 /* ViewControllerReminders.h */,
+				096540191C9E09B300B28B43 /* ViewControllerReminders.m */,
 				ADC7148E1C82448400260F56 /* ViewController.h */,
 				ADC7148F1C82448400260F56 /* ViewController.m */,
 				85AE250B1C83D56C001828C0 /* GardenObject.h */,
@@ -607,6 +612,7 @@
 				85AE25101C83D56C001828C0 /* PlantObject.m in Sources */,
 				09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */,
 				ADC714C31C82666100260F56 /* ViewControllerDisplayGarden.m in Sources */,
+				0965401A1C9E09B300B28B43 /* ViewControllerReminders.m in Sources */,
 				09B2A1581C94B54B0081D136 /* ViewControllerPlantViews.m in Sources */,
 				ADC714901C82448400260F56 /* ViewController.m in Sources */,
 				ADC7148D1C82448400260F56 /* AppDelegate.m in Sources */,

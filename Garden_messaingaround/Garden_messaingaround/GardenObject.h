@@ -15,6 +15,9 @@
 @property NSInteger width;
 @property NSInteger height;
 
+@property NSTimeInterval wateringInterval;
+@property NSTimeInterval weedingInterval;
+
 
 //some sort of 2d array of "plant" objects
 //PlantObject *gardenArr2d[1][1];

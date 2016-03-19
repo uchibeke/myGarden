@@ -120,7 +120,7 @@
     
     wksToMature.text = [self.plant getAPlantWeeksToMaturity:indexPath.row];
     
-    seedToHarvest.text = [self.plant getAPlantWeeksFromSeedHarvest:indexPath.row];
+    seedToHarvest.text = [NSString stringWithFormat:@"%@ %@", [self.plant getAPlantWeeksFromSeedHarvest:indexPath.row], @"Weeks"];
     
     description.text = [self.plant getAPlantDescription:indexPath.row];
     
@@ -171,7 +171,7 @@
     
     wksToMature.text = [self.plant getAPlantWeeksToMaturity:0];
     
-    seedToHarvest.text = [self.plant getAPlantWeeksFromSeedHarvest:0];
+    seedToHarvest.text = [NSString stringWithFormat:@"%@ %@", [self.plant getAPlantWeeksFromSeedHarvest:0], @"Weeks"];
     
     description.text = [self.plant getAPlantDescription:0];
     
@@ -186,7 +186,7 @@
     
     clickedIndex = 0;
     //sets title bar
-    [self setTitle:@"Tips"];
+    [self setTitle:@"Plants"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
     
 
