@@ -50,8 +50,6 @@
     
     //print a dummy plant
     PlantObject *myPlanty = self.gardenArr2d[0];
-    NSLog(myPlanty.name);
-
 }
 
 

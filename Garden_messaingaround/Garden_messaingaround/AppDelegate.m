@@ -16,6 +16,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:(124/255.0f) green:(186/255.0f) blue:(37/255.0f) alpha:(1.0f)]];
+    [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:(124/255.0f) green:(186/255.0f) blue:(37/255.0f) alpha:(1.0f)]];
+//    [self.window setTintColor:[UIColor colorWithRed:(242/255.0f) green:(209/255.0f) blue:(18/255.0f) alpha:(1.0f)]];
+     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+    [[UITabBar appearance] setTintColor:[UIColor blackColor]];
+    [[UITableViewCell appearance] setBackgroundColor:[UIColor clearColor]];
+    [[UITableViewCell appearance] setTextColor:[UIColor whiteColor]];
+
+
     return YES;
 }
 

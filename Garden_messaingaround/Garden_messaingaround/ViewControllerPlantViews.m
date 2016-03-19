@@ -40,7 +40,6 @@
     NSMutableArray * md = [self.plant.plantsDataArray mutableCopy];
     [md replaceObjectAtIndex:clickedIndex withObject:dic];
     self.plant.plantsDataArray = [md mutableCopy];
-    NSLog(@"My array: %@", [self.plant.plantsDataArray description]);
     
     
     NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];

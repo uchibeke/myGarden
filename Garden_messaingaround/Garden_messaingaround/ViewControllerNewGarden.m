@@ -167,8 +167,6 @@
     }
     
     NSLog(@"global garden updated!");
-    NSLog([NSString stringWithFormat:@"%@", [GloablObjects gardenArrayInstance].gardenArray]);
-    NSLog([NSString stringWithFormat:@"%d", [GloablObjects gardenArrayInstance].gardenArray.count]);
     
     //loads new view
     [self performSegueWithIdentifier:@"showTabs" sender:self];

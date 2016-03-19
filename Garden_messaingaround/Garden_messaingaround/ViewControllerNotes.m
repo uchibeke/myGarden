@@ -73,7 +73,7 @@
         upperLimit = [[[GloablObjects notesInstance].notesArray objectAtIndex:indexPath.row] length];
     }
     
-    NSString * imgName = [NSString stringWithFormat:@"note.png"];
+    NSString * imgName = [NSString stringWithFormat:@"noteSmall.png"];
     
     cell.imageView.image = [UIImage imageNamed:imgName];
     

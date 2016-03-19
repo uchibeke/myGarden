@@ -14,6 +14,7 @@
 @interface ViewControllerDisplayGarden () {
     IBOutlet UICollectionView *collectionView;
     IBOutlet UITableView *tableView;
+    UIImageView *backgroundimgview;
 
 //    IBOutlet UITableView * tableView;
 }
@@ -55,7 +56,8 @@
     
 //    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-texture-background.jpg"]];
 //    [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown.png"]]];
-
+    
+    self.tabBarItem.image = [[UIImage imageNamed:@"noteSmall.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
 }
 
@@ -74,14 +76,14 @@
     [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.65, cell.bounds.size.width, 40)];
-    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.20, cell.bounds.size.height*.05, cell.bounds.size.width*.6, cell.bounds.size.height*.6)];
-    title.textColor = [UIColor purpleColor];
+    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.20, cell.bounds.size.height*.1, cell.bounds.size.width*.6, cell.bounds.size.height*.6)];
+    title.textColor = [UIColor blackColor];
     [title setTextAlignment:NSTextAlignmentCenter];
     title.adjustsFontSizeToFitWidth = YES;
     title.minimumFontSize = 0;
     
     UILabel *numPerSq = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.85, cell.bounds.size.width, 40)];
-    numPerSq.textColor = [UIColor purpleColor];
+    numPerSq.textColor = [UIColor blackColor];
     [numPerSq setTextAlignment:NSTextAlignmentCenter];
     numPerSq.adjustsFontSizeToFitWidth = YES;
     numPerSq.minimumFontSize = 0;
@@ -90,9 +92,15 @@
     GardenObject* g = [GloablObjects instance].myGarden.gardenArr2d[indexPath.row];
     title.text = g.name;
     
+    //semi transparent background
+    backgroundimgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*0.05, cell.bounds.size.height*0.05, cell.bounds.size.width*.9, cell.bounds.size.height*.9)];
+    backgroundimgview.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5f];
+    
     NSString * imgName = [[NSString stringWithFormat:@"%@.%@", g.name, @"png"] lowercaseString] ;
     
+    
     imgview.image = [ UIImage imageNamed: imgName];
+    [cell.contentView addSubview:backgroundimgview];
     [cell.contentView addSubview:title];
     [cell.contentView addSubview:imgview];
     [cell.contentView addSubview:numPerSq];
@@ -109,26 +117,32 @@
     [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.65, cell.bounds.size.width, 40)];
-    title.textColor = [UIColor purpleColor];
+    title.textColor = [UIColor blackColor];
     [title setTextAlignment:NSTextAlignmentCenter];
     title.adjustsFontSizeToFitWidth = YES;
     title.minimumFontSize = 0;
     title.text = [GloablObjects paintBrushInstance].paintBrush.name;
     
     UILabel *numPerSq = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.85, cell.bounds.size.width, 40)];
-    numPerSq.textColor = [UIColor purpleColor];
+    numPerSq.textColor = [UIColor blackColor];
     [numPerSq setTextAlignment:NSTextAlignmentCenter];
     numPerSq.adjustsFontSizeToFitWidth = YES;
     numPerSq.minimumFontSize = 0;
     numPerSq.text = @"";
     
-    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.20, cell.bounds.size.height*.05, cell.bounds.size.width*.6, cell.bounds.size.height*.6)];
+    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.20, cell.bounds.size.height*.1
+                                                                        , cell.bounds.size.width*.6, cell.bounds.size.height*.6)];
+    
+    //semi transparent background
+    backgroundimgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*0.05, cell.bounds.size.height*0.05, cell.bounds.size.width*.9, cell.bounds.size.height*.9)];
+    backgroundimgview.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5f];
     
     NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [GloablObjects paintBrushInstance].paintBrush.name, @"png"] lowercaseString] ;
     
     [[GloablObjects instance].myGarden.gardenArr2d replaceObjectAtIndex:indexPath.row withObject:[GloablObjects paintBrushInstance].paintBrush];
     
     imgview.image = [ UIImage imageNamed: imgName];
+    [cell.contentView addSubview:backgroundimgview];
     [cell.contentView addSubview:title];
     [cell.contentView addSubview:numPerSq];
     [cell.contentView addSubview:imgview];
@@ -172,6 +186,8 @@
     UIGraphicsEndImageContext();
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", @"", [self.plant getAPlantName:indexPath.row]] ;
+    
+  //  tableView.backgroundColor = [UIColor redColor];
     return cell;
 }
 
@@ -198,6 +214,8 @@
     PlantObject *myPlant = [PlantObject new];
     myPlant.name = @"";
     [GloablObjects paintBrushInstance].paintBrush = myPlant;
+    backgroundimgview.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5f];
+    [collectionView reloadData];
 }
 
 

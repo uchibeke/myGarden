@@ -27,7 +27,6 @@
 //        NSLog(fileAtPath);
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"plantDataReal" ofType:@"json"];
         NSString *myJSON = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
-        NSLog([myJSON description]);
         NSError *error =  nil;
         self.plantsDataArray = [NSJSONSerialization JSONObjectWithData:[myJSON dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
         self.usersPlants = [NSMutableArray array];
