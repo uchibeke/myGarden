@@ -35,6 +35,21 @@
     
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return YES - we will be able to delete all rows
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Perform the real delete action here. Note: you may need to check editing style
+    //   if you do not perform delete only.
+    [[GloablObjects gardenArrayInstance].gardenArray removeObjectAtIndex:indexPath.row ];
+    [tableView reloadData];
+}
+
+
 
 //action tied to creat new garden button
 //loads new view, which asks for info then creates new garden
@@ -75,7 +90,7 @@
     
     cell.textLabel.text = myObject.name;
     
-    NSString * imgName = @"gardenIconBlack.png";
+    NSString * imgName = @"gardenIconWhite.png";
     cell.imageView.image = [UIImage imageNamed:imgName];
     
     return cell;
