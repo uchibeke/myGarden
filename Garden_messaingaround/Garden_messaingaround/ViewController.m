@@ -30,7 +30,7 @@
         [GloablObjects notesInstance].notesArray = [[NSMutableArray alloc] init];
         NSLog(@"test");
     });
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
 
     
 }

@@ -52,6 +52,7 @@
     self.w = width.value;
 //    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-texture-background.jpg"]];
 //    brown-texture-background
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
 }
 
 

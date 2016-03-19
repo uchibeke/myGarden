@@ -130,7 +130,9 @@
     
     comment.text = [self.plant getAPlantTransplanting:indexPath.row];
     
+    previewImage.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5f];
     previewImage.image = [UIImage imageNamed:imgName];
+    
 
     clickedIndex = indexPath.row;
     
@@ -167,6 +169,7 @@
     NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [self.plant getAPlantName:0], @"png"] lowercaseString] ;
     
     previewImage.image = [UIImage imageNamed:imgName];
+    previewImage.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5f];
     
     comment.text = [self.plant getAPlantTransplanting:0];
     
