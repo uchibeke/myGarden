@@ -29,9 +29,16 @@
 //    [tableView reloadData];
 //}
 
+// Save the notes and hide the keyboard when losing focus on the UITextField for notesField
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self saveNote];
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([notesField isFirstResponder] && [touch view] != notesField) {
+        [notesField resignFirstResponder];
+    }
+    [super touchesBegan:touches withEvent:event];
+
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
