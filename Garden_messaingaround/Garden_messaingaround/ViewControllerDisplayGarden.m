@@ -58,7 +58,6 @@
 //    [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown.png"]]];
     
     self.tabBarItem.image = [[UIImage imageNamed:@"noteSmall.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
 }
 
 -(IBAction) modifyGarden: (id) sender {
@@ -71,6 +70,7 @@
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
     static NSString *identifier = @"Cell";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -80,13 +80,15 @@
     title.textColor = [UIColor blackColor];
     [title setTextAlignment:NSTextAlignmentCenter];
     title.adjustsFontSizeToFitWidth = YES;
-    title.minimumFontSize = 0;
+    title.minimumScaleFactor = 0;
+    //title.minimumFontSize = 0;
     
     UILabel *numPerSq = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.85, cell.bounds.size.width, 40)];
     numPerSq.textColor = [UIColor blackColor];
     [numPerSq setTextAlignment:NSTextAlignmentCenter];
     numPerSq.adjustsFontSizeToFitWidth = YES;
-    numPerSq.minimumFontSize = 0;
+    numPerSq.minimumScaleFactor = 0;
+    //numPerSq.minimumFontSize = 0;
     numPerSq.text = @"";
     
     GardenObject* g = [GloablObjects instance].myGarden.gardenArr2d[indexPath.row];
@@ -120,14 +122,16 @@
     title.textColor = [UIColor blackColor];
     [title setTextAlignment:NSTextAlignmentCenter];
     title.adjustsFontSizeToFitWidth = YES;
-    title.minimumFontSize = 0;
+    title.minimumScaleFactor = 0;
+    //title.minimumFontSize = 0;
     title.text = [GloablObjects paintBrushInstance].paintBrush.name;
     
     UILabel *numPerSq = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.85, cell.bounds.size.width, 40)];
     numPerSq.textColor = [UIColor blackColor];
     [numPerSq setTextAlignment:NSTextAlignmentCenter];
     numPerSq.adjustsFontSizeToFitWidth = YES;
-    numPerSq.minimumFontSize = 0;
+    numPerSq.minimumScaleFactor = 0;
+    //numPerSq.minimumFontSize = 0;
     numPerSq.text = @"";
     
     UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.20, cell.bounds.size.height*.1
@@ -173,7 +177,7 @@
                 initWithStyle: UITableViewCellStyleDefault
                 reuseIdentifier: @"Cell" ];
     }
-    
+   
     NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [self.plant getAPlantName:indexPath.row], @"png"] lowercaseString] ;
     
     cell.imageView.image = [UIImage imageNamed:imgName];
@@ -193,6 +197,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // Set background back to the original one when tableview is selected
+    collectionView.backgroundColor = [UIColor clearColor];
     
     PlantObject* brush = [PlantObject alloc];
     brush.name = [self.plant getAPlantName:indexPath.row];
@@ -209,13 +215,29 @@
 
 
 -(IBAction) removeTool: (id) sender {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.brushIndex inSection:0];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    PlantObject *myPlant = [PlantObject new];
-    myPlant.name = @"";
-    [GloablObjects paintBrushInstance].paintBrush = myPlant;
-    backgroundimgview.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5f];
-    [collectionView reloadData];
+    // red background when remove button clicked
+    collectionView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3f];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"WARNING!"
+                                                    message:@"You are about to remove plants from your garden! Are you sure you to continue?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Continue",nil];
+    [alert show];
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != [alertView cancelButtonIndex]) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.brushIndex inSection:0];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        PlantObject *myPlant = [PlantObject new];
+        myPlant.name = @"";
+        [GloablObjects paintBrushInstance].paintBrush = myPlant;
+        [collectionView reloadData];
+    } else {
+        // Set background back to the original one when cancel button is selected
+        collectionView.backgroundColor = [UIColor clearColor];
+        //[collectionView reloadData];
+    }
 }
 
 

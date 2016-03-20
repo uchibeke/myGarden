@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XjK-ef-4Pn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XjK-ef-4Pn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -56,7 +56,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2027" y="487"/>
+            <point key="canvasLocation" x="1507" y="431"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xTm-Ng-sTc">
@@ -80,7 +80,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VLb-6N-L2f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3099" y="1428"/>
+            <point key="canvasLocation" x="1594.5" y="2260"/>
         </scene>
         <!--Plants-->
         <scene sceneID="dG2-gd-urO">
@@ -221,11 +221,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bQq-nu-V5A">
-                                <rect key="frame" x="0.0" y="10" width="251" height="725"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bQq-nu-V5A">
+                                <rect key="frame" x="0.0" y="0.0" width="251" height="735"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="Gbc-h6-aQq"/>
+                                    <constraint firstAttribute="width" constant="250" id="MMd-z7-6aP"/>
+                                </constraints>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="dataSource" destination="fO7-Ga-HP2" id="LWE-Dl-4ZX"/>
@@ -263,7 +267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ao-4H-dQL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5052" y="2748"/>
+            <point key="canvasLocation" x="1135" y="4384"/>
         </scene>
         <!--View Controller Reminders-->
         <scene sceneID="bcC-4n-Y3L">
@@ -279,15 +283,18 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8Kq-UE-0Pr">
                                 <rect key="frame" x="0.0" y="0.0" width="250" height="655"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hsm-iF-70T">
                                 <rect key="frame" x="606" y="43" width="86" height="30"/>
+                                <animations/>
                                 <state key="normal" title="plsnt garden">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -298,7 +305,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ihl-x7-AZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6987" y="1988"/>
+            <point key="canvasLocation" x="3858" y="4384"/>
         </scene>
         <!--creategarden-->
         <scene sceneID="MLI-IH-0Xe">
@@ -407,7 +414,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I4d-KA-bxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="413" y="1311"/>
+            <point key="canvasLocation" x="1589" y="1279"/>
         </scene>
         <!--displaygarden-->
         <scene sceneID="chu-OB-QiX">
@@ -432,8 +439,21 @@
                                     <action selector="removeTool:" destination="skf-O0-m12" eventType="touchUpInside" id="HZJ-Zx-PjQ"/>
                                 </connections>
                             </button>
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yIT-HO-50l">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="655"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="skf-O0-m12" id="lCd-JN-Wbd"/>
+                                    <outlet property="delegate" destination="skf-O0-m12" id="1aN-WS-bqg"/>
+                                </connections>
+                            </tableView>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8gd-kL-LLl">
-                                <rect key="frame" x="242" y="60" width="782" height="738"/>
+                                <rect key="frame" x="258" y="49" width="766" height="598"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lMd-3b-Zxr">
@@ -470,19 +490,6 @@
                                     <outlet property="delegate" destination="skf-O0-m12" id="BGH-B4-wxF"/>
                                 </connections>
                             </collectionView>
-                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yIT-HO-50l">
-                                <rect key="frame" x="0.0" y="0.0" width="250" height="726"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="skf-O0-m12" id="lCd-JN-Wbd"/>
-                                    <outlet property="delegate" destination="skf-O0-m12" id="1aN-WS-bqg"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -513,7 +520,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3rE-TR-KAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="998" y="2832"/>
+            <point key="canvasLocation" x="-42" y="4384"/>
         </scene>
         <!--Item-->
         <scene sceneID="LSf-A1-DyH">
@@ -533,7 +540,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BjY-0E-OI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2027" y="-357"/>
+            <point key="canvasLocation" x="1499" y="-549"/>
         </scene>
         <!--Item-->
         <scene sceneID="biE-MV-gs4">
@@ -553,7 +560,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PMb-25-rMC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-70" y="2776"/>
+            <point key="canvasLocation" x="-41.5" y="3320"/>
         </scene>
         <!--Notes-->
         <scene sceneID="Axg-Le-3xU">
@@ -567,16 +574,6 @@
                         <rect key="frame" x="0.0" y="64" width="1024" height="655"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0E2-T5-rii">
-                                <rect key="frame" x="-7" y="0.0" width="250" height="768"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="fTl-Me-OKh" id="VaN-P1-uwA"/>
-                                    <outlet property="delegate" destination="fTl-Me-OKh" id="9vQ-HX-2S7"/>
-                                </connections>
-                            </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QgV-Tw-RgK">
                                 <rect key="frame" x="272" y="36" width="725" height="633"/>
                                 <animations/>
@@ -586,6 +583,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0E2-T5-rii">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="655"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="fTl-Me-OKh" id="VaN-P1-uwA"/>
+                                    <outlet property="delegate" destination="fTl-Me-OKh" id="9vQ-HX-2S7"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -614,7 +621,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kfl-lw-wug" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2966" y="2865"/>
+            <point key="canvasLocation" x="2462" y="4384"/>
         </scene>
         <!--Plants-->
         <scene sceneID="ZrO-kr-VRQ">
@@ -634,7 +641,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jis-fs-QBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3992" y="2748"/>
+            <point key="canvasLocation" x="1135.5" y="3320"/>
         </scene>
         <!--Notes-->
         <scene sceneID="ZTo-ed-zC4">
@@ -654,7 +661,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n0M-8a-tZw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1971" y="2761"/>
+            <point key="canvasLocation" x="2462.5" y="3320"/>
         </scene>
         <!--Reminders-->
         <scene sceneID="gcs-W8-b6X">
@@ -665,6 +672,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8KT-kA-x7H">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -673,7 +681,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5af-Bq-esM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5986.5" y="1909"/>
+            <point key="canvasLocation" x="3858.5" y="3320"/>
         </scene>
     </scenes>
     <resources>
@@ -684,10 +692,10 @@
         <image name="remove" width="24" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="j3n-KL-xWw"/>
         <segue reference="5V0-Ae-tVQ"/>
-        <segue reference="gBB-Qp-XEN"/>
-        <segue reference="eQE-cr-dBu"/>
+        <segue reference="oaS-97-jb4"/>
+        <segue reference="j3n-KL-xWw"/>
+        <segue reference="pGf-yg-XXj"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
