@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XjK-ef-4Pn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--welcome-->
@@ -273,43 +274,168 @@
             </objects>
             <point key="canvasLocation" x="1135" y="4384"/>
         </scene>
-        <!--View Controller Reminders-->
+        <!--Reminders-->
         <scene sceneID="bcC-4n-Y3L">
             <objects>
-                <viewController id="RJW-Ya-Wbw" customClass="ViewControllerReminders" sceneMemberID="viewController">
+                <viewController title="Reminders" id="RJW-Ya-Wbw" customClass="ViewControllerReminders" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kqz-Zx-XLG"/>
                         <viewControllerLayoutGuide type="bottom" id="6LP-cM-Ngh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NHP-qo-9tb">
-                        <rect key="frame" x="0.0" y="64" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8Kq-UE-0Pr">
-                                <rect key="frame" x="0.0" y="0.0" width="250" height="655"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="RJW-Ya-Wbw" id="vgE-ZL-JZz"/>
+                                    <outlet property="delegate" destination="RJW-Ya-Wbw" id="OPS-gm-qhk"/>
+                                </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hsm-iF-70T">
-                                <rect key="frame" x="606" y="43" width="86" height="30"/>
-                                <animations/>
-                                <state key="normal" title="plsnt garden">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="8ia-pd-rlt">
-                        <barButtonItem key="rightBarButtonItem" title="+" id="Jna-Yx-09R"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Jna-Yx-09R">
+                            <connections>
+                                <segue destination="08N-h2-GOq" kind="presentation" identifier="EditAlarm" id="ezu-eA-gyY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="tableView" destination="8Kq-UE-0Pr" id="gkS-Do-0Rh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ihl-x7-AZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3858" y="4384"/>
+        </scene>
+        <!--View Controller Edit Alarm-->
+        <scene sceneID="qs6-Qp-Ste">
+            <objects>
+                <viewController modalPresentationStyle="formSheet" id="08N-h2-GOq" customClass="ViewControllerEditAlarm" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aHJ-sr-grC"/>
+                        <viewControllerLayoutGuide type="bottom" id="DuN-H4-9sR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="g3c-qo-HUX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cCj-lz-zmm">
+                                <rect key="frame" x="24" y="67" width="51" height="31"/>
+                                <animations/>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l1o-km-los">
+                                <rect key="frame" x="24" y="106" width="51" height="31"/>
+                                <animations/>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rt5-hl-Wap">
+                                <rect key="frame" x="24" y="145" width="51" height="31"/>
+                                <animations/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weeding" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myv-q9-tUC">
+                                <rect key="frame" x="81" y="77" width="67" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Watering" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lE2-jA-bMD">
+                                <rect key="frame" x="81" y="116" width="68" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Plant Harvest" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCW-Oe-LiP">
+                                <rect key="frame" x="81" y="155" width="103" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Qce-H9-1hV">
+                                <rect key="frame" x="293" y="67" width="269" height="370"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="3Y1-Fp-6ws">
+                                <rect key="frame" x="24" y="438" width="271" height="162"/>
+                                <animations/>
+                                <date key="date" timeIntervalSinceReferenceDate="480289304.44461697">
+                                    <!--2016-03-21 21:41:44 +0000-->
+                                </date>
+                            </datePicker>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ymv-VN-3Vc">
+                                <rect key="frame" x="293" y="438" width="291" height="162"/>
+                                <animations/>
+                                <date key="date" timeIntervalSinceReferenceDate="480289304.44461697">
+                                    <!--2016-03-21 21:41:44 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Swc-Ph-xWf">
+                                <rect key="frame" x="16" y="8" width="82" height="31"/>
+                                <animations/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBack:" destination="08N-h2-GOq" eventType="touchUpInside" id="ttH-zi-tP5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYe-5k-pad">
+                                <rect key="frame" x="459" y="8" width="82" height="31"/>
+                                <animations/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveAlarm:" destination="08N-h2-GOq" eventType="touchUpInside" id="zzg-KS-ot1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Qce-H9-1hV" firstAttribute="top" secondItem="aHJ-sr-grC" secondAttribute="bottom" constant="67" id="EW8-Lk-uRl"/>
+                            <constraint firstAttribute="trailing" secondItem="Qce-H9-1hV" secondAttribute="trailing" constant="38" id="iU4-LQ-KIv"/>
+                            <constraint firstAttribute="width" secondItem="Qce-H9-1hV" secondAttribute="width" multiplier="0.5" id="vkm-2f-P1Y"/>
+                            <constraint firstAttribute="width" secondItem="Qce-H9-1hV" secondAttribute="width" id="yp1-jQ-bsW"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="EW8-Lk-uRl"/>
+                                <exclude reference="iU4-LQ-KIv"/>
+                                <exclude reference="vkm-2f-P1Y"/>
+                                <exclude reference="yp1-jQ-bsW"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kyo-Dc-qIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="J3V-Zj-Llm">
+                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <animations/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </objects>
+            <point key="canvasLocation" x="4845" y="4351"/>
         </scene>
         <!--creategarden-->
         <scene sceneID="MLI-IH-0Xe">
@@ -696,10 +822,10 @@
         <image name="remove" width="24" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5V0-Ae-tVQ"/>
-        <segue reference="oaS-97-jb4"/>
+        <segue reference="RAn-n5-Vvb"/>
         <segue reference="j3n-KL-xWw"/>
         <segue reference="pGf-yg-XXj"/>
+        <segue reference="oaS-97-jb4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UIKit/UIKit.h>
+#import <EventKit/EventKit.h>
 
 @interface ViewControllerReminders : UIViewController
+{
+    UITableView *tableView;
+    UIImageView *imageView;
+}
+
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIImageView *imageView;
+@property (nonatomic, strong) NSMutableArray *listOfAlarms;
 
 @end
