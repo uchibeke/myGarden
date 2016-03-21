@@ -20,7 +20,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": []
   },
   {
   "Name":"Beans",
@@ -43,7 +44,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Onion", "Pepper", "Beets", "Broccoli", "Radish"]
   },
   {
   "Name":"Beets",
@@ -66,7 +68,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Beans"]
   },
   {
   "Name":"Broccoli",
@@ -89,7 +92,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Cabbage", "Cauliflower", "Lettuce", "Beans", "Tomato"]
   },
   {
   "Name":"Cabbage",
@@ -112,7 +116,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Broccoli", "Cauliflower", "Strawberries", "Tomato"]
   },
   {
   "Name":"Carrots",
@@ -135,7 +140,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Parsley"]
   },
   {
   "Name":"Cauliflower",
@@ -158,7 +164,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Broccoli", "Cabbage", "Tomato"]
   },
   {
   "Name":"Swiss Chard",
@@ -181,7 +188,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": []
   },
   {
   "Name":"Corn",
@@ -204,7 +212,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Tomato"]
   },
   {
   "Name":"Cucumber",
@@ -227,7 +236,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Basil", "Chives", "Cilantro", "Mint", "Oregano", "Watermelon", "Muskmelon", "Potato", "Parsley"]
   },
   {
   "Name":"Eggplant",
@@ -250,7 +260,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": []
   },
   {
   "Name":"Lettuce",
@@ -273,7 +284,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Broccoli"]
   },
   {
   "Name":"Muskmelon",
@@ -296,7 +308,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Cucumber", "Potato"]
   },
   {
   "Name":"Watermelon",
@@ -319,7 +332,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Cucumber", "Potato"]
   },
   {
   "Name":"Okra",
@@ -342,7 +356,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": []
   },
   {
   "Name":"Onion",
@@ -365,7 +380,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Beans", "Peas"]
   },
   {
   "Name":"Parsley",
@@ -388,7 +404,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Cucumber", "Carrots"]
   },
   {
   "Name":"Peas",
@@ -411,7 +428,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Onion", "Potato"]
   },
   {
   "Name":"Pepper",
@@ -434,7 +452,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Beans"]
   },
   {
   "Name":"Potato",
@@ -457,7 +476,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Cucumber", "Muskmelon", "Watermelon", "Summer Squash", "Winter Squash", "Tomato", "Peas"]
   },
   {
   "Name":"Radish",
@@ -480,7 +500,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Beans"]
   },
   {
   "Name":"Spinach",
@@ -503,7 +524,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": []
   },
   {
   "Name":"Strawberries",
@@ -526,7 +548,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Cabbage"]
   },
   {
   "Name":"Summer Squash",
@@ -549,7 +572,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Potato"]
   },
   {
   "Name":"Winter Squash",
@@ -572,7 +596,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Potato"]
   },
   {
   "Name":"Tomato",
@@ -595,7 +620,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Broccoli", "Cabbage", "Cauliflower", "Corn", "Potato"]
   },
   {
   "Name":"Basil",
@@ -618,7 +644,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Cucumber"]
   },
   {
   "Name":"Chives",
@@ -641,7 +668,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Cucumber"]
   },
   {
   "Name":"Cilantro",
@@ -664,7 +692,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Cucumber"]
   },
   {
   "Name":"Mint",
@@ -687,7 +716,8 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Cucumber"]
   },
   {
   "Name":"Oregano",
@@ -710,6 +740,7 @@
   "Harvesting":"temp",
   "Preparing & Using":"temp",
   "Problems":"temp",
-  "Preparation/Use":"temp"
+  "Preparation/Use":"temp",
+  "foes": ["Cucumber"]
   }
   ]
