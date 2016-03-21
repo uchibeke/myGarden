@@ -15,12 +15,15 @@
     IBOutlet UICollectionView *collectionView;
     IBOutlet UITableView *tableView;
     UIImageView *backgroundimgview;
+    
+    int alert;
 
 //    IBOutlet UITableView * tableView;
 }
 
 @property GardenObject * garden;
 @property NSInteger brushIndex;
+@property NSInteger clickedIndex;
 
 @end
 
@@ -30,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    alert = 0;
     //sets title bar
     [self setTitle:[GloablObjects instance].myGarden.name];
     
@@ -53,6 +56,7 @@
     
     self.plant = [[PlantObject alloc]init];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
+
     
 //    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-texture-background.jpg"]];
 //    [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown.png"]]];
@@ -110,11 +114,82 @@
     return cell;
 }
 
+
+-(bool)checkfoes:(int) index {
+    NSLog(@"%d",index);
+    NSLog(@"%d",[GloablObjects instance].myGarden.width);
+    NSString * neighborName = @"";
+    NSString *foes = [self.plant getAPlantFoes:self.brushIndex];
+    PlantObject *plant = [[GloablObjects instance].myGarden.gardenArr2d objectAtIndex:0];
+    NSMutableString * message = @" doesn't grow well with: ";
+    BOOL found = false;
+    
+    message = [NSMutableString stringWithFormat:@"%@%@", [self.plant getAPlantName:self.brushIndex], message];
+    
+    if (index-1 > 0 && index%[GloablObjects instance].myGarden.width != 0) {
+        plant = [[GloablObjects instance].myGarden.gardenArr2d objectAtIndex:(index-1)];
+        neighborName = plant.name;
+        
+        if (!([foes rangeOfString:neighborName].location == NSNotFound)) {
+            found = true;
+            message = [NSMutableString stringWithFormat:@"%@\n%@", message, neighborName];
+        }
+    }
+    
+    if (index+1 < [[GloablObjects instance].myGarden.gardenArr2d count] && index%[GloablObjects instance].myGarden.width != [GloablObjects instance].myGarden.width-1) {
+        plant = [[GloablObjects instance].myGarden.gardenArr2d objectAtIndex:(index+1)];
+        neighborName = plant.name;
+        
+        if (!([foes rangeOfString:neighborName].location == NSNotFound)) {
+            found = true;
+            message = [NSMutableString stringWithFormat:@"%@\n%@", message, neighborName];
+        }
+    }
+    
+    if (index+[GloablObjects instance].myGarden.width < ([[GloablObjects instance].myGarden.gardenArr2d count])) {
+        
+        plant = [[GloablObjects instance].myGarden.gardenArr2d objectAtIndex:(index+[GloablObjects instance].myGarden.width)];
+        neighborName = plant.name;
+        
+        if (!([foes rangeOfString:neighborName].location == NSNotFound)) {
+            found = true;
+            message = [NSMutableString stringWithFormat:@"%@\n%@", message, neighborName];
+        }
+    }
+    
+    if (index-[GloablObjects instance].myGarden.width > 0) {
+        plant = [[GloablObjects instance].myGarden.gardenArr2d objectAtIndex:(index-[GloablObjects instance].myGarden.width)];
+        neighborName = plant.name;
+        
+        if (!([foes rangeOfString:neighborName].location == NSNotFound)) {
+            found = true;
+            message = [NSMutableString stringWithFormat:@"%@\n%@", message, neighborName];
+        }
+    }
+    
+    alert = 1;
+    if (found) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"COMBATIVE WARNING!"
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"Undo"
+                                              otherButtonTitles:@"Continue",nil];
+        [alert show];
+
+    }
+    return found;
+}
+
+
 //http://stackoverflow.com/questions/18857167/uicollectionview-cell-selection
 
 //called when items are selected from the collection view
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self checkfoes:indexPath.row];
+    
+    self.clickedIndex = indexPath.row;
+    
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
@@ -151,7 +226,6 @@
     [cell.contentView addSubview:numPerSq];
     [cell.contentView addSubview:imgview];
 //    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
-    
     
 }
 
@@ -218,6 +292,7 @@
     // red background when remove button clicked
     collectionView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3f];
     
+    alert = 0;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"WARNING!"
                                                     message:@"You are about to remove plants from your garden! Are you sure you to continue?"
                                                    delegate:self
@@ -226,17 +301,28 @@
     [alert show];
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex != [alertView cancelButtonIndex]) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.brushIndex inSection:0];
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        PlantObject *myPlant = [PlantObject new];
-        myPlant.name = @"";
-        [GloablObjects paintBrushInstance].paintBrush = myPlant;
-        [collectionView reloadData];
-    } else {
-        // Set background back to the original one when cancel button is selected
-        collectionView.backgroundColor = [UIColor clearColor];
-        //[collectionView reloadData];
+    if (alert == 0) {
+        if (buttonIndex != [alertView cancelButtonIndex]) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.brushIndex inSection:0];
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            PlantObject *myPlant = [PlantObject new];
+            myPlant.name = @"";
+            [GloablObjects paintBrushInstance].paintBrush = myPlant;
+            [collectionView reloadData];
+        } else {
+            // Set background back to the original one when cancel button is selected
+            collectionView.backgroundColor = [UIColor clearColor];
+            //[collectionView reloadData];
+        }
+    } else if (alert == 1) {
+        if (buttonIndex != [alertView cancelButtonIndex]) {
+            //hit okay
+        } else {
+            PlantObject *myPlant = [PlantObject new];
+            myPlant.name = @"";
+            [[GloablObjects instance].myGarden.gardenArr2d replaceObjectAtIndex:self.clickedIndex withObject:myPlant];
+            [collectionView reloadData];
+        }
     }
 }
 

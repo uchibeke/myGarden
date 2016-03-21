@@ -125,6 +125,11 @@
     return [[self.plantsDataArray objectAtIndex:plantIndex] objectForKey:@"Preparation/Use"];
 }
 
+-(NSString *) getAPlantFoes: (NSInteger) plantIndex {
+    return [[self.plantsDataArray objectAtIndex:plantIndex] objectForKey:@"foes"];
+    
+}
+
 // When can call this function when a tableview item is clicked.
 // Since we can easily get the index that was clicked, we can pass the index
 // to this function and return the object that corressponds to the index

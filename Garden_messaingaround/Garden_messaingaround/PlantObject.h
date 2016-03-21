@@ -48,6 +48,7 @@
 -(NSString *) getAPlantPreparingAndUsing: (NSInteger) plantIndex ;
 -(NSString *) getAPlantProblems: (NSInteger) plantIndex ;
 -(NSString *) getAPlantPreparationUse: (NSInteger) plantIndex ;
+-(NSString *) getAPlantFoes: (NSInteger) plantIndex ;
 
 -(NSMutableDictionary *) getAPlantToPlace:(NSInteger) plantIndexFromTable;
 - (void) placeAPlant: (NSInteger ) indexFromTable toPositionOnGrid:(NSInteger)posOfPlant;
