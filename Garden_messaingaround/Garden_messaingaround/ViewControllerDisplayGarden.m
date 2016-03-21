@@ -126,7 +126,7 @@
     
     message = [NSMutableString stringWithFormat:@"%@%@", [self.plant getAPlantName:self.brushIndex], message];
     
-    if (index-1 > 0 && index%[GloablObjects instance].myGarden.width != 0) {
+    if (index-1 >= 0 && index%[GloablObjects instance].myGarden.width != 0) {
         plant = [[GloablObjects instance].myGarden.gardenArr2d objectAtIndex:(index-1)];
         neighborName = plant.name;
         
@@ -157,7 +157,7 @@
         }
     }
     
-    if (index-[GloablObjects instance].myGarden.width > 0) {
+    if (index-[GloablObjects instance].myGarden.width >= 0) {
         plant = [[GloablObjects instance].myGarden.gardenArr2d objectAtIndex:(index-[GloablObjects instance].myGarden.width)];
         neighborName = plant.name;
         
@@ -186,9 +186,8 @@
 //called when items are selected from the collection view
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self checkfoes:indexPath.row];
-    
     self.clickedIndex = indexPath.row;
+    [self checkfoes:indexPath.row];
     
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];

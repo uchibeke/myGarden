@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XjK-ef-4Pn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XjK-ef-4Pn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -249,7 +249,7 @@
                     <navigationItem key="navigationItem" id="79n-jl-v5x">
                         <barButtonItem key="leftBarButtonItem" title="All Gardens" id="ACa-VG-sjm">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="showDetail" id="oaS-97-jb4"/>
+                                <segue destination="XjK-ef-4Pn" kind="showDetail" id="DhL-t6-sgn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -312,7 +312,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
-                        <outlet property="tableView" destination="8Kq-UE-0Pr" id="gkS-Do-0Rh"/>
+                        <outlet property="tableView" destination="8Kq-UE-0Pr" id="IsP-iU-phG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ihl-x7-AZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -391,7 +391,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="goBack:" destination="08N-h2-GOq" eventType="touchUpInside" id="ttH-zi-tP5"/>
+                                    <action selector="goBack:" destination="08N-h2-GOq" eventType="touchUpInside" id="HtP-ht-hBb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYe-5k-pad">
@@ -424,6 +424,9 @@
                         </variation>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="timeToSetOff" destination="Ymv-VN-3Vc" id="c42-Uj-YlF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kyo-Dc-qIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="J3V-Zj-Llm">
@@ -824,8 +827,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="RAn-n5-Vvb"/>
         <segue reference="j3n-KL-xWw"/>
-        <segue reference="pGf-yg-XXj"/>
-        <segue reference="oaS-97-jb4"/>
+        <segue reference="DhL-t6-sgn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

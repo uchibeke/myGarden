@@ -33,6 +33,11 @@
     return 1;
 }
 
+-(void)reloadTable {
+    
+    [[self tableView] reloadData];
+}
+
 
 // tableView:numberOfRowsInSection:
 //

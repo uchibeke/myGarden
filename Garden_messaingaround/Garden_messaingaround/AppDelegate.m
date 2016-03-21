@@ -14,6 +14,16 @@
 
 @implementation AppDelegate
 
+- (void)setupWindow
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+//    *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeView"];
+//    rootViewController.alarmGoingOff = YES;
+//    self.window.rootViewController = rootViewController;
+//    [self.window makeKeyAndVisible];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:(124/255.0f) green:(186/255.0f) blue:(37/255.0f) alpha:(1.0f)]];
@@ -24,7 +34,20 @@
     [[UITableViewCell appearance] setBackgroundColor:[UIColor clearColor]];
     [[UITableViewCell appearance] setTextColor:[UIColor whiteColor]];
 
-
+    //Prevents screen from locking
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
+    UILocalNotification *localNotif =
+    [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    
+    if (localNotif)
+    {
+        [self setupWindow];
+    }
+    
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    }
+    
     return YES;
 }
 

@@ -162,28 +162,28 @@
     // Do any additional setup after loading the view.
     
     self.plant = [[PlantObject alloc]init];
-    name.text = [self.plant getAPlantName:0];
+    name.text = [self.plant getAPlantName:5];
     
-    family.text = [self.plant getAPlantFamily:0];
+    family.text = [self.plant getAPlantFamily:5];
     
-    height.text = [self.plant getAPlantHeight:0];
+    height.text = [self.plant getAPlantHeight:5];
     
-    season.text = [self.plant getAPlantGrowingSeason:0];
+    season.text = [self.plant getAPlantGrowingSeason:5];
     
-    wksToMature.text = [self.plant getAPlantWeeksToMaturity:0];
+    wksToMature.text = [self.plant getAPlantWeeksToMaturity:5];
     
-    seedToHarvest.text = [NSString stringWithFormat:@"%@ %@", [self.plant getAPlantWeeksFromSeedHarvest:0], @"Weeks"];
+    seedToHarvest.text = [NSString stringWithFormat:@"%@ %@", [self.plant getAPlantWeeksFromSeedHarvest:5], @"Weeks"];
     
-    description.text = [self.plant getAPlantDescription:0];
+    description.text = [self.plant getAPlantDescription:5];
     
-    numPerSqFt.text = [self.plant getAPlantSpacing:0];
+    numPerSqFt.text = [self.plant getAPlantSpacing:5];
     
-    NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [self.plant getAPlantName:0], @"png"] lowercaseString] ;
+    NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [self.plant getAPlantName:5], @"png"] lowercaseString] ;
     
     previewImage.image = [UIImage imageNamed:imgName];
     previewImage.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5f];
     
-    comment.text = [self.plant getAPlantTransplanting:0];
+    comment.text = [self.plant getAPlantTransplanting:5];
     
     clickedIndex = 0;
     //sets title bar
