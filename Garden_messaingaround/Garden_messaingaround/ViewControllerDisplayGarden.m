@@ -16,8 +16,9 @@
     IBOutlet UICollectionView *collectionView;
     IBOutlet UITableView *tableView;
     UIImageView *backgroundimgview;
-    
+    dispatch_once_t onceToken;
     int alert;
+    bool delmode ;
 
 //    IBOutlet UITableView * tableView;
     IBOutlet UIImageView * shot;
@@ -39,7 +40,7 @@
     alert = 0;
     //sets title bar
     [self setTitle:[GloablObjects instance].myGarden.name];
-    
+    delmode = false;
     //dummy garden, bs info
 //    self.garden = [[GardenObject alloc] init];
 //    [self.garden allocateTable:4 withWidth:9];
@@ -91,7 +92,11 @@
         URL = [NSURL fileURLWithPath:completeFilePath];
         NSLog(@"File %@  is excluded from backup %@", file, [URL resourceValuesForKeys:[NSArray arrayWithObject:NSURLIsExcludedFromBackupKey] error:nil]);
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 59c143ea99f71ee1b2483bb61092725c7d8c0f9c
 
    // URL = [NSURL fileURLWithPath:completeFilePath];
    // [URL setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
@@ -225,17 +230,19 @@
             message = [NSMutableString stringWithFormat:@"%@\n%@", message, neighborName];
         }
     }
-    
-    alert = 1;
-    if (found) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"COMBATIVE WARNING!"
-                                                        message:message
-                                                       delegate:self
-                                              cancelButtonTitle:@"Undo"
-                                              otherButtonTitles:@"Continue",nil];
-        [alert show];
-
+    if(!delmode){
+        alert = 1;
+        if (found) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"COMBATIVE WARNING!"
+                                                            message:message
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Undo"
+                                                  otherButtonTitles:@"Continue",nil];
+            [alert show];
+            
+        }
     }
+    
     return found;
 }
 
@@ -330,7 +337,7 @@
 {
     // Set background back to the original one when tableview is selected
     collectionView.backgroundColor = [UIColor clearColor];
-    
+    delmode = NO;
     PlantObject* brush = [PlantObject alloc];
     brush.name = [self.plant getAPlantName:indexPath.row];
     self.brushIndex = indexPath.row;
@@ -348,14 +355,24 @@
 -(IBAction) removeTool: (id) sender {
     // red background when remove button clicked
     collectionView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3f];
-    
+    delmode = YES;
     alert = 0;
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"WARNING!"
-                                                    message:@"You are about to remove plants from your garden! Are you sure you to continue?"
-                                                   delegate:self
-                                          cancelButtonTitle:@"Cancel"
-                                          otherButtonTitles:@"Continue",nil];
-    [alert show];
+    dispatch_once (&onceToken, ^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"WARNING!"
+                                                        message:@"You are about to remove plants from your garden! Are you sure you to continue?"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"Continue",nil];
+        [alert show];
+    });
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.brushIndex inSection:0];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    PlantObject *myPlant = [PlantObject new];
+    myPlant.name = @"";
+    [GloablObjects paintBrushInstance].paintBrush = myPlant;
+    [collectionView reloadData];
+
+    
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alert == 0) {
