@@ -83,22 +83,18 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
     NSArray *documents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:basePath error:nil];
-    
-//    http://stackoverflow.com/questions/4934389/storing-json-data-on-the-iphone-save-the-json-string-as-it-is-vs-make-an-object
-    NSURL *URL;
-    NSString *completeFilePath;
-    for (NSString *file in documents) {
-        completeFilePath = [NSString stringWithFormat:@"%@/%@", basePath, file];
-        URL = [NSURL fileURLWithPath:completeFilePath];
-        NSLog(@"File %@  is excluded from backup %@", file, [URL resourceValuesForKeys:[NSArray arrayWithObject:NSURLIsExcludedFromBackupKey] error:nil]);
-    }
-<<<<<<< HEAD
-    
-=======
+//    
+////    http://stackoverflow.com/questions/4934389/storing-json-data-on-the-iphone-save-the-json-string-as-it-is-vs-make-an-object
+//    NSURL *URL;
+//    NSString *completeFilePath;
+//    for (NSString *file in documents) {
+//        completeFilePath = [NSString stringWithFormat:@"%@/%@", basePath, file];
+//        URL = [NSURL fileURLWithPath:completeFilePath];
+//        NSLog(@"File %@  is excluded from backup %@", file, [URL resourceValuesForKeys:[NSArray arrayWithObject:NSURLIsExcludedFromBackupKey] error:nil]);
+//    }
+//
 
->>>>>>> 59c143ea99f71ee1b2483bb61092725c7d8c0f9c
-
-   // URL = [NSURL fileURLWithPath:completeFilePath];
+   //URL = [NSURL fileURLWithPath:completeFilePath];
    // [URL setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
     NSLog(@"Doc is: %@\n  Path is: %@", [documents description], basePath);
 }
@@ -459,18 +455,31 @@
 
 
 
--(IBAction) shareGarden: (id) sender {
+-(IBAction) facebookShareGarden: (id) sender {
     SLComposeViewController *composeController = [SLComposeViewController
                                                   composeViewControllerForServiceType:SLServiceTypeFacebook];
     
     [composeController setInitialText:@"Check Out My Garden"];
     [composeController addImage:[self capture]];
+    if (composeController != nil) {
+        [self presentViewController:composeController
+                           animated:YES completion:nil];
+    }
     
-    [self presentViewController:composeController
-                       animated:YES completion:nil];
 }
 
-
+-(IBAction) twitterShareGarden: (id) sender {
+    SLComposeViewController *composeController = [SLComposeViewController
+                                                  composeViewControllerForServiceType:SLServiceTypeTwitter];
+    
+    [composeController setInitialText:@"Check Out My Garden"];
+    [composeController addImage:[self capture]];
+    if (composeController != nil) {
+        [self presentViewController:composeController
+                           animated:YES completion:nil];
+    }
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
