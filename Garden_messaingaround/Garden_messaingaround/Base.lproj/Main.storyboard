@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XjK-ef-4Pn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XjK-ef-4Pn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -623,6 +623,20 @@
                                     <outlet property="delegate" destination="skf-O0-m12" id="BGH-B4-wxF"/>
                                 </connections>
                             </collectionView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wmd-7J-fGm">
+                                <rect key="frame" x="562" y="0.0" width="240" height="128"/>
+                                <animations/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ugw-65-DcA">
+                                <rect key="frame" x="836" y="15" width="55" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Capture">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="takePhoto:" destination="skf-O0-m12" eventType="touchUpInside" id="twI-bV-S0y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -648,7 +662,9 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="collectionView" destination="8gd-kL-LLl" id="piy-YI-4LI"/>
+                        <outlet property="shot" destination="wmd-7J-fGm" id="I7t-hv-qZv"/>
                         <outlet property="tableView" destination="yIT-HO-50l" id="D2l-9k-RHU"/>
+                        <outlet property="takePhoto" destination="Ugw-65-DcA" id="wVS-Mb-Y0W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3rE-TR-KAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -825,9 +841,9 @@
         <image name="remove" width="24" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="eQE-cr-dBu"/>
         <segue reference="RAn-n5-Vvb"/>
         <segue reference="j3n-KL-xWw"/>
-        <segue reference="DhL-t6-sgn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

@@ -53,4 +53,9 @@
 -(NSMutableDictionary *) getAPlantToPlace:(NSInteger) plantIndexFromTable;
 - (void) placeAPlant: (NSInteger ) indexFromTable toPositionOnGrid:(NSInteger)posOfPlant;
 
+
+-(NSString *) getHomePath:(NSString *) path ;
+-(void)saveGardenToFile:(NSMutableArray *)data gardenName:(NSString *) gName ;
+-(NSString *)getSavedGardenFromFile: (NSString *) gardenToGet;
+
 @end

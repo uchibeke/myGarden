@@ -19,6 +19,8 @@
     int alert;
 
 //    IBOutlet UITableView * tableView;
+    IBOutlet UIImageView * shot;
+    IBOutlet UIButton * takePhoto;
 }
 
 @property GardenObject * garden;
@@ -41,27 +43,71 @@
 //    self.garden = [[GardenObject alloc] init];
 //    [self.garden allocateTable:4 withWidth:9];
     //self.garden = [GloablObjects instance].myGarden;
-    
     UICollectionViewFlowLayout *layout = (id) collectionView.collectionViewLayout;
     
     float screenWidth = layout.collectionViewContentSize.width;
     float widthOfCell = (screenWidth)/([[GloablObjects instance].myGarden getWidth])-1;
+//    
+//    CGRect screenRect = [[UIScreen mainScreen] bounds];
+//    CGFloat screenW = screenRect.size.width;
+//    CGFloat screenH = screenRect.size.height;
     
     layout.itemSize = CGSizeMake(widthOfCell, widthOfCell);
     
     layout.minimumInteritemSpacing = 0.0f;
     layout.minimumLineSpacing = 1.0f;
+    
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    
+    
+    [self createScrollView:collectionView.frame.size.width
+                 andHeight:collectionView.frame.size.height
+                   startAt:collectionView.frame.origin.x
+                     endAt:collectionView.frame.origin.y];
     layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     
     self.plant = [[PlantObject alloc]init];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
+    [self.plant saveGardenToFile:[self.plant plantsDataArray] gardenName:@"testArr" ];
+    [self.plant getSavedGardenFromFile:@"testArr"];
+    NSLog(@"Get Link is: %@\n ", [self.plant getSavedGardenFromFile:@"testArr"]);
 
     
-//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-texture-background.jpg"]];
-//    [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown.png"]]];
+
     
     self.tabBarItem.image = [[UIImage imageNamed:@"noteSmall.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    NSArray *documents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:basePath error:nil];
+    
+//    http://stackoverflow.com/questions/4934389/storing-json-data-on-the-iphone-save-the-json-string-as-it-is-vs-make-an-object
+    NSURL *URL;
+    NSString *completeFilePath;
+    for (NSString *file in documents) {
+        completeFilePath = [NSString stringWithFormat:@"%@/%@", basePath, file];
+        URL = [NSURL fileURLWithPath:completeFilePath];
+        NSLog(@"File %@  is excluded from backup %@", file, [URL resourceValuesForKeys:[NSArray arrayWithObject:NSURLIsExcludedFromBackupKey] error:nil]);
+    }
+    
+    URL = [NSURL fileURLWithPath:completeFilePath];
+    [URL setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
+    NSLog(@"Doc is: %@\n  Path is: %@", [documents description], basePath);
+}
+
+
+
+- (void)createScrollView: (CGFloat) width andHeight:(CGFloat)height startAt: (CGFloat) leftPos endAt: (CGFloat) endPpos {
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(leftPos, endPpos, width, height)];
+    
+    scrollView.contentSize = CGSizeMake(width, height);
+    scrollView.backgroundColor = [UIColor clearColor];
+
+    
+    [self.view addSubview:scrollView];
+    [scrollView addSubview:collectionView];
 }
 
 -(IBAction) modifyGarden: (id) sender {
@@ -208,8 +254,7 @@
     //numPerSq.minimumFontSize = 0;
     numPerSq.text = @"";
     
-    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.20, cell.bounds.size.height*.1
-                                                                        , cell.bounds.size.width*.6, cell.bounds.size.height*.6)];
+    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.20, cell.bounds.size.height*.1, cell.bounds.size.width*.6, cell.bounds.size.height*.6)];
     
     //semi transparent background
     backgroundimgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*0.05, cell.bounds.size.height*0.05, cell.bounds.size.width*.9, cell.bounds.size.height*.9)];
@@ -324,6 +369,67 @@
         }
     }
 }
+
+-(UIImage *)capture{
+//    UIGraphicsBeginImageContext(self.view.bounds.size);
+//    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+//    UIImage *imageView = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    UIImageWriteToSavedPhotosAlbum(imageView, nil, nil, nil); //if you need to save
+//    return imageView;
+//    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+//    CGSize size = CGSizeMake(screenSize.width, screenSize.width);
+//    
+//    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+//    
+//    CGRect rec = CGRectMake(0, 0, screenSize.width, screenSize.width);
+//    [self.view drawViewHierarchyInRect:rec afterScreenUpdates:YES];
+//    
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    return image;
+//    
+//    
+//    UIGraphicsBeginImageContext(self.view.bounds.size);
+//    [self.parentViewController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+    
+//    http://stackoverflow.com/questions/14376249/creating-a-uiimage-from-a-uitableview
+    
+    [collectionView reloadData];
+    
+    CGRect frame = collectionView.frame;
+    frame.size.height = collectionView.contentSize.height;
+//    frame.size.width = collectionView.contentSize.width;
+    collectionView.frame = frame;
+    
+    UIGraphicsBeginImageContext(collectionView.bounds.size);
+    [collectionView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+
+    
+    return image;
+}
+
+-(IBAction) takePhoto: (id) sender {
+    [shot setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]]];
+    shot.image = [self capture];
+    [shot setNeedsDisplay];
+    shot.hidden = NO;
+    shot.alpha = 1.0f;
+    [UIView animateWithDuration:0.5 delay:2.0 options:0 animations:^{
+        shot.alpha = 0.0f;
+    } completion:^(BOOL finished) {
+        shot.image = nil;
+        shot.hidden = YES;
+    }];
+    [self.view addSubview:collectionView] ;
+}
+
+
+
+
 
 
 - (void)didReceiveMemoryWarning {
