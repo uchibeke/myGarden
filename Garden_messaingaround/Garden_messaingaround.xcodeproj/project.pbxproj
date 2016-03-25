@@ -16,7 +16,8 @@
 		11B3F59E1CA06CD000D5F8D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3F59D1CA06CD000D5F8D5 /* UIKit.framework */; };
 		11B3F5A01CA06CE100D5F8D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3F59F1CA06CE100D5F8D5 /* Foundation.framework */; };
 		11B3F5A21CA06CE800D5F8D5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3F5A11CA06CE800D5F8D5 /* CoreGraphics.framework */; };
-		11B3F5A61CA06E8700D5F8D5 /* AlarmObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3F5A51CA06E8700D5F8D5 /* AlarmObject.m */; };
+		85918F371CA5C2F500591415 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85918F361CA5C2F500591415 /* NotificationCenter.framework */; };
+		85918F3D1CA5D44200591415 /* gardenAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 85918F3C1CA5D44200591415 /* gardenAlarm.m */; };
 		85AE250F1C83D56C001828C0 /* GardenObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE250C1C83D56C001828C0 /* GardenObject.m */; };
 		85AE25101C83D56C001828C0 /* PlantObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE250E1C83D56C001828C0 /* PlantObject.m */; };
 		85AE25191C83DB2F001828C0 /* GloablObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE25181C83DB2F001828C0 /* GloablObjects.m */; };
@@ -139,8 +140,9 @@
 		11B3F59D1CA06CD000D5F8D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		11B3F59F1CA06CE100D5F8D5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		11B3F5A11CA06CE800D5F8D5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		11B3F5A41CA06E8700D5F8D5 /* AlarmObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmObject.h; sourceTree = "<group>"; };
-		11B3F5A51CA06E8700D5F8D5 /* AlarmObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmObject.m; sourceTree = "<group>"; };
+		85918F361CA5C2F500591415 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		85918F3B1CA5D44200591415 /* gardenAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gardenAlarm.h; sourceTree = "<group>"; };
+		85918F3C1CA5D44200591415 /* gardenAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gardenAlarm.m; sourceTree = "<group>"; };
 		85AE250B1C83D56C001828C0 /* GardenObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GardenObject.h; sourceTree = "<group>"; };
 		85AE250C1C83D56C001828C0 /* GardenObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GardenObject.m; sourceTree = "<group>"; };
 		85AE250D1C83D56C001828C0 /* PlantObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlantObject.h; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85918F371CA5C2F500591415 /* NotificationCenter.framework in Frameworks */,
 				11B3F5A21CA06CE800D5F8D5 /* CoreGraphics.framework in Frameworks */,
 				11B3F5A01CA06CE100D5F8D5 /* Foundation.framework in Frameworks */,
 				11B3F59E1CA06CD000D5F8D5 /* UIKit.framework in Frameworks */,
@@ -376,6 +379,7 @@
 		ADC7147B1C82448400260F56 = {
 			isa = PBXGroup;
 			children = (
+				85918F361CA5C2F500591415 /* NotificationCenter.framework */,
 				11B3F5A31CA06D0900D5F8D5 /* frameworks */,
 				ADC714861C82448400260F56 /* Garden_messaingaround */,
 				ADC714A01C82448400260F56 /* Garden_messaingaroundTests */,
@@ -418,10 +422,10 @@
 				85AE250C1C83D56C001828C0 /* GardenObject.m */,
 				85AE250D1C83D56C001828C0 /* PlantObject.h */,
 				85AE250E1C83D56C001828C0 /* PlantObject.m */,
+				85918F3B1CA5D44200591415 /* gardenAlarm.h */,
+				85918F3C1CA5D44200591415 /* gardenAlarm.m */,
 				ADC7148B1C82448400260F56 /* AppDelegate.h */,
 				ADC7148C1C82448400260F56 /* AppDelegate.m */,
-				11B3F5A41CA06E8700D5F8D5 /* AlarmObject.h */,
-				11B3F5A51CA06E8700D5F8D5 /* AlarmObject.m */,
 				85AE25171C83DB2F001828C0 /* GloablObjects.h */,
 				85AE25181C83DB2F001828C0 /* GloablObjects.m */,
 				ADC714911C82448400260F56 /* Main.storyboard */,
@@ -643,10 +647,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADC714BE1C825AB800260F56 /* ViewControllerNewGarden.m in Sources */,
-				11B3F5A61CA06E8700D5F8D5 /* AlarmObject.m in Sources */,
 				85AE25101C83D56C001828C0 /* PlantObject.m in Sources */,
 				09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */,
 				116827FD1CA073EB00BD03FF /* ViewControllerEditAlarm.m in Sources */,
+				85918F3D1CA5D44200591415 /* gardenAlarm.m in Sources */,
 				ADC714C31C82666100260F56 /* ViewControllerDisplayGarden.m in Sources */,
 				0965401A1C9E09B300B28B43 /* ViewControllerReminders.m in Sources */,
 				09B2A1581C94B54B0081D136 /* ViewControllerPlantViews.m in Sources */,

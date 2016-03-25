@@ -14,6 +14,7 @@
 @property (nonatomic, readwrite) NSMutableArray* gardenArray;
 @property (nonatomic, readwrite) PlantObject* paintBrush;
 @property (nonatomic, readwrite) NSMutableArray* notesArray;
+@property (nonatomic, readwrite) NSMutableArray* alarmArray;
 
 
 -(id)init;
@@ -21,4 +22,5 @@
 +(GloablObjects*)gardenArrayInstance;
 +(GloablObjects*)paintBrushInstance;
 +(GloablObjects*)notesInstance;
++(GloablObjects*)alarmInstance;
 @end
