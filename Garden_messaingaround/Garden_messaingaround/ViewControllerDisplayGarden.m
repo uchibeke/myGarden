@@ -91,8 +91,8 @@
         NSLog(@"File %@  is excluded from backup %@", file, [URL resourceValuesForKeys:[NSArray arrayWithObject:NSURLIsExcludedFromBackupKey] error:nil]);
     }
     
-    URL = [NSURL fileURLWithPath:completeFilePath];
-    [URL setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
+   // URL = [NSURL fileURLWithPath:completeFilePath];
+   // [URL setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
     NSLog(@"Doc is: %@\n  Path is: %@", [documents description], basePath);
 }
 
