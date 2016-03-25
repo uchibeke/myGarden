@@ -94,7 +94,7 @@
         
         gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
         myAlarm.name = @"weeding";
-        myAlarm.time = self.timeToSetOff.date;
+        myAlarm.time = locNot.fireDate;
         myAlarm.message = @"Reminder to weed your garden!";
         [[GloablObjects alarmInstance].alarmArray addObject:myAlarm];
     }
@@ -109,7 +109,7 @@
         
         gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
         myAlarm.name = @"watering";
-        myAlarm.time = self.timeToSetOff.date;
+        myAlarm.time = locNot.fireDate;
         myAlarm.message = @"Reminder to water your garden!";
         [[GloablObjects alarmInstance].alarmArray addObject:myAlarm];
         NSLog(@"%d", [[GloablObjects alarmInstance].alarmArray count]);
@@ -130,7 +130,7 @@
         
         gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
         myAlarm.name = @"harvest";
-        myAlarm.time = [mydate dateByAddingTimeInterval: interval];
+        myAlarm.time = locNot.fireDate;
         myAlarm.message = message;
         [[GloablObjects alarmInstance].alarmArray addObject:myAlarm];
         NSLog(@"%d", [[GloablObjects alarmInstance].alarmArray count]);

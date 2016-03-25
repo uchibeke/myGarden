@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "GloablObjects.h"
+#import "gardenAlarm.h"
 
 @interface AppDelegate ()
 
@@ -79,7 +81,19 @@
 
 // This code block is invoked when application is in foreground (active-mode)
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    NSString *fir = [NSDateFormatter localizedStringFromDate:notification.fireDate
+                                                   dateStyle:NSDateFormatterShortStyle
+                                                   timeStyle:NSDateFormatterFullStyle];
     
+    for(gardenAlarm *notification in [GloablObjects alarmInstance].alarmArray){
+        if ([fir isEqualToString:[NSDateFormatter localizedStringFromDate:notification.time
+                                                                dateStyle:NSDateFormatterShortStyle
+                                                                timeStyle:NSDateFormatterFullStyle]]) {
+            // delete this notification
+            NSLog(@"found");
+            [[GloablObjects alarmInstance].alarmArray removeObject:notification];
+        }
+    }
     UIAlertView *notificationAlert = [[UIAlertView alloc] initWithTitle:notification.alertTitle    message:notification.alertBody
                                                                delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
     

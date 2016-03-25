@@ -10,6 +10,7 @@
 #import "ViewControllerDisplayGarden.h"
 #import "GloablObjects.h"
 #import "PlantObject.h"
+#import <Social/Social.h>
 
 @interface ViewControllerDisplayGarden () {
     IBOutlet UICollectionView *collectionView;
@@ -91,13 +92,9 @@
         NSLog(@"File %@  is excluded from backup %@", file, [URL resourceValuesForKeys:[NSArray arrayWithObject:NSURLIsExcludedFromBackupKey] error:nil]);
     }
     
-<<<<<<< HEAD
-//    URL = [NSURL fileURLWithPath:completeFilePath];
-//    [URL setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
-=======
+
    // URL = [NSURL fileURLWithPath:completeFilePath];
    // [URL setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
->>>>>>> d5be0360cdd2387f15a14d2de140d9405a3222fe
     NSLog(@"Doc is: %@\n  Path is: %@", [documents description], basePath);
 }
 
@@ -445,7 +442,16 @@
 
 
 
-
+-(IBAction) shareGarden: (id) sender {
+    SLComposeViewController *composeController = [SLComposeViewController
+                                                  composeViewControllerForServiceType:SLServiceTypeFacebook];
+    
+    [composeController setInitialText:@"Check Out My Garden"];
+    [composeController addImage:[self capture]];
+    
+    [self presentViewController:composeController
+                       animated:YES completion:nil];
+}
 
 
 - (void)didReceiveMemoryWarning {

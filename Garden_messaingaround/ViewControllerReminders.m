@@ -73,6 +73,22 @@
 {
     // Perform the real delete action here. Note: you may need to check editing style
     //   if you do not perform delete only.
+    gardenAlarm *myAlarm = [[GloablObjects alarmInstance].alarmArray objectAtIndex:indexPath.row];
+    NSArray *notificationArray = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    for(UILocalNotification *notification in notificationArray){
+        NSString *fir = [NSDateFormatter localizedStringFromDate:notification.fireDate
+                                             dateStyle:NSDateFormatterShortStyle
+                                             timeStyle:NSDateFormatterFullStyle];
+        NSString *sec = [NSDateFormatter localizedStringFromDate:myAlarm.time
+                                             dateStyle:NSDateFormatterShortStyle
+                                             timeStyle:NSDateFormatterFullStyle];
+
+        if ([fir isEqualToString:sec]) {
+            // delete this notification
+            NSLog(@"found");
+            [[UIApplication sharedApplication] cancelLocalNotification:notification] ;
+        }
+    }
     [[GloablObjects alarmInstance].alarmArray removeObjectAtIndex:indexPath.row ];
     [self.tableView reloadData];
 }
