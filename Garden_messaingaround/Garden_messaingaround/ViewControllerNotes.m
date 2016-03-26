@@ -95,9 +95,9 @@
 
 -(IBAction) newNote: (id) sender {
     [self saveNote];
-    NSString *note = @"New Note";
+    NSString *note = @"";
     [[GloablObjects notesInstance].notesArray addObject:note];
-    notesField.text =[NSString stringWithFormat:@"%@ ...", note];
+    notesField.text =[NSString stringWithFormat:@"%@ ", note];
     [notesField showsHorizontalScrollIndicator];
     [tableView reloadData];
     [self enableNoteField];
@@ -192,9 +192,18 @@
 
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    // unregister for keyboard notifications while not visible.
+    [self saveNote];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [self saveNote];
 }
 
 /*

@@ -21,11 +21,12 @@
     self = [super init];
     if (self) {
         
-        
+//        NSMutableArray *topLevelArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//        NSDictionary *dict = topLevelArray[0];
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"plantDataReal" ofType:@"json"];
         NSString *myJSON = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
         NSError *error =  nil;
-        self.plantsDataArray = [NSJSONSerialization JSONObjectWithData:[myJSON dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        self.plantsDataArray = [NSJSONSerialization JSONObjectWithData:[myJSON dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&error];
         self.usersPlants = [NSMutableArray array];
     }
     return self;
@@ -167,16 +168,33 @@
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:userDataPath])
         [[NSFileManager defaultManager] createDirectoryAtPath:userDataPath withIntermediateDirectories:NO attributes:nil error:&error]; //Create folder
-    
-//    NSString *yourSoundPath = [documentsDirectory stringByAppendingPathComponent:filename];
     NSLog(@"Get Path is: %@\n", userDataPath);
     
     NSString *content = [NSString stringWithContentsOfFile:userDataPath encoding:NSUTF8StringEncoding error:NULL];
     
-//    NSError *jsonError;
-//    NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&jsonError];
-    
     return content;
+}
+
+
+
+
+-(void) saveDatatoDefaults: (NSMutableArray *) userGardendata theGardenName: (NSString *) gardenName {    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];    if([[NSUserDefaults standardUserDefaults] objectForKey:gardenName] != nil) {
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    } else {
+        [defaults setObject:[userGardendata mutableCopy] forKey:gardenName];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+
+    }
+    
+}
+
+- (id) objectFromDataWithKey:(NSString*)key {
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+}
+
+-(NSMutableArray *) getUserDataFromDefaults: (NSString *) gardenName {    return [self objectFromDataWithKey:gardenName] ;
+    
 }
 
 -(void) setImage: (NSString *) imageURL {

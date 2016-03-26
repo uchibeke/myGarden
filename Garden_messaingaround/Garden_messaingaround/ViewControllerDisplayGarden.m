@@ -397,29 +397,6 @@
 }
 
 -(UIImage *)capture{
-//    UIGraphicsBeginImageContext(self.view.bounds.size);
-//    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-//    UIImage *imageView = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    UIImageWriteToSavedPhotosAlbum(imageView, nil, nil, nil); //if you need to save
-//    return imageView;
-//    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-//    CGSize size = CGSizeMake(screenSize.width, screenSize.width);
-//    
-//    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
-//    
-//    CGRect rec = CGRectMake(0, 0, screenSize.width, screenSize.width);
-//    [self.view drawViewHierarchyInRect:rec afterScreenUpdates:YES];
-//    
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    return image;
-//    
-//    
-//    UIGraphicsBeginImageContext(self.view.bounds.size);
-//    [self.parentViewController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
     
 //    http://stackoverflow.com/questions/14376249/creating-a-uiimage-from-a-uitableview
     
@@ -427,7 +404,6 @@
     
     CGRect frame = collectionView.frame;
     frame.size.height = collectionView.contentSize.height;
-//    frame.size.width = collectionView.contentSize.width;
     collectionView.frame = frame;
     
     UIGraphicsBeginImageContext(collectionView.bounds.size);
@@ -439,11 +415,11 @@
 }
 
 -(IBAction) takePhoto: (id) sender {
-    [shot setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]]];
+    shot.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
     shot.image = [self capture];
-    [shot setNeedsDisplay];
     shot.hidden = NO;
     shot.alpha = 1.0f;
+    [shot setNeedsDisplay];
     [UIView animateWithDuration:0.5 delay:2.0 options:0 animations:^{
         shot.alpha = 0.0f;
     } completion:^(BOOL finished) {
@@ -480,9 +456,41 @@
     }
     
 }
+
+-(void) synchData {
+    NSLog(@"Kind of GlobalObjects is kind of : %@\n ",[[[GloablObjects instance].myGarden gardenArr2d]   class]);
+//    if([(NSMutableArray *)[[GloablObjects instance].myGarden gardenArr2d]  isKindOfClass:[NSArray class]]) {
+////    if ([[GloablObjects instance].myGarden gardenArr2d] isKindOfClass:[NSArray class] ) {
+//        [self.plant saveDatatoDefaults:[[GloablObjects instance].myGarden gardenArr2d] theGardenName:[[GloablObjects instance].myGarden name]];
+//    }
+    [self.view setNeedsDisplay];
+    NSLog(@"The Actual Plant Data contains real Objects: @\n%@\n ",[[self.plant plantsDataArray]objectAtIndex:0 ]);
+    NSLog(@"The Global Object contains addresses?: @\n%@\n ",[[GloablObjects instance].myGarden gardenArr2d]);
+
+    NSLog(@"This should return a garden name from saved file: @\n%@\n ",[self.plant getUserDataFromDefaults:[[GloablObjects instance].myGarden name]]);
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if ([self isMovingFromParentViewController])
+    {
+        NSLog(@"View controller was popped");
+    }
+    else
+    {
+        NSLog(@"New view controller was pushed");
+        [self synchData];
+    }
+}
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [self synchData];
+
 }
 
 

@@ -54,13 +54,7 @@
     
     // The main act...
     [[[md description] dataUsingEncoding:NSUTF8StringEncoding] writeToFile:fileAtPath atomically:NO];
-    
-//    
-//    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:self.plant.plantsDataArray
-//                                                                               options:kNilOptions
-//                                                                                 error:nil];
-//    [jsonData writeToURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@%@",
-//                                                 NSTemporaryDirectory(), @"plantDataReal.json"]] atomically:YES];
+
     [table reloadData];
     
 //    [self.plant.plantsDataArray addObject:@"{\"Test\": \"Test\"}"];
@@ -134,6 +128,7 @@
     previewImage.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5f];
     previewImage.image = [UIImage imageNamed:imgName];
     
+    // Save the comment
 
     clickedIndex = indexPath.row;
     
@@ -144,6 +139,7 @@
 // Hide the keyboard when losing focus on the UITextField for comments
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
+    [self updateComment:self];
     UITouch *touch = [[event allTouches] anyObject];
     if ([comment isFirstResponder] && [touch view] != comment) {
         [comment resignFirstResponder];
@@ -211,6 +207,7 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [self updateComment:self];
 }
 
 /*
@@ -298,6 +295,7 @@
                                                object:nil];
 }
 
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -309,6 +307,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardWillHideNotification
                                                   object:nil];
+    [self updateComment:self];
 }
 
 @end

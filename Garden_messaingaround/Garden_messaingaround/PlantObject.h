@@ -58,4 +58,8 @@
 -(void)saveGardenToFile:(NSMutableArray *)data gardenName:(NSString *) gName ;
 -(NSString *)getSavedGardenFromFile: (NSString *) gardenToGet;
 
+
+-(void) saveDatatoDefaults: (NSMutableArray *) userGardendata theGardenName: (NSString *) gardenName ;
+-(NSMutableArray *) getUserDataFromDefaults: (NSString *) gardenName ;
+
 @end
