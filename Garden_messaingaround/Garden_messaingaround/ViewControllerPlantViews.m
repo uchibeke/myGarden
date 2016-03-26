@@ -57,7 +57,9 @@
 //    [[[md description] dataUsingEncoding:NSUTF8StringEncoding] writeToFile:fileAtPath atomically:NO];
 //
 //    [table reloadData];
-    [GloablObjects commentsInstance].commentsArray[clickedIndex] = comment.text;
+    NSMutableArray* temp = [[GloablObjects commentsInstance].commentsArray mutableCopy];
+    temp[clickedIndex] = comment.text;
+    [GloablObjects commentsInstance].commentsArray = temp;
     [self updateCommentUserDefaults];
 }
 
