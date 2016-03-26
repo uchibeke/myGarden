@@ -27,7 +27,18 @@
     
     static dispatch_once_t once;
     dispatch_once(&once, ^ {
-        [GloablObjects gardenArrayInstance].gardenArray = [[NSMutableArray alloc] init];
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSMutableArray *gardens = [userDefaults objectForKey:@"gardens"];
+        if (gardens == nil) {
+            NSLog(@"gardens not found. creating new instance.");
+            [GloablObjects gardenArrayInstance].gardenArray = [[NSMutableArray alloc] init];
+            [userDefaults setObject:[GloablObjects gardenArrayInstance].gardenArray forKey:@"gardenArray"];
+            [userDefaults synchronize];
+        } else {
+            [self getFromUserDefaults];
+        }
+        
         [GloablObjects paintBrushInstance].paintBrush = [[PlantObject alloc] init];
         [GloablObjects notesInstance].notesArray = [[NSMutableArray alloc] init];
         [GloablObjects alarmInstance].alarmArray = [[NSMutableArray alloc] init];
@@ -63,6 +74,7 @@
     // Perform the real delete action here. Note: you may need to check editing style
     //   if you do not perform delete only.
     [[GloablObjects gardenArrayInstance].gardenArray removeObjectAtIndex:indexPath.row ];
+    [self updateUserDefaults];
     [tableView reloadData];
 }
 
@@ -119,6 +131,78 @@
     
     //loads new view
     [self performSegueWithIdentifier:@"showTabs" sender:self];
+}
+
+
+-(void) updateUserDefaults {
+    NSMutableArray *gardens = [NSMutableArray arrayWithCapacity:[[GloablObjects gardenArrayInstance].gardenArray count]];
+    NSMutableArray *gardenNames = [NSMutableArray arrayWithCapacity:[[GloablObjects gardenArrayInstance].gardenArray count]];
+    NSMutableArray *gardenWidth = [NSMutableArray arrayWithCapacity:[[GloablObjects gardenArrayInstance].gardenArray count]];
+    NSMutableArray *gardenHeight = [NSMutableArray arrayWithCapacity:[[GloablObjects gardenArrayInstance].gardenArray count]];
+    
+    for (GardenObject * gard in [GloablObjects gardenArrayInstance].gardenArray) {
+        [gardenNames addObject:gard.name];
+        NSNumber *w = [NSNumber numberWithInteger:gard.width];
+        NSNumber *h = [NSNumber numberWithInteger:gard.height];
+        [gardenHeight addObject:w];
+        [gardenWidth addObject:h];
+        NSLog(@"%d", [gardenHeight[0] integerValue]);
+        NSMutableArray *garden = [NSMutableArray arrayWithCapacity:[gard.gardenArr2d count]];
+        for (PlantObject * plant in gard.gardenArr2d) {
+            if ([ plant.name isEqualToString:@"" ]) {
+                [garden addObject:@""];
+            } else {
+                [garden addObject:plant.name];
+            }
+        }
+        [gardens addObject:garden];
+    }
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:gardens forKey:@"gardens"];
+    [userDefaults setObject:gardenNames forKey:@"gardenNames"];
+    [userDefaults setObject:gardenWidth forKey:@"gardenWidth"];
+    [userDefaults setObject:gardenHeight forKey:@"gardenHeight"];
+    [userDefaults synchronize];
+}
+
+-(void) getFromUserDefaults {
+    //wipes all gardens, will be reloaded from user defaults
+    [GloablObjects gardenArrayInstance].gardenArray = [[NSMutableArray alloc] init];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *gardens = [userDefaults objectForKey:@"gardens"];
+    NSMutableArray *gardenNames = [userDefaults objectForKey:@"gardenNames"];
+    NSMutableArray *gardenWidth = [userDefaults objectForKey:@"gardenWidth"];
+    NSMutableArray *gardenHeight = [userDefaults objectForKey:@"gardenHeight"];
+    
+    if (gardens == nil || gardenNames == nil) {
+        NSLog(@"gardens not found. creating new instance.");
+    } else {
+        NSLog(@"gardens found. loading from file.");
+        int i = 0;
+        for (NSMutableArray * gard in gardens) {
+            NSLog(@"help");
+            GardenObject * newGarden = [[GardenObject alloc] init];
+            [newGarden allocateTable:[gardenWidth[i] integerValue] withWidth:[gardenHeight[i] integerValue]];
+            [newGarden setName:gardenNames[i]];
+            
+            int j = 0;
+            for (NSString * plant in gard) {
+                PlantObject * newPlant = [[PlantObject alloc] init];
+                if ([plant isEqualToString:@"" ]) {
+                    newPlant.name = @"";
+                } else {
+                    newPlant.name = plant;
+                }
+                [newGarden.gardenArr2d replaceObjectAtIndex:j withObject:newPlant];
+                j+=1;
+            }
+            [[GloablObjects gardenArrayInstance].gardenArray addObject:newGarden];
+            i+=1;
+        }
+    }
+    
 }
 
 

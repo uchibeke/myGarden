@@ -8,7 +8,7 @@
 
 #import "ViewControllerNewGarden.h"
 #import "GloablObjects.h"
-
+#import "GardenObject.h"
 
 @interface ViewControllerNewGarden () {
 
@@ -82,7 +82,10 @@
         NSLog(@"Cancel Tapped.");
     }
     else if (buttonIndex == 1) {
+        [self.presentingViewController viewWillAppear:YES];
+        [self.presentingViewController viewDidAppear:YES];
         [self updateGardenDimensions];
+        [self dismissModalViewControllerAnimated:YES];
     }
 }
 
@@ -171,16 +174,17 @@
         }
     } else {
         [[GloablObjects gardenArrayInstance].gardenArray addObject:[GloablObjects instance].myGarden ];
+        [self updateUserDefaults];
     }
     
     if (remove) {
         [[GloablObjects gardenArrayInstance].gardenArray replaceObjectAtIndex:removeIndex withObject:[GloablObjects instance].myGarden];
+        [self updateUserDefaults];
     }
     
     NSLog(@"global garden updated!");
     
-    //loads new view
-    [self performSegueWithIdentifier:@"showTabs" sender:self];
+  
 }
 
 
@@ -189,6 +193,77 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+
+-(void) updateUserDefaults {
+    NSMutableArray *gardens = [NSMutableArray arrayWithCapacity:[[GloablObjects gardenArrayInstance].gardenArray count]];
+    NSMutableArray *gardenNames = [NSMutableArray arrayWithCapacity:[[GloablObjects gardenArrayInstance].gardenArray count]];
+    NSMutableArray *gardenWidth = [NSMutableArray arrayWithCapacity:[[GloablObjects gardenArrayInstance].gardenArray count]];
+    NSMutableArray *gardenHeight = [NSMutableArray arrayWithCapacity:[[GloablObjects gardenArrayInstance].gardenArray count]];
+    
+    for (GardenObject * gard in [GloablObjects gardenArrayInstance].gardenArray) {
+        [gardenNames addObject:gard.name];
+        NSNumber *w = [NSNumber numberWithInteger:gard.width];
+        NSNumber *h = [NSNumber numberWithInteger:gard.height];
+        [gardenHeight addObject:w];
+        [gardenWidth addObject:h];
+        NSLog(@"%d", [gardenHeight[0] integerValue]);
+        NSMutableArray *garden = [NSMutableArray arrayWithCapacity:[gard.gardenArr2d count]];
+        for (PlantObject * plant in gard.gardenArr2d) {
+            if ([ plant.name isEqualToString:@"" ]) {
+                [garden addObject:@""];
+            } else {
+                [garden addObject:plant.name];
+            }
+        }
+        [gardens addObject:garden];
+    }
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:gardens forKey:@"gardens"];
+    [userDefaults setObject:gardenNames forKey:@"gardenNames"];
+    [userDefaults setObject:gardenWidth forKey:@"gardenWidth"];
+    [userDefaults setObject:gardenHeight forKey:@"gardenHeight"];
+    [userDefaults synchronize];
+}
+
+-(void) getFromUserDefaults {
+    //wipes all gardens, will be reloaded from user defaults
+    [GloablObjects gardenArrayInstance].gardenArray = [[NSMutableArray alloc] init];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *gardens = [userDefaults objectForKey:@"gardens"];
+    NSMutableArray *gardenNames = [userDefaults objectForKey:@"gardenNames"];
+    NSMutableArray *gardenWidth = [userDefaults objectForKey:@"gardenWidth"];
+    NSMutableArray *gardenHeight = [userDefaults objectForKey:@"gardenHeight"];
+    
+    if (gardens == nil || gardenNames == nil) {
+        NSLog(@"gardens not found. creating new instance.");
+    } else {
+        NSLog(@"gardens found. loading from file.");
+        int i = 0;
+        for (NSMutableArray * gard in gardens) {
+            NSLog(@"help");
+            GardenObject * newGarden = [[GardenObject alloc] init];
+            [newGarden allocateTable:[gardenWidth[i] integerValue] withWidth:[gardenHeight[i] integerValue]];
+            [newGarden setName:gardenNames[i]];
+            
+            int j = 0;
+            for (NSString * plant in gard) {
+                PlantObject * newPlant = [[PlantObject alloc] init];
+                if ([plant isEqualToString:@"" ]) {
+                    newPlant.name = @"";
+                } else {
+                    newPlant.name = plant;
+                }
+                [newGarden.gardenArr2d replaceObjectAtIndex:j withObject:newPlant];
+                j+=1;
+            }
+            [[GloablObjects gardenArrayInstance].gardenArray addObject:newGarden];
+            i+=1;
+        }
+    }
+    
+}
 
 //actually creates the garden object
 -(IBAction) createGarden: (id) sender {
@@ -206,7 +281,16 @@
                                               otherButtonTitles:@"Continue",nil];
         [alert show];
     } else {
-        [self updateGardenDimensions];
+        if (!self.modifying) {
+            [self updateGardenDimensions];
+            //loads new view
+            [self performSegueWithIdentifier:@"showTabs" sender:self];
+        } else {
+            [self.presentingViewController viewWillAppear:YES];
+            [self.presentingViewController viewDidAppear:YES];
+            [self updateGardenDimensions];
+            [self dismissModalViewControllerAnimated:YES];
+        }
     }
 
     

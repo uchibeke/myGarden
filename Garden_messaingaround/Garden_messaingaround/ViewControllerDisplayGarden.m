@@ -60,22 +60,19 @@
     layout.minimumLineSpacing = 1.0f;
     
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    
-    
-    [self createScrollView:collectionView.frame.size.width
-                 andHeight:collectionView.frame.size.height
-                   startAt:collectionView.frame.origin.x
-                     endAt:collectionView.frame.origin.y];
-    layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    collectionView.collectionViewLayout = layout;
+//    
+//    [self createScrollView:collectionView.frame.size.width
+//                 andHeight:collectionView.frame.size.height
+//                   startAt:collectionView.frame.origin.x
+//                     endAt:collectionView.frame.origin.y];
+//    layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     
     self.plant = [[PlantObject alloc]init];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
     [self.plant saveGardenToFile:[self.plant plantsDataArray] gardenName:@"testArr" ];
     [self.plant getSavedGardenFromFile:@"testArr"];
     NSLog(@"Get Link is: %@\n ", [self.plant getSavedGardenFromFile:@"testArr"]);
-
-    
-
     
     self.tabBarItem.image = [[UIImage imageNamed:@"noteSmall.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
@@ -83,19 +80,11 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
     NSArray *documents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:basePath error:nil];
-//    
-////    http://stackoverflow.com/questions/4934389/storing-json-data-on-the-iphone-save-the-json-string-as-it-is-vs-make-an-object
-//    NSURL *URL;
-//    NSString *completeFilePath;
-//    for (NSString *file in documents) {
-//        completeFilePath = [NSString stringWithFormat:@"%@/%@", basePath, file];
-//        URL = [NSURL fileURLWithPath:completeFilePath];
-//        NSLog(@"File %@  is excluded from backup %@", file, [URL resourceValuesForKeys:[NSArray arrayWithObject:NSURLIsExcludedFromBackupKey] error:nil]);
-//    }
-//
-
-   //URL = [NSURL fileURLWithPath:completeFilePath];
-   // [URL setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
+    
+    PlantObject *myPlant = [PlantObject new];
+    myPlant.name = [self.plant getAPlantName:0];
+    [GloablObjects paintBrushInstance].paintBrush = myPlant;
+    
     NSLog(@"Doc is: %@\n  Path is: %@", [documents description], basePath);
 }
 
@@ -176,8 +165,6 @@
 
 
 -(bool)checkfoes:(int) index {
-    NSLog(@"%d",index);
-    NSLog(@"%d",[GloablObjects instance].myGarden.width);
     NSString * neighborName = @"";
     NSString *foes = [self.plant getAPlantFoes:self.brushIndex];
     PlantObject *plant = [[GloablObjects instance].myGarden.gardenArr2d objectAtIndex:0];
@@ -277,7 +264,6 @@
     backgroundimgview.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5f];
     
     NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [GloablObjects paintBrushInstance].paintBrush.name, @"png"] lowercaseString] ;
-    
     [[GloablObjects instance].myGarden.gardenArr2d replaceObjectAtIndex:indexPath.row withObject:[GloablObjects paintBrushInstance].paintBrush];
     
     imgview.image = [ UIImage imageNamed: imgName];
@@ -286,6 +272,8 @@
     [cell.contentView addSubview:numPerSq];
     [cell.contentView addSubview:imgview];
 //    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
+    
+    [self updateUserDefaults];
     
 }
 
@@ -484,6 +472,102 @@
     }
 }
 
+
+-(void) updateUserDefaults {
+    NSMutableArray *gardens = [NSMutableArray arrayWithCapacity:[[GloablObjects gardenArrayInstance].gardenArray count]];
+    NSMutableArray *gardenNames = [NSMutableArray arrayWithCapacity:[[GloablObjects gardenArrayInstance].gardenArray count]];
+    NSMutableArray *gardenWidth = [NSMutableArray arrayWithCapacity:[[GloablObjects gardenArrayInstance].gardenArray count]];
+    NSMutableArray *gardenHeight = [NSMutableArray arrayWithCapacity:[[GloablObjects gardenArrayInstance].gardenArray count]];
+    
+    for (GardenObject * gard in [GloablObjects gardenArrayInstance].gardenArray) {
+        [gardenNames addObject:gard.name];
+        NSNumber *w = [NSNumber numberWithInteger:gard.width];
+        NSNumber *h = [NSNumber numberWithInteger:gard.height];
+        [gardenHeight addObject:w];
+        [gardenWidth addObject:h];
+        NSLog(@"%d", [gardenHeight[0] integerValue]);
+        NSMutableArray *garden = [NSMutableArray arrayWithCapacity:[gard.gardenArr2d count]];
+        for (PlantObject * plant in gard.gardenArr2d) {
+            if ([ plant.name isEqualToString:@"" ]) {
+                [garden addObject:@""];
+            } else {
+                [garden addObject:plant.name];
+            }
+        }
+        [gardens addObject:garden];
+    }
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:gardens forKey:@"gardens"];
+    [userDefaults setObject:gardenNames forKey:@"gardenNames"];
+    [userDefaults setObject:gardenWidth forKey:@"gardenWidth"];
+    [userDefaults setObject:gardenHeight forKey:@"gardenHeight"];
+    [userDefaults synchronize];
+}
+
+-(void) getFromUserDefaults {
+    //wipes all gardens, will be reloaded from user defaults
+    [GloablObjects gardenArrayInstance].gardenArray = [[NSMutableArray alloc] init];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *gardens = [userDefaults objectForKey:@"gardens"];
+    NSMutableArray *gardenNames = [userDefaults objectForKey:@"gardenNames"];
+    NSMutableArray *gardenWidth = [userDefaults objectForKey:@"gardenWidth"];
+    NSMutableArray *gardenHeight = [userDefaults objectForKey:@"gardenHeight"];
+    
+    if (gardens == nil || gardenNames == nil) {
+        NSLog(@"gardens not found. creating new instance.");
+    } else {
+        NSLog(@"gardens found. loading from file.");
+        int i = 0;
+        for (NSMutableArray * gard in gardens) {
+            NSLog(@"help");
+            GardenObject * newGarden = [[GardenObject alloc] init];
+            [newGarden allocateTable:[gardenWidth[i] integerValue] withWidth:[gardenHeight[i] integerValue]];
+            [newGarden setName:gardenNames[i]];
+            
+            int j = 0;
+            for (NSString * plant in gard) {
+                PlantObject * newPlant = [[PlantObject alloc] init];
+                if ([plant isEqualToString:@"" ]) {
+                    newPlant.name = @"";
+                } else {
+                    newPlant.name = plant;
+                }
+                [newGarden.gardenArr2d replaceObjectAtIndex:j withObject:newPlant];
+                j+=1;
+            }
+            [[GloablObjects gardenArrayInstance].gardenArray addObject:newGarden];
+            i+=1;
+        }
+    }
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSLog(@"data reload");
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self viewDidLoad];
+        [collectionView reloadData];
+        [self.view setNeedsDisplay];
+    });
+}
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    NSLog(@"data reload");
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self viewDidLoad];
+        [collectionView reloadData];
+        [self.view setNeedsDisplay];
+    });
+}
 
 
 - (void)didReceiveMemoryWarning {
