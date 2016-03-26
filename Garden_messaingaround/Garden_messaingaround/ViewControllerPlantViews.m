@@ -56,16 +56,6 @@
     [[[md description] dataUsingEncoding:NSUTF8StringEncoding] writeToFile:fileAtPath atomically:NO];
 
     [table reloadData];
-    
-//    [self.plant.plantsDataArray addObject:@"{\"Test\": \"Test\"}"];
-//    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:self.plant.plantsDataArray
-//                                                       options:kNilOptions
-//                                                         error:nil];
-//    
-//    
-//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"plantDataReal" ofType:@"json"];
-//      NSFileManager *fileManager = [NSFileManager defaultManager];
-//      [fileManager createFileAtPath:filePath contents:jsonData attributes:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

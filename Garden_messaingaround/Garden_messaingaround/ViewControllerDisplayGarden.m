@@ -41,18 +41,11 @@
     //sets title bar
     [self setTitle:[GloablObjects instance].myGarden.name];
     delmode = false;
-    //dummy garden, bs info
-//    self.garden = [[GardenObject alloc] init];
-//    [self.garden allocateTable:4 withWidth:9];
-    //self.garden = [GloablObjects instance].myGarden;
     UICollectionViewFlowLayout *layout = (id) collectionView.collectionViewLayout;
     
     float screenWidth = layout.collectionViewContentSize.width;
     float widthOfCell = (screenWidth)/([[GloablObjects instance].myGarden getWidth])-1;
-//    
-//    CGRect screenRect = [[UIScreen mainScreen] bounds];
-//    CGFloat screenW = screenRect.size.width;
-//    CGFloat screenH = screenRect.size.height;
+
     
     layout.itemSize = CGSizeMake(widthOfCell, widthOfCell);
     
@@ -70,9 +63,18 @@
     
     self.plant = [[PlantObject alloc]init];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
+<<<<<<< HEAD
     [self.plant saveGardenToFile:[self.plant plantsDataArray] gardenName:@"testArr" ];
     [self.plant getSavedGardenFromFile:@"testArr"];
     NSLog(@"Get Link is: %@\n ", [self.plant getSavedGardenFromFile:@"testArr"]);
+=======
+//    [self.plant saveGardenToFile:[self.plant plantsDataArray] gardenName:@"testArr" ];
+//    [self.plant getSavedGardenFromFile:@"testArr"];
+//    NSLog(@"Get Link is: %@\n ", [self.plant getSavedGardenFromFile:@"testArr"]);
+
+    
+
+>>>>>>> 5901e8383a7a84096f254a46b299d9ead56b7377
     
     self.tabBarItem.image = [[UIImage imageNamed:@"noteSmall.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
@@ -80,11 +82,27 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
     NSArray *documents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:basePath error:nil];
+<<<<<<< HEAD
     
     PlantObject *myPlant = [PlantObject new];
     myPlant.name = [self.plant getAPlantName:0];
     [GloablObjects paintBrushInstance].paintBrush = myPlant;
     
+=======
+//    
+//    http://stackoverflow.com/questions/4934389/storing-json-data-on-the-iphone-save-the-json-string-as-it-is-vs-make-an-object
+    NSURL *URL;
+    NSString *completeFilePath;
+    for (NSString *file in documents) {
+        completeFilePath = [NSString stringWithFormat:@"%@/%@", basePath, file];
+        URL = [NSURL fileURLWithPath:completeFilePath];
+        NSLog(@"File %@  is excluded from backup %@", file, [URL resourceValuesForKeys:[NSArray arrayWithObject:NSURLIsExcludedFromBackupKey] error:nil]);
+    }
+
+
+   //URL = [NSURL fileURLWithPath:completeFilePath];
+   // [URL setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
+>>>>>>> 5901e8383a7a84096f254a46b299d9ead56b7377
     NSLog(@"Doc is: %@\n  Path is: %@", [documents description], basePath);
 }
 
@@ -386,17 +404,18 @@
 
 -(UIImage *)capture{
     
-//    http://stackoverflow.com/questions/14376249/creating-a-uiimage-from-a-uitableview
-    
     [collectionView reloadData];
     
     CGRect frame = collectionView.frame;
     frame.size.height = collectionView.contentSize.height;
     collectionView.frame = frame;
     
-    UIGraphicsBeginImageContext(collectionView.bounds.size);
+    UIGraphicsBeginImageContextWithOptions(collectionView.bounds.size, collectionView.opaque, 4.0);
+//    UIGraphicsBeginImageContext(collectionView.bounds.size);
     [collectionView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    // Save image.
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
 
     
     return image;
@@ -408,6 +427,18 @@
     shot.hidden = NO;
     shot.alpha = 1.0f;
     [shot setNeedsDisplay];
+    NSString *message = @"Garden Saved to Photos";
+    UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:nil, nil];
+    [toast show];
+    int duration = 1;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [toast dismissWithClickedButtonIndex:0 animated:YES];
+    });
     [UIView animateWithDuration:0.5 delay:2.0 options:0 animations:^{
         shot.alpha = 0.0f;
     } completion:^(BOOL finished) {
@@ -446,17 +477,29 @@
 }
 
 -(void) synchData {
-    NSLog(@"Kind of GlobalObjects is kind of : %@\n ",[[[GloablObjects instance].myGarden gardenArr2d]   class]);
-//    if([(NSMutableArray *)[[GloablObjects instance].myGarden gardenArr2d]  isKindOfClass:[NSArray class]]) {
-////    if ([[GloablObjects instance].myGarden gardenArr2d] isKindOfClass:[NSArray class] ) {
-//        [self.plant saveDatatoDefaults:[[GloablObjects instance].myGarden gardenArr2d] theGardenName:[[GloablObjects instance].myGarden name]];
-//    }
-    [self.view setNeedsDisplay];
-    NSLog(@"The Actual Plant Data contains real Objects: @\n%@\n ",[[self.plant plantsDataArray]objectAtIndex:0 ]);
-    NSLog(@"The Global Object contains addresses?: @\n%@\n ",[[GloablObjects instance].myGarden gardenArr2d]);
-
-    NSLog(@"This should return a garden name from saved file: @\n%@\n ",[self.plant getUserDataFromDefaults:[[GloablObjects instance].myGarden name]]);
+    NSLog(@"Kind of GlobalObjects is kind of : %@\n ",[[GloablObjects gardenArrayInstance].gardenArray   class]);
     
+//    [self.plant saveGardenToFile::[GloablObjects gardenArrayInstance].gardenArray[ theGardenName:@"UUUUU"];
+//    [self.plant saveDatatoDefaults:[GloablObjects gardenArrayInstance].gardenArray theGardenName:@"newSS"];
+     [self.plant saveGardenToFile:[self.plant plantsDataArray] gardenName:@"toJson"];
+    [self.plant getSavedGardenFromFile:@"newSS"];
+    NSLog(@"From Json is: %@\n ", [self.plant getSavedGardenFromFile:@"toJson"]);
+//    NSLog(@"File in TESTARR is: %@\n ", [self.plant getSavedGardenFromFile:@"testArr"]);
+//    NSLog(@"File in UUUUU is: %@\n ", [self.plant getUserDataFromDefaults:@"UUUUU"]);
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    NSArray *documents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:basePath error:nil];
+    //
+    //    http://stackoverflow.com/questions/4934389/storing-json-data-on-the-iphone-save-the-json-string-as-it-is-vs-make-an-object
+    NSURL *URL;
+    NSString *completeFilePath;
+    for (NSString *file in documents) {
+        completeFilePath = [NSString stringWithFormat:@"%@/%@", basePath, file];
+        URL = [NSURL fileURLWithPath:completeFilePath];
+        NSLog(@"Folder contains is %@ ", file);
+    }
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
