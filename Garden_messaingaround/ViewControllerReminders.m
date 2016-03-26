@@ -57,8 +57,9 @@
                                                                                                  timeStyle:NSDateFormatterFullStyle]];
     
     cell.textLabel.text = message;
-    //cell.textLabel.text =
-    //cell.imageView.image =
+    
+    NSString * imgName = [NSString stringWithFormat:@"reminderWhite"];
+    cell.imageView.image = [UIImage imageNamed:imgName];
     
     return cell;
 }
