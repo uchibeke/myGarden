@@ -879,7 +879,7 @@
         <image name="noteSmall.png" width="38" height="44"/>
         <image name="plantInfoWhite" width="38" height="44"/>
         <image name="reminderWhite" width="24" height="44"/>
-        <image name="remove" width="24" height="44"/>
+        <image name="remove" width="12" height="22"/>
         <image name="whiteCamera.png" width="64" height="64"/>
         <image name="whiteFacebook.png" width="64" height="64"/>
         <image name="whiteTwitter.png" width="64" height="64"/>
