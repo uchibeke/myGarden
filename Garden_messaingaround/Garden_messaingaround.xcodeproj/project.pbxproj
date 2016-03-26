@@ -10,6 +10,10 @@
 		0965401A1C9E09B300B28B43 /* ViewControllerReminders.m in Sources */ = {isa = PBXBuildFile; fileRef = 096540191C9E09B300B28B43 /* ViewControllerReminders.m */; };
 		09B2A1581C94B54B0081D136 /* ViewControllerPlantViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */; };
 		09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */; };
+		09CE091B1CA6F75C00911F6C /* cam3white.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE091A1CA6F75C00911F6C /* cam3white.png */; };
+		09CE09311CA6FBF300911F6C /* whiteCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE092E1CA6FBF300911F6C /* whiteCamera.png */; };
+		09CE09321CA6FBF300911F6C /* whiteFacebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE092F1CA6FBF300911F6C /* whiteFacebook.png */; };
+		09CE09331CA6FBF300911F6C /* whiteTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE09301CA6FBF300911F6C /* whiteTwitter.png */; };
 		1118911D1C96A7D6008EEF14 /* dirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1118911C1C96A7D6008EEF14 /* dirt.png */; };
 		116827FD1CA073EB00BD03FF /* ViewControllerEditAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 116827FC1CA073EB00BD03FF /* ViewControllerEditAlarm.m */; };
 		117A28F01CA60029001AFB24 /* twitter_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 117A28EF1CA60029001AFB24 /* twitter_button.png */; };
@@ -141,6 +145,10 @@
 		09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerPlantViews.m; sourceTree = "<group>"; };
 		09B2A1591C94C1C50081D136 /* ViewControllerNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerNotes.h; sourceTree = "<group>"; };
 		09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerNotes.m; sourceTree = "<group>"; };
+		09CE091A1CA6F75C00911F6C /* cam3white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cam3white.png; path = ../../../Desktop/cam3white.png; sourceTree = "<group>"; };
+		09CE092E1CA6FBF300911F6C /* whiteCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteCamera.png; sourceTree = "<group>"; };
+		09CE092F1CA6FBF300911F6C /* whiteFacebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteFacebook.png; sourceTree = "<group>"; };
+		09CE09301CA6FBF300911F6C /* whiteTwitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteTwitter.png; sourceTree = "<group>"; };
 		1118911C1C96A7D6008EEF14 /* dirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dirt.png; sourceTree = "<group>"; };
 		116827FB1CA073EB00BD03FF /* ViewControllerEditAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerEditAlarm.h; sourceTree = "<group>"; };
 		116827FC1CA073EB00BD03FF /* ViewControllerEditAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerEditAlarm.m; sourceTree = "<group>"; };
@@ -307,6 +315,7 @@
 		9552DED81C880DEC00633FBE /* plantImages */ = {
 			isa = PBXGroup;
 			children = (
+				09CE091A1CA6F75C00911F6C /* cam3white.png */,
 				9567D3351CA6CEDA00A2362A /* cam1.png */,
 				9567D3361CA6CEDA00A2362A /* cam2.png */,
 				9567D3371CA6CEDA00A2362A /* cam3.png */,
@@ -317,6 +326,9 @@
 				95C8B4171C96388A00057F9A /* Asparagus_44x44.png */,
 				9D6549631C88BAF400841A24 /* asparagus.png */,
 				9D6549641C88BAF400841A24 /* Asparagus.png */,
+				09CE092E1CA6FBF300911F6C /* whiteCamera.png */,
+				09CE092F1CA6FBF300911F6C /* whiteFacebook.png */,
+				09CE09301CA6FBF300911F6C /* whiteTwitter.png */,
 				95C8B4181C96388A00057F9A /* basil_44x44.png */,
 				9D6549651C88BAF400841A24 /* basil.png */,
 				95C8B4191C96388A00057F9A /* Beans_44x44.png */,
@@ -570,12 +582,14 @@
 				95C8B4141C962A1C00057F9A /* dirt3.png in Resources */,
 				95F51EC51C96437A00800259 /* note.png in Resources */,
 				95C8B44E1C96388A00057F9A /* spinach_44x44.png in Resources */,
+				09CE09331CA6FBF300911F6C /* whiteTwitter.png in Resources */,
 				95C8B4411C96388A00057F9A /* cucumber_44x44.png in Resources */,
 				9D65499C1C88BAF400841A24 /* eggplant.png in Resources */,
 				9D6549621C88AD4200841A24 /* plantDataReal.json in Resources */,
 				9D6549AB1C88BAF400841A24 /* summer squash.png in Resources */,
 				9567D32F1CA6C92C00A2362A /* social-media.png in Resources */,
 				9D6549A41C88BAF400841A24 /* peas.png in Resources */,
+				09CE09321CA6FBF300911F6C /* whiteFacebook.png in Resources */,
 				95C8B43A1C96388A00057F9A /* broccoli_44x44.png in Resources */,
 				9D65499B1C88BAF400841A24 /* egg-plant.png in Resources */,
 				95C8B4471C96388A00057F9A /* onion_44x44.png in Resources */,
@@ -606,10 +620,12 @@
 				95F51ECF1C96472300800259 /* dirt_texture_by_pivvauh.jpg in Resources */,
 				9D6549A81C88BAF400841A24 /* spinach.png in Resources */,
 				9D6549971C88BAF400841A24 /* chives.png in Resources */,
+				09CE091B1CA6F75C00911F6C /* cam3white.png in Resources */,
 				9D6549991C88BAF400841A24 /* corn.png in Resources */,
 				9D6549A31C88BAF400841A24 /* parsley.png in Resources */,
 				95C8B4361C96388A00057F9A /* Asparagus_44x44.png in Resources */,
 				9D65498C1C88BAF400841A24 /* Asparagus.png in Resources */,
+				09CE09311CA6FBF300911F6C /* whiteCamera.png in Resources */,
 				9D6549901C88BAF400841A24 /* beet.png in Resources */,
 				95C8B4531C96388A00057F9A /* watermelon_44x44.png in Resources */,
 				9D6549A11C88BAF400841A24 /* onion.png in Resources */,
