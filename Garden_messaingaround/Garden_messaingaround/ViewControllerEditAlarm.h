@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlantObject.h"
 
 @interface ViewControllerEditAlarm : UIViewController
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UIDatePicker *timeToSetOff;
-@property (nonatomic, strong) IBOutlet UINavigationItem *navItem;
-@property (nonatomic, assign) NSInteger indexOfAlarmToEdit;
-@property(atomic,strong) NSString *label;
-@property(nonatomic,assign) BOOL editMode;
-@property(nonatomic,assign) int notificationID;
+@property (nonatomic, strong) IBOutlet UISwitch *weedSwitch;
+@property (nonatomic, strong) IBOutlet UISwitch *waterSwitch;
+@property (nonatomic, strong) IBOutlet UISwitch *harvestSwitch;
+
+@property (strong, nonatomic) PlantObject * plant ;
 @end

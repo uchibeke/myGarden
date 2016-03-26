@@ -12,6 +12,7 @@ static GloablObjects* _myGarden = nil;
 static GloablObjects* _gardenArray = nil;
 static GloablObjects* _paintBrush = nil;
 static GloablObjects* _notesArray = nil;
+static GloablObjects* _alarmArray = nil;
 
 @implementation GloablObjects
 
@@ -19,6 +20,7 @@ static GloablObjects* _notesArray = nil;
 @synthesize gardenArray;
 @synthesize paintBrush;
 @synthesize notesArray;
+@synthesize alarmArray;
 
 -(id)init {
     if (self=[super init]) {
@@ -48,5 +50,10 @@ static GloablObjects* _notesArray = nil;
 +(GloablObjects*)notesInstance {
     if (!_notesArray) _notesArray = [[GloablObjects alloc] init];
     return _notesArray;
+}
+
++(GloablObjects*)alarmInstance {
+    if (!_alarmArray) _alarmArray = [[GloablObjects alloc] init];
+    return _alarmArray;
 }
 @end

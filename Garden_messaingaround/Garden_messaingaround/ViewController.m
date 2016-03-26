@@ -10,7 +10,9 @@
 #import "PlantObject.h"
 #import "GloablObjects.h"
 
-@interface ViewController ()
+@interface ViewController () {
+    IBOutlet UITableView *myTable;
+}
 
 @end
 
@@ -28,11 +30,26 @@
         [GloablObjects gardenArrayInstance].gardenArray = [[NSMutableArray alloc] init];
         [GloablObjects paintBrushInstance].paintBrush = [[PlantObject alloc] init];
         [GloablObjects notesInstance].notesArray = [[NSMutableArray alloc] init];
+        [GloablObjects alarmInstance].alarmArray = [[NSMutableArray alloc] init];
         NSLog(@"test");
     });
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
 
     
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    NSLog(@"data reload");
+    [myTable reloadData];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSLog(@"data reload");
+    [myTable reloadData];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

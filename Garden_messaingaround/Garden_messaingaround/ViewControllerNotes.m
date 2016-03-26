@@ -41,6 +41,17 @@
 
 }
 
+-(IBAction) goAllGardens: (id) sender {
+    NSLog(@"clicked");
+    [self.navigationController.presentingViewController.presentingViewController viewWillAppear:YES];
+    [self.navigationController.presentingViewController.presentingViewController viewDidAppear:YES];
+    if (self.navigationController.presentingViewController.presentingViewController) {
+        [self.navigationController.presentingViewController.presentingViewController dismissViewControllerAnimated:NO completion:nil];
+    } else {
+        [self.navigationController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return YES - we will be able to delete all rows
@@ -106,7 +117,8 @@
     return [[GloablObjects notesInstance].notesArray count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     if (cell == nil) {
         cell = [ [ UITableViewCell alloc ]

@@ -10,13 +10,15 @@
 #import "ViewControllerDisplayGarden.h"
 #import "GloablObjects.h"
 #import "PlantObject.h"
+#import <Social/Social.h>
 
 @interface ViewControllerDisplayGarden () {
     IBOutlet UICollectionView *collectionView;
     IBOutlet UITableView *tableView;
     UIImageView *backgroundimgview;
-    
+    dispatch_once_t onceToken;
     int alert;
+    bool delmode ;
 
 //    IBOutlet UITableView * tableView;
     IBOutlet UIImageView * shot;
@@ -38,7 +40,7 @@
     alert = 0;
     //sets title bar
     [self setTitle:[GloablObjects instance].myGarden.name];
-    
+    delmode = false;
     //dummy garden, bs info
 //    self.garden = [[GardenObject alloc] init];
 //    [self.garden allocateTable:4 withWidth:9];
@@ -81,18 +83,19 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
     NSArray *documents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:basePath error:nil];
-    
-//    http://stackoverflow.com/questions/4934389/storing-json-data-on-the-iphone-save-the-json-string-as-it-is-vs-make-an-object
-    NSURL *URL;
-    NSString *completeFilePath;
-    for (NSString *file in documents) {
-        completeFilePath = [NSString stringWithFormat:@"%@/%@", basePath, file];
-        URL = [NSURL fileURLWithPath:completeFilePath];
-        NSLog(@"File %@  is excluded from backup %@", file, [URL resourceValuesForKeys:[NSArray arrayWithObject:NSURLIsExcludedFromBackupKey] error:nil]);
-    }
-    
-    URL = [NSURL fileURLWithPath:completeFilePath];
-    [URL setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
+//    
+////    http://stackoverflow.com/questions/4934389/storing-json-data-on-the-iphone-save-the-json-string-as-it-is-vs-make-an-object
+//    NSURL *URL;
+//    NSString *completeFilePath;
+//    for (NSString *file in documents) {
+//        completeFilePath = [NSString stringWithFormat:@"%@/%@", basePath, file];
+//        URL = [NSURL fileURLWithPath:completeFilePath];
+//        NSLog(@"File %@  is excluded from backup %@", file, [URL resourceValuesForKeys:[NSArray arrayWithObject:NSURLIsExcludedFromBackupKey] error:nil]);
+//    }
+//
+
+   //URL = [NSURL fileURLWithPath:completeFilePath];
+   // [URL setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
     NSLog(@"Doc is: %@\n  Path is: %@", [documents description], basePath);
 }
 
@@ -160,6 +163,17 @@
     return cell;
 }
 
+-(IBAction) goAllGardens: (id) sender {
+    NSLog(@"clicked");
+    [self.navigationController.presentingViewController.presentingViewController viewWillAppear:YES];
+    [self.navigationController.presentingViewController.presentingViewController viewDidAppear:YES];
+    if (self.navigationController.presentingViewController.presentingViewController) {
+        [self.navigationController.presentingViewController.presentingViewController dismissViewControllerAnimated:NO completion:nil];
+    } else {
+        [self.navigationController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 
 -(bool)checkfoes:(int) index {
     NSLog(@"%d",index);
@@ -212,17 +226,19 @@
             message = [NSMutableString stringWithFormat:@"%@\n%@", message, neighborName];
         }
     }
-    
-    alert = 1;
-    if (found) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"COMBATIVE WARNING!"
-                                                        message:message
-                                                       delegate:self
-                                              cancelButtonTitle:@"Undo"
-                                              otherButtonTitles:@"Continue",nil];
-        [alert show];
-
+    if(!delmode){
+        alert = 1;
+        if (found) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"COMBATIVE WARNING!"
+                                                            message:message
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Undo"
+                                                  otherButtonTitles:@"Continue",nil];
+            [alert show];
+            
+        }
     }
+    
     return found;
 }
 
@@ -317,7 +333,7 @@
 {
     // Set background back to the original one when tableview is selected
     collectionView.backgroundColor = [UIColor clearColor];
-    
+    delmode = NO;
     PlantObject* brush = [PlantObject alloc];
     brush.name = [self.plant getAPlantName:indexPath.row];
     self.brushIndex = indexPath.row;
@@ -335,14 +351,24 @@
 -(IBAction) removeTool: (id) sender {
     // red background when remove button clicked
     collectionView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3f];
-    
+    delmode = YES;
     alert = 0;
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"WARNING!"
-                                                    message:@"You are about to remove plants from your garden! Are you sure you to continue?"
-                                                   delegate:self
-                                          cancelButtonTitle:@"Cancel"
-                                          otherButtonTitles:@"Continue",nil];
-    [alert show];
+    dispatch_once (&onceToken, ^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"WARNING!"
+                                                        message:@"You are about to remove plants from your garden! Are you sure you to continue?"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"Continue",nil];
+        [alert show];
+    });
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.brushIndex inSection:0];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    PlantObject *myPlant = [PlantObject new];
+    myPlant.name = @"";
+    [GloablObjects paintBrushInstance].paintBrush = myPlant;
+    [collectionView reloadData];
+
+    
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alert == 0) {
@@ -429,9 +455,31 @@
 
 
 
+-(IBAction) facebookShareGarden: (id) sender {
+    SLComposeViewController *composeController = [SLComposeViewController
+                                                  composeViewControllerForServiceType:SLServiceTypeFacebook];
+    
+    [composeController setInitialText:@"Check Out My Garden"];
+    [composeController addImage:[self capture]];
+    if (composeController != nil) {
+        [self presentViewController:composeController
+                           animated:YES completion:nil];
+    }
+    
+}
 
-
-
+-(IBAction) twitterShareGarden: (id) sender {
+    SLComposeViewController *composeController = [SLComposeViewController
+                                                  composeViewControllerForServiceType:SLServiceTypeTwitter];
+    
+    [composeController setInitialText:@"Check Out My Garden"];
+    [composeController addImage:[self capture]];
+    if (composeController != nil) {
+        [self presentViewController:composeController
+                           animated:YES completion:nil];
+    }
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

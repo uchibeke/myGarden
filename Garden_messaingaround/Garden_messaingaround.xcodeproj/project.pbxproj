@@ -7,16 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0939A7711CA60E210043B0EA /* fbBtnSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 0939A76F1CA60E210043B0EA /* fbBtnSmall.png */; };
+		0939A7721CA60E210043B0EA /* tweetbuttonSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 0939A7701CA60E210043B0EA /* tweetbuttonSmall.png */; };
 		0965401A1C9E09B300B28B43 /* ViewControllerReminders.m in Sources */ = {isa = PBXBuildFile; fileRef = 096540191C9E09B300B28B43 /* ViewControllerReminders.m */; };
 		09B2A1581C94B54B0081D136 /* ViewControllerPlantViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */; };
 		09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */; };
 		1118911D1C96A7D6008EEF14 /* dirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1118911C1C96A7D6008EEF14 /* dirt.png */; };
 		116827FD1CA073EB00BD03FF /* ViewControllerEditAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 116827FC1CA073EB00BD03FF /* ViewControllerEditAlarm.m */; };
+		117A28F01CA60029001AFB24 /* twitter_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 117A28EF1CA60029001AFB24 /* twitter_button.png */; };
+		117A28F21CA60032001AFB24 /* facebook_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 117A28F11CA60032001AFB24 /* facebook_button.png */; };
 		11B3F59C1CA06CC900D5F8D5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3F59B1CA06CC900D5F8D5 /* AVFoundation.framework */; };
 		11B3F59E1CA06CD000D5F8D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3F59D1CA06CD000D5F8D5 /* UIKit.framework */; };
 		11B3F5A01CA06CE100D5F8D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3F59F1CA06CE100D5F8D5 /* Foundation.framework */; };
 		11B3F5A21CA06CE800D5F8D5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3F5A11CA06CE800D5F8D5 /* CoreGraphics.framework */; };
-		11B3F5A61CA06E8700D5F8D5 /* AlarmObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3F5A51CA06E8700D5F8D5 /* AlarmObject.m */; };
+		85918F371CA5C2F500591415 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85918F361CA5C2F500591415 /* NotificationCenter.framework */; };
+		85918F3D1CA5D44200591415 /* gardenAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 85918F3C1CA5D44200591415 /* gardenAlarm.m */; };
+		85918F3F1CA5F3B900591415 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85918F3E1CA5F3B900591415 /* Social.framework */; };
 		85AE250F1C83D56C001828C0 /* GardenObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE250C1C83D56C001828C0 /* GardenObject.m */; };
 		85AE25101C83D56C001828C0 /* PlantObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE250E1C83D56C001828C0 /* PlantObject.m */; };
 		85AE25191C83DB2F001828C0 /* GloablObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE25181C83DB2F001828C0 /* GloablObjects.m */; };
@@ -126,6 +132,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0939A76F1CA60E210043B0EA /* fbBtnSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fbBtnSmall.png; path = "../../../Downloads/documents-export-2016-03-25/fbBtnSmall.png"; sourceTree = "<group>"; };
+		0939A7701CA60E210043B0EA /* tweetbuttonSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tweetbuttonSmall.png; path = "../../../Downloads/documents-export-2016-03-25/tweetbuttonSmall.png"; sourceTree = "<group>"; };
 		096540181C9E09B300B28B43 /* ViewControllerReminders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewControllerReminders.h; path = ../ViewControllerReminders.h; sourceTree = "<group>"; };
 		096540191C9E09B300B28B43 /* ViewControllerReminders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewControllerReminders.m; path = ../ViewControllerReminders.m; sourceTree = "<group>"; };
 		09B2A1561C94B54B0081D136 /* ViewControllerPlantViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerPlantViews.h; sourceTree = "<group>"; };
@@ -135,12 +143,16 @@
 		1118911C1C96A7D6008EEF14 /* dirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dirt.png; sourceTree = "<group>"; };
 		116827FB1CA073EB00BD03FF /* ViewControllerEditAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerEditAlarm.h; sourceTree = "<group>"; };
 		116827FC1CA073EB00BD03FF /* ViewControllerEditAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerEditAlarm.m; sourceTree = "<group>"; };
+		117A28EF1CA60029001AFB24 /* twitter_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_button.png; sourceTree = "<group>"; };
+		117A28F11CA60032001AFB24 /* facebook_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_button.png; sourceTree = "<group>"; };
 		11B3F59B1CA06CC900D5F8D5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		11B3F59D1CA06CD000D5F8D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		11B3F59F1CA06CE100D5F8D5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		11B3F5A11CA06CE800D5F8D5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		11B3F5A41CA06E8700D5F8D5 /* AlarmObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmObject.h; sourceTree = "<group>"; };
-		11B3F5A51CA06E8700D5F8D5 /* AlarmObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmObject.m; sourceTree = "<group>"; };
+		85918F361CA5C2F500591415 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		85918F3B1CA5D44200591415 /* gardenAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gardenAlarm.h; sourceTree = "<group>"; };
+		85918F3C1CA5D44200591415 /* gardenAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gardenAlarm.m; sourceTree = "<group>"; };
+		85918F3E1CA5F3B900591415 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		85AE250B1C83D56C001828C0 /* GardenObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GardenObject.h; sourceTree = "<group>"; };
 		85AE250C1C83D56C001828C0 /* GardenObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GardenObject.m; sourceTree = "<group>"; };
 		85AE250D1C83D56C001828C0 /* PlantObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlantObject.h; sourceTree = "<group>"; };
@@ -256,6 +268,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85918F3F1CA5F3B900591415 /* Social.framework in Frameworks */,
+				85918F371CA5C2F500591415 /* NotificationCenter.framework in Frameworks */,
 				11B3F5A21CA06CE800D5F8D5 /* CoreGraphics.framework in Frameworks */,
 				11B3F5A01CA06CE100D5F8D5 /* Foundation.framework in Frameworks */,
 				11B3F59E1CA06CD000D5F8D5 /* UIKit.framework in Frameworks */,
@@ -287,6 +301,10 @@
 		9552DED81C880DEC00633FBE /* plantImages */ = {
 			isa = PBXGroup;
 			children = (
+				0939A76F1CA60E210043B0EA /* fbBtnSmall.png */,
+				0939A7701CA60E210043B0EA /* tweetbuttonSmall.png */,
+				117A28F11CA60032001AFB24 /* facebook_button.png */,
+				117A28EF1CA60029001AFB24 /* twitter_button.png */,
 				95C8B4171C96388A00057F9A /* Asparagus_44x44.png */,
 				9D6549631C88BAF400841A24 /* asparagus.png */,
 				9D6549641C88BAF400841A24 /* Asparagus.png */,
@@ -376,6 +394,8 @@
 		ADC7147B1C82448400260F56 = {
 			isa = PBXGroup;
 			children = (
+				85918F3E1CA5F3B900591415 /* Social.framework */,
+				85918F361CA5C2F500591415 /* NotificationCenter.framework */,
 				11B3F5A31CA06D0900D5F8D5 /* frameworks */,
 				ADC714861C82448400260F56 /* Garden_messaingaround */,
 				ADC714A01C82448400260F56 /* Garden_messaingaroundTests */,
@@ -418,10 +438,10 @@
 				85AE250C1C83D56C001828C0 /* GardenObject.m */,
 				85AE250D1C83D56C001828C0 /* PlantObject.h */,
 				85AE250E1C83D56C001828C0 /* PlantObject.m */,
+				85918F3B1CA5D44200591415 /* gardenAlarm.h */,
+				85918F3C1CA5D44200591415 /* gardenAlarm.m */,
 				ADC7148B1C82448400260F56 /* AppDelegate.h */,
 				ADC7148C1C82448400260F56 /* AppDelegate.m */,
-				11B3F5A41CA06E8700D5F8D5 /* AlarmObject.h */,
-				11B3F5A51CA06E8700D5F8D5 /* AlarmObject.m */,
 				85AE25171C83DB2F001828C0 /* GloablObjects.h */,
 				85AE25181C83DB2F001828C0 /* GloablObjects.m */,
 				ADC714911C82448400260F56 /* Main.storyboard */,
@@ -538,6 +558,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0939A7711CA60E210043B0EA /* fbBtnSmall.png in Resources */,
 				95C8B4141C962A1C00057F9A /* dirt3.png in Resources */,
 				95F51EC51C96437A00800259 /* note.png in Resources */,
 				95C8B44E1C96388A00057F9A /* spinach_44x44.png in Resources */,
@@ -552,9 +573,11 @@
 				95C8B4511C96388A00057F9A /* swiss chard_44x44.png in Resources */,
 				9D6549A61C88BAF400841A24 /* potato.png in Resources */,
 				9D6549951C88BAF400841A24 /* carrots.png in Resources */,
+				117A28F21CA60032001AFB24 /* facebook_button.png in Resources */,
 				95C8B4421C96388A00057F9A /* eggplant_44x44.png in Resources */,
 				95C8B43C1C96388A00057F9A /* carrots_44x44.png in Resources */,
 				9D6549A71C88BAF400841A24 /* radish.png in Resources */,
+				0939A7721CA60E210043B0EA /* tweetbuttonSmall.png in Resources */,
 				9552DED71C87E45700633FBE /* plantData.json in Resources */,
 				95C8B44F1C96388A00057F9A /* strawberries_44x44.png in Resources */,
 				95F51ECE1C96472300800259 /* brown-texture-background.jpg in Resources */,
@@ -621,6 +644,7 @@
 				9D6549931C88BAF400841A24 /* cabbage.png in Resources */,
 				9D6549911C88BAF400841A24 /* beets.png in Resources */,
 				ADC714981C82448400260F56 /* LaunchScreen.xib in Resources */,
+				117A28F01CA60029001AFB24 /* twitter_button.png in Resources */,
 				9D6549AD1C88BAF400841A24 /* swiss chard.png in Resources */,
 				ADC714951C82448400260F56 /* Images.xcassets in Resources */,
 				9D65499A1C88BAF400841A24 /* cucumber.png in Resources */,
@@ -643,10 +667,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADC714BE1C825AB800260F56 /* ViewControllerNewGarden.m in Sources */,
-				11B3F5A61CA06E8700D5F8D5 /* AlarmObject.m in Sources */,
 				85AE25101C83D56C001828C0 /* PlantObject.m in Sources */,
 				09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */,
 				116827FD1CA073EB00BD03FF /* ViewControllerEditAlarm.m in Sources */,
+				85918F3D1CA5D44200591415 /* gardenAlarm.m in Sources */,
 				ADC714C31C82666100260F56 /* ViewControllerDisplayGarden.m in Sources */,
 				0965401A1C9E09B300B28B43 /* ViewControllerReminders.m in Sources */,
 				09B2A1581C94B54B0081D136 /* ViewControllerPlantViews.m in Sources */,

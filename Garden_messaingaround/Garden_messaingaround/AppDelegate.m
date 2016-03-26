@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "GloablObjects.h"
+#import "gardenAlarm.h"
 
 @interface AppDelegate ()
 
@@ -44,8 +46,9 @@
         [self setupWindow];
     }
     
-    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
-        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)])
+    {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil]];
     }
     
     
@@ -76,4 +79,25 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+// This code block is invoked when application is in foreground (active-mode)
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    NSString *fir = [NSDateFormatter localizedStringFromDate:notification.fireDate
+                                                   dateStyle:NSDateFormatterShortStyle
+                                                   timeStyle:NSDateFormatterFullStyle];
+    
+    for(gardenAlarm *notification in [GloablObjects alarmInstance].alarmArray){
+        if ([fir isEqualToString:[NSDateFormatter localizedStringFromDate:notification.time
+                                                                dateStyle:NSDateFormatterShortStyle
+                                                                timeStyle:NSDateFormatterFullStyle]]) {
+            // delete this notification
+            NSLog(@"found");
+            [[GloablObjects alarmInstance].alarmArray removeObject:notification];
+        }
+    }
+    UIAlertView *notificationAlert = [[UIAlertView alloc] initWithTitle:notification.alertTitle    message:notification.alertBody
+                                                               delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    
+    [notificationAlert show];
+    // NSLog(@"didReceiveLocalNotification");
+}
 @end

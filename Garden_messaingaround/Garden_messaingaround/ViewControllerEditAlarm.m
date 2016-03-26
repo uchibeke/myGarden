@@ -8,10 +8,13 @@
 
 #import "ViewControllerEditAlarm.h"
 #import "ViewControllerReminders.h"
-#import "AlarmObject.h"
+#import "GloablObjects.h"
+#import "gardenAlarm.h"
 
 @interface ViewControllerEditAlarm () {
     ViewControllerEditAlarm * reminders;
+    NSString * selectedPlant;
+    int plantid;
 }
 
 @end
@@ -20,22 +23,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    reminders = [self presentingViewController];
-    //Edit mode is only true when an existing alarm is pressed
-    if (self.editMode)
-    {
-//        navItem.title = @"Edit Alarm";
-//        navItem.rightBarButtonItem.title = @"Save";
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSData *alarmListData = [defaults objectForKey:@"AlarmListData"];
-        NSMutableArray *alarmList = [NSKeyedUnarchiver unarchiveObjectWithData:alarmListData];
-        AlarmObject * oldAlarmObject = [alarmList objectAtIndex:self.indexOfAlarmToEdit];
-        self.label = oldAlarmObject.label;
-        _timeToSetOff.date = oldAlarmObject.timeToSetOff;
-        self.notificationID = oldAlarmObject.notificationID;
-        
-    }
+    
+    self.plant = [[PlantObject alloc]init];
+    [self.waterSwitch setOn:NO];
+    [self.weedSwitch setOn:YES];
+    [self.harvestSwitch setOn:NO];
+    [self.tableView setHidden:YES];
+    [self.timeToSetOff setHidden:NO];
+    
+    plantid = 0;
+    selectedPlant = [self.plant getAPlantName:0];
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
+    
+    [self.timeToSetOff setValue:[UIColor whiteColor] forKeyPath:@"textColor"];
+    SEL selector = NSSelectorFromString( @"setHighlightsToday:" );
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature :
+                                [UIDatePicker
+                                 instanceMethodSignatureForSelector:selector]];
+    BOOL no = NO;
+    [invocation setSelector:selector];
+    [invocation setArgument:&no atIndex:2];
+    [invocation invokeWithTarget:self.timeToSetOff];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,161 +52,146 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)CancelExistingNotification
+
+-(IBAction)waterSw:(id)sender
 {
-    //cancel alarm
-    UIApplication *app = [UIApplication sharedApplication];
-    NSArray *eventArray = [app scheduledLocalNotifications];
-    for (int i=0; i<[eventArray count]; i++)
-    {
-        UILocalNotification* oneEvent = [eventArray objectAtIndex:i];
-        NSDictionary *userInfoCurrent = oneEvent.userInfo;
-        NSString *uid=[NSString stringWithFormat:@"%@",[userInfoCurrent valueForKey:@"notificationID"]];
-        if ([uid isEqualToString:[NSString stringWithFormat:@"%i",self.notificationID]])
-        {
-            //Cancelling local notification
-            
-            [app cancelLocalNotification:oneEvent];
-            break;
-        }
-    }
+    [self.waterSwitch setOn:YES];
+    [self.weedSwitch setOn:NO];
+    [self.harvestSwitch setOn:NO];
+    [self.tableView setHidden:YES];
+    [self.timeToSetOff setHidden:NO];
 }
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+-(IBAction)weedSw:(id)sender
 {
-    if(buttonIndex == 0)
-    {
-        //cancel alarm
-        [self CancelExistingNotification];
-        //delete alarm
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSData *alarmListData = [defaults objectForKey:@"AlarmListData"];
-        NSMutableArray *alarmList = [NSKeyedUnarchiver unarchiveObjectWithData:alarmListData];
-        [alarmList removeObjectAtIndex: self.indexOfAlarmToEdit];
-        NSData *alarmListData2 = [NSKeyedArchiver archivedDataWithRootObject:alarmList];
-        [[NSUserDefaults standardUserDefaults] setObject:alarmListData2 forKey:@"AlarmListData"];
-
-        
-        //[self performSegueWithIdentifier: @"AlarmListSegue" sender: self];
-        [self dismissModalViewControllerAnimated:YES];
-    }
-    else{
-        //do nothing
-    }
+    [self.waterSwitch setOn:NO];
+    [self.weedSwitch setOn:YES];
+    [self.harvestSwitch setOn:NO];
+    [self.tableView setHidden:YES];
+    [self.timeToSetOff setHidden:NO];
 }
--(IBAction)saveAlarm:(id)sender
+
+-(IBAction)harvestSw:(id)sender
 {
-    AlarmObject * newAlarmObject;
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *alarmListData = [defaults objectForKey:@"AlarmListData"];
-    NSMutableArray *alarmList = [NSKeyedUnarchiver unarchiveObjectWithData:alarmListData];
-    
-    if(!alarmList)
-    {
-        alarmList = [[NSMutableArray alloc]init];
-    }
-    
-    if(self.editMode)//Editing Alarm that already exists
-    {
-        newAlarmObject = [alarmList objectAtIndex:self.indexOfAlarmToEdit];
+    [self.waterSwitch setOn:NO];
+    [self.weedSwitch setOn:NO];
+    [self.harvestSwitch setOn:YES];
+    [self.tableView setHidden:NO];
+    [self.timeToSetOff setHidden:YES];
+}
+
+
+-(IBAction)sendNotif:(id)sender
+{
+    if ([self.weedSwitch isOn]) {
+        NSLog(@"send weeding notif");
+        UILocalNotification *locNot = [[UILocalNotification alloc] init];
+        locNot.fireDate = self.timeToSetOff.date;
+        locNot.alertBody = @"Reminder to weed your garden!";
+        locNot.timeZone = [NSTimeZone defaultTimeZone];
+        locNot.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] scheduleLocalNotification: locNot];
         
-        [self CancelExistingNotification];
+        gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
+        myAlarm.name = @"weeding";
+        myAlarm.time = locNot.fireDate;
+        myAlarm.message = @"Reminder to weed your garden!";
+        [[GloablObjects alarmInstance].alarmArray addObject:myAlarm];
     }
-    else//Adding a new alarm
-    {
-        newAlarmObject = [[AlarmObject alloc]init];
-        newAlarmObject.enabled = YES;
-        newAlarmObject.notificationID = [self getUniqueNotificationID];
-    }
-    
-    newAlarmObject.label = self.label;
-    newAlarmObject.timeToSetOff = _timeToSetOff.date;
-    newAlarmObject.enabled = YES;
-    
-    [self scheduleLocalNotificationWithDate:self.timeToSetOff.date atIndex:newAlarmObject.notificationID];
-    
-    if(self.editMode == NO){
-        [alarmList addObject:newAlarmObject];
+    else if ([self.waterSwitch isOn]) {
+        NSLog(@"send watering notif");
+        UILocalNotification *locNot = [[UILocalNotification alloc] init];
+        locNot.fireDate = self.timeToSetOff.date;
+        locNot.alertBody = @"Reminder to water your garden!";
+        locNot.timeZone = [NSTimeZone defaultTimeZone];
+        locNot.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] scheduleLocalNotification: locNot];
         
-        
+        gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
+        myAlarm.name = @"watering";
+        myAlarm.time = locNot.fireDate;
+        myAlarm.message = @"Reminder to water your garden!";
+        [[GloablObjects alarmInstance].alarmArray addObject:myAlarm];
+        NSLog(@"%d", [[GloablObjects alarmInstance].alarmArray count]);
     }
-    NSData *alarmListData2 = [NSKeyedArchiver archivedDataWithRootObject:alarmList];
-    [[NSUserDefaults standardUserDefaults] setObject:alarmListData2 forKey:@"AlarmListData"];
+    else if ([self.harvestSwitch isOn]) {
+        NSLog(@"send harvest notif");
+        UILocalNotification *locNot = [[UILocalNotification alloc] init];
+        NSDate *mydate = [NSDate date];
+        double interval = 604800;
+        interval *= [[self.plant getAPlantTimerCountDown:plantid] integerValue];
+        locNot.fireDate = [mydate dateByAddingTimeInterval: interval];
+        NSMutableString *message = @"Reminder to harvest your ";
+        message = [NSMutableString stringWithFormat:@"%@%@", message, selectedPlant];
+        locNot.alertBody = message;
+        locNot.timeZone = [NSTimeZone defaultTimeZone];
+        locNot.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] scheduleLocalNotification: locNot];
+        
+        gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
+        myAlarm.name = @"harvest";
+        myAlarm.time = locNot.fireDate;
+        myAlarm.message = message;
+        [[GloablObjects alarmInstance].alarmArray addObject:myAlarm];
+        NSLog(@"%d", [[GloablObjects alarmInstance].alarmArray count]);
+    }
     
-    
-    
-//    [self performSegueWithIdentifier: @"AlarmListSegue" sender: self];
+    [self.presentingViewController viewWillAppear:YES];
+    [self.presentingViewController viewDidAppear:YES];
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (void)scheduleLocalNotificationWithDate:(NSDate *)fireDate
-                                  atIndex:(int)indexOfObject {
-    
-    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    
-    
-    if (!localNotification)
-    return;
-    
-    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"hh-mm -a";
-    NSDate* date = [dateFormatter dateFromString:[dateFormatter stringFromDate:_timeToSetOff.date]];
-    
-    localNotification.repeatInterval = NSDayCalendarUnit;
-    [localNotification setFireDate:date];
-    [localNotification setTimeZone:[NSTimeZone defaultTimeZone]];
-    // Setup alert notification
-    [localNotification setAlertBody:@"Alarm" ];
-    [localNotification setAlertAction:@"Open App"];
-    [localNotification setHasAction:YES];
-    
-    NSLog(@"%@", date);
-    //This array maps the alarms uid to the index of the alarm so that we can cancel specific local notifications
-    
-    NSNumber* uidToStore = [NSNumber numberWithInt:indexOfObject];
-    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:uidToStore forKey:@"notificationID"];
-    localNotification.userInfo = userInfo;
-    NSLog(@"Uid Store in userInfo %@", [localNotification.userInfo objectForKey:@"notificationID"]);
-    
-    // Schedule the notification
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-    
-    
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return( 1 );
 }
 
-//Get Unique Notification ID for a new alarm O(n)
--(int)getUniqueNotificationID
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSMutableDictionary * hashDict = [[NSMutableDictionary alloc]init];
-    UIApplication *app = [UIApplication sharedApplication];
-    NSArray *eventArray = [app scheduledLocalNotifications];
-    for (int i=0; i<[eventArray count]; i++)
-    {
-        UILocalNotification* oneEvent = [eventArray objectAtIndex:i];
-        NSDictionary *userInfoCurrent = oneEvent.userInfo;
-        NSNumber *uid= [userInfoCurrent valueForKey:@"notificationID"];
-        NSNumber * value =[NSNumber numberWithInt:1];
-        [hashDict setObject:value forKey:uid];
-    }
-    for (int i=0; i<[eventArray count]+1; i++)
-    {
-        NSNumber * value = [hashDict objectForKey:[NSNumber numberWithInt:i]];
-        if(!value)
-        {
-            return i;
-        }
-    }
-    return 0;
-    
+    return [[self.plant plantsDataArray] count];
 }
 
-// Delegate Methods From Edit Views
-// Add more delegates if you wish to add more feature edit views to the alarm
-- (void)updateLabelText:(NSString *)newLabel
-{
-    self.label = newLabel;
-    [self.tableView reloadData];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    if (cell == nil) {
+        cell = [ [ UITableViewCell alloc ]
+                initWithStyle: UITableViewCellStyleDefault
+                reuseIdentifier: @"Cell" ];
+    }
+    
+    NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [self.plant getAPlantName:indexPath.row], @"png"] lowercaseString] ;
+    
+    cell.imageView.image = [UIImage imageNamed:imgName];
+    
+    CGSize itemSize = CGSizeMake(32, 32);
+    UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+    CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+    [cell.imageView.image drawInRect:imageRect];
+    cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", @"", [self.plant getAPlantName:indexPath.row]] ;
+    
+    //  tableView.backgroundColor = [UIColor redColor];
+    return cell;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    selectedPlant = [self.plant getAPlantName:indexPath.row];
+    plantid = indexPath.row;
+}
+
+// Size of the cell
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
+
+
 
 -(IBAction) goBack: (id) sender {
     [self dismissModalViewControllerAnimated:YES];
