@@ -11,5 +11,5 @@
 
 
 @interface ViewControllerNotes : UIViewController
-
+@property (weak, nonatomic) IBOutlet UITextView *notesField;
 @end
