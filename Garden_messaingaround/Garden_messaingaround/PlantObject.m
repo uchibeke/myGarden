@@ -146,42 +146,46 @@
 }
 
 -(void)saveGardenToFile:(NSMutableArray *)data gardenName:(NSString *) gName {
-    NSError *error;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
-    NSString * subPath = [NSString stringWithFormat:@"/UserGardens/%@.json", gName];
-    NSString *userDataPath = [documentsDirectory stringByAppendingPathComponent:subPath];
+    NSString * subPath = [NSString stringWithFormat:@"%@.txt", gName];
+    NSString *path = [[self applicationDocumentsDirectory].path
+                      stringByAppendingPathComponent:subPath];
+    [data writeToFile:path atomically:YES];
+
+
     
-    if (![[NSFileManager defaultManager] fileExistsAtPath:userDataPath])
-        [[NSFileManager defaultManager] createDirectoryAtPath:userDataPath withIntermediateDirectories:NO attributes:nil error:&error]; //Create folder
-    [data writeToFile:userDataPath atomically:YES];
-    NSLog(@"Path is: %@\n", userDataPath);
+    NSLog(@"Path is: %@\n", path);
     
 }
 
+/**
+ Returns the URL to the application's Documents directory.
+ */
+- (NSURL *)applicationDocumentsDirectory {
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
+                                                   inDomains:NSUserDomainMask] lastObject];
+}
+
 -(NSString *)getSavedGardenFromFile: (NSString *) gardenToGet {
-    NSError *error;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
-    NSString * subPath = [NSString stringWithFormat:@"/UserGardens/%@.json", gardenToGet];
-    NSString *userDataPath = [documentsDirectory stringByAppendingPathComponent:subPath];
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString * fileName = [NSString stringWithFormat:@"%@.txt", gardenToGet];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:fileName];
+//    NSString *content = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
+ 
     
-    if (![[NSFileManager defaultManager] fileExistsAtPath:userDataPath])
-        [[NSFileManager defaultManager] createDirectoryAtPath:userDataPath withIntermediateDirectories:NO attributes:nil error:&error]; //Create folder
-    NSLog(@"Get Path is: %@\n", userDataPath);
-    
-    NSString *content = [NSString stringWithContentsOfFile:userDataPath encoding:NSUTF8StringEncoding error:NULL];
-    
+    NSString *content = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
     return content;
 }
 
 
 
 
--(void) saveDatatoDefaults: (NSMutableArray *) userGardendata theGardenName: (NSString *) gardenName {    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];    if([[NSUserDefaults standardUserDefaults] objectForKey:gardenName] != nil) {
+-(void) saveDatatoDefaults: (NSMutableArray *) userGardendata theGardenName: (NSString *) gardenName {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if([[NSUserDefaults standardUserDefaults] objectForKey:gardenName] != nil) {
         [[NSUserDefaults standardUserDefaults] synchronize];
     } else {
-        [defaults setObject:[userGardendata mutableCopy] forKey:gardenName];
+        [defaults setValue:[[userGardendata valueForKey:@"description"] componentsJoinedByString:@""] forKey:gardenName];
         [[NSUserDefaults standardUserDefaults] synchronize];
 
     }
@@ -193,7 +197,8 @@
     return [NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
--(NSMutableArray *) getUserDataFromDefaults: (NSString *) gardenName {    return [self objectFromDataWithKey:gardenName] ;
+-(NSString *) getUserDataFromDefaults: (NSString *) gardenName {
+    return [[NSUserDefaults standardUserDefaults] valueForKey: gardenName];
     
 }
 
