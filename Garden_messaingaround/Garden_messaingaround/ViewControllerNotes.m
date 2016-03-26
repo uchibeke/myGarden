@@ -70,13 +70,14 @@
         notesField.text = @"";
         notesField.hidden = true;
     }
-
+    [self updateNoteUserDefaults];
     NSLog(@"Deleted row.");
 }
 
 -(void)saveNote {
     if([[GloablObjects notesInstance].notesArray count ]> 0 && !justDel) {
         [[GloablObjects notesInstance].notesArray replaceObjectAtIndex:clickedIndex withObject:notesField.text];
+        [self updateNoteUserDefaults];
         NSLog([NSString stringWithFormat:@"%ld", (long)clickedIndex]);
         [tableView reloadData];
     } else {
@@ -179,8 +180,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self getFromNoteUserDefaults];
+    
     clickedIndex = 0;
-    notesField.text = @"";
+    if ([[GloablObjects notesInstance].notesArray count] <= 0) {
+        notesField.text = @"";
+    } else {
+        notesField.text = [GloablObjects notesInstance].notesArray[0];
+    }
     if ([[GloablObjects notesInstance].notesArray count] > 0) {
         notesField.text = [[GloablObjects notesInstance].notesArray objectAtIndex:0];
     }
@@ -188,8 +195,6 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
     [self enableNoteField  ];
     justDel = false;
-    
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -198,6 +203,37 @@
     // unregister for keyboard notifications while not visible.
     [self saveNote];
 }
+
+
+-(void) updateNoteUserDefaults {
+    NSMutableArray *notesArray = [NSMutableArray arrayWithCapacity:[[GloablObjects notesInstance].notesArray count]];
+    
+    for (NSString * note in [GloablObjects notesInstance].notesArray) {
+        [notesArray addObject:note];
+    }
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:notesArray forKey:@"notesArray"];
+    [userDefaults synchronize];
+}
+
+-(void) getFromNoteUserDefaults {
+    //wipes all gardens, will be reloaded from user defaults
+    [GloablObjects notesInstance].notesArray = [[NSMutableArray alloc] init];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *notesArray = [userDefaults objectForKey:@"notesArray"];
+    
+    if (notesArray == nil) {
+        NSLog(@"no notes found");
+    } else {
+        for (NSString * note in notesArray) {
+            [[GloablObjects notesInstance].notesArray addObject:note];
+        }
+    }
+    
+}
+
 
 
 - (void)didReceiveMemoryWarning {

@@ -98,6 +98,20 @@
                                                                delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
     
     [notificationAlert show];
-    // NSLog(@"didReceiveLocalNotification");
+    NSMutableArray *alarmNames = [NSMutableArray arrayWithCapacity:[[GloablObjects alarmInstance].alarmArray count]];
+    NSMutableArray *alarmTimes = [NSMutableArray arrayWithCapacity:[[GloablObjects alarmInstance].alarmArray count]];
+    NSMutableArray *alarmMessages = [NSMutableArray arrayWithCapacity:[[GloablObjects alarmInstance].alarmArray count]];
+    
+    for (gardenAlarm * alarm in [GloablObjects alarmInstance].alarmArray) {
+        [alarmNames addObject:alarm.name];
+        [alarmTimes addObject:alarm.time];
+        [alarmMessages addObject:alarm.message];
+    }
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:alarmNames forKey:@"alarmNames"];
+    [userDefaults setObject:alarmTimes forKey:@"alarmTimes"];
+    [userDefaults setObject:alarmMessages forKey:@"alarmMessages"];
+    [userDefaults synchronize];
 }
 @end

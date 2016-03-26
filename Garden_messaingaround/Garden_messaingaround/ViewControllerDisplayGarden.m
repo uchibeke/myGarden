@@ -63,9 +63,9 @@
     
     self.plant = [[PlantObject alloc]init];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
-    [self.plant saveGardenToFile:[self.plant plantsDataArray] gardenName:@"testArr" ];
-    [self.plant getSavedGardenFromFile:@"testArr"];
-    NSLog(@"Get Link is: %@\n ", [self.plant getSavedGardenFromFile:@"testArr"]);
+//    [self.plant saveGardenToFile:[self.plant plantsDataArray] gardenName:@"testArr" ];
+//    [self.plant getSavedGardenFromFile:@"testArr"];
+//    NSLog(@"Get Link is: %@\n ", [self.plant getSavedGardenFromFile:@"testArr"]);
 
     
     self.tabBarItem.image = [[UIImage imageNamed:@"noteSmall.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -450,9 +450,9 @@
     
 //    [self.plant saveGardenToFile::[GloablObjects gardenArrayInstance].gardenArray[ theGardenName:@"UUUUU"];
 //    [self.plant saveDatatoDefaults:[GloablObjects gardenArrayInstance].gardenArray theGardenName:@"newSS"];
-     [self.plant saveGardenToFile:[self.plant plantsDataArray] gardenName:@"toJson"];
-    [self.plant getSavedGardenFromFile:@"newSS"];
-    NSLog(@"From Json is: %@\n ", [self.plant getSavedGardenFromFile:@"toJson"]);
+//     [self.plant saveGardenToFile:[GloablObjects gardenArrayInsta nce].gardenArray gardenName:@"toJson"];
+//    [self.plant getSavedGardenFromFile:@"newSS"];
+//    NSLog(@"From Json is: %@\n ", [self.plant getSavedGardenFromFile:@"toJson"]);
 //    NSLog(@"File in TESTARR is: %@\n ", [self.plant getSavedGardenFromFile:@"testArr"]);
 //    NSLog(@"File in UUUUU is: %@\n ", [self.plant getUserDataFromDefaults:@"UUUUU"]);
     
