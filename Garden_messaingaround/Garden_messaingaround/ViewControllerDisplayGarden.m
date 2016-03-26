@@ -63,47 +63,16 @@
     
     self.plant = [[PlantObject alloc]init];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
-<<<<<<< HEAD
     [self.plant saveGardenToFile:[self.plant plantsDataArray] gardenName:@"testArr" ];
     [self.plant getSavedGardenFromFile:@"testArr"];
     NSLog(@"Get Link is: %@\n ", [self.plant getSavedGardenFromFile:@"testArr"]);
-=======
-//    [self.plant saveGardenToFile:[self.plant plantsDataArray] gardenName:@"testArr" ];
-//    [self.plant getSavedGardenFromFile:@"testArr"];
-//    NSLog(@"Get Link is: %@\n ", [self.plant getSavedGardenFromFile:@"testArr"]);
 
-    
-
->>>>>>> 5901e8383a7a84096f254a46b299d9ead56b7377
     
     self.tabBarItem.image = [[UIImage imageNamed:@"noteSmall.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-    NSArray *documents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:basePath error:nil];
-<<<<<<< HEAD
     
     PlantObject *myPlant = [PlantObject new];
     myPlant.name = [self.plant getAPlantName:0];
     [GloablObjects paintBrushInstance].paintBrush = myPlant;
-    
-=======
-//    
-//    http://stackoverflow.com/questions/4934389/storing-json-data-on-the-iphone-save-the-json-string-as-it-is-vs-make-an-object
-    NSURL *URL;
-    NSString *completeFilePath;
-    for (NSString *file in documents) {
-        completeFilePath = [NSString stringWithFormat:@"%@/%@", basePath, file];
-        URL = [NSURL fileURLWithPath:completeFilePath];
-        NSLog(@"File %@  is excluded from backup %@", file, [URL resourceValuesForKeys:[NSArray arrayWithObject:NSURLIsExcludedFromBackupKey] error:nil]);
-    }
-
-
-   //URL = [NSURL fileURLWithPath:completeFilePath];
-   // [URL setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
->>>>>>> 5901e8383a7a84096f254a46b299d9ead56b7377
-    NSLog(@"Doc is: %@\n  Path is: %@", [documents description], basePath);
 }
 
 
