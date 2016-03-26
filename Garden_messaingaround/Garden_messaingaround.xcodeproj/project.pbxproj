@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0939A7711CA60E210043B0EA /* fbBtnSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 0939A76F1CA60E210043B0EA /* fbBtnSmall.png */; };
+		0939A7721CA60E210043B0EA /* tweetbuttonSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 0939A7701CA60E210043B0EA /* tweetbuttonSmall.png */; };
 		0965401A1C9E09B300B28B43 /* ViewControllerReminders.m in Sources */ = {isa = PBXBuildFile; fileRef = 096540191C9E09B300B28B43 /* ViewControllerReminders.m */; };
 		09B2A1581C94B54B0081D136 /* ViewControllerPlantViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */; };
 		09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */; };
@@ -130,6 +132,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0939A76F1CA60E210043B0EA /* fbBtnSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fbBtnSmall.png; path = "../../../Downloads/documents-export-2016-03-25/fbBtnSmall.png"; sourceTree = "<group>"; };
+		0939A7701CA60E210043B0EA /* tweetbuttonSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tweetbuttonSmall.png; path = "../../../Downloads/documents-export-2016-03-25/tweetbuttonSmall.png"; sourceTree = "<group>"; };
 		096540181C9E09B300B28B43 /* ViewControllerReminders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewControllerReminders.h; path = ../ViewControllerReminders.h; sourceTree = "<group>"; };
 		096540191C9E09B300B28B43 /* ViewControllerReminders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewControllerReminders.m; path = ../ViewControllerReminders.m; sourceTree = "<group>"; };
 		09B2A1561C94B54B0081D136 /* ViewControllerPlantViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerPlantViews.h; sourceTree = "<group>"; };
@@ -297,6 +301,8 @@
 		9552DED81C880DEC00633FBE /* plantImages */ = {
 			isa = PBXGroup;
 			children = (
+				0939A76F1CA60E210043B0EA /* fbBtnSmall.png */,
+				0939A7701CA60E210043B0EA /* tweetbuttonSmall.png */,
 				117A28F11CA60032001AFB24 /* facebook_button.png */,
 				117A28EF1CA60029001AFB24 /* twitter_button.png */,
 				95C8B4171C96388A00057F9A /* Asparagus_44x44.png */,
@@ -552,6 +558,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0939A7711CA60E210043B0EA /* fbBtnSmall.png in Resources */,
 				95C8B4141C962A1C00057F9A /* dirt3.png in Resources */,
 				95F51EC51C96437A00800259 /* note.png in Resources */,
 				95C8B44E1C96388A00057F9A /* spinach_44x44.png in Resources */,
@@ -570,6 +577,7 @@
 				95C8B4421C96388A00057F9A /* eggplant_44x44.png in Resources */,
 				95C8B43C1C96388A00057F9A /* carrots_44x44.png in Resources */,
 				9D6549A71C88BAF400841A24 /* radish.png in Resources */,
+				0939A7721CA60E210043B0EA /* tweetbuttonSmall.png in Resources */,
 				9552DED71C87E45700633FBE /* plantData.json in Resources */,
 				95C8B44F1C96388A00057F9A /* strawberries_44x44.png in Resources */,
 				95F51ECE1C96472300800259 /* brown-texture-background.jpg in Resources */,

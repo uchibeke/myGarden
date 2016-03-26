@@ -649,14 +649,14 @@
                                     <action selector="takePhoto:" destination="skf-O0-m12" eventType="touchUpInside" id="twI-bV-S0y"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="facebook_button.png" translatesAutoresizingMaskIntoConstraints="NO" id="tXe-Di-Iay">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fbBtnSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="tXe-Di-Iay">
                                 <rect key="frame" x="269" y="8" width="87" height="45"/>
                                 <animations/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
                                 </accessibility>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="twitter_button.png" translatesAutoresizingMaskIntoConstraints="NO" id="CdO-cj-df7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tweetbuttonSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="CdO-cj-df7">
                                 <rect key="frame" x="368" y="8" width="87" height="45"/>
                                 <animations/>
                                 <accessibility key="accessibilityConfiguration">
@@ -674,7 +674,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deg-ew-grc">
-                                <rect key="frame" x="264" y="14" width="96" height="30"/>
+                                <rect key="frame" x="264" y="14" width="96" height="31"/>
                                 <animations/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -883,13 +883,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="facebook_button.png" width="122" height="42"/>
+        <image name="fbBtnSmall.png" width="111" height="42"/>
         <image name="gardenIconWhite" width="38" height="44"/>
         <image name="noteSmall.png" width="38" height="44"/>
         <image name="plantInfoWhite" width="38" height="44"/>
         <image name="reminderWhite" width="24" height="44"/>
         <image name="remove" width="24" height="44"/>
-        <image name="twitter_button.png" width="122" height="42"/>
+        <image name="tweetbuttonSmall.png" width="122" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="RAn-n5-Vvb"/>
