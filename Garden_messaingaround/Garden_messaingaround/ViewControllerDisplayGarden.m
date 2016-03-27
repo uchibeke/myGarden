@@ -54,12 +54,6 @@
     
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     collectionView.collectionViewLayout = layout;
-//    
-//    [self createScrollView:collectionView.frame.size.width
-//                 andHeight:collectionView.frame.size.height
-//                   startAt:collectionView.frame.origin.x
-//                     endAt:collectionView.frame.origin.y];
-//    layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     
     self.plant = [[PlantObject alloc]init];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
@@ -121,7 +115,26 @@
     numPerSq.text = @"";
     
     GardenObject* g = [GloablObjects instance].myGarden.gardenArr2d[indexPath.row];
-    title.text = g.name;
+    if (([[GloablObjects instance].myGarden getWidth]) < 7) {
+        title.text = g.name;
+    } else if (([[GloablObjects instance].myGarden getWidth]) >= 7) {
+        title.text = @"";
+    }
+    
+    UILabel *plantsPerRow = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.01, cell.bounds.size.width-20, 35)];
+    //    plantsPerRow.textColor = [UIColor colorWithRed:(191/255.0f) green:(36/255.0f) blue:(19/255.0f) alpha:(1.0f)];
+        plantsPerRow.textColor = [UIColor colorWithRed:(70/255.0f) green:(3/255.0f) blue:(86/255.0f) alpha:(1.0f)];
+    [plantsPerRow setTextAlignment:NSTextAlignmentRight];
+    [plantsPerRow setFont: [plantsPerRow.font fontWithSize: 15]];
+    plantsPerRow.adjustsFontSizeToFitWidth = YES;
+    plantsPerRow.minimumScaleFactor = 0;
+    if (([[GloablObjects instance].myGarden getWidth]) < 7 && !([[self getAPlantObject:g.name] isEqualToDictionary:nil])) {
+        NSString * txt = @"";
+        if ([[self getAPlantObject:g.name] objectForKey:@"Spacing per Square Foot"]) {
+            txt =  [[self getAPlantObject:g.name] objectForKey:@"Spacing per Square Foot"] ;
+        }
+        plantsPerRow.text = [NSString stringWithFormat:@"%@%@", txt, @""];
+    }
     
     //semi transparent background
     backgroundimgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*0.05, cell.bounds.size.height*0.05, cell.bounds.size.width*.9, cell.bounds.size.height*.9)];
@@ -135,8 +148,19 @@
     [cell.contentView addSubview:title];
     [cell.contentView addSubview:imgview];
     [cell.contentView addSubview:numPerSq];
+    [cell.contentView addSubview:plantsPerRow];
     
     return cell;
+}
+
+-(NSMutableDictionary *)getAPlantObject: (NSString *) thePlantName {
+    for (int i = 0; i < [[self plant] plantsDataArray].count; i++) {
+        NSString * gottenName = [[self plant] getAPlantName:i];
+        if ([gottenName isEqualToString: thePlantName]) {
+            return [[self plant] getAPlant:i];
+        }
+    }
+    return nil;
 }
 
 -(IBAction) goAllGardens: (id) sender {
@@ -234,8 +258,29 @@
     title.adjustsFontSizeToFitWidth = YES;
     title.minimumScaleFactor = 0;
     //title.minimumFontSize = 0;
-    title.text = [GloablObjects paintBrushInstance].paintBrush.name;
+    if (([[GloablObjects instance].myGarden getWidth]) < 7) {
+        title.text = [GloablObjects paintBrushInstance].paintBrush.name;
+    } else if (([[GloablObjects instance].myGarden getWidth]) >= 7) {
+        title.text = @"";
+    }
     
+    
+    UILabel *plantsPerRow = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.01, cell.bounds.size.width-20, 35)];
+    //    plantsPerRow.textColor = [UIColor colorWithRed:(191/255.0f) green:(36/255.0f) blue:(19/255.0f) alpha:(1.0f)];
+    plantsPerRow.textColor = [UIColor colorWithRed:(70/255.0f) green:(3/255.0f) blue:(86/255.0f) alpha:(1.0f)];
+    [plantsPerRow setTextAlignment:NSTextAlignmentRight];
+    [plantsPerRow setFont: [plantsPerRow.font fontWithSize: 15]];
+    plantsPerRow.adjustsFontSizeToFitWidth = YES;
+    plantsPerRow.minimumScaleFactor = 0;
+    if (([[GloablObjects instance].myGarden getWidth]) < 7 && !([[self getAPlantObject:[GloablObjects paintBrushInstance].paintBrush.name] isEqualToDictionary:nil])) {
+        NSString * txt = @"";
+        if ([[self getAPlantObject:[GloablObjects paintBrushInstance].paintBrush.name] objectForKey:@"Spacing per Square Foot"]) {
+            txt =  [[self getAPlantObject:[GloablObjects paintBrushInstance].paintBrush.name] objectForKey:@"Spacing per Square Foot"] ;
+        }
+        plantsPerRow.text = [NSString stringWithFormat:@"%@%@", txt, @""];
+    }
+    
+ 
     UILabel *numPerSq = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.85, cell.bounds.size.width, 40)];
     numPerSq.textColor = [UIColor blackColor];
     [numPerSq setTextAlignment:NSTextAlignmentCenter];
@@ -258,6 +303,7 @@
     [cell.contentView addSubview:title];
     [cell.contentView addSubview:numPerSq];
     [cell.contentView addSubview:imgview];
+    [cell.contentView addSubview:plantsPerRow];
 //    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
     
     [self updateUserDefaults];
@@ -372,20 +418,14 @@
 }
 
 -(UIImage *)capture{
-    
     [collectionView reloadData];
     
     CGRect frame = collectionView.frame;
     frame.size.height = collectionView.contentSize.height;
     collectionView.frame = frame;
-    
     UIGraphicsBeginImageContextWithOptions(collectionView.bounds.size, collectionView.opaque, 4.0);
-//    UIGraphicsBeginImageContext(collectionView.bounds.size);
     [collectionView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    // Save image.
-    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-
     
     return image;
 }
@@ -393,21 +433,21 @@
 -(IBAction) takePhoto: (id) sender {
     shot.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
     shot.image = [self capture];
+    
+    UILabel *textLabel;
+    textLabel.text = @"Image Title";
+    [textLabel setFont: [textLabel.font fontWithSize: 100]];
+    [shot addSubview:textLabel];
+    
+    
+    // Save image.
+    UIImageWriteToSavedPhotosAlbum(shot.image, nil, nil, nil);
+
+
     shot.hidden = NO;
     shot.alpha = 1.0f;
     [shot setNeedsDisplay];
-    NSString *message = @"Garden Saved to Photos";
-    UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
-                                                    message:message
-                                                   delegate:nil
-                                          cancelButtonTitle:nil
-                                          otherButtonTitles:nil, nil];
-    [toast show];
-    int duration = 1;
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [toast dismissWithClickedButtonIndex:0 animated:YES];
-    });
+    [self notifyUser:@"Photo is saved in your Photos"];
     [UIView animateWithDuration:0.5 delay:2.0 options:0 animations:^{
         shot.alpha = 0.0f;
     } completion:^(BOOL finished) {
@@ -417,6 +457,19 @@
     [self.view addSubview:collectionView] ;
 }
 
+-(void) notifyUser: (NSString *) notificationMsg {
+    UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
+                                                    message:notificationMsg
+                                                   delegate:nil
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:nil, nil];
+    [toast show];
+    int duration = 1;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [toast dismissWithClickedButtonIndex:0 animated:YES];
+    });
+}
 
 
 -(IBAction) facebookShareGarden: (id) sender {
@@ -429,6 +482,7 @@
         [self presentViewController:composeController
                            animated:YES completion:nil];
     }
+    [self.view addSubview:collectionView] ;
     
 }
 
@@ -442,20 +496,15 @@
         [self presentViewController:composeController
                            animated:YES completion:nil];
     }
+    [self.view addSubview:collectionView] ;
     
 }
 
 -(void) synchData {
     NSLog(@"Kind of GlobalObjects is kind of : %@\n ",[[GloablObjects gardenArrayInstance].gardenArray   class]);
-    
-//    [self.plant saveGardenToFile::[GloablObjects gardenArrayInstance].gardenArray[ theGardenName:@"UUUUU"];
-//    [self.plant saveDatatoDefaults:[GloablObjects gardenArrayInstance].gardenArray theGardenName:@"newSS"];
      [self.plant saveGardenToFile:[self.plant plantsDataArray] gardenName:@"toJson"];
     [self.plant getSavedGardenFromFile:@"newSS"];
     NSLog(@"From Json is: %@\n ", [self.plant getSavedGardenFromFile:@"toJson"]);
-//    NSLog(@"File in TESTARR is: %@\n ", [self.plant getSavedGardenFromFile:@"testArr"]);
-//    NSLog(@"File in UUUUU is: %@\n ", [self.plant getUserDataFromDefaults:@"UUUUU"]);
-    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
     NSArray *documents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:basePath error:nil];
