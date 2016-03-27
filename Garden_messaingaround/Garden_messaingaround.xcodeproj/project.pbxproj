@@ -10,6 +10,9 @@
 		0965401A1C9E09B300B28B43 /* ViewControllerReminders.m in Sources */ = {isa = PBXBuildFile; fileRef = 096540191C9E09B300B28B43 /* ViewControllerReminders.m */; };
 		09B2A1581C94B54B0081D136 /* ViewControllerPlantViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */; };
 		09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */; };
+		09C016211CA76444004FF2EB /* gardenBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C0161E1CA76444004FF2EB /* gardenBig.png */; };
+		09C016221CA76444004FF2EB /* notesBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C0161F1CA76444004FF2EB /* notesBig.png */; };
+		09C016231CA76444004FF2EB /* timerBIg.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C016201CA76444004FF2EB /* timerBIg.png */; };
 		09CE09311CA6FBF300911F6C /* whiteCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE092E1CA6FBF300911F6C /* whiteCamera.png */; };
 		09CE09321CA6FBF300911F6C /* whiteFacebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE092F1CA6FBF300911F6C /* whiteFacebook.png */; };
 		09CE09331CA6FBF300911F6C /* whiteTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE09301CA6FBF300911F6C /* whiteTwitter.png */; };
@@ -144,6 +147,9 @@
 		09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerPlantViews.m; sourceTree = "<group>"; };
 		09B2A1591C94C1C50081D136 /* ViewControllerNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerNotes.h; sourceTree = "<group>"; };
 		09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerNotes.m; sourceTree = "<group>"; };
+		09C0161E1CA76444004FF2EB /* gardenBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gardenBig.png; path = "../../../Downloads/documents-export-2016-03-26-2/gardenBig.png"; sourceTree = "<group>"; };
+		09C0161F1CA76444004FF2EB /* notesBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = notesBig.png; path = "../../../Downloads/documents-export-2016-03-26-2/notesBig.png"; sourceTree = "<group>"; };
+		09C016201CA76444004FF2EB /* timerBIg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = timerBIg.png; path = "../../../Downloads/documents-export-2016-03-26-2/timerBIg.png"; sourceTree = "<group>"; };
 		09CE092E1CA6FBF300911F6C /* whiteCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteCamera.png; sourceTree = "<group>"; };
 		09CE092F1CA6FBF300911F6C /* whiteFacebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteFacebook.png; sourceTree = "<group>"; };
 		09CE09301CA6FBF300911F6C /* whiteTwitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteTwitter.png; sourceTree = "<group>"; };
@@ -393,6 +399,9 @@
 				9D6549811C88BAF400841A24 /* strawberries.png */,
 				9D6549821C88BAF400841A24 /* strawberry.png */,
 				95C8B4311C96388A00057F9A /* summer squash_44x44.png */,
+				09C0161E1CA76444004FF2EB /* gardenBig.png */,
+				09C0161F1CA76444004FF2EB /* notesBig.png */,
+				09C016201CA76444004FF2EB /* timerBIg.png */,
 				9D6549831C88BAF400841A24 /* summer squash.png */,
 				9D6549841C88BAF400841A24 /* summer-squash.png */,
 				95C8B4321C96388A00057F9A /* swiss chard_44x44.png */,
@@ -590,11 +599,13 @@
 				95C8B43A1C96388A00057F9A /* broccoli_44x44.png in Resources */,
 				9D65499B1C88BAF400841A24 /* egg-plant.png in Resources */,
 				95C8B4471C96388A00057F9A /* onion_44x44.png in Resources */,
+				09C016231CA76444004FF2EB /* timerBIg.png in Resources */,
 				95C8B4511C96388A00057F9A /* swiss chard_44x44.png in Resources */,
 				9D6549A61C88BAF400841A24 /* potato.png in Resources */,
 				9D6549951C88BAF400841A24 /* carrots.png in Resources */,
 				117A28F21CA60032001AFB24 /* facebook_button.png in Resources */,
 				95C8B4421C96388A00057F9A /* eggplant_44x44.png in Resources */,
+				09C016221CA76444004FF2EB /* notesBig.png in Resources */,
 				95C8B43C1C96388A00057F9A /* carrots_44x44.png in Resources */,
 				9D6549A71C88BAF400841A24 /* radish.png in Resources */,
 				9552DED71C87E45700633FBE /* plantData.json in Resources */,
@@ -611,6 +622,7 @@
 				95C8B43F1C96388A00057F9A /* cilantro_44x44.png in Resources */,
 				95C8B4461C96388A00057F9A /* okra_44x44.png in Resources */,
 				9D6549A01C88BAF400841A24 /* okra.png in Resources */,
+				09C016211CA76444004FF2EB /* gardenBig.png in Resources */,
 				95C8B4481C96388A00057F9A /* oregano_44x44.png in Resources */,
 				95B8E7AE1C96429100904A96 /* gardenIconBlack.png in Resources */,
 				95C8B4161C9630F400057F9A /* dirt3brown.png in Resources */,
