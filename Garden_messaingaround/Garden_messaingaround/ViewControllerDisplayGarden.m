@@ -121,7 +121,7 @@
         title.text = @"";
     }
     
-    UILabel *plantsPerRow = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.01, cell.bounds.size.width-20, 35)];
+    UILabel *plantsPerRow = [[UILabel alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.05, cell.bounds.size.width*.01, cell.bounds.size.width*.9, 40)];
     //    plantsPerRow.textColor = [UIColor colorWithRed:(191/255.0f) green:(36/255.0f) blue:(19/255.0f) alpha:(1.0f)];
         plantsPerRow.textColor = [UIColor whiteColor];
     [plantsPerRow setTextAlignment:NSTextAlignmentCenter];
@@ -252,7 +252,7 @@
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.65, cell.bounds.size.width, 40)];
+    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.05, cell.bounds.size.width*.65, cell.bounds.size.width*.9, 40)];
     title.textColor = [UIColor whiteColor];
     [title setTextAlignment:NSTextAlignmentCenter];
     title.adjustsFontSizeToFitWidth = YES;
@@ -265,7 +265,7 @@
     }
     
     
-    UILabel *plantsPerRow = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.01, cell.bounds.size.width-20, 35)];
+    UILabel *plantsPerRow = [[UILabel alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.05, cell.bounds.size.width*.01, cell.bounds.size.width*.9, 40)];
     //    plantsPerRow.textColor = [UIColor colorWithRed:(191/255.0f) green:(36/255.0f) blue:(19/255.0f) alpha:(1.0f)];
     plantsPerRow.textColor = [UIColor whiteColor];
     [plantsPerRow setTextAlignment:NSTextAlignmentCenter];
