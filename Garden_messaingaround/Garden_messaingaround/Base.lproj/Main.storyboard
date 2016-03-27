@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XjK-ef-4Pn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XjK-ef-4Pn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -288,6 +288,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="timerBIg.png" translatesAutoresizingMaskIntoConstraints="NO" id="so2-1V-zNe">
+                                <rect key="frame" x="205" y="58" width="615" height="600"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="453" id="Op8-VR-Wzi"/>
+                                    <constraint firstAttribute="height" constant="481" id="Yu1-vh-1EA"/>
+                                </constraints>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8Kq-UE-0Pr">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
                                 <animations/>
@@ -785,6 +793,7 @@
                             </tableView>
                             <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="notesBig.png" translatesAutoresizingMaskIntoConstraints="NO" id="lJ7-Ek-AiA">
                                 <rect key="frame" x="348" y="42" width="573" height="481"/>
+                                <animations/>
                             </imageView>
                         </subviews>
                         <animations/>
@@ -884,6 +893,7 @@
         <image name="plantInfoWhite" width="38" height="44"/>
         <image name="reminderWhite" width="24" height="44"/>
         <image name="remove" width="12" height="22"/>
+        <image name="timerBIg.png" width="703" height="648"/>
         <image name="whiteCamera.png" width="64" height="64"/>
         <image name="whiteFacebook.png" width="64" height="64"/>
         <image name="whiteTwitter.png" width="64" height="64"/>
