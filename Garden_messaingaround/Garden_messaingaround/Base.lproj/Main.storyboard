@@ -293,6 +293,11 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="8ia-pd-rlt">
+                        <barButtonItem key="leftBarButtonItem" title="All Gardens" id="gKq-Q9-YYF">
+                            <connections>
+                                <action selector="goAllGardens:" destination="RJW-Ya-Wbw" id="aQb-WR-C3u"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Jna-Yx-09R">
                             <connections>
                                 <segue destination="08N-h2-GOq" kind="presentation" identifier="EditAlarm" id="ezu-eA-gyY"/>
