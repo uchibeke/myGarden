@@ -500,26 +500,6 @@
     
 }
 
--(void) synchData {
-    NSLog(@"Kind of GlobalObjects is kind of : %@\n ",[[GloablObjects gardenArrayInstance].gardenArray   class]);
-     [self.plant saveGardenToFile:[self.plant plantsDataArray] gardenName:@"toJson"];
-    [self.plant getSavedGardenFromFile:@"newSS"];
-    NSLog(@"From Json is: %@\n ", [self.plant getSavedGardenFromFile:@"toJson"]);
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-    NSArray *documents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:basePath error:nil];
-    //
-    //    http://stackoverflow.com/questions/4934389/storing-json-data-on-the-iphone-save-the-json-string-as-it-is-vs-make-an-object
-    NSURL *URL;
-    NSString *completeFilePath;
-    for (NSString *file in documents) {
-        completeFilePath = [NSString stringWithFormat:@"%@/%@", basePath, file];
-        URL = [NSURL fileURLWithPath:completeFilePath];
-        NSLog(@"Folder contains is %@ ", file);
-    }
-
-}
-
 - (void)viewWillDisappear:(BOOL)animated
 {
     if ([self isMovingFromParentViewController])
@@ -528,9 +508,7 @@
     }
     else
     {
-        NSLog(@"New view controller was pushed");
-        [self synchData];
-    }
+        NSLog(@"New view controller was pushed");    }
 }
 
 
@@ -634,8 +612,7 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    [self synchData];
-
+    
 }
 
 
