@@ -20,7 +20,6 @@
     IBOutlet UILabel * wksToMature;
     IBOutlet UILabel * description;
     
-    IBOutlet UIButton *commentBtn;
     IBOutlet UITextView *comment;
 
     IBOutlet UIImageView * previewImage;
@@ -34,29 +33,6 @@
 @implementation ViewControllerPlantViews
 
 -(IBAction) updateComment: (id) sender {
-    
-//    NSMutableDictionary *dic = [[self.plant.plantsDataArray objectAtIndex:clickedIndex] mutableCopy];
-//    [dic setObject:comment.text forKey:@"Transplanting"];
-//    
-//    //trasplant is temp comments section
-//    NSMutableArray * md = [self.plant.plantsDataArray mutableCopy];
-//    [md replaceObjectAtIndex:clickedIndex withObject:dic];
-//    self.plant.plantsDataArray = [md mutableCopy];
-//    
-//    
-//    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-//    NSLog(filePath);
-//    NSString* fileName = @"plantDataReal.json";
-//    NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
-//    
-//    if (![[NSFileManager defaultManager] fileExistsAtPath:fileAtPath]) {
-//        [[NSFileManager defaultManager] createFileAtPath:fileAtPath contents:nil attributes:nil];
-//    }
-//    
-//    // The main act...
-//    [[[md description] dataUsingEncoding:NSUTF8StringEncoding] writeToFile:fileAtPath atomically:NO];
-//
-//    [table reloadData];
     NSMutableArray* temp = [[GloablObjects commentsInstance].commentsArray mutableCopy];
     temp[clickedIndex] = comment.text;
     [GloablObjects commentsInstance].commentsArray = temp;
@@ -100,6 +76,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self updateComment:self];
+    
     name.text = [self.plant getAPlantName:indexPath.row];
     
     family.text = [self.plant getAPlantFamily:indexPath.row];
@@ -123,8 +101,8 @@
     previewImage.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5f];
     previewImage.image = [UIImage imageNamed:imgName];
     
+    
     // Save the comment
-
     clickedIndex = indexPath.row;
     
     
@@ -178,7 +156,7 @@
     
     comment.text = [GloablObjects commentsInstance].commentsArray[5];
     
-    clickedIndex = 0;
+    clickedIndex = 5;
     //sets title bar
     [self setTitle:@"Plants"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];

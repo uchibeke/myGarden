@@ -194,16 +194,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lI-9w-ivp">
-                                <rect key="frame" x="945" y="603" width="55" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Save">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="updateComment:" destination="fO7-Ga-HP2" eventType="touchUpInside" id="2LN-hf-SxU"/>
-                                </connections>
-                            </button>
                             <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zmw-WL-4UA">
                                 <rect key="frame" x="277" y="28" width="265" height="270"/>
                                 <animations/>
@@ -213,7 +203,7 @@
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HQ4-Ss-y9V">
-                                <rect key="frame" x="277" y="454" width="723" height="128"/>
+                                <rect key="frame" x="277" y="454" width="723" height="184"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -259,7 +249,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="comment" destination="HQ4-Ss-y9V" id="Zsq-47-hd6"/>
-                        <outlet property="commentBtn" destination="5lI-9w-ivp" id="he7-f2-FfJ"/>
                         <outlet property="description" destination="MBk-od-ybc" id="eYU-PG-JP8"/>
                         <outlet property="family" destination="aTJ-BI-P6P" id="UrU-gL-LMO"/>
                         <outlet property="height" destination="Bx9-5M-xTz" id="1Th-7n-Wid"/>
@@ -888,5 +877,4 @@
         <segue reference="RAn-n5-Vvb"/>
         <segue reference="j3n-KL-xWw"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

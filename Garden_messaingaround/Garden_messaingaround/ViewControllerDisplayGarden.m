@@ -99,8 +99,8 @@
     [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.65, cell.bounds.size.width, 40)];
-    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.20, cell.bounds.size.height*.1, cell.bounds.size.width*.6, cell.bounds.size.height*.6)];
-    title.textColor = [UIColor blackColor];
+    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.30, cell.bounds.size.height*.3, cell.bounds.size.width*.4, cell.bounds.size.height*.4)];
+    title.textColor = [UIColor whiteColor];
     [title setTextAlignment:NSTextAlignmentCenter];
     title.adjustsFontSizeToFitWidth = YES;
     title.minimumScaleFactor = 0;
@@ -123,9 +123,9 @@
     
     UILabel *plantsPerRow = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.01, cell.bounds.size.width-20, 35)];
     //    plantsPerRow.textColor = [UIColor colorWithRed:(191/255.0f) green:(36/255.0f) blue:(19/255.0f) alpha:(1.0f)];
-        plantsPerRow.textColor = [UIColor colorWithRed:(70/255.0f) green:(3/255.0f) blue:(86/255.0f) alpha:(1.0f)];
-    [plantsPerRow setTextAlignment:NSTextAlignmentRight];
-    [plantsPerRow setFont: [plantsPerRow.font fontWithSize: 15]];
+        plantsPerRow.textColor = [UIColor whiteColor];
+    [plantsPerRow setTextAlignment:NSTextAlignmentCenter];
+    [plantsPerRow setFont: [plantsPerRow.font fontWithSize: 13]];
     plantsPerRow.adjustsFontSizeToFitWidth = YES;
     plantsPerRow.minimumScaleFactor = 0;
     if (([[GloablObjects instance].myGarden getWidth]) < 7 && !([[self getAPlantObject:g.name] isEqualToDictionary:nil])) {
@@ -253,7 +253,7 @@
     [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.65, cell.bounds.size.width, 40)];
-    title.textColor = [UIColor blackColor];
+    title.textColor = [UIColor whiteColor];
     [title setTextAlignment:NSTextAlignmentCenter];
     title.adjustsFontSizeToFitWidth = YES;
     title.minimumScaleFactor = 0;
@@ -267,9 +267,9 @@
     
     UILabel *plantsPerRow = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.01, cell.bounds.size.width-20, 35)];
     //    plantsPerRow.textColor = [UIColor colorWithRed:(191/255.0f) green:(36/255.0f) blue:(19/255.0f) alpha:(1.0f)];
-    plantsPerRow.textColor = [UIColor colorWithRed:(70/255.0f) green:(3/255.0f) blue:(86/255.0f) alpha:(1.0f)];
-    [plantsPerRow setTextAlignment:NSTextAlignmentRight];
-    [plantsPerRow setFont: [plantsPerRow.font fontWithSize: 15]];
+    plantsPerRow.textColor = [UIColor whiteColor];
+    [plantsPerRow setTextAlignment:NSTextAlignmentCenter];
+    [plantsPerRow setFont: [plantsPerRow.font fontWithSize: 13]];
     plantsPerRow.adjustsFontSizeToFitWidth = YES;
     plantsPerRow.minimumScaleFactor = 0;
     if (([[GloablObjects instance].myGarden getWidth]) < 7 && !([[self getAPlantObject:[GloablObjects paintBrushInstance].paintBrush.name] isEqualToDictionary:nil])) {
@@ -289,7 +289,7 @@
     //numPerSq.minimumFontSize = 0;
     numPerSq.text = @"";
     
-    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.20, cell.bounds.size.height*.1, cell.bounds.size.width*.6, cell.bounds.size.height*.6)];
+    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.30, cell.bounds.size.height*.3, cell.bounds.size.width*.4, cell.bounds.size.height*.4)];
     
     //semi transparent background
     backgroundimgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*0.05, cell.bounds.size.height*0.05, cell.bounds.size.width*.9, cell.bounds.size.height*.9)];
