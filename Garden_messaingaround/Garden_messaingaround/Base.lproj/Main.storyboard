@@ -772,6 +772,9 @@
                                     <outlet property="delegate" destination="fTl-Me-OKh" id="9vQ-HX-2S7"/>
                                 </connections>
                             </tableView>
+                            <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="notesBig.png" translatesAutoresizingMaskIntoConstraints="NO" id="lJ7-Ek-AiA">
+                                <rect key="frame" x="348" y="42" width="573" height="481"/>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -866,6 +869,7 @@
     <resources>
         <image name="gardenIconWhite" width="38" height="44"/>
         <image name="noteSmall.png" width="38" height="44"/>
+        <image name="notesBig.png" width="467" height="537"/>
         <image name="plantInfoWhite" width="38" height="44"/>
         <image name="reminderWhite" width="24" height="44"/>
         <image name="remove" width="12" height="22"/>
