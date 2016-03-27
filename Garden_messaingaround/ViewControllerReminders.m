@@ -165,6 +165,19 @@
 }
 
 
+-(IBAction) goAllGardens: (id) sender {
+    NSLog(@"clicked");
+    [self.navigationController.presentingViewController.presentingViewController viewWillAppear:YES];
+    [self.navigationController.presentingViewController.presentingViewController viewDidAppear:YES];
+    if (self.navigationController.presentingViewController.presentingViewController) {
+        [self.navigationController.presentingViewController.presentingViewController dismissViewControllerAnimated:NO completion:nil];
+    } else {
+        [self.navigationController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

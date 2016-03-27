@@ -10,7 +10,6 @@
 
 @interface ViewControllerNotes () {
     IBOutlet UITableView *tableView;
-    IBOutlet UIBarButtonItem *saveBtn;
     NSInteger clickedIndex;
     BOOL justDel;
     
@@ -95,14 +94,6 @@
                      } completion:NULL];
 }
 
-//-(IBAction) saveNote: (id) sender {/
-  //  [[GloablObjects notesInstance].notesArray replaceObjectAtIndex:clickedIndex withObject:notesField.text];
-//    NSLog([NSString stringWithFormat:@"%ld", (long)clickedIndex]);
-
-//    [tableView reloadData];
-//}
-
-// Save the notes and hide the keyboard when losing focus on the UITextField for notesField
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self saveNote];
