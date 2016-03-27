@@ -39,9 +39,28 @@
             [self getFromUserDefaults];
         }
         
+        if ([userDefaults objectForKey:@"commentsArray"] == nil) {
+            NSLog(@"comments not found.");
+            [GloablObjects commentsInstance].commentsArray = [[NSMutableArray alloc] init];
+            for (int i = 0; i < 50; i++) {
+                NSString *test = @"";
+                [[GloablObjects commentsInstance].commentsArray addObject:test];
+                NSLog(test);
+            }
+            [userDefaults setObject:[GloablObjects commentsInstance].commentsArray forKey:@"commentsArray"];
+            [userDefaults synchronize];
+        } else {
+            NSLog(@"comments found");
+            [GloablObjects commentsInstance].commentsArray = [userDefaults objectForKey:@"commentsArray"];
+            for (NSString *s in [GloablObjects commentsInstance].commentsArray) {
+                //NSLog(s);
+            }
+        }
+        
         [GloablObjects paintBrushInstance].paintBrush = [[PlantObject alloc] init];
         [GloablObjects notesInstance].notesArray = [[NSMutableArray alloc] init];
         [GloablObjects alarmInstance].alarmArray = [[NSMutableArray alloc] init];
+        
         NSLog(@"test");
     });
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];

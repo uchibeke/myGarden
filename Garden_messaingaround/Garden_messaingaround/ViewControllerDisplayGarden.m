@@ -57,9 +57,9 @@
     
     self.plant = [[PlantObject alloc]init];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
-    [self.plant saveGardenToFile:[self.plant plantsDataArray] gardenName:@"testArr" ];
-    [self.plant getSavedGardenFromFile:@"testArr"];
-    NSLog(@"Get Link is: %@\n ", [self.plant getSavedGardenFromFile:@"testArr"]);
+//    [self.plant saveGardenToFile:[self.plant plantsDataArray] gardenName:@"testArr" ];
+//    [self.plant getSavedGardenFromFile:@"testArr"];
+//    NSLog(@"Get Link is: %@\n ", [self.plant getSavedGardenFromFile:@"testArr"]);
 
     
     self.tabBarItem.image = [[UIImage imageNamed:@"noteSmall.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

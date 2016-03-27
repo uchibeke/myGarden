@@ -11,7 +11,6 @@
 @interface ViewControllerNotes () {
     IBOutlet UITableView *tableView;
     IBOutlet UIBarButtonItem *saveBtn;
-    IBOutlet UITextView * notesField;
     NSInteger clickedIndex;
     BOOL justDel;
     
@@ -21,6 +20,80 @@
 @end
 
 @implementation ViewControllerNotes
+
+#pragma mark - Notifications
+{
+    BOOL _didScrollToTop;
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if (!_didScrollToTop)
+    {
+        // show scrolled to top on first layout. viewWillAppear does not work
+        self.notesField.contentOffset = CGPointZero;
+        _didScrollToTop = YES;
+    }
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (BOOL)automaticallyAdjustsScrollViewInsets
+{
+    return NO;
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    // keyboard frame is in window coordinates
+    NSDictionary *userInfo = [notification userInfo];
+    CGRect keyboardFrame = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    // convert own frame to window coordinates, frame is in superview's coordinates
+    CGRect ownFrame = [self.view.window convertRect:self.view.frame fromView:self.view.superview];
+    
+    // calculate the area of own frame that is covered by keyboard
+    CGRect coveredFrame = CGRectIntersection(ownFrame, keyboardFrame);
+    
+    // now this might be rotated, so convert it back
+    coveredFrame = [self.view.window convertRect:coveredFrame toView:self.view.superview];
+    
+    // set inset to make up for covered height at bottom
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, coveredFrame.size.height, 0);
+    
+    NSTimeInterval duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    NSUInteger options = [notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    
+    [UIView animateWithDuration:duration
+                          delay:0
+                        options:options | UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         self.notesField.contentInset = insets;
+                         self.notesField.scrollIndicatorInsets = insets;
+                     } completion:NULL];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    // set inset to make up for no longer covered array at bottom
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, 0, 0);
+    
+    NSTimeInterval duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    NSUInteger options = [notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    
+    [UIView animateWithDuration:duration
+                          delay:0
+                        options:options | UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         self.notesField.contentInset = insets;
+                         self.notesField.scrollIndicatorInsets = insets;
+                     } completion:NULL];
+}
 
 //-(IBAction) saveNote: (id) sender {/
   //  [[GloablObjects notesInstance].notesArray replaceObjectAtIndex:clickedIndex withObject:notesField.text];
@@ -34,8 +107,8 @@
 {
     [self saveNote];
     UITouch *touch = [[event allTouches] anyObject];
-    if ([notesField isFirstResponder] && [touch view] != notesField) {
-        [notesField resignFirstResponder];
+    if ([self.notesField isFirstResponder] && [touch view] != self.notesField) {
+        [self.notesField resignFirstResponder];
     }
     [super touchesBegan:touches withEvent:event];
 
@@ -67,16 +140,17 @@
     [self enableNoteField];
     justDel = true;
     if (clickedIndex == indexPath.row) {
-        notesField.text = @"";
-        notesField.hidden = true;
+        self.notesField.text = @"";
+        self.notesField.hidden = true;
     }
-
+    [self updateNoteUserDefaults];
     NSLog(@"Deleted row.");
 }
 
 -(void)saveNote {
     if([[GloablObjects notesInstance].notesArray count ]> 0 && !justDel) {
-        [[GloablObjects notesInstance].notesArray replaceObjectAtIndex:clickedIndex withObject:notesField.text];
+        [[GloablObjects notesInstance].notesArray replaceObjectAtIndex:clickedIndex withObject:self.notesField.text];
+        [self updateNoteUserDefaults];
         NSLog([NSString stringWithFormat:@"%ld", (long)clickedIndex]);
         [tableView reloadData];
     } else {
@@ -87,9 +161,9 @@
 
 -(void) enableNoteField {
     if([[GloablObjects notesInstance].notesArray count ] == 0) {
-        notesField.hidden = TRUE;
+        self.notesField.hidden = TRUE;
     } else {
-        notesField.hidden = FALSE;
+        self.notesField.hidden = FALSE;
     }
 }
 
@@ -97,8 +171,8 @@
     [self saveNote];
     NSString *note = @"";
     [[GloablObjects notesInstance].notesArray addObject:note];
-    notesField.text =[NSString stringWithFormat:@"%@ ", note];
-    [notesField showsHorizontalScrollIndicator];
+    self.notesField.text =[NSString stringWithFormat:@"%@ ", note];
+    [self.notesField showsHorizontalScrollIndicator];
     [tableView reloadData];
     [self enableNoteField];
     clickedIndex = [GloablObjects notesInstance].notesArray.count-1;
@@ -162,11 +236,11 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self saveNote];
-    notesField.text = [[GloablObjects notesInstance].notesArray objectAtIndex:indexPath.row];
+    self.notesField.text = [[GloablObjects notesInstance].notesArray objectAtIndex:indexPath.row];
     clickedIndex = indexPath.row;
     if (clickedIndex > [GloablObjects notesInstance].notesArray.count-1)
         clickedIndex = [GloablObjects notesInstance].notesArray.count-1;
-    notesField.hidden = FALSE;
+    self.notesField.hidden = FALSE;
 }
 
 // Size of the cell
@@ -179,17 +253,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self getFromNoteUserDefaults];
+    
     clickedIndex = 0;
-    notesField.text = @"";
+    if ([[GloablObjects notesInstance].notesArray count] <= 0) {
+        self.notesField.text = @"";
+    } else {
+        self.notesField.text = [GloablObjects notesInstance].notesArray[0];
+    }
     if ([[GloablObjects notesInstance].notesArray count] > 0) {
-        notesField.text = [[GloablObjects notesInstance].notesArray objectAtIndex:0];
+        self.notesField.text = [[GloablObjects notesInstance].notesArray objectAtIndex:0];
     }
     //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-texture-background.jpg"]];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
     [self enableNoteField  ];
     justDel = false;
     
-
+    // observe keyboard for inset
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [center addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"defaultnote" ofType:@"txt"];
+    NSString *string = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
+    self.notesField.text = string;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -198,6 +285,38 @@
     // unregister for keyboard notifications while not visible.
     [self saveNote];
 }
+
+
+
+-(void) updateNoteUserDefaults {
+    NSMutableArray *notesArray = [NSMutableArray arrayWithCapacity:[[GloablObjects notesInstance].notesArray count]];
+    
+    for (NSString * note in [GloablObjects notesInstance].notesArray) {
+        [notesArray addObject:note];
+    }
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:notesArray forKey:@"notesArray"];
+    [userDefaults synchronize];
+}
+
+-(void) getFromNoteUserDefaults {
+    //wipes all gardens, will be reloaded from user defaults
+    [GloablObjects notesInstance].notesArray = [[NSMutableArray alloc] init];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *notesArray = [userDefaults objectForKey:@"notesArray"];
+    
+    if (notesArray == nil) {
+        NSLog(@"no notes found");
+    } else {
+        for (NSString * note in notesArray) {
+            [[GloablObjects notesInstance].notesArray addObject:note];
+        }
+    }
+    
+}
+
 
 
 - (void)didReceiveMemoryWarning {

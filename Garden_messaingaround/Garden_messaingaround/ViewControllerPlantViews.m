@@ -7,6 +7,7 @@
 //
 
 #import "ViewControllerPlantViews.h"
+#import "GloablObjects.h"
 #define kOFFSET_FOR_KEYBOARD 250.0
 
 @interface ViewControllerPlantViews () {
@@ -34,28 +35,32 @@
 
 -(IBAction) updateComment: (id) sender {
     
-    NSMutableDictionary *dic = [[self.plant.plantsDataArray objectAtIndex:clickedIndex] mutableCopy];
-    [dic setObject:comment.text forKey:@"Transplanting"];
-    
-    //trasplant is temp comments section
-    NSMutableArray * md = [self.plant.plantsDataArray mutableCopy];
-    [md replaceObjectAtIndex:clickedIndex withObject:dic];
-    self.plant.plantsDataArray = [md mutableCopy];
-    
-    
-    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSLog(filePath);
-    NSString* fileName = @"plantDataReal.json";
-    NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
-    
-    if (![[NSFileManager defaultManager] fileExistsAtPath:fileAtPath]) {
-        [[NSFileManager defaultManager] createFileAtPath:fileAtPath contents:nil attributes:nil];
-    }
-    
-    // The main act...
-    [[[md description] dataUsingEncoding:NSUTF8StringEncoding] writeToFile:fileAtPath atomically:NO];
-
-    [table reloadData];
+//    NSMutableDictionary *dic = [[self.plant.plantsDataArray objectAtIndex:clickedIndex] mutableCopy];
+//    [dic setObject:comment.text forKey:@"Transplanting"];
+//    
+//    //trasplant is temp comments section
+//    NSMutableArray * md = [self.plant.plantsDataArray mutableCopy];
+//    [md replaceObjectAtIndex:clickedIndex withObject:dic];
+//    self.plant.plantsDataArray = [md mutableCopy];
+//    
+//    
+//    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//    NSLog(filePath);
+//    NSString* fileName = @"plantDataReal.json";
+//    NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
+//    
+//    if (![[NSFileManager defaultManager] fileExistsAtPath:fileAtPath]) {
+//        [[NSFileManager defaultManager] createFileAtPath:fileAtPath contents:nil attributes:nil];
+//    }
+//    
+//    // The main act...
+//    [[[md description] dataUsingEncoding:NSUTF8StringEncoding] writeToFile:fileAtPath atomically:NO];
+//
+//    [table reloadData];
+    NSMutableArray* temp = [[GloablObjects commentsInstance].commentsArray mutableCopy];
+    temp[clickedIndex] = comment.text;
+    [GloablObjects commentsInstance].commentsArray = temp;
+    [self updateCommentUserDefaults];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -113,7 +118,7 @@
     
     NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [self.plant getAPlantName:indexPath.row], @"png"] lowercaseString] ;
     
-    comment.text = [self.plant getAPlantTransplanting:indexPath.row];
+    comment.text = [GloablObjects commentsInstance].commentsArray[indexPath.row];
     
     previewImage.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5f];
     previewImage.image = [UIImage imageNamed:imgName];
@@ -147,6 +152,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self getFromCommentUserDefaults];
+    
     self.plant = [[PlantObject alloc]init];
     name.text = [self.plant getAPlantName:5];
     
@@ -169,7 +176,7 @@
     previewImage.image = [UIImage imageNamed:imgName];
     previewImage.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5f];
     
-    comment.text = [self.plant getAPlantTransplanting:5];
+    comment.text = [GloablObjects commentsInstance].commentsArray[5];
     
     clickedIndex = 0;
     //sets title bar
@@ -284,6 +291,33 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
 }
+
+
+-(void) updateCommentUserDefaults {
+    NSMutableArray *commentsArray = [NSMutableArray arrayWithCapacity:[[GloablObjects commentsInstance].commentsArray count]];
+    
+    for (NSString * comment in [GloablObjects commentsInstance].commentsArray) {
+        [commentsArray addObject:comment];
+    }
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:commentsArray forKey:@"commentsArray"];
+    [userDefaults synchronize];
+}
+
+-(void) getFromCommentUserDefaults {
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *commentArray = [userDefaults objectForKey:@"commentsArray"];
+    
+    if (commentArray == nil) {
+        NSLog(@"no notes found");
+    } else {
+        [GloablObjects commentsInstance].commentsArray = [userDefaults objectForKey:@"commentsArray"];
+    }
+    
+}
+
 
 
 - (void)viewWillDisappear:(BOOL)animated

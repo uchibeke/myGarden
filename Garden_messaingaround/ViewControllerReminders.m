@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self getFromAlarmUserDefaults];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
 }
 
@@ -57,8 +57,9 @@
                                                                                                  timeStyle:NSDateFormatterFullStyle]];
     
     cell.textLabel.text = message;
-    //cell.textLabel.text =
-    //cell.imageView.image =
+    
+    NSString * imgName = [NSString stringWithFormat:@"reminderWhite"];
+    cell.imageView.image = [UIImage imageNamed:imgName];
     
     return cell;
 }
@@ -91,6 +92,7 @@
     }
     [[GloablObjects alarmInstance].alarmArray removeObjectAtIndex:indexPath.row ];
     [self.tableView reloadData];
+    [self updateAlarmUserDefaults];
 }
 
 
@@ -99,6 +101,10 @@
     [super viewWillAppear:animated];
     NSLog(@"data reload");
     [self.tableView reloadData];
+    [self updateAlarmUserDefaults];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
 }
 
 
@@ -107,7 +113,58 @@
     [super viewDidAppear:animated];
     NSLog(@"data reload");
     [self.tableView reloadData];
+    [self updateAlarmUserDefaults];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
 }
+
+-(void) updateAlarmUserDefaults {
+    NSMutableArray *alarmNames = [NSMutableArray arrayWithCapacity:[[GloablObjects alarmInstance].alarmArray count]];
+    NSMutableArray *alarmTimes = [NSMutableArray arrayWithCapacity:[[GloablObjects alarmInstance].alarmArray count]];
+    NSMutableArray *alarmMessages = [NSMutableArray arrayWithCapacity:[[GloablObjects alarmInstance].alarmArray count]];
+    
+    for (gardenAlarm * alarm in [GloablObjects alarmInstance].alarmArray) {
+        [alarmNames addObject:alarm.name];
+        [alarmTimes addObject:alarm.time];
+        [alarmMessages addObject:alarm.message];
+    }
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:alarmNames forKey:@"alarmNames"];
+    [userDefaults setObject:alarmTimes forKey:@"alarmTimes"];
+    [userDefaults setObject:alarmMessages forKey:@"alarmMessages"];
+    [userDefaults synchronize];
+}
+
+-(void) getFromAlarmUserDefaults {
+    //wipes all gardens, will be reloaded from user defaults
+    [GloablObjects alarmInstance].alarmArray = [[NSMutableArray alloc] init];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *alarmNames = [userDefaults objectForKey:@"alarmNames"];
+    NSMutableArray *alarmTimes = [userDefaults objectForKey:@"alarmTimes"];
+    NSMutableArray *alarmMessages = [userDefaults objectForKey:@"alarmMessages"];
+    
+    if (alarmMessages == nil || alarmTimes == nil) {
+        NSLog(@"no alarms found");
+    } else {
+        int i = 0;
+        for (NSString * alarm in alarmNames) {
+            NSLog(@"loading...");
+            gardenAlarm *alarm = [[gardenAlarm alloc] init];
+            alarm.name = alarmNames[i];
+            alarm.time = alarmTimes[i];
+            alarm.message = alarmMessages[i];
+            
+            [[GloablObjects alarmInstance].alarmArray addObject:alarm];
+            i+=1;
+        }
+    }
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
