@@ -329,7 +329,7 @@
     
     if (cell == nil) {
         cell = [ [ UITableViewCell alloc ]
-                initWithStyle: UITableViewCellStyleDefault
+                initWithStyle: UITableViewCellStyleSubtitle
                 reuseIdentifier: @"Cell" ];
     }
    
@@ -345,6 +345,15 @@
     UIGraphicsEndImageContext();
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", @"", [self.plant getAPlantName:indexPath.row]] ;
+    
+    // Set subtitles
+    NSString * txt = @"";
+    NSString* plantName = [self.plant getAPlantName:indexPath.row];
+    if ([[self getAPlantObject:plantName] objectForKey:@"Spacing per Square Foot"]) {
+        txt =  [[self getAPlantObject:plantName] objectForKey:@"Spacing per Square Foot"] ;
+    }
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@%@", txt, @""];
+    cell.detailTextLabel.textColor = [UIColor whiteColor];
     
   //  tableView.backgroundColor = [UIColor redColor];
     return cell;
