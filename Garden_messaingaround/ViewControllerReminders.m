@@ -55,11 +55,12 @@
     message = [NSMutableString stringWithFormat:@"%@%@", message, myAlaram.name];
     message = [NSMutableString stringWithFormat:@"%@%@", message, @" - "];
     message = [NSMutableString stringWithFormat:@"%@%@", message, myAlaram.message];
-    message = [NSMutableString stringWithFormat:@"%@%@", message, @" - "];
-    message = [NSMutableString stringWithFormat:@"%@%@", message, [NSDateFormatter localizedStringFromDate:myAlaram.time
-                                                                                                 dateStyle:NSDateFormatterShortStyle
-                                                                                                 timeStyle:NSDateFormatterFullStyle]];
+    
 
+    cell.detailTextLabel.text = [NSDateFormatter localizedStringFromDate:myAlaram.time
+                                                               dateStyle:NSDateFormatterShortStyle
+                                                               timeStyle:NSDateFormatterFullStyle];
+    cell.detailTextLabel.textColor = [UIColor whiteColor];
     cell.textLabel.text = message;
     
     NSString * imgName = [NSString stringWithFormat:@"reminderWhite"];
