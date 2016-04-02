@@ -8,7 +8,7 @@
 
 #import "ViewControllerPlantViews.h"
 #import "GloablObjects.h"
-#define kOFFSET_FOR_KEYBOARD 250.0
+#define kOFFSET_FOR_KEYBOARD 345.0
 
 @interface ViewControllerPlantViews () {
     
