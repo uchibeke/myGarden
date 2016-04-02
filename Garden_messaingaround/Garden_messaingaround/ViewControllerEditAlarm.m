@@ -27,7 +27,7 @@
     [self.timeToSetOff setHidden:NO];
     [self.repeatSwitch setOn:NO];
     
-    self.plantid = 0;
+    self.plantid = 0.0;
     self.selectedPlant = [[GloablObjects plantDataInstance].plantData getAPlantName:0];
     self.repeat = NO;
     

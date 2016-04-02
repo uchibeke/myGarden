@@ -108,7 +108,7 @@
         self.clickedIndex = indexPath.row;
         
         //checks if imcompatable plants with what your planting are near
-        [self checkfoes:indexPath.row];
+        [self checkfoes:(int)indexPath.row];
         
         UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
         [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];

@@ -21,7 +21,7 @@
 @property (strong, nonatomic) PlantObject * plant ;
 @property ViewControllerEditAlarm * reminders;
 @property NSString * selectedPlant;
-@property int plantid;
+@property NSInteger plantid;
 @property BOOL repeat;
 
 @end
