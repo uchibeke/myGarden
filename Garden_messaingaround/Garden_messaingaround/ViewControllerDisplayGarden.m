@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     //sets title, backgorund image and tab image
     [self setTitle:[GloablObjects instance].myGarden.name];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
@@ -61,7 +61,7 @@
     static NSString *identifier = @"Cell";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
-
+    
     //sets title and their properties for each square
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.65, cell.bounds.size.width, 40)];
     title.textColor = [UIColor whiteColor];
@@ -103,51 +103,53 @@
 //called when items are selected from the collection view
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //sets the lastclicked index to be used throughout the class
-    self.clickedIndex = indexPath.row;
-    
-    //checks if imcompatable plants with what your planting are near
-    [self checkfoes:indexPath.row];
-    
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
-    //sets title and their properties for each square
-    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.05, cell.bounds.size.width*.65, cell.bounds.size.width*.9, 40)];
-    title.textColor = [UIColor whiteColor];
-    [title setTextAlignment:NSTextAlignmentCenter];
-    title.adjustsFontSizeToFitWidth = YES;
-    title.minimumScaleFactor = 0;
-    title.text = @"";
-    if (([[GloablObjects instance].myGarden getWidth]) < 7) {
-        title.text = [GloablObjects paintBrushInstance].paintBrush.name;
+    if (self.brushIsInit) {
+        //sets the lastclicked index to be used throughout the class
+        self.clickedIndex = indexPath.row;
+        
+        //checks if imcompatable plants with what your planting are near
+        [self checkfoes:indexPath.row];
+        
+        UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+        [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        
+        //sets title and their properties for each square
+        UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.05, cell.bounds.size.width*.65, cell.bounds.size.width*.9, 40)];
+        title.textColor = [UIColor whiteColor];
+        [title setTextAlignment:NSTextAlignmentCenter];
+        title.adjustsFontSizeToFitWidth = YES;
+        title.minimumScaleFactor = 0;
+        title.text = @"";
+        if (([[GloablObjects instance].myGarden getWidth]) < 7) {
+            title.text = [GloablObjects paintBrushInstance].paintBrush.name;
+        }
+        
+        //sets number to plant per sq/ft and the texts properties for each square
+        UILabel *plantsPerRow = [[UILabel alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.05, cell.bounds.size.width*.01, cell.bounds.size.width*.9, 40)];
+        plantsPerRow.textColor = [UIColor whiteColor];
+        [plantsPerRow setTextAlignment:NSTextAlignmentCenter];
+        [plantsPerRow setFont: [plantsPerRow.font fontWithSize: 13]];
+        plantsPerRow.adjustsFontSizeToFitWidth = YES;
+        plantsPerRow.minimumScaleFactor = 0;
+        if (([[GloablObjects instance].myGarden getWidth]) < 7 && !([[self getAPlantObject:[GloablObjects paintBrushInstance].paintBrush.name] isEqualToDictionary:nil])) {
+            plantsPerRow.text = [[self getAPlantObject:[GloablObjects paintBrushInstance].paintBrush.name] objectForKey:@"Spacing per Square Foot"];
+        }
+        
+        //semi transparent background
+        UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.30, cell.bounds.size.height*.3, cell.bounds.size.width*.4, cell.bounds.size.height*.4)];
+        self.backgroundimgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*0.05, cell.bounds.size.height*0.05, cell.bounds.size.width*.9, cell.bounds.size.height*.9)];
+        self.backgroundimgview.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5f];
+        NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [GloablObjects paintBrushInstance].paintBrush.name, @"png"] lowercaseString] ;
+        imgview.image = [ UIImage imageNamed: imgName];
+        [cell.contentView addSubview:self.backgroundimgview];
+        [cell.contentView addSubview:title];
+        [cell.contentView addSubview:imgview];
+        [cell.contentView addSubview:plantsPerRow];
+        
+        //updates garden object
+        [[GloablObjects instance].myGarden.gardenArr2d replaceObjectAtIndex:indexPath.row withObject:[GloablObjects paintBrushInstance].paintBrush];
+        [self updateUserDefaults];
     }
-    
-    //sets number to plant per sq/ft and the texts properties for each square
-    UILabel *plantsPerRow = [[UILabel alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.05, cell.bounds.size.width*.01, cell.bounds.size.width*.9, 40)];
-    plantsPerRow.textColor = [UIColor whiteColor];
-    [plantsPerRow setTextAlignment:NSTextAlignmentCenter];
-    [plantsPerRow setFont: [plantsPerRow.font fontWithSize: 13]];
-    plantsPerRow.adjustsFontSizeToFitWidth = YES;
-    plantsPerRow.minimumScaleFactor = 0;
-    if (([[GloablObjects instance].myGarden getWidth]) < 7 && !([[self getAPlantObject:[GloablObjects paintBrushInstance].paintBrush.name] isEqualToDictionary:nil])) {
-        plantsPerRow.text = [[self getAPlantObject:[GloablObjects paintBrushInstance].paintBrush.name] objectForKey:@"Spacing per Square Foot"];
-    }
-    
-    //semi transparent background
-    UIImageView *imgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.30, cell.bounds.size.height*.3, cell.bounds.size.width*.4, cell.bounds.size.height*.4)];
-    self.backgroundimgview = [[UIImageView alloc]initWithFrame:CGRectMake(cell.bounds.size.width*0.05, cell.bounds.size.height*0.05, cell.bounds.size.width*.9, cell.bounds.size.height*.9)];
-    self.backgroundimgview.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5f];
-    NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [GloablObjects paintBrushInstance].paintBrush.name, @"png"] lowercaseString] ;
-    imgview.image = [ UIImage imageNamed: imgName];
-    [cell.contentView addSubview:self.backgroundimgview];
-    [cell.contentView addSubview:title];
-    [cell.contentView addSubview:imgview];
-    [cell.contentView addSubview:plantsPerRow];
-    
-    //updates garden object
-    [[GloablObjects instance].myGarden.gardenArr2d replaceObjectAtIndex:indexPath.row withObject:[GloablObjects paintBrushInstance].paintBrush];
-    [self updateUserDefaults];
     
 }
 
@@ -171,7 +173,7 @@
                 initWithStyle: UITableViewCellStyleSubtitle
                 reuseIdentifier: @"Cell" ];
     }
-   
+    
     //puts image of plant next to name
     NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [[GloablObjects plantDataInstance].plantData getAPlantName:indexPath.row], @"png"] lowercaseString] ;
     cell.imageView.image = [UIImage imageNamed:imgName];
@@ -200,6 +202,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Set background back to the original one when tableview is selected
+    self.brushIsInit = YES;
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.delmode = NO;
     PlantObject* brush = [PlantObject alloc];
@@ -376,7 +379,7 @@
     
     // Save image.
     UIImageWriteToSavedPhotosAlbum(self.shot.image, nil, nil, nil);
-
+    
     self.shot.hidden = NO;
     self.shot.alpha = 1.0f;
     [self.shot setNeedsDisplay];

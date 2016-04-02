@@ -92,7 +92,7 @@
         [[UIApplication sharedApplication] scheduleLocalNotification: locNot];
         
         gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
-        myAlarm.name = @"weeding";
+        myAlarm.name = @"WEEDING";
         myAlarm.time = locNot.fireDate;
         myAlarm.message = @"Reminder to weed your garden!";
         [[GloablObjects alarmInstance].alarmArray addObject:myAlarm];
@@ -107,7 +107,7 @@
         [[UIApplication sharedApplication] scheduleLocalNotification: locNot];
         
         gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
-        myAlarm.name = @"watering";
+        myAlarm.name = @"WATERING";
         myAlarm.time = locNot.fireDate;
         myAlarm.message = @"Reminder to water your garden!";
         [[GloablObjects alarmInstance].alarmArray addObject:myAlarm];
@@ -128,7 +128,7 @@
         [[UIApplication sharedApplication] scheduleLocalNotification: locNot];
         
         gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
-        myAlarm.name = @"harvest";
+        myAlarm.name = @"HARVEST";
         myAlarm.time = locNot.fireDate;
         myAlarm.message = message;
         [[GloablObjects alarmInstance].alarmArray addObject:myAlarm];
