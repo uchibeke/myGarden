@@ -7,7 +7,7 @@
 //
 
 #import "ViewControllerNotes.h"
-
+#define kOFFSET_FOR_KEYBOARD2 70
 @interface ViewControllerNotes () 
 
 @end
@@ -147,7 +147,7 @@
     coveredFrame = [self.view.window convertRect:coveredFrame toView:self.view.superview];
     
     // set inset to make up for covered height at bottom
-    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, coveredFrame.size.height, 0);
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, coveredFrame.size.height-kOFFSET_FOR_KEYBOARD2, 0);
     
     NSTimeInterval duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     NSUInteger options = [notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
