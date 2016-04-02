@@ -17,4 +17,9 @@
 @property (nonatomic, strong) IBOutlet UISwitch *harvestSwitch;
 
 @property (strong, nonatomic) PlantObject * plant ;
+@property ViewControllerEditAlarm * reminders;
+@property NSString * selectedPlant;
+@property int plantid;
+@property BOOL repeat;
+
 @end

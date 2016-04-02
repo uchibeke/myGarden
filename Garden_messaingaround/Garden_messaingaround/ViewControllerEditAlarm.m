@@ -11,11 +11,7 @@
 #import "GloablObjects.h"
 #import "gardenAlarm.h"
 
-@interface ViewControllerEditAlarm () {
-    ViewControllerEditAlarm * reminders;
-    NSString * selectedPlant;
-    int plantid;
-}
+@interface ViewControllerEditAlarm ()
 
 @end
 
@@ -30,8 +26,9 @@
     [self.tableView setHidden:YES];
     [self.timeToSetOff setHidden:NO];
     
-    plantid = 0;
-    selectedPlant = [[GloablObjects plantDataInstance].plantData getAPlantName:0];
+    self.plantid = 0;
+    self.selectedPlant = [[GloablObjects plantDataInstance].plantData getAPlantName:0];
+    self.repeat = YES;
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
     
@@ -90,8 +87,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    selectedPlant = [[GloablObjects plantDataInstance].plantData getAPlantName:indexPath.row];
-    plantid = indexPath.row;
+    self.selectedPlant = [[GloablObjects plantDataInstance].plantData getAPlantName:indexPath.row];
+    self.plantid = indexPath.row;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -136,6 +133,9 @@
         locNot.alertBody = @"Reminder to weed your garden!";
         locNot.timeZone = [NSTimeZone defaultTimeZone];
         locNot.soundName = UILocalNotificationDefaultSoundName;
+        if (self.repeat) {
+            locNot.repeatInterval = NSCalendarUnitMinute;
+        }
         [[UIApplication sharedApplication] scheduleLocalNotification: locNot];
         
         gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
@@ -162,11 +162,11 @@
         UILocalNotification *locNot = [[UILocalNotification alloc] init];
         NSDate *mydate = [NSDate date];
         double interval = 604800;
-        interval *= [[[GloablObjects plantDataInstance].plantData getAPlantTimerCountDown:plantid] integerValue];
+        interval *= [[[GloablObjects plantDataInstance].plantData getAPlantTimerCountDown:self.plantid] integerValue];
         locNot.fireDate = [mydate dateByAddingTimeInterval: interval];
         NSMutableString *message = [NSMutableString stringWithCapacity:1000];
         message = [NSMutableString stringWithFormat:@"%@%@", message, @"Reminder to harvest your "];
-        message = [NSMutableString stringWithFormat:@"%@%@", message, selectedPlant];
+        message = [NSMutableString stringWithFormat:@"%@%@", message, self.selectedPlant];
         locNot.alertBody = message;
         locNot.timeZone = [NSTimeZone defaultTimeZone];
         locNot.soundName = UILocalNotificationDefaultSoundName;

@@ -85,13 +85,14 @@
                                                    dateStyle:NSDateFormatterShortStyle
                                                    timeStyle:NSDateFormatterFullStyle];
     
-    for(gardenAlarm *notification in [GloablObjects alarmInstance].alarmArray){
-        if ([fir isEqualToString:[NSDateFormatter localizedStringFromDate:notification.time
+    for(gardenAlarm *notificat in [GloablObjects alarmInstance].alarmArray){
+        if ([fir isEqualToString:[NSDateFormatter localizedStringFromDate:notificat.time
                                                                 dateStyle:NSDateFormatterShortStyle
                                                                 timeStyle:NSDateFormatterFullStyle]]) {
-            // delete this notification
-            NSLog(@"found");
-            [[GloablObjects alarmInstance].alarmArray removeObject:notification];
+            if (!notification.repeatInterval) {
+                // delete this notification
+                [[GloablObjects alarmInstance].alarmArray removeObject:notificat];
+            }
         }
     }
     UIAlertView *notificationAlert = [[UIAlertView alloc] initWithTitle:notification.alertTitle    message:notification.alertBody

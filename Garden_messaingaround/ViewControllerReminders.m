@@ -59,7 +59,7 @@
     
     NSString * imgName = [NSString stringWithFormat:@"reminderWhite"];
     cell.imageView.image = [UIImage imageNamed:imgName];
-    
+    cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
 
