@@ -374,7 +374,7 @@
                         <viewControllerLayoutGuide type="bottom" id="DuN-H4-9sR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="g3c-qo-HUX">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cCj-lz-zmm">
@@ -584,6 +584,18 @@
                                     <action selector="widthModfier:" destination="Dje-qM-Kq5" eventType="valueChanged" id="JBw-KN-h4Y"/>
                                 </connections>
                             </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="25 Max" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lBk-Ws-MJg">
+                                <rect key="frame" x="407" y="200" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50 Max" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00w-Fb-QH8">
+                                <rect key="frame" x="407" y="257" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.2196078431372549" green="0.11764705882352941" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
@@ -935,6 +947,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="RAn-n5-Vvb"/>
-        <segue reference="xKU-u6-erc"/>
+        <segue reference="j3n-KL-xWw"/>
     </inferredMetricsTieBreakers>
 </document>
