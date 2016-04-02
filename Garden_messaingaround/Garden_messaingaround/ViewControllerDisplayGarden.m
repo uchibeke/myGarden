@@ -194,7 +194,7 @@
         txt =  [[self getAPlantObject:plantName] objectForKey:@"Spacing per Square Foot"] ;
     }
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@%@", txt, @""];
-    cell.detailTextLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.textColor = [UIColor colorWithRed:(124/255.0f) green:(186/255.0f) blue:(37/255.0f) alpha:(1.0f)];
     
     return cell;
 }

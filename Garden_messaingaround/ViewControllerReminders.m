@@ -56,7 +56,7 @@
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@%@", [NSDateFormatter localizedStringFromDate:myAlaram.time
                                                                                                    dateStyle:NSDateFormatterShortStyle
                                                                                                    timeStyle:NSDateFormatterFullStyle], @""];
-    cell.detailTextLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.textColor = [UIColor colorWithRed:(124/255.0f) green:(186/255.0f) blue:(37/255.0f) alpha:(1.0f)];
     
     NSString * imgName = [NSString stringWithFormat:@"reminderWhite"];
     cell.imageView.image = [UIImage imageNamed:imgName];
