@@ -50,7 +50,7 @@
     layout.itemSize = CGSizeMake(widthOfCell, widthOfCell);
     
     layout.minimumInteritemSpacing = 0.0f;
-    layout.minimumLineSpacing = 1.0f;
+    layout.minimumLineSpacing = 0.0f;
     
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     collectionView.collectionViewLayout = layout;

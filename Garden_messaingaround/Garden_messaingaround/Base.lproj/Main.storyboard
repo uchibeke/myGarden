@@ -577,7 +577,7 @@
                                     <action selector="heightModfier:" destination="Dje-qM-Kq5" eventType="valueChanged" id="hsV-Vk-zrf"/>
                                 </connections>
                             </stepper>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="27" translatesAutoresizingMaskIntoConstraints="NO" id="eWn-zs-hqm">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="eWn-zs-hqm">
                                 <rect key="frame" x="296" y="196" width="94" height="29"/>
                                 <animations/>
                                 <connections>
