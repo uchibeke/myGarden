@@ -66,9 +66,9 @@
         [[GloablObjects instance].myGarden setName:self.name.text];
         
         //width adjustment
-        int oldWidth = [GloablObjects instance].myGarden.width;
+        NSInteger oldWidth = [GloablObjects instance].myGarden.width;
         if ((oldWidth - self.w) >= 0) {
-            int loops = oldWidth-self.w;
+            NSInteger loops = oldWidth-self.w;
             
             for (int j=0; j < loops; j++) {
                 //for delete a collumn
@@ -79,7 +79,7 @@
             }
             [GloablObjects instance].myGarden.width = [self.widthDisp.text intValue];
         } else {
-            int loops = self.w-oldWidth;
+            NSInteger loops = self.w-oldWidth;
             
             for (int j=0; j < loops; j++) {
                 //for delete a collumn
@@ -95,19 +95,19 @@
         
         
         //height adjustment
-        int oldHeight = [GloablObjects instance].myGarden.height;
+        NSInteger oldHeight = [GloablObjects instance].myGarden.height;
         if ((oldHeight - self.h) >= 0) {
-            int toDelFromEnd = (oldHeight - self.h)*[GloablObjects instance].myGarden.width;
+            NSInteger toDelFromEnd = (oldHeight - self.h)*[GloablObjects instance].myGarden.width;
             for (int j=0;j<toDelFromEnd; j++) {
-                int temp = [GloablObjects instance].myGarden.gardenArr2d.count-1;
+                NSInteger temp = [GloablObjects instance].myGarden.gardenArr2d.count-1;
                 [[GloablObjects instance].myGarden.gardenArr2d removeObjectAtIndex:temp];
                 oldHeight--;
             }
             [GloablObjects instance].myGarden.height = [self.heightDisp.text intValue];
         } else {
-            int toAddToEnd = (self.h - oldHeight)*self.w;
+            NSInteger toAddToEnd = (self.h - oldHeight)*self.w;
             for (int j=0;j<toAddToEnd; j++) {
-                int temp = [GloablObjects instance].myGarden.gardenArr2d.count;
+                NSInteger temp = [GloablObjects instance].myGarden.gardenArr2d.count;
                 PlantObject *myPlant = [PlantObject new];
                 myPlant.name = @"";
                 [[GloablObjects instance].myGarden.gardenArr2d insertObject:myPlant atIndex:temp];

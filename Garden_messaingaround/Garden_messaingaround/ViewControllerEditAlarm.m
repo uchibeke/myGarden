@@ -26,7 +26,7 @@
     [self.tableView setHidden:YES];
     [self.timeToSetOff setHidden:NO];
     
-    self.plantid = 0;
+    self.plantid = 0.0;
     self.selectedPlant = [[GloablObjects plantDataInstance].plantData getAPlantName:0];
     self.repeat = YES;
     

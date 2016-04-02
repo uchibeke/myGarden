@@ -99,7 +99,7 @@
     self.previewImage.image = [UIImage imageNamed:imgName];
     
     // Save the comment
-    self.clickedIndex = indexPath.row;
+    self.clickedIndex = (int)indexPath.row;
     
     
 }
