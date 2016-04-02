@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0965401A1C9E09B300B28B43 /* ViewControllerReminders.m in Sources */ = {isa = PBXBuildFile; fileRef = 096540191C9E09B300B28B43 /* ViewControllerReminders.m */; };
+		098F7CC51CB03A290015811B /* strawberryIcon29.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CBE1CB03A290015811B /* strawberryIcon29.png */; };
+		098F7CC61CB03A290015811B /* strawberryIcon29x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CBF1CB03A290015811B /* strawberryIcon29x2.png */; };
+		098F7CC71CB03A290015811B /* strawberryIcon40.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CC01CB03A290015811B /* strawberryIcon40.png */; };
+		098F7CC81CB03A290015811B /* strawberryIcon40x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CC11CB03A290015811B /* strawberryIcon40x2.png */; };
+		098F7CC91CB03A290015811B /* strawberryIcon76.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CC21CB03A290015811B /* strawberryIcon76.png */; };
+		098F7CCA1CB03A290015811B /* strawberryIcon76x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CC31CB03A290015811B /* strawberryIcon76x2.png */; };
+		098F7CCB1CB03A290015811B /* strawberryIconBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CC41CB03A290015811B /* strawberryIconBig.png */; };
 		09B2A1581C94B54B0081D136 /* ViewControllerPlantViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */; };
 		09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */; };
 		09CE09311CA6FBF300911F6C /* whiteCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE092E1CA6FBF300911F6C /* whiteCamera.png */; };
@@ -143,6 +150,13 @@
 /* Begin PBXFileReference section */
 		096540181C9E09B300B28B43 /* ViewControllerReminders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewControllerReminders.h; path = ../ViewControllerReminders.h; sourceTree = "<group>"; };
 		096540191C9E09B300B28B43 /* ViewControllerReminders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewControllerReminders.m; path = ../ViewControllerReminders.m; sourceTree = "<group>"; };
+		098F7CBE1CB03A290015811B /* strawberryIcon29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIcon29.png; sourceTree = "<group>"; };
+		098F7CBF1CB03A290015811B /* strawberryIcon29x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIcon29x2.png; sourceTree = "<group>"; };
+		098F7CC01CB03A290015811B /* strawberryIcon40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIcon40.png; sourceTree = "<group>"; };
+		098F7CC11CB03A290015811B /* strawberryIcon40x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIcon40x2.png; sourceTree = "<group>"; };
+		098F7CC21CB03A290015811B /* strawberryIcon76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIcon76.png; sourceTree = "<group>"; };
+		098F7CC31CB03A290015811B /* strawberryIcon76x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIcon76x2.png; sourceTree = "<group>"; };
+		098F7CC41CB03A290015811B /* strawberryIconBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIconBig.png; sourceTree = "<group>"; };
 		09B2A1561C94B54B0081D136 /* ViewControllerPlantViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerPlantViews.h; sourceTree = "<group>"; };
 		09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerPlantViews.m; sourceTree = "<group>"; };
 		09B2A1591C94C1C50081D136 /* ViewControllerNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerNotes.h; sourceTree = "<group>"; };
@@ -319,6 +333,13 @@
 		9552DED81C880DEC00633FBE /* plantImages */ = {
 			isa = PBXGroup;
 			children = (
+				098F7CBE1CB03A290015811B /* strawberryIcon29.png */,
+				098F7CBF1CB03A290015811B /* strawberryIcon29x2.png */,
+				098F7CC01CB03A290015811B /* strawberryIcon40.png */,
+				098F7CC11CB03A290015811B /* strawberryIcon40x2.png */,
+				098F7CC21CB03A290015811B /* strawberryIcon76.png */,
+				098F7CC31CB03A290015811B /* strawberryIcon76x2.png */,
+				098F7CC41CB03A290015811B /* strawberryIconBig.png */,
 				11E3221D1CAA0C2E00C5F4E7 /* timerBig2.png */,
 				11E3221E1CAA0C2E00C5F4E7 /* gardenBig2.png */,
 				11E3221F1CAA0C2E00C5F4E7 /* notesBig2.png */,
@@ -587,6 +608,7 @@
 			files = (
 				95C8B4141C962A1C00057F9A /* dirt3.png in Resources */,
 				95F51EC51C96437A00800259 /* note.png in Resources */,
+				098F7CC51CB03A290015811B /* strawberryIcon29.png in Resources */,
 				95C8B44E1C96388A00057F9A /* spinach_44x44.png in Resources */,
 				09CE09331CA6FBF300911F6C /* whiteTwitter.png in Resources */,
 				95C8B4411C96388A00057F9A /* cucumber_44x44.png in Resources */,
@@ -601,6 +623,7 @@
 				95C8B4471C96388A00057F9A /* onion_44x44.png in Resources */,
 				95C8B4511C96388A00057F9A /* swiss chard_44x44.png in Resources */,
 				9D6549A61C88BAF400841A24 /* potato.png in Resources */,
+				098F7CC91CB03A290015811B /* strawberryIcon76.png in Resources */,
 				9D6549951C88BAF400841A24 /* carrots.png in Resources */,
 				117A28F21CA60032001AFB24 /* facebook_button.png in Resources */,
 				95C8B4421C96388A00057F9A /* eggplant_44x44.png in Resources */,
@@ -612,6 +635,7 @@
 				9D6549AA1C88BAF400841A24 /* strawberry.png in Resources */,
 				9D65498D1C88BAF400841A24 /* basil.png in Resources */,
 				95C8B43D1C96388A00057F9A /* cauliflower_44x44.png in Resources */,
+				098F7CC71CB03A290015811B /* strawberryIcon40.png in Resources */,
 				ADC714931C82448400260F56 /* Main.storyboard in Resources */,
 				95C8B44B1C96388A00057F9A /* pepper_44x44.png in Resources */,
 				95C8B43B1C96388A00057F9A /* cabbage_44x44.png in Resources */,
@@ -636,6 +660,7 @@
 				95C8B4531C96388A00057F9A /* watermelon_44x44.png in Resources */,
 				9D6549A11C88BAF400841A24 /* onion.png in Resources */,
 				95C8B4541C96388A00057F9A /* winter squash_44x44.png in Resources */,
+				098F7CC81CB03A290015811B /* strawberryIcon40x2.png in Resources */,
 				95C8B43E1C96388A00057F9A /* chives_44x44.png in Resources */,
 				9D6549B01C88BAF400841A24 /* watermelon.png in Resources */,
 				9D65498E1C88BAF400841A24 /* beans.png in Resources */,
@@ -646,12 +671,14 @@
 				9D6549B11C88BAF400841A24 /* winter squash.png in Resources */,
 				95F51EC91C96447300800259 /* noteSmall.png in Resources */,
 				95C8B44D1C96388A00057F9A /* radish_44x44.png in Resources */,
+				098F7CC61CB03A290015811B /* strawberryIcon29x2.png in Resources */,
 				9D6549AC1C88BAF400841A24 /* summer-squash.png in Resources */,
 				11E322211CAA0C2E00C5F4E7 /* gardenBig2.png in Resources */,
 				9D6549AE1C88BAF400841A24 /* swiss-chard.png in Resources */,
 				9D6549A91C88BAF400841A24 /* strawberries.png in Resources */,
 				95C8B4371C96388A00057F9A /* basil_44x44.png in Resources */,
 				95C8B4451C96388A00057F9A /* muskmelon_44x44.png in Resources */,
+				098F7CCA1CB03A290015811B /* strawberryIcon76x2.png in Resources */,
 				95C8B4391C96388A00057F9A /* beets_44x44.png in Resources */,
 				95C8B4401C96388A00057F9A /* corn_44x44.png in Resources */,
 				11E322221CAA0C2E00C5F4E7 /* notesBig2.png in Resources */,
@@ -683,6 +710,7 @@
 				117A28F01CA60029001AFB24 /* twitter_button.png in Resources */,
 				9D6549AD1C88BAF400841A24 /* swiss chard.png in Resources */,
 				ADC714951C82448400260F56 /* Images.xcassets in Resources */,
+				098F7CCB1CB03A290015811B /* strawberryIconBig.png in Resources */,
 				9D65499A1C88BAF400841A24 /* cucumber.png in Resources */,
 				9D6549AF1C88BAF400841A24 /* tomato.png in Resources */,
 			);
