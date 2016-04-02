@@ -526,6 +526,11 @@
     });
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.collectionView.backgroundColor = [UIColor clearColor];
+}
 
 
 - (void)didReceiveMemoryWarning {
