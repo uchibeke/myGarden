@@ -117,6 +117,7 @@
 		9D6549B01C88BAF400841A24 /* watermelon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549881C88BAF400841A24 /* watermelon.png */; };
 		9D6549B11C88BAF400841A24 /* winter squash.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549891C88BAF400841A24 /* winter squash.png */; };
 		9D6549B21C88BAF400841A24 /* winter-squash.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D65498A1C88BAF400841A24 /* winter-squash.png */; };
+		9D8BDFAC1CB051F900BF969D /* asparagus.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D8BDFAB1CB051F900BF969D /* asparagus.png */; };
 		ADC7148A1C82448400260F56 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC714891C82448400260F56 /* main.m */; };
 		ADC7148D1C82448400260F56 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC7148C1C82448400260F56 /* AppDelegate.m */; };
 		ADC714901C82448400260F56 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC7148F1C82448400260F56 /* ViewController.m */; };
@@ -258,6 +259,7 @@
 		9D6549881C88BAF400841A24 /* watermelon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermelon.png; sourceTree = "<group>"; };
 		9D6549891C88BAF400841A24 /* winter squash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winter squash.png"; sourceTree = "<group>"; };
 		9D65498A1C88BAF400841A24 /* winter-squash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winter-squash.png"; sourceTree = "<group>"; };
+		9D8BDFAB1CB051F900BF969D /* asparagus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asparagus.png; sourceTree = "<group>"; };
 		ADC714841C82448400260F56 /* Garden_messaingaround.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Garden_messaingaround.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADC714881C82448400260F56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADC714891C82448400260F56 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				95C8B4171C96388A00057F9A /* Asparagus_44x44.png */,
+				9D8BDFAB1CB051F900BF969D /* asparagus.png */,
 				95C8B4181C96388A00057F9A /* basil_44x44.png */,
 				9D6549651C88BAF400841A24 /* basil.png */,
 				95C8B4191C96388A00057F9A /* Beans_44x44.png */,
@@ -599,6 +602,7 @@
 				117A28F21CA60032001AFB24 /* facebook_button.png in Resources */,
 				95C8B4421C96388A00057F9A /* eggplant_44x44.png in Resources */,
 				95C8B43C1C96388A00057F9A /* carrots_44x44.png in Resources */,
+				9D8BDFAC1CB051F900BF969D /* asparagus.png in Resources */,
 				9D6549A71C88BAF400841A24 /* radish.png in Resources */,
 				9552DED71C87E45700633FBE /* plantData.json in Resources */,
 				95C8B44F1C96388A00057F9A /* strawberries_44x44.png in Resources */,
