@@ -92,6 +92,7 @@
             if (!notification.repeatInterval) {
                 // delete this notification
                 [[GloablObjects alarmInstance].alarmArray removeObject:notificat];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadAppDelegateTable" object:nil];
             }
         }
     }

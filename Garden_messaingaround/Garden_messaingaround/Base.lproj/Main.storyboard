@@ -297,7 +297,7 @@
                         <viewControllerLayoutGuide type="bottom" id="6LP-cM-Ngh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NHP-qo-9tb">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="655"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="timerBig2.png" translatesAutoresizingMaskIntoConstraints="NO" id="so2-1V-zNe">
@@ -384,15 +384,8 @@
                                     <action selector="weedSw:" destination="08N-h2-GOq" eventType="valueChanged" id="KPf-YE-9dm"/>
                                 </connections>
                             </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="l1o-km-los">
-                                <rect key="frame" x="24" y="121" width="51" height="31"/>
-                                <animations/>
-                                <connections>
-                                    <action selector="waterSw:" destination="08N-h2-GOq" eventType="valueChanged" id="7hI-S8-XLU"/>
-                                </connections>
-                            </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rt5-hl-Wap">
-                                <rect key="frame" x="24" y="173" width="51" height="31"/>
+                                <rect key="frame" x="24" y="218" width="51" height="31"/>
                                 <animations/>
                                 <connections>
                                     <action selector="harvestSw:" destination="08N-h2-GOq" eventType="valueChanged" id="oC1-x4-iIt"/>
@@ -405,15 +398,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Watering" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lE2-jA-bMD">
-                                <rect key="frame" x="80" y="126" width="68" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Harvest" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCW-Oe-LiP">
-                                <rect key="frame" x="80" y="178" width="60" height="21"/>
+                                <rect key="frame" x="80" y="223" width="60" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -466,6 +452,32 @@
                                     <outlet property="delegate" destination="08N-h2-GOq" id="NT9-Tc-GxD"/>
                                 </connections>
                             </tableView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u6K-xp-llt">
+                                <rect key="frame" x="24" y="294" width="51" height="31"/>
+                                <connections>
+                                    <action selector="repeatSw:" destination="08N-h2-GOq" eventType="valueChanged" id="2WC-ED-qog"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="repeat (weekly)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bS-Nu-hs5">
+                                <rect key="frame" x="80" y="304" width="115" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="l1o-km-los">
+                                <rect key="frame" x="24" y="145" width="51" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="waterSw:" destination="08N-h2-GOq" eventType="valueChanged" id="7hI-S8-XLU"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Watering" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lE2-jA-bMD">
+                                <rect key="frame" x="80" y="150" width="68" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -487,6 +499,8 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="harvestSwitch" destination="rt5-hl-Wap" id="j4t-li-UMT"/>
+                        <outlet property="repeatLable" destination="2bS-Nu-hs5" id="CAV-iQ-wsR"/>
+                        <outlet property="repeatSwitch" destination="u6K-xp-llt" id="lqK-NQ-qUB"/>
                         <outlet property="tableView" destination="03Q-NB-hJC" id="2WD-LC-lT8"/>
                         <outlet property="timeToSetOff" destination="Ymv-VN-3Vc" id="yic-zP-QZf"/>
                         <outlet property="waterSwitch" destination="l1o-km-los" id="zpU-5K-ZHJ"/>
@@ -824,7 +838,7 @@
                         <viewControllerLayoutGuide type="bottom" id="qX2-w5-IQu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ENK-Ya-1we">
-                        <rect key="frame" x="0.0" y="64" width="1024" height="655"/>
+                        <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QgV-Tw-RgK">

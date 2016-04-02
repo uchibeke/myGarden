@@ -28,6 +28,7 @@
 		85918F3D1CA5D44200591415 /* gardenAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 85918F3C1CA5D44200591415 /* gardenAlarm.m */; };
 		85918F3F1CA5F3B900591415 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85918F3E1CA5F3B900591415 /* Social.framework */; };
 		85A5CFA01CB03749007B74FA /* PlantData.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A5CF9F1CB03749007B74FA /* PlantData.m */; };
+		85A5CFA21CB07C2E007B74FA /* swiss chard.png in Resources */ = {isa = PBXBuildFile; fileRef = 85A5CFA11CB07C2E007B74FA /* swiss chard.png */; };
 		85AE250F1C83D56C001828C0 /* GardenObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE250C1C83D56C001828C0 /* GardenObject.m */; };
 		85AE25101C83D56C001828C0 /* PlantObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE250E1C83D56C001828C0 /* PlantObject.m */; };
 		85AE25191C83DB2F001828C0 /* GloablObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE25181C83DB2F001828C0 /* GloablObjects.m */; };
@@ -119,6 +120,7 @@
 		85918F3E1CA5F3B900591415 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		85A5CF9E1CB03749007B74FA /* PlantData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlantData.h; sourceTree = "<group>"; };
 		85A5CF9F1CB03749007B74FA /* PlantData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlantData.m; sourceTree = "<group>"; };
+		85A5CFA11CB07C2E007B74FA /* swiss chard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "swiss chard.png"; sourceTree = "<group>"; };
 		85AE250B1C83D56C001828C0 /* GardenObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GardenObject.h; sourceTree = "<group>"; };
 		85AE250C1C83D56C001828C0 /* GardenObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GardenObject.m; sourceTree = "<group>"; };
 		85AE250D1C83D56C001828C0 /* PlantObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlantObject.h; sourceTree = "<group>"; };
@@ -224,9 +226,7 @@
 				9D8BDFAB1CB051F900BF969D /* asparagus.png */,
 				9D6549651C88BAF400841A24 /* basil.png */,
 				9D6549661C88BAF400841A24 /* beans.png */,
-				098F7CEC1CB068080015811B /* shovelBigClear.png */,
 				9D6549681C88BAF400841A24 /* beet.png */,
-				098F7CEE1CB0680D0015811B /* scaredTomato_100tall.png */,
 				9D6549691C88BAF400841A24 /* beets.png */,
 				9D65496A1C88BAF400841A24 /* broccoli.png */,
 				9D65496B1C88BAF400841A24 /* cabbage.png */,
@@ -257,9 +257,12 @@
 				9D65497E1C88BAF400841A24 /* potato.png */,
 				9D65497F1C88BAF400841A24 /* radish.png */,
 				95F51EC61C96438300800259 /* reminderBlack.png */,
+				098F7CEE1CB0680D0015811B /* scaredTomato_100tall.png */,
+				098F7CEC1CB068080015811B /* shovelBigClear.png */,
 				9D6549801C88BAF400841A24 /* spinach.png */,
-				098F7CF01CB06F880015811B /* summer squash.png */,
+				85A5CFA11CB07C2E007B74FA /* swiss chard.png */,
 				9D6549811C88BAF400841A24 /* strawberries.png */,
+				098F7CF01CB06F880015811B /* summer squash.png */,
 				11E3221D1CAA0C2E00C5F4E7 /* timerBig2.png */,
 				9D6549871C88BAF400841A24 /* tomato.png */,
 				9D6549881C88BAF400841A24 /* watermelon.png */,
@@ -443,6 +446,7 @@
 				9D65499C1C88BAF400841A24 /* eggplant.png in Resources */,
 				9D6549621C88AD4200841A24 /* plantDataReal.json in Resources */,
 				098F7CED1CB068080015811B /* shovelBigClear.png in Resources */,
+				85A5CFA21CB07C2E007B74FA /* swiss chard.png in Resources */,
 				9D6549A41C88BAF400841A24 /* peas.png in Resources */,
 				09CE09321CA6FBF300911F6C /* whiteFacebook.png in Resources */,
 				9D65499B1C88BAF400841A24 /* egg-plant.png in Resources */,

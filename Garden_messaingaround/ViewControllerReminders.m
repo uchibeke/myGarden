@@ -19,6 +19,8 @@
     [super viewDidLoad];
     [self getFromAlarmUserDefaults];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViewData) name:@"ReloadAppDelegateTable" object:nil];
 }
 
 
@@ -90,6 +92,12 @@
     [[GloablObjects alarmInstance].alarmArray removeObjectAtIndex:indexPath.row ];
     [self.tableView reloadData];
     [self updateAlarmUserDefaults];
+}
+
+
+
+- (void)reloadTableViewData {
+    [self.tableView reloadData];
 }
 
 

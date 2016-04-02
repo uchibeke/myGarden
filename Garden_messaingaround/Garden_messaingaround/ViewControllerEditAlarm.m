@@ -25,10 +25,11 @@
     [self.harvestSwitch setOn:NO];
     [self.tableView setHidden:YES];
     [self.timeToSetOff setHidden:NO];
+    [self.repeatSwitch setOn:NO];
     
     self.plantid = 0;
     self.selectedPlant = [[GloablObjects plantDataInstance].plantData getAPlantName:0];
-    self.repeat = YES;
+    self.repeat = NO;
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
     
@@ -105,6 +106,8 @@
     [self.harvestSwitch setOn:NO];
     [self.tableView setHidden:YES];
     [self.timeToSetOff setHidden:NO];
+    [self.repeatSwitch setHidden:NO];
+    [self.repeatLable setHidden:NO];
 }
 
 -(IBAction)weedSw:(id)sender
@@ -114,6 +117,8 @@
     [self.harvestSwitch setOn:NO];
     [self.tableView setHidden:YES];
     [self.timeToSetOff setHidden:NO];
+    [self.repeatSwitch setHidden:NO];
+    [self.repeatLable setHidden:NO];
 }
 
 -(IBAction)harvestSw:(id)sender
@@ -123,6 +128,14 @@
     [self.harvestSwitch setOn:YES];
     [self.tableView setHidden:NO];
     [self.timeToSetOff setHidden:YES];
+    [self.repeatSwitch setHidden:YES];
+    [self.repeatLable setHidden:YES];
+}
+
+-(IBAction)repeatSw:(id)sender
+{
+    self.repeat = [sender isOn];
+    NSLog(@"VALUE IS : %@", self.repeat ? @"YES" : @"NO");
 }
 
 -(IBAction)sendNotif:(id)sender
@@ -150,6 +163,9 @@
         locNot.alertBody = @"Reminder to water your garden!";
         locNot.timeZone = [NSTimeZone defaultTimeZone];
         locNot.soundName = UILocalNotificationDefaultSoundName;
+        if (self.repeat) {
+            locNot.repeatInterval = NSCalendarUnitMinute;
+        }
         [[UIApplication sharedApplication] scheduleLocalNotification: locNot];
         
         gardenAlarm *myAlarm = [[gardenAlarm alloc] init];

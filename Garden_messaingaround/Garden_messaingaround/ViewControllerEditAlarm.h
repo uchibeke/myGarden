@@ -15,6 +15,8 @@
 @property (nonatomic, strong) IBOutlet UISwitch *weedSwitch;
 @property (nonatomic, strong) IBOutlet UISwitch *waterSwitch;
 @property (nonatomic, strong) IBOutlet UISwitch *harvestSwitch;
+@property (nonatomic, strong) IBOutlet UISwitch *repeatSwitch;
+@property (nonatomic, strong) IBOutlet UILabel *repeatLable;
 
 @property (strong, nonatomic) PlantObject * plant ;
 @property ViewControllerEditAlarm * reminders;
