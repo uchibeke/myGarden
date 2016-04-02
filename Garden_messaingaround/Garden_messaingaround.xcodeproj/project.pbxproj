@@ -15,6 +15,17 @@
 		098F7CC91CB03A290015811B /* strawberryIcon76.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CC21CB03A290015811B /* strawberryIcon76.png */; };
 		098F7CCA1CB03A290015811B /* strawberryIcon76x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CC31CB03A290015811B /* strawberryIcon76x2.png */; };
 		098F7CCB1CB03A290015811B /* strawberryIconBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CC41CB03A290015811B /* strawberryIconBig.png */; };
+		098F7CCE1CB040C60015811B /* strawberryIcon2_76x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CCC1CB040C60015811B /* strawberryIcon2_76x2.png */; };
+		098F7CCF1CB040C60015811B /* strawberryIcon2-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CCD1CB040C60015811B /* strawberryIcon2-76.png */; };
+		098F7CD21CB042D30015811B /* strawberryIcon3_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CD01CB042D30015811B /* strawberryIcon3_76.png */; };
+		098F7CD31CB042D30015811B /* strawberryIcon3_76x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CD11CB042D30015811B /* strawberryIcon3_76x2.png */; };
+		098F7CD61CB0445C0015811B /* strawberryIcon4-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CD41CB0445C0015811B /* strawberryIcon4-76.png */; };
+		098F7CD71CB0445C0015811B /* strawberryIcon4-76x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CD51CB0445C0015811B /* strawberryIcon4-76x2.png */; };
+		098F7CDD1CB045690015811B /* strawberryIcon4-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CD81CB045690015811B /* strawberryIcon4-29.png */; };
+		098F7CDE1CB045690015811B /* strawberryIcon4-29x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CD91CB045690015811B /* strawberryIcon4-29x2.png */; };
+		098F7CDF1CB045690015811B /* strawberryIcon4-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CDA1CB045690015811B /* strawberryIcon4-40.png */; };
+		098F7CE01CB045690015811B /* strawberryIcon4-40x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CDB1CB045690015811B /* strawberryIcon4-40x2.png */; };
+		098F7CE11CB045690015811B /* strawberryIcon4-big.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CDC1CB045690015811B /* strawberryIcon4-big.png */; };
 		09B2A1581C94B54B0081D136 /* ViewControllerPlantViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */; };
 		09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */; };
 		09CE09311CA6FBF300911F6C /* whiteCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE092E1CA6FBF300911F6C /* whiteCamera.png */; };
@@ -157,6 +168,17 @@
 		098F7CC21CB03A290015811B /* strawberryIcon76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIcon76.png; sourceTree = "<group>"; };
 		098F7CC31CB03A290015811B /* strawberryIcon76x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIcon76x2.png; sourceTree = "<group>"; };
 		098F7CC41CB03A290015811B /* strawberryIconBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIconBig.png; sourceTree = "<group>"; };
+		098F7CCC1CB040C60015811B /* strawberryIcon2_76x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIcon2_76x2.png; sourceTree = "<group>"; };
+		098F7CCD1CB040C60015811B /* strawberryIcon2-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "strawberryIcon2-76.png"; sourceTree = "<group>"; };
+		098F7CD01CB042D30015811B /* strawberryIcon3_76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIcon3_76.png; sourceTree = "<group>"; };
+		098F7CD11CB042D30015811B /* strawberryIcon3_76x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIcon3_76x2.png; sourceTree = "<group>"; };
+		098F7CD41CB0445C0015811B /* strawberryIcon4-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "strawberryIcon4-76.png"; sourceTree = "<group>"; };
+		098F7CD51CB0445C0015811B /* strawberryIcon4-76x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "strawberryIcon4-76x2.png"; sourceTree = "<group>"; };
+		098F7CD81CB045690015811B /* strawberryIcon4-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "strawberryIcon4-29.png"; sourceTree = "<group>"; };
+		098F7CD91CB045690015811B /* strawberryIcon4-29x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "strawberryIcon4-29x2.png"; sourceTree = "<group>"; };
+		098F7CDA1CB045690015811B /* strawberryIcon4-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "strawberryIcon4-40.png"; sourceTree = "<group>"; };
+		098F7CDB1CB045690015811B /* strawberryIcon4-40x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "strawberryIcon4-40x2.png"; sourceTree = "<group>"; };
+		098F7CDC1CB045690015811B /* strawberryIcon4-big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "strawberryIcon4-big.png"; sourceTree = "<group>"; };
 		09B2A1561C94B54B0081D136 /* ViewControllerPlantViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerPlantViews.h; sourceTree = "<group>"; };
 		09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerPlantViews.m; sourceTree = "<group>"; };
 		09B2A1591C94C1C50081D136 /* ViewControllerNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerNotes.h; sourceTree = "<group>"; };
@@ -333,6 +355,17 @@
 		9552DED81C880DEC00633FBE /* plantImages */ = {
 			isa = PBXGroup;
 			children = (
+				098F7CD81CB045690015811B /* strawberryIcon4-29.png */,
+				098F7CD91CB045690015811B /* strawberryIcon4-29x2.png */,
+				098F7CDA1CB045690015811B /* strawberryIcon4-40.png */,
+				098F7CDB1CB045690015811B /* strawberryIcon4-40x2.png */,
+				098F7CDC1CB045690015811B /* strawberryIcon4-big.png */,
+				098F7CD41CB0445C0015811B /* strawberryIcon4-76.png */,
+				098F7CD51CB0445C0015811B /* strawberryIcon4-76x2.png */,
+				098F7CD01CB042D30015811B /* strawberryIcon3_76.png */,
+				098F7CD11CB042D30015811B /* strawberryIcon3_76x2.png */,
+				098F7CCC1CB040C60015811B /* strawberryIcon2_76x2.png */,
+				098F7CCD1CB040C60015811B /* strawberryIcon2-76.png */,
 				098F7CBE1CB03A290015811B /* strawberryIcon29.png */,
 				098F7CBF1CB03A290015811B /* strawberryIcon29x2.png */,
 				098F7CC01CB03A290015811B /* strawberryIcon40.png */,
@@ -621,10 +654,13 @@
 				95C8B43A1C96388A00057F9A /* broccoli_44x44.png in Resources */,
 				9D65499B1C88BAF400841A24 /* egg-plant.png in Resources */,
 				95C8B4471C96388A00057F9A /* onion_44x44.png in Resources */,
+				098F7CD31CB042D30015811B /* strawberryIcon3_76x2.png in Resources */,
 				95C8B4511C96388A00057F9A /* swiss chard_44x44.png in Resources */,
 				9D6549A61C88BAF400841A24 /* potato.png in Resources */,
 				098F7CC91CB03A290015811B /* strawberryIcon76.png in Resources */,
+				098F7CD21CB042D30015811B /* strawberryIcon3_76.png in Resources */,
 				9D6549951C88BAF400841A24 /* carrots.png in Resources */,
+				098F7CD61CB0445C0015811B /* strawberryIcon4-76.png in Resources */,
 				117A28F21CA60032001AFB24 /* facebook_button.png in Resources */,
 				95C8B4421C96388A00057F9A /* eggplant_44x44.png in Resources */,
 				95C8B43C1C96388A00057F9A /* carrots_44x44.png in Resources */,
@@ -658,6 +694,7 @@
 				09CE09311CA6FBF300911F6C /* whiteCamera.png in Resources */,
 				9D6549901C88BAF400841A24 /* beet.png in Resources */,
 				95C8B4531C96388A00057F9A /* watermelon_44x44.png in Resources */,
+				098F7CDE1CB045690015811B /* strawberryIcon4-29x2.png in Resources */,
 				9D6549A11C88BAF400841A24 /* onion.png in Resources */,
 				95C8B4541C96388A00057F9A /* winter squash_44x44.png in Resources */,
 				098F7CC81CB03A290015811B /* strawberryIcon40x2.png in Resources */,
@@ -667,9 +704,12 @@
 				95F51ED01C96472300800259 /* dirt2.jpg in Resources */,
 				95C8B4441C96388A00057F9A /* mint_44x44.png in Resources */,
 				9D6549921C88BAF400841A24 /* broccoli.png in Resources */,
+				098F7CE11CB045690015811B /* strawberryIcon4-big.png in Resources */,
 				9D65499E1C88BAF400841A24 /* mint.png in Resources */,
 				9D6549B11C88BAF400841A24 /* winter squash.png in Resources */,
 				95F51EC91C96447300800259 /* noteSmall.png in Resources */,
+				098F7CE01CB045690015811B /* strawberryIcon4-40x2.png in Resources */,
+				098F7CDF1CB045690015811B /* strawberryIcon4-40.png in Resources */,
 				95C8B44D1C96388A00057F9A /* radish_44x44.png in Resources */,
 				098F7CC61CB03A290015811B /* strawberryIcon29x2.png in Resources */,
 				9D6549AC1C88BAF400841A24 /* summer-squash.png in Resources */,
@@ -677,10 +717,12 @@
 				9D6549AE1C88BAF400841A24 /* swiss-chard.png in Resources */,
 				9D6549A91C88BAF400841A24 /* strawberries.png in Resources */,
 				95C8B4371C96388A00057F9A /* basil_44x44.png in Resources */,
+				098F7CD71CB0445C0015811B /* strawberryIcon4-76x2.png in Resources */,
 				95C8B4451C96388A00057F9A /* muskmelon_44x44.png in Resources */,
 				098F7CCA1CB03A290015811B /* strawberryIcon76x2.png in Resources */,
 				95C8B4391C96388A00057F9A /* beets_44x44.png in Resources */,
 				95C8B4401C96388A00057F9A /* corn_44x44.png in Resources */,
+				098F7CDD1CB045690015811B /* strawberryIcon4-29.png in Resources */,
 				11E322221CAA0C2E00C5F4E7 /* notesBig2.png in Resources */,
 				9D6549961C88BAF400841A24 /* cauliflower.png in Resources */,
 				95C8B4501C96388A00057F9A /* summer squash_44x44.png in Resources */,
@@ -699,10 +741,12 @@
 				9567D3391CA6CEDA00A2362A /* cam2.png in Resources */,
 				1118911D1C96A7D6008EEF14 /* dirt.png in Resources */,
 				9D65498F1C88BAF400841A24 /* Beans.png in Resources */,
+				098F7CCF1CB040C60015811B /* strawberryIcon2-76.png in Resources */,
 				9D6549A21C88BAF400841A24 /* oregano.png in Resources */,
 				9D6549A51C88BAF400841A24 /* pepper.png in Resources */,
 				95C8B4491C96388A00057F9A /* parsley_44x44.png in Resources */,
 				9D65498B1C88BAF400841A24 /* asparagus.png in Resources */,
+				098F7CCE1CB040C60015811B /* strawberryIcon2_76x2.png in Resources */,
 				9D6549931C88BAF400841A24 /* cabbage.png in Resources */,
 				9D6549911C88BAF400841A24 /* beets.png in Resources */,
 				9567D3381CA6CEDA00A2362A /* cam1.png in Resources */,

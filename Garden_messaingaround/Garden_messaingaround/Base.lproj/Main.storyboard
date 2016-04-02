@@ -116,7 +116,7 @@
                         <viewControllerLayoutGuide type="bottom" id="MPH-wy-wwv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IbQ-Nb-fEz">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="655"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qd2-iA-cEE">
@@ -514,7 +514,7 @@
                         <viewControllerLayoutGuide type="bottom" id="pXE-h0-Yzt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Jp1-Ep-j30">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXp-JM-uET">
