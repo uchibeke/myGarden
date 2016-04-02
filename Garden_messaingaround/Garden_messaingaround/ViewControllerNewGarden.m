@@ -164,6 +164,20 @@
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                               otherButtonTitles:@"Continue",nil];
+        //image in alertview
+        UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,0,0)];
+        image.contentMode = UIViewContentModeScaleAspectFit;
+        
+        NSString *loc = [[NSString alloc] initWithString:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"shovelBigClear.png"]];
+        UIImage *img = [[UIImage alloc] initWithContentsOfFile:loc];
+        [image setImage:img];
+        
+        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+            [alert setValue:image forKey:@"accessoryView"];
+        }else{
+            [alert addSubview:image];
+        }
+        
         [alert show];
     } else {
         if (!self.modifying) {
