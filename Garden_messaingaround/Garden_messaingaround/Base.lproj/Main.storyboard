@@ -385,35 +385,35 @@
                                 </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="l1o-km-los">
-                                <rect key="frame" x="24" y="106" width="51" height="31"/>
+                                <rect key="frame" x="24" y="121" width="51" height="31"/>
                                 <animations/>
                                 <connections>
                                     <action selector="waterSw:" destination="08N-h2-GOq" eventType="valueChanged" id="7hI-S8-XLU"/>
                                 </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rt5-hl-Wap">
-                                <rect key="frame" x="24" y="145" width="51" height="31"/>
+                                <rect key="frame" x="24" y="173" width="51" height="31"/>
                                 <animations/>
                                 <connections>
                                     <action selector="harvestSw:" destination="08N-h2-GOq" eventType="valueChanged" id="oC1-x4-iIt"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weeding" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myv-q9-tUC">
-                                <rect key="frame" x="81" y="77" width="67" height="21"/>
+                                <rect key="frame" x="80" y="72" width="67" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Watering" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lE2-jA-bMD">
-                                <rect key="frame" x="81" y="116" width="68" height="21"/>
+                                <rect key="frame" x="80" y="126" width="68" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Plant Harvest" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCW-Oe-LiP">
-                                <rect key="frame" x="81" y="155" width="103" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Harvest" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCW-Oe-LiP">
+                                <rect key="frame" x="80" y="178" width="60" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -457,6 +457,15 @@
                                     <!--2016-03-21 21:41:44 +0000-->
                                 </date>
                             </datePicker>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="03Q-NB-hJC">
+                                <rect key="frame" x="202" y="67" width="300" height="525"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="08N-h2-GOq" id="R1r-T5-Fkx"/>
+                                    <outlet property="delegate" destination="08N-h2-GOq" id="NT9-Tc-GxD"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -478,7 +487,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="harvestSwitch" destination="rt5-hl-Wap" id="j4t-li-UMT"/>
-                        <outlet property="tableView" destination="Qce-H9-1hV" id="qFk-gL-5LF"/>
+                        <outlet property="tableView" destination="03Q-NB-hJC" id="2WD-LC-lT8"/>
                         <outlet property="timeToSetOff" destination="Ymv-VN-3Vc" id="yic-zP-QZf"/>
                         <outlet property="waterSwitch" destination="l1o-km-los" id="zpU-5K-ZHJ"/>
                         <outlet property="weedSwitch" destination="cCj-lz-zmm" id="o6s-Lx-wHt"/>
