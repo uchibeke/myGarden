@@ -372,14 +372,6 @@
     self.shot.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
     self.shot.image = [self capture];
     
-    UILabel *textLabel;
-    textLabel.text = @"Image Title";
-    [textLabel setFont: [textLabel.font fontWithSize: 100]];
-    [self.shot addSubview:textLabel];
-    
-    // Save image.
-    UIImageWriteToSavedPhotosAlbum(self.shot.image, nil, nil, nil);
-    
     self.shot.hidden = NO;
     self.shot.alpha = 1.0f;
     [self.shot setNeedsDisplay];
@@ -390,6 +382,9 @@
         self.shot.image = nil;
         self.shot.hidden = YES;
     }];
+    
+    // Save image.
+    UIImageWriteToSavedPhotosAlbum(self.shot.image, nil, nil, nil);
     [self.view addSubview:self.collectionView] ;
 }
 
