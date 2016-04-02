@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XjK-ef-4Pn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XjK-ef-4Pn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -570,14 +570,14 @@
                                 <color key="textColor" red="0.85882352941176465" green="0.8666666666666667" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.85882352941176465" green="0.8666666666666667" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="gBF-Hl-ImA">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="gBF-Hl-ImA">
                                 <rect key="frame" x="296" y="253" width="94" height="29"/>
                                 <animations/>
                                 <connections>
                                     <action selector="heightModfier:" destination="Dje-qM-Kq5" eventType="valueChanged" id="hsV-Vk-zrf"/>
                                 </connections>
                             </stepper>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="eWn-zs-hqm">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="27" translatesAutoresizingMaskIntoConstraints="NO" id="eWn-zs-hqm">
                                 <rect key="frame" x="296" y="196" width="94" height="29"/>
                                 <animations/>
                                 <connections>
@@ -934,7 +934,7 @@
         <image name="whiteTwitter.png" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="RAn-n5-Vvb"/>
         <segue reference="xKU-u6-erc"/>
-        <segue reference="5V0-Ae-tVQ"/>
     </inferredMetricsTieBreakers>
 </document>
