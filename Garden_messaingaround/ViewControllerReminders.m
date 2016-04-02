@@ -16,6 +16,9 @@
 @implementation ViewControllerReminders
 
 - (void)viewDidLoad {
+    //sets title, backgorund image and tab image
+    [self setTitle:@"Reminders"];
+    
     [super viewDidLoad];
     [self getFromAlarmUserDefaults];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];

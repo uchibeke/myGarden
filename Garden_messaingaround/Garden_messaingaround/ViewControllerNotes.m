@@ -18,6 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //sets title, backgorund image and tab image
+    [self setTitle:@"Notes"];
+    
     // Do any additional setup after loading the view.
     [self getFromNoteUserDefaults];
     

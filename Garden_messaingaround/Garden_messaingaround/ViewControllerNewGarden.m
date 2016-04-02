@@ -191,8 +191,6 @@
             [self dismissViewControllerAnimated:YES completion:nil];
         }
     }
-    
-    
 }
 
 -(IBAction) goBack: (id) sender {
