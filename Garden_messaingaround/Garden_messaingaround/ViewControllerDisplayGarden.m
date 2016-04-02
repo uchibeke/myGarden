@@ -194,8 +194,8 @@
     if ([[self getAPlantObject:plantName] objectForKey:@"Spacing per Square Foot"]) {
         txt =  [[self getAPlantObject:plantName] objectForKey:@"Spacing per Square Foot"] ;
     }
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@%@", txt, @""];
-    cell.detailTextLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@" %@%@", txt, @""];
+    cell.detailTextLabel.textColor = [UIColor colorWithRed:(124/255.0f) green:(186/255.0f) blue:(37/255.0f) alpha:(1.0f)];
     
     return cell;
 }
@@ -370,16 +370,6 @@
 }
 
 -(IBAction) takePhoto: (id) sender {
-    self.shot.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
-    self.shot.image = [self capture];
-    
-    UILabel *textLabel;
-    textLabel.text = @"Image Title";
-    [textLabel setFont: [textLabel.font fontWithSize: 100]];
-    [self.shot addSubview:textLabel];
-    
-    // Save image.
-    UIImageWriteToSavedPhotosAlbum(self.shot.image, nil, nil, nil);
     
     self.shot.hidden = NO;
     self.shot.alpha = 1.0f;
@@ -391,6 +381,11 @@
         self.shot.image = nil;
         self.shot.hidden = YES;
     }];
+
+    self.shot.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
+    self.shot.image = [self capture];
+    // Save image.
+    UIImageWriteToSavedPhotosAlbum(self.shot.image, nil, nil, nil);
     [self.view addSubview:self.collectionView] ;
 }
 
@@ -532,6 +527,11 @@
     });
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.collectionView.backgroundColor = [UIColor clearColor];
+}
 
 
 - (void)didReceiveMemoryWarning {
