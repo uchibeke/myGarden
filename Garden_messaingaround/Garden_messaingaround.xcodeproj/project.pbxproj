@@ -15,6 +15,8 @@
 		098F7CC91CB03A290015811B /* strawberryIcon76.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CC21CB03A290015811B /* strawberryIcon76.png */; };
 		098F7CCA1CB03A290015811B /* strawberryIcon76x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CC31CB03A290015811B /* strawberryIcon76x2.png */; };
 		098F7CCB1CB03A290015811B /* strawberryIconBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CC41CB03A290015811B /* strawberryIconBig.png */; };
+		098F7CCE1CB040C60015811B /* strawberryIcon2_76x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CCC1CB040C60015811B /* strawberryIcon2_76x2.png */; };
+		098F7CCF1CB040C60015811B /* strawberryIcon2-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CCD1CB040C60015811B /* strawberryIcon2-76.png */; };
 		09B2A1581C94B54B0081D136 /* ViewControllerPlantViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */; };
 		09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */; };
 		09CE09311CA6FBF300911F6C /* whiteCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE092E1CA6FBF300911F6C /* whiteCamera.png */; };
@@ -157,6 +159,8 @@
 		098F7CC21CB03A290015811B /* strawberryIcon76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIcon76.png; sourceTree = "<group>"; };
 		098F7CC31CB03A290015811B /* strawberryIcon76x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIcon76x2.png; sourceTree = "<group>"; };
 		098F7CC41CB03A290015811B /* strawberryIconBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIconBig.png; sourceTree = "<group>"; };
+		098F7CCC1CB040C60015811B /* strawberryIcon2_76x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberryIcon2_76x2.png; sourceTree = "<group>"; };
+		098F7CCD1CB040C60015811B /* strawberryIcon2-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "strawberryIcon2-76.png"; sourceTree = "<group>"; };
 		09B2A1561C94B54B0081D136 /* ViewControllerPlantViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerPlantViews.h; sourceTree = "<group>"; };
 		09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerPlantViews.m; sourceTree = "<group>"; };
 		09B2A1591C94C1C50081D136 /* ViewControllerNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerNotes.h; sourceTree = "<group>"; };
@@ -333,6 +337,8 @@
 		9552DED81C880DEC00633FBE /* plantImages */ = {
 			isa = PBXGroup;
 			children = (
+				098F7CCC1CB040C60015811B /* strawberryIcon2_76x2.png */,
+				098F7CCD1CB040C60015811B /* strawberryIcon2-76.png */,
 				098F7CBE1CB03A290015811B /* strawberryIcon29.png */,
 				098F7CBF1CB03A290015811B /* strawberryIcon29x2.png */,
 				098F7CC01CB03A290015811B /* strawberryIcon40.png */,
@@ -699,10 +705,12 @@
 				9567D3391CA6CEDA00A2362A /* cam2.png in Resources */,
 				1118911D1C96A7D6008EEF14 /* dirt.png in Resources */,
 				9D65498F1C88BAF400841A24 /* Beans.png in Resources */,
+				098F7CCF1CB040C60015811B /* strawberryIcon2-76.png in Resources */,
 				9D6549A21C88BAF400841A24 /* oregano.png in Resources */,
 				9D6549A51C88BAF400841A24 /* pepper.png in Resources */,
 				95C8B4491C96388A00057F9A /* parsley_44x44.png in Resources */,
 				9D65498B1C88BAF400841A24 /* asparagus.png in Resources */,
+				098F7CCE1CB040C60015811B /* strawberryIcon2_76x2.png in Resources */,
 				9D6549931C88BAF400841A24 /* cabbage.png in Resources */,
 				9D6549911C88BAF400841A24 /* beets.png in Resources */,
 				9567D3381CA6CEDA00A2362A /* cam1.png in Resources */,

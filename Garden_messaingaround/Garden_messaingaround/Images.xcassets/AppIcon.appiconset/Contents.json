@@ -57,13 +57,13 @@
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "strawberryIcon76.png",
+      "filename" : "strawberryIcon2-76.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "strawberryIcon76x2.png",
+      "filename" : "strawberryIcon2_76x2.png",
       "scale" : "2x"
     }
   ],
