@@ -48,7 +48,7 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return [[self.plant plantsDataArray] count];
+    return [[[GloablObjects plantDataInstance].plantData plantsDataArray] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
@@ -59,7 +59,7 @@
                 reuseIdentifier: @"Cell" ];
     }
     
-    NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [self.plant getAPlantName:indexPath.row], @"png"] lowercaseString] ;
+    NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [[GloablObjects plantDataInstance].plantData getAPlantName:indexPath.row], @"png"] lowercaseString] ;
     
     cell.imageView.image = [UIImage imageNamed:imgName];
     
@@ -70,7 +70,7 @@
     cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", @"", [self.plant getAPlantName:indexPath.row]] ;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", @"", [[GloablObjects plantDataInstance].plantData getAPlantName:indexPath.row]] ;
     return cell;
 }
 
@@ -78,23 +78,23 @@
 {
     [self updateComment:self];
     
-    name.text = [self.plant getAPlantName:indexPath.row];
+    name.text = [[GloablObjects plantDataInstance].plantData getAPlantName:indexPath.row];
     
-    family.text = [self.plant getAPlantFamily:indexPath.row];
+    family.text = [[GloablObjects plantDataInstance].plantData getAPlantFamily:indexPath.row];
     
-    height.text = [self.plant getAPlantHeight:indexPath.row];
+    height.text = [[GloablObjects plantDataInstance].plantData getAPlantHeight:indexPath.row];
     
-    season.text = [self.plant getAPlantGrowingSeason:indexPath.row];
+    season.text = [[GloablObjects plantDataInstance].plantData getAPlantGrowingSeason:indexPath.row];
     
-    wksToMature.text = [self.plant getAPlantWeeksToMaturity:indexPath.row];
+    wksToMature.text = [[GloablObjects plantDataInstance].plantData getAPlantWeeksToMaturity:indexPath.row];
     
-    seedToHarvest.text = [NSString stringWithFormat:@"%@ %@", [self.plant getAPlantWeeksFromSeedHarvest:indexPath.row], @"Weeks"];
+    seedToHarvest.text = [NSString stringWithFormat:@"%@ %@", [[GloablObjects plantDataInstance].plantData getAPlantWeeksFromSeedHarvest:indexPath.row], @"Weeks"];
     
-    description.text = [self.plant getAPlantDescription:indexPath.row];
+    description.text = [[GloablObjects plantDataInstance].plantData getAPlantDescription:indexPath.row];
     
-    numPerSqFt.text = [self.plant getAPlantSpacing:indexPath.row];
+    numPerSqFt.text = [[GloablObjects plantDataInstance].plantData getAPlantSpacing:indexPath.row];
     
-    NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [self.plant getAPlantName:indexPath.row], @"png"] lowercaseString] ;
+    NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [[GloablObjects plantDataInstance].plantData getAPlantName:indexPath.row], @"png"] lowercaseString] ;
     
     comment.text = [GloablObjects commentsInstance].commentsArray[indexPath.row];
     
@@ -132,24 +132,23 @@
     
     [self getFromCommentUserDefaults];
     
-    self.plant = [[PlantObject alloc]init];
-    name.text = [self.plant getAPlantName:5];
+    name.text = [[GloablObjects plantDataInstance].plantData getAPlantName:5];
     
-    family.text = [self.plant getAPlantFamily:5];
+    family.text = [[GloablObjects plantDataInstance].plantData getAPlantFamily:5];
     
-    height.text = [self.plant getAPlantHeight:5];
+    height.text = [[GloablObjects plantDataInstance].plantData getAPlantHeight:5];
     
-    season.text = [self.plant getAPlantGrowingSeason:5];
+    season.text = [[GloablObjects plantDataInstance].plantData getAPlantGrowingSeason:5];
     
-    wksToMature.text = [self.plant getAPlantWeeksToMaturity:5];
+    wksToMature.text = [[GloablObjects plantDataInstance].plantData getAPlantWeeksToMaturity:5];
     
-    seedToHarvest.text = [NSString stringWithFormat:@"%@ %@", [self.plant getAPlantWeeksFromSeedHarvest:5], @"Weeks"];
+    seedToHarvest.text = [NSString stringWithFormat:@"%@ %@", [[GloablObjects plantDataInstance].plantData getAPlantWeeksFromSeedHarvest:5], @"Weeks"];
     
-    description.text = [self.plant getAPlantDescription:5];
+    description.text = [[GloablObjects plantDataInstance].plantData getAPlantDescription:5];
     
-    numPerSqFt.text = [self.plant getAPlantSpacing:5];
+    numPerSqFt.text = [[GloablObjects plantDataInstance].plantData getAPlantSpacing:5];
     
-    NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [self.plant getAPlantName:5], @"png"] lowercaseString] ;
+    NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [[GloablObjects plantDataInstance].plantData getAPlantName:5], @"png"] lowercaseString] ;
     
     previewImage.image = [UIImage imageNamed:imgName];
     previewImage.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5f];

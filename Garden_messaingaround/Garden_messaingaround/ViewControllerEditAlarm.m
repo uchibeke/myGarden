@@ -24,7 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.plant = [[PlantObject alloc]init];
     [self.waterSwitch setOn:NO];
     [self.weedSwitch setOn:YES];
     [self.harvestSwitch setOn:NO];
@@ -32,7 +31,7 @@
     [self.timeToSetOff setHidden:NO];
     
     plantid = 0;
-    selectedPlant = [self.plant getAPlantName:0];
+    selectedPlant = [[GloablObjects plantDataInstance].plantData getAPlantName:0];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
     
@@ -119,7 +118,7 @@
         UILocalNotification *locNot = [[UILocalNotification alloc] init];
         NSDate *mydate = [NSDate date];
         double interval = 604800;
-        interval *= [[self.plant getAPlantTimerCountDown:plantid] integerValue];
+        interval *= [[[GloablObjects plantDataInstance].plantData getAPlantTimerCountDown:plantid] integerValue];
         locNot.fireDate = [mydate dateByAddingTimeInterval: interval];
         NSMutableString *message = @"Reminder to harvest your ";
         message = [NSMutableString stringWithFormat:@"%@%@", message, selectedPlant];
@@ -150,7 +149,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self.plant plantsDataArray] count];
+    return [[[GloablObjects plantDataInstance].plantData plantsDataArray] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -162,7 +161,7 @@
                 reuseIdentifier: @"Cell" ];
     }
     
-    NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [self.plant getAPlantName:indexPath.row], @"png"] lowercaseString] ;
+    NSString * imgName = [[NSString stringWithFormat:@"%@.%@", [[GloablObjects plantDataInstance].plantData getAPlantName:indexPath.row], @"png"] lowercaseString] ;
     
     cell.imageView.image = [UIImage imageNamed:imgName];
     
@@ -173,7 +172,7 @@
     cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", @"", [self.plant getAPlantName:indexPath.row]] ;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", @"", [[GloablObjects plantDataInstance].plantData getAPlantName:indexPath.row]] ;
     
     //  tableView.backgroundColor = [UIColor redColor];
     return cell;
@@ -181,7 +180,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    selectedPlant = [self.plant getAPlantName:indexPath.row];
+    selectedPlant = [[GloablObjects plantDataInstance].plantData getAPlantName:indexPath.row];
     plantid = indexPath.row;
 }
 

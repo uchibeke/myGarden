@@ -27,6 +27,7 @@
 		85918F371CA5C2F500591415 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85918F361CA5C2F500591415 /* NotificationCenter.framework */; };
 		85918F3D1CA5D44200591415 /* gardenAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 85918F3C1CA5D44200591415 /* gardenAlarm.m */; };
 		85918F3F1CA5F3B900591415 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85918F3E1CA5F3B900591415 /* Social.framework */; };
+		85A5CFA01CB03749007B74FA /* PlantData.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A5CF9F1CB03749007B74FA /* PlantData.m */; };
 		85AE250F1C83D56C001828C0 /* GardenObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE250C1C83D56C001828C0 /* GardenObject.m */; };
 		85AE25101C83D56C001828C0 /* PlantObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE250E1C83D56C001828C0 /* PlantObject.m */; };
 		85AE25191C83DB2F001828C0 /* GloablObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE25181C83DB2F001828C0 /* GloablObjects.m */; };
@@ -118,7 +119,6 @@
 		9D6549B01C88BAF400841A24 /* watermelon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549881C88BAF400841A24 /* watermelon.png */; };
 		9D6549B11C88BAF400841A24 /* winter squash.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549891C88BAF400841A24 /* winter squash.png */; };
 		9D6549B21C88BAF400841A24 /* winter-squash.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D65498A1C88BAF400841A24 /* winter-squash.png */; };
-		9D6549B81C88C8E700841A24 /* GardenCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6549B71C88C8E700841A24 /* GardenCell.m */; };
 		ADC7148A1C82448400260F56 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC714891C82448400260F56 /* main.m */; };
 		ADC7148D1C82448400260F56 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC7148C1C82448400260F56 /* AppDelegate.m */; };
 		ADC714901C82448400260F56 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC7148F1C82448400260F56 /* ViewController.m */; };
@@ -166,6 +166,8 @@
 		85918F3B1CA5D44200591415 /* gardenAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gardenAlarm.h; sourceTree = "<group>"; };
 		85918F3C1CA5D44200591415 /* gardenAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gardenAlarm.m; sourceTree = "<group>"; };
 		85918F3E1CA5F3B900591415 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		85A5CF9E1CB03749007B74FA /* PlantData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlantData.h; sourceTree = "<group>"; };
+		85A5CF9F1CB03749007B74FA /* PlantData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlantData.m; sourceTree = "<group>"; };
 		85AE250B1C83D56C001828C0 /* GardenObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GardenObject.h; sourceTree = "<group>"; };
 		85AE250C1C83D56C001828C0 /* GardenObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GardenObject.m; sourceTree = "<group>"; };
 		85AE250D1C83D56C001828C0 /* PlantObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlantObject.h; sourceTree = "<group>"; };
@@ -260,8 +262,6 @@
 		9D6549881C88BAF400841A24 /* watermelon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermelon.png; sourceTree = "<group>"; };
 		9D6549891C88BAF400841A24 /* winter squash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winter squash.png"; sourceTree = "<group>"; };
 		9D65498A1C88BAF400841A24 /* winter-squash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winter-squash.png"; sourceTree = "<group>"; };
-		9D6549B61C88C8E700841A24 /* GardenCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GardenCell.h; sourceTree = "<group>"; };
-		9D6549B71C88C8E700841A24 /* GardenCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GardenCell.m; sourceTree = "<group>"; };
 		ADC714841C82448400260F56 /* Garden_messaingaround.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Garden_messaingaround.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADC714881C82448400260F56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADC714891C82448400260F56 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -445,8 +445,6 @@
 				9552DED81C880DEC00633FBE /* plantImages */,
 				9552DED61C87E45700633FBE /* plantData.json */,
 				9D6549611C88AD4200841A24 /* plantDataReal.json */,
-				9D6549B61C88C8E700841A24 /* GardenCell.h */,
-				9D6549B71C88C8E700841A24 /* GardenCell.m */,
 				ADC714BF1C8261CD00260F56 /* ViewControllerDisplayGarden.h */,
 				ADC714C21C82666100260F56 /* ViewControllerDisplayGarden.m */,
 				ADC714BC1C825AB800260F56 /* ViewControllerNewGarden.h */,
@@ -471,6 +469,8 @@
 				ADC7148C1C82448400260F56 /* AppDelegate.m */,
 				85AE25171C83DB2F001828C0 /* GloablObjects.h */,
 				85AE25181C83DB2F001828C0 /* GloablObjects.m */,
+				85A5CF9E1CB03749007B74FA /* PlantData.h */,
+				85A5CF9F1CB03749007B74FA /* PlantData.m */,
 				ADC714911C82448400260F56 /* Main.storyboard */,
 				ADC714941C82448400260F56 /* Images.xcassets */,
 				ADC714961C82448400260F56 /* LaunchScreen.xib */,
@@ -703,6 +703,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADC714BE1C825AB800260F56 /* ViewControllerNewGarden.m in Sources */,
+				85A5CFA01CB03749007B74FA /* PlantData.m in Sources */,
 				85AE25101C83D56C001828C0 /* PlantObject.m in Sources */,
 				09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */,
 				116827FD1CA073EB00BD03FF /* ViewControllerEditAlarm.m in Sources */,
@@ -713,7 +714,6 @@
 				ADC714901C82448400260F56 /* ViewController.m in Sources */,
 				ADC7148D1C82448400260F56 /* AppDelegate.m in Sources */,
 				85AE25191C83DB2F001828C0 /* GloablObjects.m in Sources */,
-				9D6549B81C88C8E700841A24 /* GardenCell.m in Sources */,
 				ADC7148A1C82448400260F56 /* main.m in Sources */,
 				85AE250F1C83D56C001828C0 /* GardenObject.m in Sources */,
 			);

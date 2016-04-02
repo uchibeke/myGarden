@@ -8,14 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "GardenObject.h"
+#import "PlantData.h"
 
 @interface GloablObjects : NSObject
 @property (nonatomic, readwrite) GardenObject* myGarden;
 @property (nonatomic, readwrite) NSMutableArray* gardenArray;
+
 @property (nonatomic, readwrite) PlantObject* paintBrush;
+
 @property (nonatomic, readwrite) NSMutableArray* notesArray;
 @property (nonatomic, readwrite) NSMutableArray* alarmArray;
 @property (nonatomic, readwrite) NSMutableArray* commentsArray;
+
+@property (nonatomic, readwrite) PlantData* plantData;
 
 -(id)init;
 +(GloablObjects*)instance;
@@ -24,4 +29,5 @@
 +(GloablObjects*)notesInstance;
 +(GloablObjects*)alarmInstance;
 +(GloablObjects*)commentsInstance;
++(GloablObjects*)plantDataInstance;
 @end

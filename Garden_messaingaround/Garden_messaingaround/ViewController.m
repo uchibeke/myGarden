@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "PlantObject.h"
 #import "GloablObjects.h"
+#import "PlantData.h"
 
 @interface ViewController () {
     IBOutlet UITableView *myTable;
@@ -60,7 +61,7 @@
         [GloablObjects paintBrushInstance].paintBrush = [[PlantObject alloc] init];
         [GloablObjects notesInstance].notesArray = [[NSMutableArray alloc] init];
         [GloablObjects alarmInstance].alarmArray = [[NSMutableArray alloc] init];
-        
+        [GloablObjects plantDataInstance].plantData = [[PlantData alloc] init];
         NSLog(@"test");
     });
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
