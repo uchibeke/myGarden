@@ -10,6 +10,7 @@
 		0965401A1C9E09B300B28B43 /* ViewControllerReminders.m in Sources */ = {isa = PBXBuildFile; fileRef = 096540191C9E09B300B28B43 /* ViewControllerReminders.m */; };
 		098F7CED1CB068080015811B /* shovelBigClear.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CEC1CB068080015811B /* shovelBigClear.png */; };
 		098F7CEF1CB0680D0015811B /* scaredTomato_100tall.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CEE1CB0680D0015811B /* scaredTomato_100tall.png */; };
+		098F7CF11CB06F880015811B /* summer squash.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CF01CB06F880015811B /* summer squash.png */; };
 		09B2A1581C94B54B0081D136 /* ViewControllerPlantViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */; };
 		09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */; };
 		09CE09311CA6FBF300911F6C /* whiteCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE092E1CA6FBF300911F6C /* whiteCamera.png */; };
@@ -31,7 +32,6 @@
 		85AE25101C83D56C001828C0 /* PlantObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE250E1C83D56C001828C0 /* PlantObject.m */; };
 		85AE25191C83DB2F001828C0 /* GloablObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AE25181C83DB2F001828C0 /* GloablObjects.m */; };
 		9552DED71C87E45700633FBE /* plantData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9552DED61C87E45700633FBE /* plantData.json */; };
-		9567D3301CA6C92C00A2362A /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = 9567D32E1CA6C92C00A2362A /* square.png */; };
 		95B8E7AE1C96429100904A96 /* gardenIconBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 95B8E7AD1C96429100904A96 /* gardenIconBlack.png */; };
 		95C8B4161C9630F400057F9A /* dirt3brown.png in Resources */ = {isa = PBXBuildFile; fileRef = 95C8B4151C9630F400057F9A /* dirt3brown.png */; };
 		95F51EC51C96437A00800259 /* note.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F51EC41C96437A00800259 /* note.png */; };
@@ -40,7 +40,6 @@
 		9D6549621C88AD4200841A24 /* plantDataReal.json in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549611C88AD4200841A24 /* plantDataReal.json */; };
 		9D65498D1C88BAF400841A24 /* basil.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549651C88BAF400841A24 /* basil.png */; };
 		9D65498E1C88BAF400841A24 /* beans.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549661C88BAF400841A24 /* beans.png */; };
-		9D65498F1C88BAF400841A24 /* Beans.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549671C88BAF400841A24 /* Beans.png */; };
 		9D6549901C88BAF400841A24 /* beet.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549681C88BAF400841A24 /* beet.png */; };
 		9D6549911C88BAF400841A24 /* beets.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549691C88BAF400841A24 /* beets.png */; };
 		9D6549921C88BAF400841A24 /* broccoli.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D65496A1C88BAF400841A24 /* broccoli.png */; };
@@ -67,8 +66,6 @@
 		9D6549A71C88BAF400841A24 /* radish.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D65497F1C88BAF400841A24 /* radish.png */; };
 		9D6549A81C88BAF400841A24 /* spinach.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549801C88BAF400841A24 /* spinach.png */; };
 		9D6549A91C88BAF400841A24 /* strawberries.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549811C88BAF400841A24 /* strawberries.png */; };
-		9D6549AA1C88BAF400841A24 /* strawberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549821C88BAF400841A24 /* strawberry.png */; };
-		9D6549AE1C88BAF400841A24 /* swisschard.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549861C88BAF400841A24 /* swisschard.png */; };
 		9D6549AF1C88BAF400841A24 /* tomato.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549871C88BAF400841A24 /* tomato.png */; };
 		9D6549B01C88BAF400841A24 /* watermelon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549881C88BAF400841A24 /* watermelon.png */; };
 		9D6549B11C88BAF400841A24 /* winter squash.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6549891C88BAF400841A24 /* winter squash.png */; };
@@ -99,6 +96,7 @@
 		096540191C9E09B300B28B43 /* ViewControllerReminders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewControllerReminders.m; path = ../ViewControllerReminders.m; sourceTree = "<group>"; };
 		098F7CEC1CB068080015811B /* shovelBigClear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shovelBigClear.png; sourceTree = "<group>"; };
 		098F7CEE1CB0680D0015811B /* scaredTomato_100tall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scaredTomato_100tall.png; sourceTree = "<group>"; };
+		098F7CF01CB06F880015811B /* summer squash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "summer squash.png"; sourceTree = "<group>"; };
 		09B2A1561C94B54B0081D136 /* ViewControllerPlantViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerPlantViews.h; sourceTree = "<group>"; };
 		09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerPlantViews.m; sourceTree = "<group>"; };
 		09B2A1591C94C1C50081D136 /* ViewControllerNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerNotes.h; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 		85AE25171C83DB2F001828C0 /* GloablObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GloablObjects.h; sourceTree = "<group>"; };
 		85AE25181C83DB2F001828C0 /* GloablObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GloablObjects.m; sourceTree = "<group>"; };
 		9552DED61C87E45700633FBE /* plantData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = plantData.json; sourceTree = "<group>"; };
-		9567D32E1CA6C92C00A2362A /* square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square.png; sourceTree = "<group>"; };
 		95B8E7AD1C96429100904A96 /* gardenIconBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gardenIconBlack.png; sourceTree = "<group>"; };
 		95C8B4151C9630F400057F9A /* dirt3brown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dirt3brown.png; sourceTree = "<group>"; };
 		95F51EC41C96437A00800259 /* note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note.png; sourceTree = "<group>"; };
@@ -137,7 +134,6 @@
 		9D6549611C88AD4200841A24 /* plantDataReal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = plantDataReal.json; sourceTree = "<group>"; };
 		9D6549651C88BAF400841A24 /* basil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basil.png; sourceTree = "<group>"; };
 		9D6549661C88BAF400841A24 /* beans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beans.png; sourceTree = "<group>"; };
-		9D6549671C88BAF400841A24 /* Beans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Beans.png; sourceTree = "<group>"; };
 		9D6549681C88BAF400841A24 /* beet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beet.png; sourceTree = "<group>"; };
 		9D6549691C88BAF400841A24 /* beets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beets.png; sourceTree = "<group>"; };
 		9D65496A1C88BAF400841A24 /* broccoli.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = broccoli.png; sourceTree = "<group>"; };
@@ -164,8 +160,6 @@
 		9D65497F1C88BAF400841A24 /* radish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radish.png; sourceTree = "<group>"; };
 		9D6549801C88BAF400841A24 /* spinach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinach.png; sourceTree = "<group>"; };
 		9D6549811C88BAF400841A24 /* strawberries.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberries.png; sourceTree = "<group>"; };
-		9D6549821C88BAF400841A24 /* strawberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberry.png; sourceTree = "<group>"; };
-		9D6549861C88BAF400841A24 /* swisschard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swisschard.png; sourceTree = "<group>"; };
 		9D6549871C88BAF400841A24 /* tomato.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tomato.png; sourceTree = "<group>"; };
 		9D6549881C88BAF400841A24 /* watermelon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermelon.png; sourceTree = "<group>"; };
 		9D6549891C88BAF400841A24 /* winter squash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winter squash.png"; sourceTree = "<group>"; };
@@ -230,7 +224,6 @@
 				9D8BDFAB1CB051F900BF969D /* asparagus.png */,
 				9D6549651C88BAF400841A24 /* basil.png */,
 				9D6549661C88BAF400841A24 /* beans.png */,
-				9D6549671C88BAF400841A24 /* Beans.png */,
 				098F7CEC1CB068080015811B /* shovelBigClear.png */,
 				9D6549681C88BAF400841A24 /* beet.png */,
 				098F7CEE1CB0680D0015811B /* scaredTomato_100tall.png */,
@@ -265,10 +258,8 @@
 				9D65497F1C88BAF400841A24 /* radish.png */,
 				95F51EC61C96438300800259 /* reminderBlack.png */,
 				9D6549801C88BAF400841A24 /* spinach.png */,
-				9567D32E1CA6C92C00A2362A /* square.png */,
+				098F7CF01CB06F880015811B /* summer squash.png */,
 				9D6549811C88BAF400841A24 /* strawberries.png */,
-				9D6549821C88BAF400841A24 /* strawberry.png */,
-				9D6549861C88BAF400841A24 /* swisschard.png */,
 				11E3221D1CAA0C2E00C5F4E7 /* timerBig2.png */,
 				9D6549871C88BAF400841A24 /* tomato.png */,
 				9D6549881C88BAF400841A24 /* watermelon.png */,
@@ -460,7 +451,6 @@
 				9D8BDFAC1CB051F900BF969D /* asparagus.png in Resources */,
 				9D6549A71C88BAF400841A24 /* radish.png in Resources */,
 				9552DED71C87E45700633FBE /* plantData.json in Resources */,
-				9D6549AA1C88BAF400841A24 /* strawberry.png in Resources */,
 				9D65498D1C88BAF400841A24 /* basil.png in Resources */,
 				ADC714931C82448400260F56 /* Main.storyboard in Resources */,
 				9D6549941C88BAF400841A24 /* carrot.png in Resources */,
@@ -482,17 +472,15 @@
 				9D6549B11C88BAF400841A24 /* winter squash.png in Resources */,
 				95F51EC91C96447300800259 /* noteSmall.png in Resources */,
 				11E322211CAA0C2E00C5F4E7 /* gardenBig2.png in Resources */,
-				9D6549AE1C88BAF400841A24 /* swisschard.png in Resources */,
+				098F7CF11CB06F880015811B /* summer squash.png in Resources */,
 				9D6549A91C88BAF400841A24 /* strawberries.png in Resources */,
 				11E322221CAA0C2E00C5F4E7 /* notesBig2.png in Resources */,
 				9D6549961C88BAF400841A24 /* cauliflower.png in Resources */,
 				9D65499D1C88BAF400841A24 /* lettuce.png in Resources */,
 				9D65499F1C88BAF400841A24 /* muskmelon.png in Resources */,
 				9D6549981C88BAF400841A24 /* cilantro.png in Resources */,
-				9567D3301CA6C92C00A2362A /* square.png in Resources */,
 				098F7CEF1CB0680D0015811B /* scaredTomato_100tall.png in Resources */,
 				95F51EC71C96438300800259 /* reminderBlack.png in Resources */,
-				9D65498F1C88BAF400841A24 /* Beans.png in Resources */,
 				9D6549A21C88BAF400841A24 /* oregano.png in Resources */,
 				9D6549A51C88BAF400841A24 /* pepper.png in Resources */,
 				9D6549931C88BAF400841A24 /* cabbage.png in Resources */,
