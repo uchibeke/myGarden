@@ -15,7 +15,7 @@
 @property GardenObject * garden;
 @property NSInteger brushIndex;
 @property NSInteger clickedIndex;
-@property BOOL * brushIsInit;
+@property BOOL brushIsInit;
 
 @property IBOutlet UICollectionView *collectionView;
 @property IBOutlet UITableView *tableView;

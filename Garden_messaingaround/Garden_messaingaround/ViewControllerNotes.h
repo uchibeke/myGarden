@@ -11,5 +11,11 @@
 
 
 @interface ViewControllerNotes : UIViewController
+
 @property (weak, nonatomic) IBOutlet UITextView *notesField;
+@property IBOutlet UITableView *tableView;
+@property NSInteger clickedIndex;
+@property BOOL justDel;
+@property BOOL _didScrollToTop;
+
 @end

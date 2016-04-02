@@ -9,7 +9,6 @@
 
 #import "ViewControllerDisplayGarden.h"
 #import "GloablObjects.h"
-#import "PlantObject.h"
 #import <Social/Social.h>
 
 @interface ViewControllerDisplayGarden () {
@@ -32,6 +31,7 @@
     //initalize varbles for which alert is shown, and if we are in delete mode
     self.delmode = false;
     self.alert = 0;
+    self.brushIsInit = NO;
     
     //layout for the collection view changed so the garden is the correct width and height
     UICollectionViewFlowLayout *layout = (id) self.collectionView.collectionViewLayout;
@@ -194,7 +194,7 @@
         txt =  [[self getAPlantObject:plantName] objectForKey:@"Spacing per Square Foot"] ;
     }
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@%@", txt, @""];
-    cell.detailTextLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.textColor = [UIColor colorWithRed:(124/255.0f) green:(186/255.0f) blue:(37/255.0f) alpha:(1.0f)];
     
     return cell;
 }
@@ -372,14 +372,6 @@
     self.shot.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
     self.shot.image = [self capture];
     
-    UILabel *textLabel;
-    textLabel.text = @"Image Title";
-    [textLabel setFont: [textLabel.font fontWithSize: 100]];
-    [self.shot addSubview:textLabel];
-    
-    // Save image.
-    UIImageWriteToSavedPhotosAlbum(self.shot.image, nil, nil, nil);
-    
     self.shot.hidden = NO;
     self.shot.alpha = 1.0f;
     [self.shot setNeedsDisplay];
@@ -390,6 +382,9 @@
         self.shot.image = nil;
         self.shot.hidden = YES;
     }];
+    
+    // Save image.
+    UIImageWriteToSavedPhotosAlbum(self.shot.image, nil, nil, nil);
     [self.view addSubview:self.collectionView] ;
 }
 
@@ -450,7 +445,6 @@
         NSNumber *h = [NSNumber numberWithInteger:gard.height];
         [gardenHeight addObject:w];
         [gardenWidth addObject:h];
-        NSLog(@"%d", [gardenHeight[0] integerValue]);
         NSMutableArray *garden = [NSMutableArray arrayWithCapacity:[gard.gardenArr2d count]];
         for (PlantObject * plant in gard.gardenArr2d) {
             if ([ plant.name isEqualToString:@"" ]) {
@@ -484,10 +478,8 @@
     
     //gets information from user defaults using above arrays
     if (gardens != nil && gardenNames != nil) {
-        NSLog(@"gardens found. loading from file.");
         int i = 0;
         for (NSMutableArray * gard in gardens) {
-            NSLog(@"help");
             GardenObject * newGarden = [[GardenObject alloc] init];
             [newGarden allocateTable:[gardenWidth[i] integerValue] withWidth:[gardenHeight[i] integerValue]];
             [newGarden setName:gardenNames[i]];
@@ -515,7 +507,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSLog(@"data reload");
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self viewDidLoad];
@@ -527,7 +518,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    NSLog(@"data reload");
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self viewDidLoad];

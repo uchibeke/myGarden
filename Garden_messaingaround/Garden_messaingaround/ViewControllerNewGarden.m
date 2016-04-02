@@ -10,20 +10,7 @@
 #import "GloablObjects.h"
 #import "GardenObject.h"
 
-@interface ViewControllerNewGarden () {
-
-    IBOutlet UITextField* name;
-    IBOutlet UIStepper* width;
-    IBOutlet UIStepper* height;
-    IBOutlet UILabel* widthDisp;
-    IBOutlet UILabel* heightDisp;
-    IBOutlet UIButton * createBtn;
-}
-
-@property NSInteger w;
-@property NSInteger h;
-
-@property Boolean modifying;
+@interface ViewControllerNewGarden ()
 
 @end
 
@@ -31,28 +18,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //sets title bar
+    
+    //sets title bar and bkg
     [self setTitle:@"Create New Garden"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
+    
+    //checks if modifying or creating and sets field appropriately
     if ([GloablObjects instance].myGarden != nil) {
-        heightDisp.text = [NSString stringWithFormat:@"%d", (int)[GloablObjects instance].myGarden.height];
-        widthDisp.text = [NSString stringWithFormat:@"%d", (int)[GloablObjects instance].myGarden.width];
-        name.text = [GloablObjects instance].myGarden.name;
-        width.value = [GloablObjects instance].myGarden.width;
-        height.value = [GloablObjects instance].myGarden.height;
-        [createBtn setTitle: @"Modify Garden" forState:UIControlStateNormal];
+        self.heightDisp.text = [NSString stringWithFormat:@"%d", (int)[GloablObjects instance].myGarden.height];
+        self.widthDisp.text = [NSString stringWithFormat:@"%d", (int)[GloablObjects instance].myGarden.width];
+        self.name.text = [GloablObjects instance].myGarden.name;
+        self.width.value = [GloablObjects instance].myGarden.width;
+        self.height.value = [GloablObjects instance].myGarden.height;
+        [self.createBtn setTitle: @"Modify Garden" forState:UIControlStateNormal];
         self.modifying = true;
     } else {
-        [createBtn setTitle: @"Create Garden" forState:UIControlStateNormal];
+        [self.createBtn setTitle: @"Create Garden" forState:UIControlStateNormal];
         self.modifying = false;
-        width.value = 1;
-        height.value = 1;
+        self.width.value = 1;
+        self.height.value = 1;
     }
     
-    self.h = height.value;
-    self.w = width.value;
-//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-texture-background.jpg"]];
-//    brown-texture-background
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
+    //sets our height and width varibles to the stepper value
+    self.h = self.height.value;
+    self.w = self.self.width.value;
 }
 
 
@@ -60,48 +49,23 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     UITouch *touch = [[event allTouches] anyObject];
-    if ([name isFirstResponder] && [touch view] != name) {
-        [name resignFirstResponder];
+    if ([self.name isFirstResponder] && [touch view] != self.name) {
+        [self.name resignFirstResponder];
     }
     [super touchesBegan:touches withEvent:event];
 }
 
--(IBAction) widthModfier: (UIStepper*) sender {
-    self.w = (NSInteger)sender.value;
-    widthDisp.text = [NSString stringWithFormat:@"%d", (int)sender.value];
-}
-
--(IBAction) heightModfier: (UIStepper*) sender {
-    self.h = (NSInteger)sender.value;
-    heightDisp.text = [NSString stringWithFormat:@"%d", (int)sender.value];
-}
-
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
-        NSLog(@"Cancel Tapped.");
-    }
-    else if (buttonIndex == 1) {
-        [self.presentingViewController viewWillAppear:YES];
-        [self.presentingViewController viewDidAppear:YES];
-        [self updateGardenDimensions];
-        [self dismissModalViewControllerAnimated:YES];
-    }
-}
-
-
 -(void) updateGardenDimensions {
-    NSLog(@"deleting...");
-    
     GardenObject* oldGarden = [GloablObjects instance].myGarden;
     
     if (!self.modifying) {
         [GloablObjects instance].myGarden = [[GardenObject alloc] init];
         [[GloablObjects instance].myGarden allocateTable:self.h withWidth:self.w];
-        [[GloablObjects instance].myGarden setName:name.text];
+        [[GloablObjects instance].myGarden setName:self.name.text];
     } else {
-        [[GloablObjects instance].myGarden setName:name.text];
-        //wdith adjustment
+        [[GloablObjects instance].myGarden setName:self.name.text];
+        
+        //width adjustment
         int oldWidth = [GloablObjects instance].myGarden.getWidth;
         if ((oldWidth - self.w) >= 0) {
             int loops = oldWidth-self.w;
@@ -113,8 +77,7 @@
                 }
                 oldWidth--;
             }
-            //[GloablObjects instance].myGarden.width = oldWidth;
-            [GloablObjects instance].myGarden.width = [widthDisp.text intValue];
+            [GloablObjects instance].myGarden.width = [self.widthDisp.text intValue];
         } else {
             int loops = self.w-oldWidth;
             
@@ -127,11 +90,11 @@
                 }
                 oldWidth++;
             }
-            [GloablObjects instance].myGarden.width = [widthDisp.text intValue];
+            [GloablObjects instance].myGarden.width = [self.widthDisp.text intValue];
         }
         
         
-        //hieght adjustment
+        //height adjustment
         int oldHeight = [GloablObjects instance].myGarden.getHeight;
         if ((oldHeight - self.h) >= 0) {
             int toDelFromEnd = (oldHeight - self.h)*[GloablObjects instance].myGarden.getWidth;
@@ -140,7 +103,7 @@
                 [[GloablObjects instance].myGarden.gardenArr2d removeObjectAtIndex:temp];
                 oldHeight--;
             }
-            [GloablObjects instance].myGarden.height = [heightDisp.text intValue];
+            [GloablObjects instance].myGarden.height = [self.heightDisp.text intValue];
         } else {
             int toAddToEnd = (self.h - oldHeight)*self.w;
             for (int j=0;j<toAddToEnd; j++) {
@@ -150,15 +113,15 @@
                 [[GloablObjects instance].myGarden.gardenArr2d insertObject:myPlant atIndex:temp];
                 oldHeight++;
             }
-            [GloablObjects instance].myGarden.height = [heightDisp.text intValue];
+            [GloablObjects instance].myGarden.height = [self.heightDisp.text intValue];
         }
     }
     
     //required for updating entries in the garden
     //logic: removes old entry by object comparison
     
-    //dos soby looping through all entries in garden array
-    //and makeing note of the entry with the name we want to replace
+    //does so by looping through all entries in garden array
+    //and making note of the entry with the name we want to replace
     Boolean remove = false;
     int removeIndex = 0;
     if (self.modifying) {
@@ -166,7 +129,6 @@
         GardenObject *item;
         for (item in [GloablObjects gardenArrayInstance].gardenArray) {
             if (item == oldGarden) {
-                NSLog(@"found!");
                 removeIndex = index;
                 remove = true;
             }
@@ -181,17 +143,58 @@
         [[GloablObjects gardenArrayInstance].gardenArray replaceObjectAtIndex:removeIndex withObject:[GloablObjects instance].myGarden];
         [self updateUserDefaults];
     }
-    
-    NSLog(@"global garden updated!");
-    
-  
 }
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [self.presentingViewController viewWillAppear:YES];
+        [self.presentingViewController viewDidAppear:YES];
+        [self updateGardenDimensions];
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }
+}
+
 
 
 //actually creates the garden object
--(IBAction) goBack: (id) sender {
-    [self dismissModalViewControllerAnimated:YES];
+-(IBAction) createGarden: (id) sender {
+    if ((self.modifying && ([GloablObjects instance].myGarden.getWidth - self.w) > 0) || (self.modifying &&([GloablObjects instance].myGarden.getHeight - self.h) > 0)) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"WARNING!"
+                                                        message:@"you are about to shrink your garden! this will delete plants that are outisde of the new dimensions. are you sure you to continue?"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"Continue",nil];
+        [alert show];
+    } else {
+        if (!self.modifying) {
+            [self updateGardenDimensions];
+            //loads new view
+            [self performSegueWithIdentifier:@"showTabs" sender:self];
+        } else {
+            [self.presentingViewController viewWillAppear:YES];
+            [self.presentingViewController viewDidAppear:YES];
+            [self updateGardenDimensions];
+            [self dismissViewControllerAnimated:NO completion:nil];
+        }
+    }
+    
+    
 }
+
+-(IBAction) goBack: (id) sender {
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+-(IBAction) widthModfier: (UIStepper*) sender {
+    self.w = (NSInteger)sender.value;
+    self.widthDisp.text = [NSString stringWithFormat:@"%d", (int)sender.value];
+}
+
+-(IBAction) heightModfier: (UIStepper*) sender {
+    self.h = (NSInteger)sender.value;
+    self.heightDisp.text = [NSString stringWithFormat:@"%d", (int)sender.value];
+}
+
 
 
 -(void) updateUserDefaults {
@@ -206,7 +209,6 @@
         NSNumber *h = [NSNumber numberWithInteger:gard.height];
         [gardenHeight addObject:w];
         [gardenWidth addObject:h];
-        NSLog(@"%d", [gardenHeight[0] integerValue]);
         NSMutableArray *garden = [NSMutableArray arrayWithCapacity:[gard.gardenArr2d count]];
         for (PlantObject * plant in gard.gardenArr2d) {
             if ([ plant.name isEqualToString:@"" ]) {
@@ -236,13 +238,9 @@
     NSMutableArray *gardenWidth = [userDefaults objectForKey:@"gardenWidth"];
     NSMutableArray *gardenHeight = [userDefaults objectForKey:@"gardenHeight"];
     
-    if (gardens == nil || gardenNames == nil) {
-        NSLog(@"gardens not found. creating new instance.");
-    } else {
-        NSLog(@"gardens found. loading from file.");
+    if (gardens != nil && gardenNames != nil) {
         int i = 0;
         for (NSMutableArray * gard in gardens) {
-            NSLog(@"help");
             GardenObject * newGarden = [[GardenObject alloc] init];
             [newGarden allocateTable:[gardenWidth[i] integerValue] withWidth:[gardenHeight[i] integerValue]];
             [newGarden setName:gardenNames[i]];
@@ -265,36 +263,6 @@
     
 }
 
-//actually creates the garden object
--(IBAction) createGarden: (id) sender {
-    NSLog(@"call");
-    //creates and allocates new garden object
-    //currently uses a default of 10 x 10
-    
-    NSLog(@"updating garden...");
-    
-    if ((self.modifying && ([GloablObjects instance].myGarden.getWidth - self.w) > 0) || (self.modifying &&([GloablObjects instance].myGarden.getHeight - self.h) > 0)) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"WARNING!"
-                                                        message:@"you are about to shrink your garden! this will delete plants that are outisde of the new dimensions. are you sure you to continue?"
-                                                       delegate:self
-                                              cancelButtonTitle:@"Cancel"
-                                              otherButtonTitles:@"Continue",nil];
-        [alert show];
-    } else {
-        if (!self.modifying) {
-            [self updateGardenDimensions];
-            //loads new view
-            [self performSegueWithIdentifier:@"showTabs" sender:self];
-        } else {
-            [self.presentingViewController viewWillAppear:YES];
-            [self.presentingViewController viewDidAppear:YES];
-            [self updateGardenDimensions];
-            [self dismissModalViewControllerAnimated:YES];
-        }
-    }
-
-    
-}
 
 
 - (void)didReceiveMemoryWarning {
