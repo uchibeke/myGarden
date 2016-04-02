@@ -77,6 +77,7 @@
     UIGraphicsEndImageContext();
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", @"", [[GloablObjects plantDataInstance].plantData getAPlantName:indexPath.row]] ;
+    cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
 

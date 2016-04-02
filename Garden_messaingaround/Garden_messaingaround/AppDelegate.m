@@ -34,7 +34,7 @@
      [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
     [[UITabBar appearance] setTintColor:[UIColor blackColor]];
     [[UITableViewCell appearance] setBackgroundColor:[UIColor clearColor]];
-    [[UITableViewCell appearance] setTextColor:[UIColor whiteColor]];
+//    [[UITableViewCell appearance] setTextColor:[UIColor whiteColor]];
 
     //Prevents screen from locking
     [UIApplication sharedApplication].idleTimerDisabled = YES;

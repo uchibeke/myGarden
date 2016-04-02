@@ -52,100 +52,11 @@
 }
 
 
--(IBAction)waterSw:(id)sender
-{
-    [self.waterSwitch setOn:YES];
-    [self.weedSwitch setOn:NO];
-    [self.harvestSwitch setOn:NO];
-    [self.tableView setHidden:YES];
-    [self.timeToSetOff setHidden:NO];
-}
-
--(IBAction)weedSw:(id)sender
-{
-    [self.waterSwitch setOn:NO];
-    [self.weedSwitch setOn:YES];
-    [self.harvestSwitch setOn:NO];
-    [self.tableView setHidden:YES];
-    [self.timeToSetOff setHidden:NO];
-}
-
--(IBAction)harvestSw:(id)sender
-{
-    [self.waterSwitch setOn:NO];
-    [self.weedSwitch setOn:NO];
-    [self.harvestSwitch setOn:YES];
-    [self.tableView setHidden:NO];
-    [self.timeToSetOff setHidden:YES];
-}
-
-
--(IBAction)sendNotif:(id)sender
-{
-    if ([self.weedSwitch isOn]) {
-        NSLog(@"send weeding notif");
-        UILocalNotification *locNot = [[UILocalNotification alloc] init];
-        locNot.fireDate = self.timeToSetOff.date;
-        locNot.alertBody = @"Reminder to weed your garden!";
-        locNot.timeZone = [NSTimeZone defaultTimeZone];
-        locNot.soundName = UILocalNotificationDefaultSoundName;
-        [[UIApplication sharedApplication] scheduleLocalNotification: locNot];
-        
-        gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
-        myAlarm.name = @"WEEDING";
-        myAlarm.time = locNot.fireDate;
-        myAlarm.message = @"Reminder to weed your garden!";
-        [[GloablObjects alarmInstance].alarmArray addObject:myAlarm];
-    }
-    else if ([self.waterSwitch isOn]) {
-        NSLog(@"send watering notif");
-        UILocalNotification *locNot = [[UILocalNotification alloc] init];
-        locNot.fireDate = self.timeToSetOff.date;
-        locNot.alertBody = @"Reminder to water your garden!";
-        locNot.timeZone = [NSTimeZone defaultTimeZone];
-        locNot.soundName = UILocalNotificationDefaultSoundName;
-        [[UIApplication sharedApplication] scheduleLocalNotification: locNot];
-        
-        gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
-        myAlarm.name = @"WATERING";
-        myAlarm.time = locNot.fireDate;
-        myAlarm.message = @"Reminder to water your garden!";
-        [[GloablObjects alarmInstance].alarmArray addObject:myAlarm];
-        NSLog(@"%d", [[GloablObjects alarmInstance].alarmArray count]);
-    }
-    else if ([self.harvestSwitch isOn]) {
-        NSLog(@"send harvest notif");
-        UILocalNotification *locNot = [[UILocalNotification alloc] init];
-        NSDate *mydate = [NSDate date];
-        double interval = 604800;
-        interval *= [[[GloablObjects plantDataInstance].plantData getAPlantTimerCountDown:plantid] integerValue];
-        locNot.fireDate = [mydate dateByAddingTimeInterval: interval];
-        NSMutableString *message = @"Reminder to harvest your ";
-        message = [NSMutableString stringWithFormat:@"%@%@", message, selectedPlant];
-        locNot.alertBody = message;
-        locNot.timeZone = [NSTimeZone defaultTimeZone];
-        locNot.soundName = UILocalNotificationDefaultSoundName;
-        [[UIApplication sharedApplication] scheduleLocalNotification: locNot];
-        
-        gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
-        myAlarm.name = @"HARVEST";
-        myAlarm.time = locNot.fireDate;
-        myAlarm.message = message;
-        [[GloablObjects alarmInstance].alarmArray addObject:myAlarm];
-        NSLog(@"%d", [[GloablObjects alarmInstance].alarmArray count]);
-    }
-    
-    [self.presentingViewController viewWillAppear:YES];
-    [self.presentingViewController viewDidAppear:YES];
-    [self dismissModalViewControllerAnimated:YES];
-}
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return( 1 );
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -173,8 +84,7 @@
     UIGraphicsEndImageContext();
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", @"", [[GloablObjects plantDataInstance].plantData getAPlantName:indexPath.row]] ;
-    
-    //  tableView.backgroundColor = [UIColor redColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
 
@@ -184,7 +94,6 @@
     plantid = indexPath.row;
 }
 
-// Size of the cell
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 50;
@@ -192,8 +101,91 @@
 
 
 
+-(IBAction)waterSw:(id)sender
+{
+    [self.waterSwitch setOn:YES];
+    [self.weedSwitch setOn:NO];
+    [self.harvestSwitch setOn:NO];
+    [self.tableView setHidden:YES];
+    [self.timeToSetOff setHidden:NO];
+}
+
+-(IBAction)weedSw:(id)sender
+{
+    [self.waterSwitch setOn:NO];
+    [self.weedSwitch setOn:YES];
+    [self.harvestSwitch setOn:NO];
+    [self.tableView setHidden:YES];
+    [self.timeToSetOff setHidden:NO];
+}
+
+-(IBAction)harvestSw:(id)sender
+{
+    [self.waterSwitch setOn:NO];
+    [self.weedSwitch setOn:NO];
+    [self.harvestSwitch setOn:YES];
+    [self.tableView setHidden:NO];
+    [self.timeToSetOff setHidden:YES];
+}
+
+-(IBAction)sendNotif:(id)sender
+{
+    if ([self.weedSwitch isOn]) {
+        UILocalNotification *locNot = [[UILocalNotification alloc] init];
+        locNot.fireDate = self.timeToSetOff.date;
+        locNot.alertBody = @"Reminder to weed your garden!";
+        locNot.timeZone = [NSTimeZone defaultTimeZone];
+        locNot.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] scheduleLocalNotification: locNot];
+        
+        gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
+        myAlarm.name = @"WEEDING";
+        myAlarm.time = locNot.fireDate;
+        myAlarm.message = @"Reminder to weed your garden!";
+        [[GloablObjects alarmInstance].alarmArray addObject:myAlarm];
+    }
+    else if ([self.waterSwitch isOn]) {
+        UILocalNotification *locNot = [[UILocalNotification alloc] init];
+        locNot.fireDate = self.timeToSetOff.date;
+        locNot.alertBody = @"Reminder to water your garden!";
+        locNot.timeZone = [NSTimeZone defaultTimeZone];
+        locNot.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] scheduleLocalNotification: locNot];
+        
+        gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
+        myAlarm.name = @"WATERING";
+        myAlarm.time = locNot.fireDate;
+        myAlarm.message = @"Reminder to water your garden!";
+        [[GloablObjects alarmInstance].alarmArray addObject:myAlarm];
+    }
+    else if ([self.harvestSwitch isOn]) {
+        UILocalNotification *locNot = [[UILocalNotification alloc] init];
+        NSDate *mydate = [NSDate date];
+        double interval = 604800;
+        interval *= [[[GloablObjects plantDataInstance].plantData getAPlantTimerCountDown:plantid] integerValue];
+        locNot.fireDate = [mydate dateByAddingTimeInterval: interval];
+        NSMutableString *message = [NSMutableString stringWithCapacity:1000];
+        message = [NSMutableString stringWithFormat:@"%@%@", message, @"Reminder to harvest your "];
+        message = [NSMutableString stringWithFormat:@"%@%@", message, selectedPlant];
+        locNot.alertBody = message;
+        locNot.timeZone = [NSTimeZone defaultTimeZone];
+        locNot.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] scheduleLocalNotification: locNot];
+        
+        gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
+        myAlarm.name = @"HARVEST";
+        myAlarm.time = locNot.fireDate;
+        myAlarm.message = message;
+        [[GloablObjects alarmInstance].alarmArray addObject:myAlarm];
+    }
+    
+    [self.presentingViewController viewWillAppear:YES];
+    [self.presentingViewController viewDidAppear:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 -(IBAction) goBack: (id) sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

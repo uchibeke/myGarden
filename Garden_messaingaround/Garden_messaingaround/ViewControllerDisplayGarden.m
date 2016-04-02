@@ -36,7 +36,7 @@
     //layout for the collection view changed so the garden is the correct width and height
     UICollectionViewFlowLayout *layout = (id) self.collectionView.collectionViewLayout;
     float screenWidth = layout.collectionViewContentSize.width;
-    float widthOfCell = (screenWidth)/([[GloablObjects instance].myGarden getWidth])-1;
+    float widthOfCell = (screenWidth)/([GloablObjects instance].myGarden.width)-1;
     layout.itemSize = CGSizeMake(widthOfCell, widthOfCell);
     layout.minimumInteritemSpacing = 0.0f;
     layout.minimumLineSpacing = 1.0f;
@@ -69,7 +69,7 @@
     title.adjustsFontSizeToFitWidth = YES;
     title.minimumScaleFactor = 0;
     title.text = @"";
-    if (([[GloablObjects instance].myGarden getWidth]) < 7) {
+    if (([GloablObjects instance].myGarden.width) < 7) {
         title.text = p.name;
     }
     
@@ -80,7 +80,7 @@
     [plantsPerRow setFont: [plantsPerRow.font fontWithSize: 13]];
     plantsPerRow.adjustsFontSizeToFitWidth = YES;
     plantsPerRow.minimumScaleFactor = 0;
-    if (([[GloablObjects instance].myGarden getWidth]) < 7 && !([[self getAPlantObject:p.name] isEqualToDictionary:nil])) {
+    if (([GloablObjects instance].myGarden.width) < 7 && !([[self getAPlantObject:p.name] isEqualToDictionary:nil])) {
         plantsPerRow.text = [[self getAPlantObject:p.name] objectForKey:@"Spacing per Square Foot"] ;
     }
     
@@ -120,7 +120,7 @@
         title.adjustsFontSizeToFitWidth = YES;
         title.minimumScaleFactor = 0;
         title.text = @"";
-        if (([[GloablObjects instance].myGarden getWidth]) < 7) {
+        if (([GloablObjects instance].myGarden.width) < 7) {
             title.text = [GloablObjects paintBrushInstance].paintBrush.name;
         }
         
@@ -131,7 +131,7 @@
         [plantsPerRow setFont: [plantsPerRow.font fontWithSize: 13]];
         plantsPerRow.adjustsFontSizeToFitWidth = YES;
         plantsPerRow.minimumScaleFactor = 0;
-        if (([[GloablObjects instance].myGarden getWidth]) < 7 && !([[self getAPlantObject:[GloablObjects paintBrushInstance].paintBrush.name] isEqualToDictionary:nil])) {
+        if (([GloablObjects instance].myGarden.width) < 7 && !([[self getAPlantObject:[GloablObjects paintBrushInstance].paintBrush.name] isEqualToDictionary:nil])) {
             plantsPerRow.text = [[self getAPlantObject:[GloablObjects paintBrushInstance].paintBrush.name] objectForKey:@"Spacing per Square Foot"];
         }
         
@@ -186,6 +186,7 @@
     
     //sets label for cell
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", @"", [[GloablObjects plantDataInstance].plantData getAPlantName:indexPath.row]] ;
+    cell.textLabel.textColor = [UIColor whiteColor];
     
     // Set subtitles consisting of how many of each plant
     NSString * txt = @"";
@@ -513,7 +514,7 @@
 {
     [super viewWillAppear:animated];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self viewDidLoad];
         [self.collectionView reloadData];
         [self.view setNeedsDisplay];
@@ -524,7 +525,7 @@
 {
     [super viewDidAppear:animated];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self viewDidLoad];
         [self.collectionView reloadData];
         [self.view setNeedsDisplay];

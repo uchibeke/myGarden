@@ -11,6 +11,7 @@
 @interface ViewController : UIViewController
 
 @property NSMutableArray* arrayOfGardens;
+@property IBOutlet UITableView *myTable;
 
 @end
 

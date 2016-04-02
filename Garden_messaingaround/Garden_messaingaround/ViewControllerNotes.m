@@ -85,6 +85,7 @@
     UIGraphicsEndImageContext();
     
     cell.textLabel.text = [[[GloablObjects notesInstance].notesArray objectAtIndex:indexPath.row] substringWithRange:NSMakeRange(0, upperLimit)] ;
+    cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
 
@@ -116,7 +117,6 @@
         self.notesField.hidden = true;
     }
     [self updateNoteUserDefaults];
-    NSLog(@"Deleted row.");
 }
 
 
@@ -225,7 +225,6 @@
 }
 
 -(IBAction) goAllGardens: (id) sender {
-    NSLog(@"clicked");
     [self.navigationController.presentingViewController.presentingViewController viewWillAppear:YES];
     [self.navigationController.presentingViewController.presentingViewController viewDidAppear:YES];
     if (self.navigationController.presentingViewController.presentingViewController) {
@@ -233,6 +232,35 @@
     } else {
         [self.navigationController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     }
+}
+
+
+
+-(void) updateNoteUserDefaults {
+    NSMutableArray *notesArray = [NSMutableArray arrayWithCapacity:[[GloablObjects notesInstance].notesArray count]];
+    
+    for (NSString * note in [GloablObjects notesInstance].notesArray) {
+        [notesArray addObject:note];
+    }
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:notesArray forKey:@"notesArray"];
+    [userDefaults synchronize];
+}
+
+-(void) getFromNoteUserDefaults {
+    //wipes all gardens, will be reloaded from user defaults
+    [GloablObjects notesInstance].notesArray = [[NSMutableArray alloc] init];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *notesArray = [userDefaults objectForKey:@"notesArray"];
+    
+    if (notesArray != nil) {
+        for (NSString * note in notesArray) {
+            [[GloablObjects notesInstance].notesArray addObject:note];
+        }
+    }
+    
 }
 
 
@@ -255,37 +283,6 @@
         self._didScrollToTop = YES;
     }
 }
-
-
--(void) updateNoteUserDefaults {
-    NSMutableArray *notesArray = [NSMutableArray arrayWithCapacity:[[GloablObjects notesInstance].notesArray count]];
-    
-    for (NSString * note in [GloablObjects notesInstance].notesArray) {
-        [notesArray addObject:note];
-    }
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:notesArray forKey:@"notesArray"];
-    [userDefaults synchronize];
-}
-
--(void) getFromNoteUserDefaults {
-    //wipes all gardens, will be reloaded from user defaults
-    [GloablObjects notesInstance].notesArray = [[NSMutableArray alloc] init];
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *notesArray = [userDefaults objectForKey:@"notesArray"];
-    
-    if (notesArray == nil) {
-        NSLog(@"no notes found");
-    } else {
-        for (NSString * note in notesArray) {
-            [[GloablObjects notesInstance].notesArray addObject:note];
-        }
-    }
-    
-}
-
 
 
 - (void)didReceiveMemoryWarning {

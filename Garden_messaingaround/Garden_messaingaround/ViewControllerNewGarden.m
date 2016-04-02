@@ -66,7 +66,7 @@
         [[GloablObjects instance].myGarden setName:self.name.text];
         
         //width adjustment
-        int oldWidth = [GloablObjects instance].myGarden.getWidth;
+        int oldWidth = [GloablObjects instance].myGarden.width;
         if ((oldWidth - self.w) >= 0) {
             int loops = oldWidth-self.w;
             
@@ -95,9 +95,9 @@
         
         
         //height adjustment
-        int oldHeight = [GloablObjects instance].myGarden.getHeight;
+        int oldHeight = [GloablObjects instance].myGarden.height;
         if ((oldHeight - self.h) >= 0) {
-            int toDelFromEnd = (oldHeight - self.h)*[GloablObjects instance].myGarden.getWidth;
+            int toDelFromEnd = (oldHeight - self.h)*[GloablObjects instance].myGarden.width;
             for (int j=0;j<toDelFromEnd; j++) {
                 int temp = [GloablObjects instance].myGarden.gardenArr2d.count-1;
                 [[GloablObjects instance].myGarden.gardenArr2d removeObjectAtIndex:temp];
@@ -150,7 +150,7 @@
         [self.presentingViewController viewWillAppear:YES];
         [self.presentingViewController viewDidAppear:YES];
         [self updateGardenDimensions];
-        [self dismissViewControllerAnimated:NO completion:nil];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
@@ -158,7 +158,7 @@
 
 //actually creates the garden object
 -(IBAction) createGarden: (id) sender {
-    if ((self.modifying && ([GloablObjects instance].myGarden.getWidth - self.w) > 0) || (self.modifying &&([GloablObjects instance].myGarden.getHeight - self.h) > 0)) {
+    if ((self.modifying && ([GloablObjects instance].myGarden.width - self.w) > 0) || (self.modifying &&([GloablObjects instance].myGarden.height - self.h) > 0)) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"WARNING!"
                                                         message:@"you are about to shrink your garden! this will delete plants that are outisde of the new dimensions. are you sure you to continue?"
                                                        delegate:self
@@ -174,7 +174,7 @@
             [self.presentingViewController viewWillAppear:YES];
             [self.presentingViewController viewDidAppear:YES];
             [self updateGardenDimensions];
-            [self dismissViewControllerAnimated:NO completion:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
     }
     
@@ -182,7 +182,7 @@
 }
 
 -(IBAction) goBack: (id) sender {
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(IBAction) widthModfier: (UIStepper*) sender {

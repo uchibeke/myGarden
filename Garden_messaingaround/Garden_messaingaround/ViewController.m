@@ -11,9 +11,7 @@
 #import "GloablObjects.h"
 #import "PlantData.h"
 
-@interface ViewController () {
-    IBOutlet UITableView *myTable;
-}
+@interface ViewController ()
 
 @end
 
@@ -32,7 +30,6 @@
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSMutableArray *gardens = [userDefaults objectForKey:@"gardens"];
         if (gardens == nil) {
-            NSLog(@"gardens not found. creating new instance.");
             [GloablObjects gardenArrayInstance].gardenArray = [[NSMutableArray alloc] init];
             [userDefaults setObject:[GloablObjects gardenArrayInstance].gardenArray forKey:@"gardenArray"];
             [userDefaults synchronize];
@@ -41,86 +38,49 @@
         }
         
         if ([userDefaults objectForKey:@"commentsArray"] == nil) {
-            NSLog(@"comments not found.");
             [GloablObjects commentsInstance].commentsArray = [[NSMutableArray alloc] init];
             for (int i = 0; i < 50; i++) {
                 NSString *test = @"";
                 [[GloablObjects commentsInstance].commentsArray addObject:test];
-                NSLog(test);
             }
             [userDefaults setObject:[GloablObjects commentsInstance].commentsArray forKey:@"commentsArray"];
             [userDefaults synchronize];
         } else {
-            NSLog(@"comments found");
             [GloablObjects commentsInstance].commentsArray = [userDefaults objectForKey:@"commentsArray"];
-            for (NSString *s in [GloablObjects commentsInstance].commentsArray) {
-                //NSLog(s);
-            }
         }
         
         [GloablObjects paintBrushInstance].paintBrush = [[PlantObject alloc] init];
         [GloablObjects notesInstance].notesArray = [[NSMutableArray alloc] init];
         [GloablObjects alarmInstance].alarmArray = [[NSMutableArray alloc] init];
         [GloablObjects plantDataInstance].plantData = [[PlantData alloc] init];
-        NSLog(@"test");
     });
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dirt3brown"]];
 
     
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    NSLog(@"data reload");
-    [myTable reloadData];
-}
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    NSLog(@"data reload");
-    [myTable reloadData];
-}
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return YES - we will be able to delete all rows
     return YES;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Perform the real delete action here. Note: you may need to check editing style
-    //   if you do not perform delete only.
     [[GloablObjects gardenArrayInstance].gardenArray removeObjectAtIndex:indexPath.row ];
     [self updateUserDefaults];
     [tableView reloadData];
 }
 
-
-
-//action tied to creat new garden button
-//loads new view, which asks for info then creates new garden
--(IBAction) createNewGarden: (id) sender {
-    [GloablObjects instance].myGarden = nil;
-    //must link views togther first, and set identifer
-    [self performSegueWithIdentifier:@"modalCreate" sender:self];
-}
-
-
-//had to link the tableview delegate and datasource in the storyboard, via the inspecter
-//in order to assiosiate the tableview with the 3 functions below
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    //returns sections, no sections nessesary as its just a list of gardens
     return( 1 );
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    //returns the amount of 'cells' in the sections
     return [GloablObjects gardenArrayInstance].gardenArray.count;
 }
 
@@ -134,11 +94,10 @@
         cell = [ [ UITableViewCell alloc ] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier: @"Cell" ];
     }
     
-    //setting the cell textlabel sets each indiidual cells text
     GardenObject* myObject = [GloablObjects gardenArrayInstance].gardenArray[indexPath.row];
     
     cell.textLabel.text = myObject.name;
-    
+    cell.textLabel.textColor = [UIColor whiteColor];
     NSString * imgName = @"gardenIconWhite.png";
     cell.imageView.image = [UIImage imageNamed:imgName];
     
@@ -149,9 +108,17 @@
 {
     [GloablObjects instance].myGarden = [GloablObjects gardenArrayInstance].gardenArray[indexPath.row];
     
-    //loads new view
     [self performSegueWithIdentifier:@"showTabs" sender:self];
 }
+
+
+
+-(IBAction) createNewGarden: (id) sender {
+    [GloablObjects instance].myGarden = nil;
+    //must link views togther first, and set identifer
+    [self performSegueWithIdentifier:@"modalCreate" sender:self];
+}
+
 
 
 -(void) updateUserDefaults {
@@ -166,7 +133,6 @@
         NSNumber *h = [NSNumber numberWithInteger:gard.height];
         [gardenHeight addObject:w];
         [gardenWidth addObject:h];
-        NSLog(@"%d", [gardenHeight[0] integerValue]);
         NSMutableArray *garden = [NSMutableArray arrayWithCapacity:[gard.gardenArr2d count]];
         for (PlantObject * plant in gard.gardenArr2d) {
             if ([ plant.name isEqualToString:@"" ]) {
@@ -196,13 +162,9 @@
     NSMutableArray *gardenWidth = [userDefaults objectForKey:@"gardenWidth"];
     NSMutableArray *gardenHeight = [userDefaults objectForKey:@"gardenHeight"];
     
-    if (gardens == nil || gardenNames == nil) {
-        NSLog(@"gardens not found. creating new instance.");
-    } else {
-        NSLog(@"gardens found. loading from file.");
+    if (gardens != nil && gardenNames != nil) {
         int i = 0;
         for (NSMutableArray * gard in gardens) {
-            NSLog(@"help");
             GardenObject * newGarden = [[GardenObject alloc] init];
             [newGarden allocateTable:[gardenWidth[i] integerValue] withWidth:[gardenHeight[i] integerValue]];
             [newGarden setName:gardenNames[i]];
@@ -224,6 +186,21 @@
     }
     
 }
+
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.myTable reloadData];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.myTable reloadData];
+}
+
 
 
 - (void)didReceiveMemoryWarning {
