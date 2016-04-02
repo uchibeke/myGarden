@@ -54,7 +54,7 @@
     message = [NSMutableString stringWithFormat:@"%@%@", message, [NSDateFormatter localizedStringFromDate:myAlaram.time
                                                                                                  dateStyle:NSDateFormatterShortStyle
                                                                                                  timeStyle:NSDateFormatterFullStyle]];
-    
+
     cell.textLabel.text = message;
     
     NSString * imgName = [NSString stringWithFormat:@"reminderWhite"];
@@ -84,8 +84,6 @@
                                              timeStyle:NSDateFormatterFullStyle];
 
         if ([fir isEqualToString:sec]) {
-            // delete this notification
-            NSLog(@"found");
             [[UIApplication sharedApplication] cancelLocalNotification:notification] ;
         }
     }
@@ -95,28 +93,40 @@
 }
 
 
+
+-(IBAction) goAllGardens: (id) sender {
+    [self.navigationController.presentingViewController.presentingViewController viewWillAppear:YES];
+    [self.navigationController.presentingViewController.presentingViewController viewDidAppear:YES];
+    if (self.navigationController.presentingViewController.presentingViewController) {
+        [self.navigationController.presentingViewController.presentingViewController dismissViewControllerAnimated:NO completion:nil];
+    } else {
+        [self.navigationController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSLog(@"data reload");
     [self.tableView reloadData];
     [self updateAlarmUserDefaults];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
     });
 }
-
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    NSLog(@"data reload");
     [self.tableView reloadData];
     [self updateAlarmUserDefaults];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
     });
 }
+
+
 
 -(void) updateAlarmUserDefaults {
     NSMutableArray *alarmNames = [NSMutableArray arrayWithCapacity:[[GloablObjects alarmInstance].alarmArray count]];
@@ -160,19 +170,6 @@
     }
     
 }
-
-
--(IBAction) goAllGardens: (id) sender {
-    NSLog(@"clicked");
-    [self.navigationController.presentingViewController.presentingViewController viewWillAppear:YES];
-    [self.navigationController.presentingViewController.presentingViewController viewDidAppear:YES];
-    if (self.navigationController.presentingViewController.presentingViewController) {
-        [self.navigationController.presentingViewController.presentingViewController dismissViewControllerAnimated:NO completion:nil];
-    } else {
-        [self.navigationController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    }
-}
-
 
 
 
