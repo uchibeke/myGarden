@@ -287,6 +287,10 @@
     }
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    // Set the notes field text view to front
+    [self.view bringSubviewToFront:self.notesField];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

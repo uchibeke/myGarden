@@ -31,7 +31,6 @@
     //initalize varbles for which alert is shown, and if we are in delete mode
     self.delmode = false;
     self.alert = 0;
-    self.brushIsInit = NO;
     
     //layout for the collection view changed so the garden is the correct width and height
     UICollectionViewFlowLayout *layout = (id) self.collectionView.collectionViewLayout;
@@ -351,6 +350,8 @@
 
 -(IBAction) removeTool: (id) sender {
     // red background when remove button clicked
+    
+    self.brushIsInit = YES;
     self.collectionView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3f];
     self.delmode = YES;
     self.alert = 0;

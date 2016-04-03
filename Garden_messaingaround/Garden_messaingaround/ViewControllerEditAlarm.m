@@ -135,7 +135,7 @@
 -(IBAction)repeatSw:(id)sender
 {
     self.repeat = [sender isOn];
-    NSLog(@"VALUE IS : %@", self.repeat ? @"YES" : @"NO");
+//    NSLog(@"VALUE IS : %@", self.repeat ? @"YES" : @"NO");
 }
 
 -(IBAction)sendNotif:(id)sender

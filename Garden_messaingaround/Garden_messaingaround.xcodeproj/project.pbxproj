@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0965401A1C9E09B300B28B43 /* ViewControllerReminders.m in Sources */ = {isa = PBXBuildFile; fileRef = 096540191C9E09B300B28B43 /* ViewControllerReminders.m */; };
 		098F7CED1CB068080015811B /* shovelBigClear.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CEC1CB068080015811B /* shovelBigClear.png */; };
 		098F7CEF1CB0680D0015811B /* scaredTomato_100tall.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CEE1CB0680D0015811B /* scaredTomato_100tall.png */; };
 		098F7CF11CB06F880015811B /* summer squash.png in Resources */ = {isa = PBXBuildFile; fileRef = 098F7CF01CB06F880015811B /* summer squash.png */; };
@@ -16,6 +15,7 @@
 		09CE09311CA6FBF300911F6C /* whiteCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE092E1CA6FBF300911F6C /* whiteCamera.png */; };
 		09CE09321CA6FBF300911F6C /* whiteFacebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE092F1CA6FBF300911F6C /* whiteFacebook.png */; };
 		09CE09331CA6FBF300911F6C /* whiteTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE09301CA6FBF300911F6C /* whiteTwitter.png */; };
+		110EC4E31CB09DEC008CD8D9 /* ViewControllerReminders.m in Sources */ = {isa = PBXBuildFile; fileRef = 110EC4E21CB09DEC008CD8D9 /* ViewControllerReminders.m */; };
 		116827FD1CA073EB00BD03FF /* ViewControllerEditAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 116827FC1CA073EB00BD03FF /* ViewControllerEditAlarm.m */; };
 		11B3F59C1CA06CC900D5F8D5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3F59B1CA06CC900D5F8D5 /* AVFoundation.framework */; };
 		11B3F59E1CA06CD000D5F8D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B3F59D1CA06CD000D5F8D5 /* UIKit.framework */; };
@@ -93,8 +93,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		096540181C9E09B300B28B43 /* ViewControllerReminders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewControllerReminders.h; path = ../ViewControllerReminders.h; sourceTree = "<group>"; };
-		096540191C9E09B300B28B43 /* ViewControllerReminders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewControllerReminders.m; path = ../ViewControllerReminders.m; sourceTree = "<group>"; };
 		098F7CEC1CB068080015811B /* shovelBigClear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shovelBigClear.png; sourceTree = "<group>"; };
 		098F7CEE1CB0680D0015811B /* scaredTomato_100tall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scaredTomato_100tall.png; sourceTree = "<group>"; };
 		098F7CF01CB06F880015811B /* summer squash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "summer squash.png"; sourceTree = "<group>"; };
@@ -105,6 +103,8 @@
 		09CE092E1CA6FBF300911F6C /* whiteCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteCamera.png; sourceTree = "<group>"; };
 		09CE092F1CA6FBF300911F6C /* whiteFacebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteFacebook.png; sourceTree = "<group>"; };
 		09CE09301CA6FBF300911F6C /* whiteTwitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteTwitter.png; sourceTree = "<group>"; };
+		110EC4E11CB09DEC008CD8D9 /* ViewControllerReminders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerReminders.h; sourceTree = "<group>"; };
+		110EC4E21CB09DEC008CD8D9 /* ViewControllerReminders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerReminders.m; sourceTree = "<group>"; };
 		116827FB1CA073EB00BD03FF /* ViewControllerEditAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerEditAlarm.h; sourceTree = "<group>"; };
 		116827FC1CA073EB00BD03FF /* ViewControllerEditAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerEditAlarm.m; sourceTree = "<group>"; };
 		11B3F59B1CA06CC900D5F8D5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -309,8 +309,8 @@
 				09B2A1571C94B54B0081D136 /* ViewControllerPlantViews.m */,
 				09B2A1591C94C1C50081D136 /* ViewControllerNotes.h */,
 				09B2A15A1C94C1C50081D136 /* ViewControllerNotes.m */,
-				096540181C9E09B300B28B43 /* ViewControllerReminders.h */,
-				096540191C9E09B300B28B43 /* ViewControllerReminders.m */,
+				110EC4E11CB09DEC008CD8D9 /* ViewControllerReminders.h */,
+				110EC4E21CB09DEC008CD8D9 /* ViewControllerReminders.m */,
 				116827FB1CA073EB00BD03FF /* ViewControllerEditAlarm.h */,
 				116827FC1CA073EB00BD03FF /* ViewControllerEditAlarm.m */,
 				ADC7148E1C82448400260F56 /* ViewController.h */,
@@ -514,10 +514,10 @@
 				85A5CFA01CB03749007B74FA /* PlantData.m in Sources */,
 				85AE25101C83D56C001828C0 /* PlantObject.m in Sources */,
 				09B2A15B1C94C1C50081D136 /* ViewControllerNotes.m in Sources */,
+				110EC4E31CB09DEC008CD8D9 /* ViewControllerReminders.m in Sources */,
 				116827FD1CA073EB00BD03FF /* ViewControllerEditAlarm.m in Sources */,
 				85918F3D1CA5D44200591415 /* gardenAlarm.m in Sources */,
 				ADC714C31C82666100260F56 /* ViewControllerDisplayGarden.m in Sources */,
-				0965401A1C9E09B300B28B43 /* ViewControllerReminders.m in Sources */,
 				09B2A1581C94B54B0081D136 /* ViewControllerPlantViews.m in Sources */,
 				ADC714901C82448400260F56 /* ViewController.m in Sources */,
 				ADC7148D1C82448400260F56 /* AppDelegate.m in Sources */,

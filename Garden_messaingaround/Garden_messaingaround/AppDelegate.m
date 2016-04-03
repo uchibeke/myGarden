@@ -84,20 +84,23 @@
     NSString *fir = [NSDateFormatter localizedStringFromDate:notification.fireDate
                                                    dateStyle:NSDateFormatterShortStyle
                                                    timeStyle:NSDateFormatterFullStyle];
-    
+    gardenAlarm * toRemove = nil;
     for(gardenAlarm *notificat in [GloablObjects alarmInstance].alarmArray){
         if ([fir isEqualToString:[NSDateFormatter localizedStringFromDate:notificat.time
                                                                 dateStyle:NSDateFormatterShortStyle
                                                                 timeStyle:NSDateFormatterFullStyle]]) {
             if (!notification.repeatInterval) {
                 // delete this notification
-                [[GloablObjects alarmInstance].alarmArray removeObject:notificat];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadAppDelegateTable" object:nil];
+                toRemove = notificat;
             }
         }
     }
     UIAlertView *notificationAlert = [[UIAlertView alloc] initWithTitle:notification.alertTitle    message:notification.alertBody
                                                                delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    if (toRemove) {
+        [[GloablObjects alarmInstance].alarmArray removeObject:toRemove];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadAppDelegateTable" object:nil];
+    }
     
     [notificationAlert show];
     NSMutableArray *alarmNames = [NSMutableArray arrayWithCapacity:[[GloablObjects alarmInstance].alarmArray count]];
