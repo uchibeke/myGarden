@@ -160,7 +160,7 @@
 -(IBAction) createGarden: (id) sender {
     if ((self.modifying && ([GloablObjects instance].myGarden.width - self.w) > 0) || (self.modifying &&([GloablObjects instance].myGarden.height - self.h) > 0)) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"WARNING!"
-                                                        message:@"you are about to shrink your garden! this will delete plants that are outisde of the new dimensions. are you sure you to continue?"
+                                                        message:@"You are about to shrink your garden! This will delete plants that are outisde of the new dimensions. Are you sure you to continue?"
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                               otherButtonTitles:@"Continue",nil];
@@ -168,7 +168,7 @@
         UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,0,0)];
         image.contentMode = UIViewContentModeScaleAspectFit;
         
-        NSString *loc = [[NSString alloc] initWithString:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"shovelBigClear.png"]];
+        NSString *loc = [[NSString alloc] initWithString:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"scaredTomato_100tall.png"]];
         UIImage *img = [[UIImage alloc] initWithContentsOfFile:loc];
         [image setImage:img];
         
