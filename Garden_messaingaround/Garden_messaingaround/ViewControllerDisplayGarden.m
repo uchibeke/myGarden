@@ -62,8 +62,8 @@
     [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     //sets title and their properties for each square
-    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.65, cell.bounds.size.width, 40)];
-    title.textColor = [UIColor whiteColor];
+    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.7, cell.bounds.size.width, 40)];
+    title.textColor = [UIColor colorWithRed:(215/255.0f) green:(215/255.0f) blue:(215/255.0f) alpha:(1.0f)];
     [title setTextAlignment:NSTextAlignmentCenter];
     title.adjustsFontSizeToFitWidth = YES;
     title.minimumScaleFactor = 0;
@@ -73,8 +73,8 @@
     }
     
     //sets number to plant per sq/ft and the texts properties for each square
-    UILabel *plantsPerRow = [[UILabel alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.05, cell.bounds.size.width*.01, cell.bounds.size.width*.9, 40)];
-    plantsPerRow.textColor = [UIColor whiteColor];
+    UILabel *plantsPerRow = [[UILabel alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.05, cell.bounds.size.width*.05, cell.bounds.size.width*.9, 40)];
+    plantsPerRow.textColor = [UIColor colorWithRed:(215/255.0f) green:(215/255.0f) blue:(215/255.0f) alpha:(1.0f)];
     [plantsPerRow setTextAlignment:NSTextAlignmentCenter];
     [plantsPerRow setFont: [plantsPerRow.font fontWithSize: 13]];
     plantsPerRow.adjustsFontSizeToFitWidth = YES;
@@ -113,8 +113,8 @@
         [[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
         
         //sets title and their properties for each square
-        UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.05, cell.bounds.size.width*.65, cell.bounds.size.width*.9, 40)];
-        title.textColor = [UIColor whiteColor];
+        UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.05, cell.bounds.size.width*.7, cell.bounds.size.width*.9, 40)];
+        title.textColor = [UIColor colorWithRed:(215/255.0f) green:(215/255.0f) blue:(215/255.0f) alpha:(1.0f)];
         [title setTextAlignment:NSTextAlignmentCenter];
         title.adjustsFontSizeToFitWidth = YES;
         title.minimumScaleFactor = 0;
@@ -124,8 +124,8 @@
         }
         
         //sets number to plant per sq/ft and the texts properties for each square
-        UILabel *plantsPerRow = [[UILabel alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.05, cell.bounds.size.width*.01, cell.bounds.size.width*.9, 40)];
-        plantsPerRow.textColor = [UIColor whiteColor];
+        UILabel *plantsPerRow = [[UILabel alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.05, cell.bounds.size.width*.05, cell.bounds.size.width*.9, 40)];
+        plantsPerRow.textColor = [UIColor colorWithRed:(215/255.0f) green:(215/255.0f) blue:(215/255.0f) alpha:(1.0f)];
         [plantsPerRow setTextAlignment:NSTextAlignmentCenter];
         [plantsPerRow setFont: [plantsPerRow.font fontWithSize: 13]];
         plantsPerRow.adjustsFontSizeToFitWidth = YES;
@@ -535,7 +535,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    self.brushIsInit = false;
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:NO];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self viewDidLoad];
         [self.collectionView reloadData];
@@ -545,8 +546,10 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
     
+    [super viewDidAppear:animated];
+    self.brushIsInit = false;
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:NO];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self viewDidLoad];
         [self.collectionView reloadData];

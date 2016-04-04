@@ -168,7 +168,6 @@
     NSMutableArray *alarmMessages = [userDefaults objectForKey:@"alarmMessages"];
     
     if (alarmMessages != nil && alarmTimes != nil) {
-    } else {
         int i = 0;
         for (NSString * alarm in alarmNames) {
             gardenAlarm *alar = [[gardenAlarm alloc] init];

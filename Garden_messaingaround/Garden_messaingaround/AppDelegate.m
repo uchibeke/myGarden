@@ -41,6 +41,9 @@
     UILocalNotification *localNotif =
     [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     
+    //[[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
+    
     if (localNotif)
     {
         [self setupWindow];

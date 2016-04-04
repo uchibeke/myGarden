@@ -58,6 +58,10 @@
 -(void) updateGardenDimensions {
     GardenObject* oldGarden = [GloablObjects instance].myGarden;
     
+    if ([self.name.text length] > 20) {
+        self.name.text = [self.name.text substringToIndex:20];
+    }
+    
     if (!self.modifying) {
         [GloablObjects instance].myGarden = [[GardenObject alloc] init];
         [[GloablObjects instance].myGarden allocateTable:self.h withWidth:self.w];

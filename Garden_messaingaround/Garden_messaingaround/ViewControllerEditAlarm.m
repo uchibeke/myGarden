@@ -142,13 +142,13 @@
 {
     if ([self.weedSwitch isOn]) {
         UILocalNotification *locNot = [[UILocalNotification alloc] init];
+        if (self.repeat) {
+            locNot.repeatInterval = NSCalendarUnitWeekOfYear;
+        }
         locNot.fireDate = self.timeToSetOff.date;
         locNot.alertBody = @"Reminder to weed your garden!";
         locNot.timeZone = [NSTimeZone defaultTimeZone];
         locNot.soundName = UILocalNotificationDefaultSoundName;
-        if (self.repeat) {
-            locNot.repeatInterval = NSCalendarUnitMinute;
-        }
         [[UIApplication sharedApplication] scheduleLocalNotification: locNot];
         
         gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
@@ -159,13 +159,13 @@
     }
     else if ([self.waterSwitch isOn]) {
         UILocalNotification *locNot = [[UILocalNotification alloc] init];
+        if (self.repeat) {
+            locNot.repeatInterval = NSCalendarUnitWeekOfYear;
+        }
         locNot.fireDate = self.timeToSetOff.date;
         locNot.alertBody = @"Reminder to water your garden!";
         locNot.timeZone = [NSTimeZone defaultTimeZone];
         locNot.soundName = UILocalNotificationDefaultSoundName;
-        if (self.repeat) {
-            locNot.repeatInterval = NSCalendarUnitMinute;
-        }
         [[UIApplication sharedApplication] scheduleLocalNotification: locNot];
         
         gardenAlarm *myAlarm = [[gardenAlarm alloc] init];
@@ -181,7 +181,7 @@
         interval *= [[[GloablObjects plantDataInstance].plantData getAPlantTimerCountDown:self.plantid] integerValue];
         locNot.fireDate = [mydate dateByAddingTimeInterval: interval];
         NSMutableString *message = [NSMutableString stringWithCapacity:1000];
-        message = [NSMutableString stringWithFormat:@"%@%@", message, @"Reminder to harvest your "];
+        message = [NSMutableString stringWithFormat:@"%@%@", message, @"Reminder to harvest "];
         message = [NSMutableString stringWithFormat:@"%@%@", message, self.selectedPlant];
         locNot.alertBody = message;
         locNot.timeZone = [NSTimeZone defaultTimeZone];
