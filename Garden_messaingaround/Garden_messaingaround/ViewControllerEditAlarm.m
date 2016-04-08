@@ -26,6 +26,8 @@
     [self.tableView setHidden:YES];
     [self.timeToSetOff setHidden:NO];
     [self.repeatSwitch setOn:NO];
+    [self.harvest1Label setHidden:YES];
+    [self.harvest2Label setHidden:YES];
     
     self.plantid = 0.0;
     self.selectedPlant = [[GloablObjects plantDataInstance].plantData getAPlantName:0];
@@ -108,6 +110,9 @@
     [self.timeToSetOff setHidden:NO];
     [self.repeatSwitch setHidden:NO];
     [self.repeatLable setHidden:NO];
+    [self.startDateLabel setHidden:NO];
+    [self.harvest1Label setHidden:YES];
+    [self.harvest2Label setHidden:YES];
 }
 
 -(IBAction)weedSw:(id)sender
@@ -119,6 +124,9 @@
     [self.timeToSetOff setHidden:NO];
     [self.repeatSwitch setHidden:NO];
     [self.repeatLable setHidden:NO];
+    [self.startDateLabel setHidden:NO];
+    [self.harvest1Label setHidden:YES];
+    [self.harvest2Label setHidden:YES];
 }
 
 -(IBAction)harvestSw:(id)sender
@@ -130,6 +138,9 @@
     [self.timeToSetOff setHidden:YES];
     [self.repeatSwitch setHidden:YES];
     [self.repeatLable setHidden:YES];
+    [self.startDateLabel setHidden:YES];
+    [self.harvest1Label setHidden:NO];
+    [self.harvest2Label setHidden:NO];
 }
 
 -(IBAction)repeatSw:(id)sender
