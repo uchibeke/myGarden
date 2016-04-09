@@ -23,6 +23,7 @@
 @property IBOutlet UITableView *tableView;
 @property IBOutlet UIImageView * shot;
 @property IBOutlet UIButton * takePhoto;
+@property IBOutlet UILabel * gardenSize;
 
 @property UIImageView *backgroundimgview;
 

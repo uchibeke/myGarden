@@ -46,6 +46,10 @@
     PlantObject *myPlant = [PlantObject new];
     myPlant.name = [[GloablObjects plantDataInstance].plantData getAPlantName:0];
     [GloablObjects paintBrushInstance].paintBrush = myPlant;
+    
+    self.gardenSize.text = [NSString stringWithFormat:@"%ift x %ift", [GloablObjects instance].myGarden.width, [GloablObjects instance].myGarden.height];
+    self.gardenSize.textColor = [UIColor colorWithRed:(124/255.0f) green:(186/255.0f) blue:(37/255.0f) alpha:(1.0f)];
+
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
