@@ -16,6 +16,8 @@
 @property NSInteger brushIndex;
 @property NSInteger clickedIndex;
 @property BOOL brushIsInit;
+@property BOOL activatePictureMode;
+
 
 @property IBOutlet UICollectionView *collectionView;
 @property IBOutlet UITableView *tableView;

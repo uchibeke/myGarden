@@ -64,6 +64,10 @@
     //sets title and their properties for each square
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, cell.bounds.size.width*.7, cell.bounds.size.width, 40)];
     title.textColor = [UIColor colorWithRed:(215/255.0f) green:(215/255.0f) blue:(215/255.0f) alpha:(1.0f)];
+    if (self.activatePictureMode) {
+        title.textColor = [UIColor blackColor];
+
+    }
     [title setTextAlignment:NSTextAlignmentCenter];
     title.adjustsFontSizeToFitWidth = YES;
     title.minimumScaleFactor = 0;
@@ -75,6 +79,11 @@
     //sets number to plant per sq/ft and the texts properties for each square
     UILabel *plantsPerRow = [[UILabel alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.05, cell.bounds.size.width*.05, cell.bounds.size.width*.9, 40)];
     plantsPerRow.textColor = [UIColor colorWithRed:(215/255.0f) green:(215/255.0f) blue:(215/255.0f) alpha:(1.0f)];
+    if (self.activatePictureMode) {
+        plantsPerRow.textColor  = [UIColor blackColor];
+        
+    }
+
     [plantsPerRow setTextAlignment:NSTextAlignmentCenter];
     [plantsPerRow setFont: [plantsPerRow.font fontWithSize: 13]];
     plantsPerRow.adjustsFontSizeToFitWidth = YES;
@@ -115,6 +124,11 @@
         //sets title and their properties for each square
         UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.05, cell.bounds.size.width*.7, cell.bounds.size.width*.9, 40)];
         title.textColor = [UIColor colorWithRed:(215/255.0f) green:(215/255.0f) blue:(215/255.0f) alpha:(1.0f)];
+        if (self.activatePictureMode) {
+            title.textColor  = [UIColor blackColor];
+            
+        }
+
         [title setTextAlignment:NSTextAlignmentCenter];
         title.adjustsFontSizeToFitWidth = YES;
         title.minimumScaleFactor = 0;
@@ -126,6 +140,11 @@
         //sets number to plant per sq/ft and the texts properties for each square
         UILabel *plantsPerRow = [[UILabel alloc]initWithFrame:CGRectMake(cell.bounds.size.width*.05, cell.bounds.size.width*.05, cell.bounds.size.width*.9, 40)];
         plantsPerRow.textColor = [UIColor colorWithRed:(215/255.0f) green:(215/255.0f) blue:(215/255.0f) alpha:(1.0f)];
+        if (self.activatePictureMode) {
+            plantsPerRow.textColor  = [UIColor blackColor];
+            
+        }
+        
         [plantsPerRow setTextAlignment:NSTextAlignmentCenter];
         [plantsPerRow setFont: [plantsPerRow.font fontWithSize: 13]];
         plantsPerRow.adjustsFontSizeToFitWidth = YES;
@@ -386,6 +405,7 @@
 }
 
 -(UIImage *)capture{
+    self.activatePictureMode = YES;
     [self.collectionView reloadData];
     
     CGRect frame = self.collectionView.frame;
@@ -394,6 +414,8 @@
     UIGraphicsBeginImageContextWithOptions(self.collectionView.bounds.size, self.collectionView.opaque, 4.0);
     [self.collectionView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    self.activatePictureMode = NO;
+    [self.collectionView reloadData];
     
     return image;
 }
