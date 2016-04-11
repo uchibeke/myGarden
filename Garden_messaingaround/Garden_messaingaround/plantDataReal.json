@@ -457,14 +457,14 @@
  },
  {
  "Name":"Marigold",
- "Family":"",
- "Height":"",
- "Spacing per Square Foot":"",
- "Growing Season":"",
- "Weeks from Seed to Harvest":"",
+ "Family":"Daisy",
+ "Height":"7-12 inches",
+ "Spacing per Square Foot":"1-4 per sq. ft.",
+ "Growing Season":"summer, fall",
+ "Weeks from Seed to Harvest":"10",
  "Timer countdown in weeks":99,
  "Years You can Store Seeds":"N/A",
- "Weeks to Maturity":"",
+ "Weeks to Maturity":"2/3",
  "Indoor Seed Starting":"",
  "Earliest Outdoor Planting":"temp",
  "Last Planting":"temp",
@@ -477,7 +477,7 @@
  "Preparing & Using":"temp",
  "Problems":"temp",
  "Preparation/Use":"temp",
- "foes":  "Cucumber "
+ "foes":  ""
  },
  {
  "Name":"Mint",
