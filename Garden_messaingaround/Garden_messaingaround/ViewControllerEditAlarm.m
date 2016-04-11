@@ -90,8 +90,20 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.selectedPlant = [[GloablObjects plantDataInstance].plantData getAPlantName:indexPath.row];
     self.plantid = indexPath.row;
+    int h = [[[GloablObjects plantDataInstance].plantData getAPlantTimerCountDown:self.plantid] integerValue];
+    self.harvest2Label.text = [NSString stringWithFormat:@"%d weeks", h];
+    
+    [self.savebtn setEnabled:YES];
+    [self.savebtn setTintColor: [UIColor clearColor]];
+    
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    self.selectedPlant = [[GloablObjects plantDataInstance].plantData getAPlantName:indexPath.row];
+    if (h == 99) {
+        self.harvest2Label.text = @"no harvest date.";
+        [self.savebtn setTintColor: [UIColor clearColor]];
+        [self.savebtn setEnabled:NO];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

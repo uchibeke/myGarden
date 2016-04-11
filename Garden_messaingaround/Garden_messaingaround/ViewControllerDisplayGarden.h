@@ -17,6 +17,7 @@
 @property NSInteger clickedIndex;
 @property BOOL brushIsInit;
 @property BOOL activatePictureMode;
+@property PlantObject * oldPlant;
 
 
 @property IBOutlet UICollectionView *collectionView;
