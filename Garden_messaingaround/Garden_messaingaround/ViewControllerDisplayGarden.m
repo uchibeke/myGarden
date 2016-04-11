@@ -32,6 +32,9 @@
     self.delmode = false;
     self.alert = 0;
     
+    //init old plant
+    self.oldPlant.name = @"";
+    
     //layout for the collection view changed so the garden is the correct width and height
     UICollectionViewFlowLayout *layout = (id) self.collectionView.collectionViewLayout;
     float screenWidth = layout.collectionViewContentSize.width;
@@ -118,6 +121,11 @@
     if (self.brushIsInit) {
         //sets the lastclicked index to be used throughout the class
         self.clickedIndex = indexPath.row;
+        
+        self.oldPlant = [[GloablObjects instance].myGarden.gardenArr2d objectAtIndex:indexPath.row];
+        if([[[[GloablObjects instance].myGarden.gardenArr2d objectAtIndex:indexPath.row] name] isEqualToString:@""]){
+            self.oldPlant.name = @"";
+        }
         
         //checks if imcompatable plants with what your planting are near
         [self checkfoes:(int)indexPath.row];
@@ -347,9 +355,7 @@
         if (buttonIndex != [alertView cancelButtonIndex]) {
             //hit okay
         } else {
-            PlantObject *myPlant = [PlantObject new];
-            myPlant.name = @"";
-            [[GloablObjects instance].myGarden.gardenArr2d replaceObjectAtIndex:self.clickedIndex withObject:myPlant];
+            [[GloablObjects instance].myGarden.gardenArr2d replaceObjectAtIndex:self.clickedIndex withObject:self.oldPlant];
             [self.collectionView reloadData];
         }
     }

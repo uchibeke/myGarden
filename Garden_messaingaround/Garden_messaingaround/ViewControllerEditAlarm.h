@@ -20,6 +20,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *startDateLabel;
 @property (nonatomic, strong) IBOutlet UILabel *harvest1Label;
 @property (nonatomic, strong) IBOutlet UILabel *harvest2Label;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *savebtn;
 
 @property (strong, nonatomic) PlantObject * plant ;
 @property ViewControllerEditAlarm * reminders;
