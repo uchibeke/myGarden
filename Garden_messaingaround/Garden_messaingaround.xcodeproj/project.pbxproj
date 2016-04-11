@@ -15,7 +15,7 @@
 		09CE09311CA6FBF300911F6C /* whiteCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE092E1CA6FBF300911F6C /* whiteCamera.png */; };
 		09CE09321CA6FBF300911F6C /* whiteFacebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE092F1CA6FBF300911F6C /* whiteFacebook.png */; };
 		09CE09331CA6FBF300911F6C /* whiteTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 09CE09301CA6FBF300911F6C /* whiteTwitter.png */; };
-		09EB40191CBC572D00CBF75D /* cherry tomatoes.png in Resources */ = {isa = PBXBuildFile; fileRef = 09EB40121CBC572D00CBF75D /* cherry tomatoes.png */; };
+		09EB40191CBC572D00CBF75D /* cherry tomato.png in Resources */ = {isa = PBXBuildFile; fileRef = 09EB40121CBC572D00CBF75D /* cherry tomato.png */; };
 		09EB401A1CBC572D00CBF75D /* hot pepper.png in Resources */ = {isa = PBXBuildFile; fileRef = 09EB40131CBC572D00CBF75D /* hot pepper.png */; };
 		09EB401B1CBC572D00CBF75D /* marigold.png in Resources */ = {isa = PBXBuildFile; fileRef = 09EB40141CBC572D00CBF75D /* marigold.png */; };
 		09EB401C1CBC572D00CBF75D /* nasturtium.png in Resources */ = {isa = PBXBuildFile; fileRef = 09EB40151CBC572D00CBF75D /* nasturtium.png */; };
@@ -111,7 +111,7 @@
 		09CE092E1CA6FBF300911F6C /* whiteCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteCamera.png; sourceTree = "<group>"; };
 		09CE092F1CA6FBF300911F6C /* whiteFacebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteFacebook.png; sourceTree = "<group>"; };
 		09CE09301CA6FBF300911F6C /* whiteTwitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteTwitter.png; sourceTree = "<group>"; };
-		09EB40121CBC572D00CBF75D /* cherry tomatoes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cherry tomatoes.png"; sourceTree = "<group>"; };
+		09EB40121CBC572D00CBF75D /* cherry tomato.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cherry tomato.png"; sourceTree = "<group>"; };
 		09EB40131CBC572D00CBF75D /* hot pepper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hot pepper.png"; sourceTree = "<group>"; };
 		09EB40141CBC572D00CBF75D /* marigold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marigold.png; sourceTree = "<group>"; };
 		09EB40151CBC572D00CBF75D /* nasturtium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nasturtium.png; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 		9552DED81C880DEC00633FBE /* plantImages */ = {
 			isa = PBXGroup;
 			children = (
-				09EB40121CBC572D00CBF75D /* cherry tomatoes.png */,
+				09EB40121CBC572D00CBF75D /* cherry tomato.png */,
 				09EB40131CBC572D00CBF75D /* hot pepper.png */,
 				09EB40141CBC572D00CBF75D /* marigold.png */,
 				09EB40151CBC572D00CBF75D /* nasturtium.png */,
@@ -493,7 +493,7 @@
 				9D6549991C88BAF400841A24 /* corn.png in Resources */,
 				9D6549A31C88BAF400841A24 /* parsley.png in Resources */,
 				11E322201CAA0C2E00C5F4E7 /* timerBig2.png in Resources */,
-				09EB40191CBC572D00CBF75D /* cherry tomatoes.png in Resources */,
+				09EB40191CBC572D00CBF75D /* cherry tomato.png in Resources */,
 				09EB40211CBC58F600CBF75D /* bush beans.png in Resources */,
 				09CE09311CA6FBF300911F6C /* whiteCamera.png in Resources */,
 				09EB401A1CBC572D00CBF75D /* hot pepper.png in Resources */,
