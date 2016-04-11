@@ -93,7 +93,7 @@
  "Preparing & Using":"temp",
  "Problems":"temp",
  "Preparation/Use":"temp",
- "foes":"Beans"
+ "foes":"Bush Beans Pole Beans"
  },
  {
  "Name":"Bell Pepper",
@@ -117,7 +117,7 @@
  "Preparing & Using":"temp",
  "Problems":"temp",
  "Preparation/Use":"temp",
- "foes":  "Beans "
+ "foes":  "Bush Beans Pole Beans"
  },
  {
  "Name":"Bush Beans",
@@ -141,7 +141,7 @@
  "Preparing & Using":"temp",
  "Problems":"temp",
  "Preparation/Use":"temp",
- "foes":"Onion Pepper Beets Broccoli Radish"
+ "foes":"Onion Bell Pepper Hot Pepper Beets Broccoli Radish"
  },
  {
  "Name":"Broccoli",
@@ -165,7 +165,7 @@
  "Preparing & Using":"temp",
  "Problems":"temp",
  "Preparation/Use":"temp",
- "foes":"Cabbage Cauliflower Lettuce Beans Tomato"
+ "foes":"Cabbage Cauliflower Leaf Lettuce Romaine Lettuce Bush Beans Pole Beans Cheery Tomato Paste Tomato "
  },
  {
  "Name":"Cabbage",
@@ -189,7 +189,7 @@
  "Preparing & Using":"temp",
  "Problems":"temp",
  "Preparation/Use":"temp",
- "foes": "Broccoli Cauliflower Strawberries Tomato "
+ "foes": "Broccoli Cauliflower Strawberries Beefsteak Tomato Cherry Tomatoes Paste Tomato"
  },
  {
  "Name":"Carrots",
@@ -237,7 +237,7 @@
  "Preparing & Using":"temp",
  "Problems":"temp",
  "Preparation/Use":"temp",
- "foes":  "Broccoli Cabbage Tomato "
+ "foes":  "Broccoli Cabbage Cherry Tomatoes Paste Tomato Beefsteak Tomato "
  },
  {
  "Name":"Cherry Tomatoes",
@@ -333,7 +333,7 @@
  "Preparing & Using":"temp",
  "Problems":"temp",
  "Preparation/Use":"temp",
- "foes":  "Tomato "
+ "foes":  "Cherry Tomatoes Paste Tomato Beefsteak Tomato "
  },
  {
  "Name":"Cucumber",
@@ -405,7 +405,7 @@
  "Preparing & Using":"temp",
  "Problems":"temp",
  "Preparation/Use":"temp",
- "foes":  "Beans "
+ "foes":  "Pole Beans Bush Beans "
  },
  {
  "Name":"Leaf Lettuce",
@@ -597,7 +597,7 @@
  "Preparing & Using":"temp",
  "Problems":"temp",
  "Preparation/Use":"temp",
- "foes":  "Beans Peas "
+ "foes":  "Bush Beans Pole Beans Peas "
  },
  {
  "Name":"Oregano",
@@ -717,7 +717,7 @@
  "Preparing & Using":"temp",
  "Problems":"temp",
  "Preparation/Use":"temp",
- "foes":  "Cucumber Muskmelon Watermelon Summer Squash Winter Squash Tomato Peas "
+ "foes":  "Cucumber Muskmelon Watermelon Summer Squash Winter Squash Cherry Tomatoes Paste Tomato Beefsteak Tomato Peas "
  },
  {
  "Name":"Radish",
@@ -741,7 +741,7 @@
  "Preparing & Using":"temp",
  "Problems":"temp",
  "Preparation/Use":"temp",
- "foes":  "Beans "
+ "foes":  "Bush Beans Pole Beans "
  },
  {
  "Name":"Romaine Lettuce",
