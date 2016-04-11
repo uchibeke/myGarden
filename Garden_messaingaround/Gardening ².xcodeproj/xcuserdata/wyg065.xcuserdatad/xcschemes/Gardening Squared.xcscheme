@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ADC714831C82448400260F56"
-               BuildableName = "Garden_messaingaround.app"
-               BlueprintName = "Garden_messaingaround"
-               ReferencedContainer = "container:Garden_messaingaround.xcodeproj">
+               BuildableName = "Gardening Squared.app"
+               BlueprintName = "Gardening &#xb2;"
+               ReferencedContainer = "container:Gardening &#xb2;.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ADC7149C1C82448400260F56"
-               BuildableName = "Garden_messaingaroundTests.xctest"
-               BlueprintName = "Garden_messaingaroundTests"
-               ReferencedContainer = "container:Garden_messaingaround.xcodeproj">
+               BuildableName = "Gardening SquaredTests.xctest"
+               BlueprintName = "Gardening &#xb2;Tests"
+               ReferencedContainer = "container:Gardening &#xb2;.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ADC7149C1C82448400260F56"
-               BuildableName = "Garden_messaingaroundTests.xctest"
-               BlueprintName = "Garden_messaingaroundTests"
-               ReferencedContainer = "container:Garden_messaingaround.xcodeproj">
+               BuildableName = "Gardening SquaredTests.xctest"
+               BlueprintName = "Gardening &#xb2;Tests"
+               ReferencedContainer = "container:Gardening &#xb2;.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ADC714831C82448400260F56"
-            BuildableName = "Garden_messaingaround.app"
-            BlueprintName = "Garden_messaingaround"
-            ReferencedContainer = "container:Garden_messaingaround.xcodeproj">
+            BuildableName = "Gardening Squared.app"
+            BlueprintName = "Gardening &#xb2;"
+            ReferencedContainer = "container:Gardening &#xb2;.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ADC714831C82448400260F56"
-            BuildableName = "Garden_messaingaround.app"
-            BlueprintName = "Garden_messaingaround"
-            ReferencedContainer = "container:Garden_messaingaround.xcodeproj">
+            BuildableName = "Gardening Squared.app"
+            BlueprintName = "Gardening &#xb2;"
+            ReferencedContainer = "container:Gardening &#xb2;.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ADC714831C82448400260F56"
-            BuildableName = "Garden_messaingaround.app"
-            BlueprintName = "Garden_messaingaround"
-            ReferencedContainer = "container:Garden_messaingaround.xcodeproj">
+            BuildableName = "Gardening Squared.app"
+            BlueprintName = "Gardening &#xb2;"
+            ReferencedContainer = "container:Gardening &#xb2;.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

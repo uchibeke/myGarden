@@ -182,7 +182,7 @@
 		9D6549881C88BAF400841A24 /* watermelon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermelon.png; sourceTree = "<group>"; };
 		9D6549891C88BAF400841A24 /* winter squash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winter squash.png"; sourceTree = "<group>"; };
 		9D8BDFAB1CB051F900BF969D /* asparagus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asparagus.png; sourceTree = "<group>"; };
-		ADC714841C82448400260F56 /* Garden_messaingaround.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Garden_messaingaround.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADC714841C82448400260F56 /* Gardening ².app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gardening ².app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADC714881C82448400260F56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADC714891C82448400260F56 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ADC7148B1C82448400260F56 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 		ADC714921C82448400260F56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ADC714941C82448400260F56 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		ADC714971C82448400260F56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		ADC7149D1C82448400260F56 /* Garden_messaingaroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Garden_messaingaroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADC7149D1C82448400260F56 /* Gardening ²Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Gardening ²Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADC714A21C82448400260F56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADC714A31C82448400260F56 /* Garden_messaingaroundTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Garden_messaingaroundTests.m; sourceTree = "<group>"; };
 		ADC714BC1C825AB800260F56 /* ViewControllerNewGarden.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerNewGarden.h; sourceTree = "<group>"; };
@@ -314,8 +314,8 @@
 		ADC714851C82448400260F56 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ADC714841C82448400260F56 /* Garden_messaingaround.app */,
-				ADC7149D1C82448400260F56 /* Garden_messaingaroundTests.xctest */,
+				ADC714841C82448400260F56 /* Gardening ².app */,
+				ADC7149D1C82448400260F56 /* Gardening ²Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -388,9 +388,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ADC714831C82448400260F56 /* Garden_messaingaround */ = {
+		ADC714831C82448400260F56 /* Gardening ² */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ADC714A71C82448400260F56 /* Build configuration list for PBXNativeTarget "Garden_messaingaround" */;
+			buildConfigurationList = ADC714A71C82448400260F56 /* Build configuration list for PBXNativeTarget "Gardening ²" */;
 			buildPhases = (
 				ADC714801C82448400260F56 /* Sources */,
 				ADC714811C82448400260F56 /* Frameworks */,
@@ -400,14 +400,14 @@
 			);
 			dependencies = (
 			);
-			name = Garden_messaingaround;
+			name = "Gardening ²";
 			productName = Garden_messaingaround;
-			productReference = ADC714841C82448400260F56 /* Garden_messaingaround.app */;
+			productReference = ADC714841C82448400260F56 /* Gardening ².app */;
 			productType = "com.apple.product-type.application";
 		};
-		ADC7149C1C82448400260F56 /* Garden_messaingaroundTests */ = {
+		ADC7149C1C82448400260F56 /* Gardening ²Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ADC714AA1C82448400260F56 /* Build configuration list for PBXNativeTarget "Garden_messaingaroundTests" */;
+			buildConfigurationList = ADC714AA1C82448400260F56 /* Build configuration list for PBXNativeTarget "Gardening ²Tests" */;
 			buildPhases = (
 				ADC714991C82448400260F56 /* Sources */,
 				ADC7149A1C82448400260F56 /* Frameworks */,
@@ -418,9 +418,9 @@
 			dependencies = (
 				ADC7149F1C82448400260F56 /* PBXTargetDependency */,
 			);
-			name = Garden_messaingaroundTests;
+			name = "Gardening ²Tests";
 			productName = Garden_messaingaroundTests;
-			productReference = ADC7149D1C82448400260F56 /* Garden_messaingaroundTests.xctest */;
+			productReference = ADC7149D1C82448400260F56 /* Gardening ²Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -442,7 +442,7 @@
 					};
 				};
 			};
-			buildConfigurationList = ADC7147F1C82448400260F56 /* Build configuration list for PBXProject "Garden_messaingaround" */;
+			buildConfigurationList = ADC7147F1C82448400260F56 /* Build configuration list for PBXProject "Gardening ²" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -455,8 +455,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ADC714831C82448400260F56 /* Garden_messaingaround */,
-				ADC7149C1C82448400260F56 /* Garden_messaingaroundTests */,
+				ADC714831C82448400260F56 /* Gardening ² */,
+				ADC7149C1C82448400260F56 /* Gardening ²Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -573,7 +573,7 @@
 /* Begin PBXTargetDependency section */
 		ADC7149F1C82448400260F56 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = ADC714831C82448400260F56 /* Garden_messaingaround */;
+			target = ADC714831C82448400260F56 /* Gardening ² */;
 			targetProxy = ADC7149E1C82448400260F56 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -689,7 +689,7 @@
 				INFOPLIST_FILE = Garden_messaingaround/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Gardening ²";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -703,7 +703,7 @@
 				INFOPLIST_FILE = Garden_messaingaround/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Gardening ²";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
@@ -722,8 +722,8 @@
 				);
 				INFOPLIST_FILE = Garden_messaingaroundTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Garden_messaingaround.app/Garden_messaingaround";
+				PRODUCT_NAME = "Gardening ²Tests";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gardening ².app/Gardening ²";
 			};
 			name = Debug;
 		};
@@ -737,15 +737,15 @@
 				);
 				INFOPLIST_FILE = Garden_messaingaroundTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Garden_messaingaround.app/Garden_messaingaround";
+				PRODUCT_NAME = "Gardening ²Tests";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gardening ².app/Gardening ²";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ADC7147F1C82448400260F56 /* Build configuration list for PBXProject "Garden_messaingaround" */ = {
+		ADC7147F1C82448400260F56 /* Build configuration list for PBXProject "Gardening ²" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADC714A51C82448400260F56 /* Debug */,
@@ -754,7 +754,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ADC714A71C82448400260F56 /* Build configuration list for PBXNativeTarget "Garden_messaingaround" */ = {
+		ADC714A71C82448400260F56 /* Build configuration list for PBXNativeTarget "Gardening ²" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADC714A81C82448400260F56 /* Debug */,
@@ -763,7 +763,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ADC714AA1C82448400260F56 /* Build configuration list for PBXNativeTarget "Garden_messaingaroundTests" */ = {
+		ADC714AA1C82448400260F56 /* Build configuration list for PBXNativeTarget "Gardening ²Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADC714AB1C82448400260F56 /* Debug */,

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>BD0ED9CF-B060-4CC8-9E65-FCEE7C7ED325</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Gardening Squared</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1AAD236413B41353D5E0139A6311AEBAD0281115</key>
+		<string>https://github.com/QiGuo557/myGarden.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Garden_messaingaround/Gardening Squared.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1AAD236413B41353D5E0139A6311AEBAD0281115</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/QiGuo557/myGarden.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1AAD236413B41353D5E0139A6311AEBAD0281115</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1AAD236413B41353D5E0139A6311AEBAD0281115</string>
+			<key>IDESourceControlWCCName</key>
+			<string>myGarden</string>
+		</dict>
+	</array>
+</dict>
+</plist>
